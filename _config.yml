@@ -82,11 +82,11 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : wn398
     livefyre :
       site_id : 123
     intensedebate :
-      account : 123abc
+      account : 164878858@qq.com
     facebook :
       appid : 123
       num_posts: 5
