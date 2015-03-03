@@ -103,4 +103,4 @@ stylus:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: github
-  repo: git@github.com:wn398/wn398.github.io.git
+  repo: wn398@github.com:wn398/wn398.github.io.git
