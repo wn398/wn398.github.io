@@ -85,7 +85,10 @@ disqus_shortname: wn398
 #theme: landscape  ##default theme
 #theme: hueman  ##adjust the blog with photo
 #theme: vno
-theme: iceman
+#theme: iceman
+theme: jacman
+stylus:
+	commpress:true
 exclude_generator:
 
 # Markdown语法
