@@ -1,9 +1,9 @@
 # Header
 menu:
-  Home: /
+  主页: /
   # Delete this row if you don't want categories in your header nav bar
-  Categories: 
-  About: /about/index.html
+  目录: 
+  关于: /about/index.html
 
 # Content
 fancybox: true
@@ -16,11 +16,11 @@ scrollLoading: true
 
 # Sidebar
 social_links:
-  twitter: 
-  facebook: 
-  google_plus: 
-  github: https://github.com/ppoffice/hexo-theme-hueman
-  weibo: 
+  twitter: https://twitter.com/wn1698
+  facebook: https://www.facebook.com/profile.php?id=100009152177427
+  google_plus: https://plus.google.com/u/0/108412565662276582776
+  github: https://github.com/wn398
+  weibo: http://weibo.com/tim398
   rss: 
 widgets:
 - recent_posts
@@ -32,7 +32,7 @@ widgets:
 
 # Links
 links:
-  Hexo: http://hexo.io
+  Github: https://github.com/wn398
 
 # Miscellaneous
 google_analytics:
