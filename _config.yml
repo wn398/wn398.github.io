@@ -107,5 +107,5 @@ stylus:
 # Deployment  布局配置
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type: github
+  type: git
   repo: https://github.com/wn398/wn398.github.io.git
