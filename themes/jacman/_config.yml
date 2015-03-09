@@ -48,8 +48,8 @@ index:
   
 #### Author information
 author:
-  intro_line1:  "Hello ,I'm Tim in DELL.."    ## your introduction on the bottom of the page
-  intro_line2:  "I love this world!!!"  ## the 2nd line
+  intro_line1:  "If you don't have never failed,you never try anything new"    ## your introduction on the bottom of the page
+  intro_line2:  "人生惟一的安全感，来自于充分体验人生的不安全感"  ## the 2nd line
   weibo: tim398     ## e.g. wuchong1014 or 2176287895 for http://weibo.com/2176287895
   weibo_verifier:  ## e.g. b3593ceb Your weibo-show widget verifier ,if you use weibo-show it is needed.
   tsina: tim398     ## e.g. 2176287895  Your weibo ID,It will be used in share button.

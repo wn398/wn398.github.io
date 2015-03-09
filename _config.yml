@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site 
-title: 追
-subtitle: 没有毅力，成功只是虚仰，虎头蛇尾的奋斗也只是徒劳
+title: 生活不是一场赛跑，而是一次旅行
+subtitle: The perfect day Going to bed with a dream ,waking up with a purpose 
 description: 有一种落差是你配不上自己的野心也辜负了所受的苦难
 author: Tim Wang
 email: 164878858@qq.com
@@ -41,7 +41,7 @@ future: true  ##显示未来的文章
 #relative_link: false  
 highlight:   ##代码块的设置
   enable: true
-  line_number: true
+  line_number: false
   tab_replace:
 
 # Category & Tag  目录和标签
@@ -88,7 +88,6 @@ duoshuo_shortname: wn398
 #theme: hueman  ##adjust the blog with photo
 
 theme: jacman
-#theme: pacman
 exclude_generator:
 
 # Markdown语法
