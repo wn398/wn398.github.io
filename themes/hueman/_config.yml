@@ -2,7 +2,8 @@
 menu:
   主页: /
   # Delete this row if you don't want categories in your header nav bar
-  目录: 
+  目录: /categories
+  归档: /archives
   关于: /about/index.html
 
 # Content

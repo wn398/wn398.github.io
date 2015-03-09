@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site 
-title: 遍寻天下-但求一梦
+title: 追
 subtitle: 没有毅力，成功只是虚仰，虎头蛇尾的奋斗也只是徒劳
 description: 有一种落差是你配不上自己的野心也辜负了所受的苦难
 author: Tim Wang
@@ -79,18 +79,16 @@ per_page: 10    ##每页显示的文章量（0=关闭分页功能）
 pagination_dir: page  ##分页目录
 
 # Disqus 评论
-disqus_shortname: wn398
-
+disqus_shortname:
+duoshuo_shortname: wn398
 # Extensions 插件和皮肤
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
-#theme: landscape  ##default theme
+#theme: timwang  ##default theme
 #theme: hueman  ##adjust the blog with photo
-#theme: vno
-#theme: iceman
+
 theme: jacman
-stylus:
-	commpress:true
+#theme: pacman
 exclude_generator:
 
 # Markdown语法
