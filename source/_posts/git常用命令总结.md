@@ -1,4 +1,4 @@
-title: git常用命令总结
+title: "git常用命令总结"
 date: 2015-03-10 20:19:34 
 tags:
 -  git
@@ -6,10 +6,11 @@ tags:
 
 categories: git
 ---
-###git 配置
+##git 配置
 * 查看配置信息 `git config --list`
 * git帮助命令  `git help <verb> 或 git <verb> --help`
-###git 操作
+
+##git 操作
 * 增加文件到暂存区    `git add 文件名(-A所有文件变化)` 
 * 提交文件           `git commit -m "提交信息"`
 * 跳过使用暂存直接提交 `git commit -a -m "提交信息"` (git会自动把所有已经跟踪文件暂存起来一并提交，从而跳过git add)
@@ -40,7 +41,7 @@ categories: git
 * 取消暂存 `git reset HEAD 文件`
 * 取消对文件的修改 `git checkout --文件` *相当于覆盖*
 
-###git 查看
+##git 查看
 * 查看本地文件状态 `git status`
 >查看的文件状态包括*已跟踪*、*未跟踪*文件的修改状态，*暂存状态（add之后未提交）*
 >>只要在Changes to be commited这行下面的文件是已暂存状态（即git add了些文件的修改或新add此文件作为追踪）
@@ -64,7 +65,7 @@ categories: git
 * 查看引用日志(Head和分支的引用) `git reflog`
 * 查看具体某次的更改 `git show (id)` *不加id显示所有更改内容，加commt id显示具体一次的*
 
-### Git 标签
+## Git 标签
 >Git使用标签有两种类型，轻量级的（lightweight）和含附注的（annotated）.轻量级标签就像是个不会变化的分支，实际上它就是个指向特定提交对象的引用。而含附注的标签，实际上就是存储仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，电子邮件地址和日期，以及标签说明，标签本身也允许使用GPG来签署或验证
 
 * 列出所有标签 `git tag`
