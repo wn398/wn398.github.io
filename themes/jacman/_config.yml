@@ -1,7 +1,9 @@
 ##### Menu
 menu:
   主页: /
+  分类: /
   归档: /archives
+  标签: /tags
   关于: /about
 ## you can create `tags` and `categories` folders in `../source`.
 ## And create a `index.md` file in each of them.
@@ -43,7 +45,7 @@ theme_color:
 
 #### index post is expanding or not 
 index:
-  expand: true           ## default is unexpanding,so you can only see the short description of each post.
+  expand: false           ## default is unexpanding,so you can only see the short description of each post.
   excerpt_link: Read More  
   
 #### Author information
