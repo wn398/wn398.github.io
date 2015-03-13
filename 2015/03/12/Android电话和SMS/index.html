@@ -1,0 +1,726 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Android电话和SMS | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="电话服务的硬件支持  为了指定应用程序需要设备支持电话服务，需要在应用程序的mainfest文件中添加一个 uses-feature节点
+&amp;lt;uses-feature android:name=&quot;android.hardware.telephony&quot; android:required=&quot;true">
+    
+    
+    <meta name="description" content="电话服务的硬件支持  为了指定应用程序需要设备支持电话服务，需要在应用程序的mainfest文件中添加一个 uses-feature节点
+&amp;lt;uses-feature android:name=&quot;android.hardware.telephony&quot; android:required=&quot;true&quot;/&amp;gt;
+   如果应用程序使用电话服务api，但它们并不是必需的，那么可以在试图使用相关api">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android电话和SMS">
+<meta property="og:url" content="http://wn398.github.io/2015/03/12/Android电话和SMS/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="电话服务的硬件支持  为了指定应用程序需要设备支持电话服务，需要在应用程序的mainfest文件中添加一个 uses-feature节点
+&amp;lt;uses-feature android:name=&quot;android.hardware.telephony&quot; android:required=&quot;true&quot;/&amp;gt;
+   如果应用程序使用电话服务api，但它们并不是必需的，那么可以在试图使用相关api">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android电话和SMS">
+<meta name="twitter:description" content="电话服务的硬件支持  为了指定应用程序需要设备支持电话服务，需要在应用程序的mainfest文件中添加一个 uses-feature节点
+&amp;lt;uses-feature android:name=&quot;android.hardware.telephony&quot; android:required=&quot;true&quot;/&amp;gt;
+   如果应用程序使用电话服务api，但它们并不是必需的，那么可以在试图使用相关api">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/">分类</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/12/Android电话和SMS/" title="Android电话和SMS" itemprop="url">Android电话和SMS</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-12T08:06:10.000Z" itemprop="datePublished"> 发表于 2015-03-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#电话服务的硬件支持"><span class="toc-number">1.</span> <span class="toc-text">电话服务的硬件支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用电话服务"><span class="toc-number">2.</span> <span class="toc-text">使用电话服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#启动电话呼叫"><span class="toc-number">2.1.</span> <span class="toc-text">启动电话呼叫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#替换本机拨号程序"><span class="toc-number">2.2.</span> <span class="toc-text">替换本机拨号程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问电话服务的属性及状态"><span class="toc-number">2.3.</span> <span class="toc-text">访问电话服务的属性及状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用PhoneStateListener监视电话状态的变化"><span class="toc-number">2.4.</span> <span class="toc-text">使用PhoneStateListener监视电话状态的变化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SMS和MMS"><span class="toc-number">3.</span> <span class="toc-text">SMS和MMS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Intent从应用程序中发送SMS和MMS"><span class="toc-number">3.1.</span> <span class="toc-text">使用Intent从应用程序中发送SMS和MMS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#发送SMS消息"><span class="toc-number">3.1.1.</span> <span class="toc-text">发送SMS消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发送MMS消息"><span class="toc-number">3.1.2.</span> <span class="toc-text">发送MMS消息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用SMS_Manager_发送SMS消息"><span class="toc-number">3.2.</span> <span class="toc-text">使用SMS Manager 发送SMS消息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#监听传入的SMS消息"><span class="toc-number">4.</span> <span class="toc-text">监听传入的SMS消息</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="电话服务的硬件支持">电话服务的硬件支持</h2><p>  为了指定应用程序需要设备支持电话服务，需要在应用程序的mainfest文件中添加一个 uses-feature节点</p>
+<pre><code>&lt;uses-feature <span class="string">android:</span>name=<span class="string">"android.hardware.telephony"</span> <span class="string">android:</span>required=<span class="string">"true"</span>/&gt;
+</code></pre><p>   如果应用程序使用电话服务api，但它们并不是必需的，那么可以在试图使用相关api前，检查是否有电话硬件。<br>   为此，需要使用<code>PackageManager</code>的<code>hasSystemFeature</code>方法，并指定<code>FEATURE_TELEPHONY</code>功能。PackageManager还包括了用于查询特定CDMA和GSM的硬件是否存在的常量。</p>
+<pre><code><span class="title">PackageManager</span> pm = getPackageManager();
+<span class="title">boolean</span> telephonySupported = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+<span class="title">boolean</span> gsmSupported = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_GSM);
+<span class="title">boolean</span> cdmaSupported = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CDMA);
+</code></pre><h2 id="使用电话服务">使用电话服务</h2><blockquote>
+<p>Android电话服务api使应用程序能够访问低层的电话硬件栈，从而允许创建自己的拨号程序——或者将呼叫处理程序和电话状态监视的功能集成到自己的应用程序中。</p>
+</blockquote>
+<h3 id="启动电话呼叫">启动电话呼叫</h3><pre><code>Intent whoyougonnacall = <span class="keyword">new</span> Intent(Intent.ACTION_DIAL,<span class="built_in">Uri</span>.parse(<span class="string">"tel:55-555"</span>));
+startActivity(whoyougonnacall);
+</code></pre><h3 id="替换本机拨号程序">替换本机拨号程序</h3><p>替换本机拨号应用程序包括以下两个步骤：</p>
+<ol>
+<li><p>截获当前由本机拨号程序所服务的Intent</p>
+<p>本机拨号应用程序响应用户按下硬件呼叫按键对应的Intent动作，它要求利用<code>tel:模式</code>查看数据，或使用<code>tel:模式</code>发出一个ACTION_DIAL请求。</p>
+<p>为了截获这些请求，需要在你替换拨号程序Activity的mainfest文件中包含<code>intent-filter</code>标签来监听以下动作：</p>
+<ul>
+<li>Intent.ACTION_CALL_BUTTON  当按下设备的硬件呼叫按键时该动作被广播。创建一个监听该动作的Intent Filter作为默认动作</li>
+<li>Intent.ACTION_DIAL    它由想要启动电话呼叫的应用程序使用。</li>
+<li><p>Intent.ACTION_VIEW   该查看动作由想要查看某条数据的应用程序使用。确保Intent Filter指定了tel:模式以允许新的Activity用于查看电话号码。</p>
+<p>//替换拨号程序的Activity的manifest文件条目</p>
+</li>
+</ul>
+<p>&lt;actitivy android:name=“.MyDialerActivity”&gt;</p>
+<pre><code><span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.action.CALL_BUTTON"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category.DEFAULT"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span>
+<span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.action.VIEW"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.action.DIAL"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category.DEFAULT"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category.BROWSABLE"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">data</span> <span class="attribute">android:schema</span>=<span class="value">"tel"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span>
+</code></pre><p>   </p>
+</li>
+<li><p>启动并管理拨打电话</p>
+<p>在你的Activity启动后，应该提供一个UI，供用户来输入或修改要拨打的号码，以及启动传出呼叫。最简单的办法就是通过<code>Intent.ACTION_CALL</code>动作使用现有的电话服务栈，这将使用系统的in-call Activity来启动呼叫，并让系统管理拨号，连接以及语音处理。要使用该动作，应用程序必须有以下权限：<br><code>android.permission.CALL_PHONE</code><br>或者还可以通过实现自己的拨号以及语音处理框架来完全替代传出的电话服务栈。</p>
+</li>
+</ol>
+<h3 id="访问电话服务的属性及状态">访问电话服务的属性及状态</h3><blockquote>
+<p>电话服务API是由Telephony Manager进行管理的，使用getSystemService可以访问它</p>
+</blockquote>
+<pre><code><span class="keyword">String</span> srvcName = <span class="keyword">Context</span>.TELEPHONY_SERVICE;
+TelephonyManager telephonyManager = (TelephonyManager)getSystemService(srvcName);
+</code></pre><p>Telephony Manager提供了对许多电话服务的属性的直接访问，包括设备，网络，客户识别模块（SIM）以及数据状态的详细信息。</p>
+<ol>
+<li><p>读取电话设备详细信息</p>
+<blockquote>
+<p>可以获得电话类型（GSM,CDMA或SIP）,唯一ID（IMEI或者MEID）,软件版本和手机号码</p>
+</blockquote>
+<pre><code><span class="built_in">int</span> phoneType = telephonyManager.getPhoneType();
+<span class="keyword">switch</span>(phoneType)..
+<span class="comment">//需要READ_PHONE_STATE使用权限</span>
+<span class="comment">//读取GSM手机的IMEI或CDMA手机的MEID</span>
+<span class="built_in">String</span> deviceId = telephonyManager.getDeviceId();
+<span class="comment">//读取手机上的软件版本（注意：不是SDK版本）</span>
+<span class="built_in">String</span> softwareVersion = telephonyManager.getDeviceSoftwareVersion();
+<span class="comment">//获得手机号码</span>
+<span class="built_in">String</span> phoneNumber = telephonyManager.getLine1Number();
+</code></pre><p> 你还可以确定手机连接到的网络的类型，以及SIM或所连接的运营商网络的名称和所在的国家</p>
+</li>
+<li><p>读取网络详细信息</p>
+<p> 当连接到网络时，可以分别使用Telephony Manager的<code>getNetworkOperator</code>,<code>getNetworkCountryIso</code>,<code>getNetworkOperatorName</code>和<code>getNetworkType</code>方法读取移动国家代码和移动网络代码（MCC+MNC）,国家ISO代码，网络运营商名称和你连接的网络类型：</p>
+</li>
+<li><p>读取SIM详细信息</p>
+<p> 如果应用程序运行在GSM设备上，那通常有一个SIM.可以从Telephony Manager中查询SIM的详细信息以获得安装在当前设备中的SIM的ISO国家代码，运营商名称和运营商MCc以及MNC.</p>
+<pre><code><span class="built_in">int</span> simState = telephonyManager.getSimState<span class="literal">()</span>;
+</code></pre></li>
+<li><p>读取数据连接和传输状态的详细信息</p>
+<p> 使用<code>getDataState()</code>和<code>getDataActivity()</code>方法分别可以查找当前的数据连接状态和数据传输Activity。<br>Telephony Manager只指示基于电话服务的数据连接（移动数据，而不是wifi）.因此大多数情况下，Connectivity Manager是确定当前连接状态的更好选择。</p>
+</li>
+</ol>
+<h3 id="使用PhoneStateListener监视电话状态的变化">使用PhoneStateListener监视电话状态的变化</h3><blockquote>
+<p>为了监视管理电话状态，需要权限<code>android.permission.READ_PHONE_STATE</code>。创建一个实现了PhoneStateListener的新类以监听并响应电话状态的变化事件，包括<strong>呼叫状态（响铃，摘机等），蜂窝位置变化，语音邮件和呼叫转移状态，电话服务变化以及移动信号强度的变化</strong>。</p>
+<p>在PhoneStateListener的实现中，重写想要响应的事件的处理程序。每个处理程序会接收指示新电话状态的参数，如当前蜂窝位置，呼叫状态或信号强度</p>
+</blockquote>
+<p>创建了自己的Phone State Listener以后，将它注册到Telephony Manager中，使用位掩码指示想要监听的事件。</p>
+<pre><code>telephonyManager.listen(phoneStateListenern,
+            PhoneStateListener.LISITEN_CALL_FORWARDING_INDICATOR<span class="string">|</span>
+            PhoneStateListener.LISITEN_CALL_STATE<span class="string">|</span>
+            PhoneStateListener.LISITEN_CELL_LOCATION<span class="string">|</span>
+            .....);
+            )
+</code></pre><p>为了注销一个监听器，需要调用listen方法并将PhoneStateListener.LISTEN_NONE作为位掩码参数传入：</p>
+<pre><code>telephonyManager.<span class="keyword">listen</span>(phoneStateListener,
+                                    PhoneStateListener.LISITEN_NONE);
+</code></pre><ol>
+<li><p>监视传入的电话呼叫</p>
+<p> 重写<code>onCallStateChanged()</code>方法并进行注册，以便在呼叫状态改变时接收通知。<br> onCallStateChanged处理程序接收与传入呼叫相关的电话号码，而state参数则使用以下三个之一代表当前呼叫状态：</p>
+<ul>
+<li>TelephonyManager.CALL_STATE_IDLE       当电话即不响铃也不在通话中时</li>
+<li>TelephonyManager.CALL_STATE_RINGING    当电话响铃时</li>
+<li><p>TelephonyManager.CALL_STATE_OFFHOOK    当电话当前正在通话时</p>
+<p>注意一旦状态变为CALL_STATE_RINGING，系统会显示来电屏幕，询问用户是否要接听电话。<br>应用程序必须处于运行状态才能接收这个回调，如果每当电话状态变化时，就应该启动应用程序，那么可以注册一个Intent Receiver，用于监听表示电话状态发生变化的Braodcast Intent.</p>
+</li>
+</ul>
+</li>
+<li><p>跟踪蜂窝位置变化</p>
+<p> 实现<code>onCellLocationChanged</code>方法，当当前的蜂窝位置发生变化时，可以得到通知。它需要权限：</p>
+<pre><code>android<span class="class">.permission</span><span class="class">.ACCESS_COARSE_LOCATION</span>
+</code></pre><p> onCellLocationChanged处理程序接收一个CellLocation对象，其中包含了基于电话网络类型提取不同位置信息的方法。对于GSM网络，可以获得蜂窝ID(getCid)和当前位置区域代码（getLac）.对于CDMS网络，可以获得当前基站的ID(getBaseStationId)以及该基站的纬度（getBaseStationLatitude）和经度（getBaseStationLongitude)。</p>
+</li>
+<li><p>跟踪服务变化</p>
+<p> <code>onServiceStateChanged()</code> 处理程序跟踪设备的蜂窝服务的详细信息。使用ServiceState参数可查找当前服务状态的详细信息。<br>Service State对象的getState方法将当前的服务状态作为下列任意一项ServiceState参数返回：</p>
+<ul>
+<li>STATE_IN_SERVICE  正常电话服务是可用的</li>
+<li>STATE_EMERGENCY_ONLY 电话服务仅能用于紧急呼叫</li>
+<li>STATE_OUT_OF_SERVICE 当前没有电话服务可用</li>
+<li>STATE_POWER_OFF 电话无线传输功能被关闭（通常是启用了飞行模式时）</li>
+</ul>
+</li>
+<li><p>监视数据连接和数据传输的变化<br>可以使用一个<code>PhoneStateListener</code>监视数据连接以及移动数据传输的变化。注意，这不包含使用wifi传输的数据。若要更全面地监视数据连接和数据传输，应该使用<code>Connectivity Manager</code>,重写<code>onDataActivity()</code>以跟踪数据传输Activity,重写<code>onDataConnectionStateChange()</code>以请求通知数据连接状态变化。</p>
+</li>
+<li><p>使用Intent Receiver 监视传入的电话呼叫<br>当电话状态由于来电，接听和挂断而发生变化时，Telephony Manager会广播一个<code>ACTION_PHONE_STATE_CHANGED</code> Intent. 通过在mainfest文件中注册一个监听此Braodcast Intent的Intent Receiver，可以监听来电，即使你的应用程序没有运行。需要权限：<code>READ_PHONE_STATE</code></p>
+<pre><code><span class="tag">&lt;<span class="title">receiver</span> <span class="attribute">android:name</span>=<span class="value">"PhoneStateChangeReceiver"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.action.PHONE_STATE"</span>&gt;</span><span class="tag">&lt;/<span class="title">action</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">receiver</span>&gt;</span>
+</code></pre><p>电话状态变化的Braodcast Intent最多可以包含两个extra。所有这些广播都会包含EXTRA<em>STATE extra,其值为某个TelephonyManager.CALL_STATE</em>*,用于指示新的电话状态。如果电话是响铃，则Broadcast Intent还会包含EXTRA_INCOMING_NUMBER extra.其值是来电号码。</p>
+<pre><code>String phoneState = intent.getStringExtra(TelephonyManager.EXTR<span class="built_in">A_STATE</span>)<span class="comment">;</span>
+    <span class="keyword">if</span>(phoneState.equals(TelephonyManager.EXTR<span class="built_in">A_STATE</span>_RINGING)){
+     String phoneNumber = intent.getStringExtra(TelephonyManager.EXTR<span class="built_in">A_INCOMING</span>_NUMBER)<span class="comment">;</span>
+}
+</code></pre></li>
+</ol>
+<h2 id="SMS和MMS">SMS和MMS</h2><h3 id="使用Intent从应用程序中发送SMS和MMS">使用Intent从应用程序中发送SMS和MMS</h3><h4 id="发送SMS消息">发送SMS消息</h4><p>大多数情况下，与实现完整SMS客户端相比，最佳实践是使用Intent让另一个应用程序（通常是本机SMS应用程序）发送SMS和MMS消息。为此，需要使用<code>Intent.ACTION_SENDTO</code> 动作Intent来调用startActivity.使用sms:模式指定一个目标号码作为Intent数据。使用一个sms_body extra在Intent有效载荷中包含想要发送的消息。</p>
+<pre><code> Intent smsIntent = <span class="keyword">new</span> Intent(Intent.ACTION_SENDTO,<span class="built_in">Uri</span>.parse(<span class="string">"sms:54545454"</span>));
+ smsIntent.putExtra(<span class="string">"sms_body"</span>,<span class="string">"message is me"</span>);
+startActivity(smsIntent);
+</code></pre><h4 id="发送MMS消息">发送MMS消息</h4><p>   为了附加文件（基本上就是创建一条MMS消息）到消息中，需要添加一个带有要附加的资源URI的Intent.EXTRA_STREAM.并将Intent type设置为所附加资源的MIME类型。需要注意的是，本机sms应用程序并不包含ACTION_SENDTO的一个已经设置了type的Intent Receiver。相反，你需要使用ACTION_SEND并包含目标电话号码作为address extra:</p>
+<pre><code><span class="comment">//获得要附加的一个媒体的URI</span>
+Uri attached_Uri = Uri.parse(<span class="string">"content://media/external/images/media/1"</span>);
+<span class="comment">//创建一个新的MMS Intent</span>
+Intent mmsIntent = new Intent(Intent.ACTION_SEND, attached_Uri);
+mmsIntent.putExtra(<span class="string">"sms_body"</span>,<span class="string">"message is me"</span>);
+mmsIntent.putExtra(<span class="string">"address"</span>,<span class="string">"03526677149);</span>
+mmsIntent.putExtra(Intent.EXTRA_STREAM, aatached_Uri);
+mmsIntent.setType(<span class="string">"image/jpeg"</span>);
+startActivity(mmsIntent);
+</code></pre><p>   当运行以上程序时，用户很可能被提示选择一种能够完成发送的应用程序，包括Gmail,E-mail,和SMS应用程序。</p>
+<h3 id="使用SMS_Manager_发送SMS消息">使用SMS Manager 发送SMS消息</h3><p>为了发送SMS消息 ，需要权限 <code>android.permission.SEND_SMS</code></p>
+<ol>
+<li><p>发送文本消息 </p>
+<blockquote>
+<p>为了发送文本消息，可以使用SMS Manager的sendTextMessage方法，并传入接收人的地址（电话号码）和想要发送的文本消息。</p>
+</blockquote>
+<pre><code> SmsManager <span class="variable">smsManager =</span> SmsManager.getDefault();
+ String <span class="variable">sendTo =</span> <span class="string">"564"</span>;
+ String <span class="variable">myMessage =</span> <span class="string">"I am message"</span>;
+ smsManager.sentTextMessae(sendTo,<span class="constant">null</span>,myMessage,<span class="constant">null</span>,<span class="constant">null</span>);
+第二个参数可以用于指定所要使用的SMS服务中心。如果输入了<span class="constant">null</span>，那么将使用设备运营商默认的服务中心。
+ 最后两个参数指定了用于跟踪传输和消息成功递送的Intent.为了响应这些Intent,创建并注册Broadcast Receiver，如下节所示“跟踪并确认SMS消息递送”所讲。
+</code></pre></li>
+<li><p>跟踪并确认SMS消息递送</p>
+<blockquote>
+<p>为了跟踪发出的SMS消息的传输过程并确认递送成功，需要实现并注册一些Broadcast Receiver，用于监听我们在创建传入sendTextMessage方法中的Pending Intent时所指定的动作。第一个PendingIntent参数会在消息发送成功或失败时被触发。接收该Intent的BroadcastReceiver的结果会是结果代码下列中的一个：</p>
+</blockquote>
+<ul>
+<li>Activity.RESULT_OK  表示一次成功的传输</li>
+<li>SmsManager.RESULT_ERROR_GENERIC_FAILURE 普通的传输失败</li>
+<li>SmsManager.RESULT_ERROR_RADIO_OFF 电话无线信号被关闭</li>
+<li>SmsManager.RESULT_ERROR_NULL_PDU 表示一次PDU(协议数据单元)错误</li>
+<li><p>SmsManager.RESULT_ERROR_NO_SERVICE 表示没有可用的手机服务</p>
+<blockquote>
+<p>第二个Pending Intent参数仅在接收人接收到你的SMS消息 之后被触发</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>遵守最大sms消息尺寸</p>
+</li>
+</ol>
+<blockquote>
+<p>SMS Manager包含<code>divideMessage()</code>方法，它可以接收一个字符串作为输入，并将其分成一个消息数据列表，其中的每条消息都不超过最大允许的尺寸。 之后可以使用sms Manger的<code>sendMutipartTextMessage()</code>方法传输消息数组：</p>
+</blockquote>
+<pre><code>ArrayList&lt;<span class="keyword">String</span>&gt; meeageArray = smsManager.divideMessage(myMessage);
+    ArrayList&lt;PendingIntent&gt; sentIntents = <span class="keyword">new</span> ArrayList&lt;PendingIntent&gt;();
+    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;messageArray.<span class="built_in">size</span>();i++){
+        sentIntents.<span class="built_in">add</span>(sentPI);
+    }
+   smsManger.sendMultipartTextMessage(sendTo,<span class="keyword">null</span>,messageArray,sendIntents,<span class="keyword">null</span>));
+</code></pre><p>4  发送数据消息</p>
+<blockquote>
+<p>可以使用SMS Manager的<code>sendDataMessage()</code>方法通过SMS发送二进制数据。sendDataMessage方法的使用方式与sendTextMessage类似，但是需要包含额外的参数，用于指定目标端口和构成了你想要发送的数据的字节数组。</p>
+</blockquote>
+<pre><code>String <span class="variable">sendTo =</span> <span class="string">"54464"</span>;
+short <span class="variable">destinationPort =</span> <span class="number">80</span>;
+byte[] <span class="variable">data=</span> {---your data---}
+smsManager.sendDataMessage(sendTo,<span class="constant">null</span>,destinationPort,data,<span class="constant">null</span>,<span class="constant">null</span>);
+</code></pre><h2 id="监听传入的SMS消息">监听传入的SMS消息</h2><p>当设备接收到一条新的SMS消息时，就会使用<code>android.provider.Telephony.SMS_RECEIVED</code>动作触发一个新的Broadcast Intent.需要注意的是，这是一个字符串变量，当前的SDK并不包含对该字符串的引用，因此当在应用程序中使用它时必须显式地指定它（这是不平台支持的API）</p>
+<p>一个监听SMS Broadcast Intent的应用程序来说，需要权限 <code>android.permission.RECEIVE_SMS</code></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a><a href="/tags/技术/">技术</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2015/03/12/Android电话和SMS/" data-title="Android电话和SMS | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/13/android网络wifi/" title="android网络wifi">
+  <strong>上一篇：</strong><br/>
+  <span>
+  android网络wifi</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/03/12/android编程一些技巧/"  title="android编程一些技巧">
+ <strong>下一篇：</strong><br/> 
+ <span>android编程一些技巧
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/03/12/Android电话和SMS/" data-title="Android电话和SMS" data-url="http://wn398.github.io/2015/03/12/Android电话和SMS/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#电话服务的硬件支持"><span class="toc-number">1.</span> <span class="toc-text">电话服务的硬件支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用电话服务"><span class="toc-number">2.</span> <span class="toc-text">使用电话服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#启动电话呼叫"><span class="toc-number">2.1.</span> <span class="toc-text">启动电话呼叫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#替换本机拨号程序"><span class="toc-number">2.2.</span> <span class="toc-text">替换本机拨号程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问电话服务的属性及状态"><span class="toc-number">2.3.</span> <span class="toc-text">访问电话服务的属性及状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用PhoneStateListener监视电话状态的变化"><span class="toc-number">2.4.</span> <span class="toc-text">使用PhoneStateListener监视电话状态的变化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SMS和MMS"><span class="toc-number">3.</span> <span class="toc-text">SMS和MMS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Intent从应用程序中发送SMS和MMS"><span class="toc-number">3.1.</span> <span class="toc-text">使用Intent从应用程序中发送SMS和MMS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#发送SMS消息"><span class="toc-number">3.1.1.</span> <span class="toc-text">发送SMS消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发送MMS消息"><span class="toc-number">3.1.2.</span> <span class="toc-text">发送MMS消息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用SMS_Manager_发送SMS消息"><span class="toc-number">3.2.</span> <span class="toc-text">使用SMS Manager 发送SMS消息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#监听传入的SMS消息"><span class="toc-number">4.</span> <span class="toc-text">监听传入的SMS消息</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<p class="asidetitle">Music</p>
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/android/" title="android">android<sup>8</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">11</span></li></ul>
+  </div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>11</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>10</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/NFC/" style="font-size: 10px;">NFC</a><a href="/tags/android/" style="font-size: 15px;">android</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a><a href="/tags/技术/" style="font-size: 20px;">技术</a><a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a><a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2015 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>
