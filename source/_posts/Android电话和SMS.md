@@ -165,12 +165,16 @@ Telephony Manager只指示基于电话服务的数据连接（移动数据，而
 ##SMS和MMS
 
 ###使用Intent从应用程序中发送SMS和MMS
+----
 ####发送SMS消息
 大多数情况下，与实现完整SMS客户端相比，最佳实践是使用Intent让另一个应用程序（通常是本机SMS应用程序）发送SMS和MMS消息。为此，需要使用`Intent.ACTION_SENDTO` 动作Intent来调用startActivity.使用sms:模式指定一个目标号码作为Intent数据。使用一个sms_body extra在Intent有效载荷中包含想要发送的消息。
 
         Intent smsIntent = new Intent(Intent.ACTION_SENDTO,Uri.parse("sms:54545454"));
         smsIntent.putExtra("sms_body","message is me");
        startActivity(smsIntent);
+
+####接收短信
+使用广播机制实现的。当手机接收到一条短信的时候，系统会发出一条`android.provider.Telephony.SMS_RECEIVED`的广播，这条广播里携带着与短信相关的所有数据。每个应用程序都可以在广播接收器里对它进行监听，收到广播时再从中解析出短信的内容。
 
 ####发送MMS消息
    为了附加文件（基本上就是创建一条MMS消息）到消息中，需要添加一个带有要附加的资源URI的Intent.EXTRA_STREAM.并将Intent type设置为所附加资源的MIME类型。需要注意的是，本机sms应用程序并不包含ACTION_SENDTO的一个已经设置了type的Intent Receiver。相反，你需要使用ACTION_SEND并包含目标电话号码作为address extra:
