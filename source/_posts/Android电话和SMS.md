@@ -4,7 +4,7 @@ tags:
 - 技术
 - android
 
-catergories: android
+categories: android
 ---
 
 ##电话服务的硬件支持

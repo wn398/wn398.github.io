@@ -5,7 +5,7 @@ tags:
 - android
 - 多媒体
 
-categroies: android
+categories: android
 ---
 ##播放音频
 >在android中播放音频文件一般都是使用`MediaPlayer`类来实现的，它对多种格式的音频文件提供了支持

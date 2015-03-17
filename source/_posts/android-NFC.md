@@ -5,7 +5,7 @@ tags:
 - android
 - NFC
 
-categroies: android
+categories: android
 ---
 ##NFC
 >NFC(Near Field Communication)  是一种非接触式的技术，用于在短距离内（通常小于4cm）内少量数据的传输。NFC传输可以在两个支持NFC的设备或者一个设备和一个NFC“标签”之间进行。NFC标签即包括在扫描时会传输URL的被动标签，也包括复杂的系统。在Android中，NFC消息是通过使用NFC Data Exchange Format(NDEF)处理的。 为读取，写入或广播NFC消息，应用程序需要具有NFC manifest权限。
