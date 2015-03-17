@@ -1,0 +1,696 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>android传感器 | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="Android手机通常会支持多种传感器，如光照传感器，加速度传感器，地磁传感器，压力传感器，温度传感器，陀螺传感器等
+
+Sensor.TYPE_ACCELEROMETER 加速度传感器
+Sensor.TYPE_GYROSCOPE: 陀螺仪传感器
+Sensor.TYPE_LIGHT 亮度传感器
+Sen">
+    
+    
+    <meta name="description" content="Android手机通常会支持多种传感器，如光照传感器，加速度传感器，地磁传感器，压力传感器，温度传感器，陀螺传感器等
+
+Sensor.TYPE_ACCELEROMETER 加速度传感器
+Sensor.TYPE_GYROSCOPE: 陀螺仪传感器
+Sensor.TYPE_LIGHT 亮度传感器
+Sensor.TYPE_MAGNETI_FIELD 地磁传感器
+Sensor.TYPE_ORIENTATI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android传感器">
+<meta property="og:url" content="http://wn398.github.io/2015/03/17/android传感器/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="Android手机通常会支持多种传感器，如光照传感器，加速度传感器，地磁传感器，压力传感器，温度传感器，陀螺传感器等
+
+Sensor.TYPE_ACCELEROMETER 加速度传感器
+Sensor.TYPE_GYROSCOPE: 陀螺仪传感器
+Sensor.TYPE_LIGHT 亮度传感器
+Sensor.TYPE_MAGNETI_FIELD 地磁传感器
+Sensor.TYPE_ORIENTATI">
+<meta property="og:image" content="/images/加速度传感器方向.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android传感器">
+<meta name="twitter:description" content="Android手机通常会支持多种传感器，如光照传感器，加速度传感器，地磁传感器，压力传感器，温度传感器，陀螺传感器等
+
+Sensor.TYPE_ACCELEROMETER 加速度传感器
+Sensor.TYPE_GYROSCOPE: 陀螺仪传感器
+Sensor.TYPE_LIGHT 亮度传感器
+Sensor.TYPE_MAGNETI_FIELD 地磁传感器
+Sensor.TYPE_ORIENTATI">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/">分类</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/17/android传感器/" title="android传感器" itemprop="url">android传感器</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-17T07:38:34.000Z" itemprop="datePublished"> 发表于 2015-03-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#光照传感器"><span class="toc-number">1.</span> <span class="toc-text">光照传感器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加速度传感器"><span class="toc-number">2.</span> <span class="toc-text">加速度传感器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方向传感器"><span class="toc-number">3.</span> <span class="toc-text">方向传感器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安卓中受支持的传感器："><span class="toc-number">4.</span> <span class="toc-text">安卓中受支持的传感器：</span></a></li></ol>
+		
+		</div>
+		
+		<blockquote>
+<p>Android手机通常会支持多种传感器，如光照传感器，加速度传感器，地磁传感器，压力传感器，温度传感器，陀螺传感器等</p>
+<ul>
+<li>Sensor.TYPE_ACCELEROMETER 加速度传感器</li>
+<li>Sensor.TYPE_GYROSCOPE: 陀螺仪传感器</li>
+<li>Sensor.TYPE_LIGHT 亮度传感器</li>
+<li>Sensor.TYPE_MAGNETI_FIELD 地磁传感器</li>
+<li>Sensor.TYPE_ORIENTATION 方向传感器</li>
+<li>Sensor.TYPE_PRESSURE 压力传感器</li>
+<li>Sensor.TYPE_PROXIMITY近程传感器</li>
+<li>Sensor.TYPE_TEMPERATURE 温度传感器</li>
+</ul>
+</blockquote>
+<h2 id="光照传感器">光照传感器</h2><ol>
+<li><p>第一步：获取SensorManager实例：</p>
+<pre><code><span class="attribute">SensorManager senserManager </span>=<span class="string"> (SensorManager) getSystemService(Context.SENSOR_SERVICE);</span>
+</code></pre></li>
+<li><p>第二步：获取传感器实例</p>
+<p> SensorManager是系统所有传感器的管理器，有了它的实例之后就可以调用getDefaultSensor()方法来得到任意的传感器类型了，如下所示：</p>
+<pre><code><span class="attribute">Sensor sensor </span>=<span class="string"> senserManager.getDefaultSensor(Sensor.TYPE_LIGHT);</span>
+</code></pre></li>
+<li><p>第三步：监听传感器信号</p>
+<p> 这就要借助SensorEventListener来实现了。SensorEventListener是一个接口，其中定义了<code>onSensorChanged()</code>和<code>onAccuracyChanged()</code>这两个方法</p>
+<pre><code>SensorEventListener listener = <span class="keyword">new</span> SensorEventListener() {
+<span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onAccuracyChanged</span><span class="params">(Sensor sensor, <span class="keyword">int</span> accuracy)</span> </span>{
+}
+<span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onSensorChanged</span><span class="params">(SensorEvent event)</span> </span>{
+}
+};
+</code></pre><p> 当传感器的精度发生变化时就会调用<code>onAccuracyChanged()</code>方法，当传感器监测到的数值发生变化时就会调用<code>onSensorChanged()</code>方法。可以看到<code>onSensorChanged()</code>方法中传入了一个SensorEvent参数，这个参数里又包含了一个values数组，所有传感器输出的信息都是存放在这里的。</p>
+</li>
+<li><p>第四步：注册监听</p>
+<p> 下面我们还需要调用SensorManager的<code>registerListener()</code>方法来注册SensorEventListener才能使其生效，</p>
+<p> registerListener()方法接收三个参数</p>
+<ol>
+<li>第一个参数就是SensorEventListener的实例</li>
+<li>第二个参数是Sensor的实例，这两个参数我们在前面都已经成功得到了。</li>
+<li><p>第三个参数是用于表示传感器输出信息的更新速率，共有<code>SENSOR_DELAY_UI</code>、<code>SENSOR_DELAY_NORMAL</code>、<code>SENSOR_DELAY_GAME</code>和<code>SENSOR_DELAY_FASTEST</code>这四种值可选，它们的更新速率是依次递增的。因此，注册一个SensorEventListener就可以写成：</p>
+<pre><code>senserManager.registerListener(listener, senser, SensorManager.SENSOR_ DELAY_<span class="params">NORMAL</span>)<span class="comment">;</span>
+</code></pre><p>另外始终要记得，当程序退出或传感器使用完毕时，一定要调用<code>unregisterListener ()</code>方法将使用的资源释放掉，如下所示：</p>
+<pre><code>sensorManager.unregisterListener(listener);
+</code></pre></li>
+</ol>
+</li>
+</ol>
+<h2 id="加速度传感器">加速度传感器</h2><blockquote>
+<p>如前面所说的一样，每种传感器的用法都是大同小异的<br>在使用加速度传感器的时候只需要注意两点。</p>
+</blockquote>
+<ol>
+<li><p>第一，获取Sensor实例的时候要指定一个加速度传感器的常量，如下所示：</p>
+<pre><code><span class="attribute">Sensor sensor </span>=<span class="string"> sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);</span>
+</code></pre></li>
+<li><p>第二，加速度传感器输出的信息同样也是存放在SensorEvent的values数组中的，只不过此时的values数组中会有三个值，分别代表手机在X轴、Y轴和Z轴方向上的加速度信息。</p>
+<p> <img src="/images/加速度传感器方向.png" alt="加速度传感器方向"></p>
+</li>
+</ol>
+<p>需要注意的是，由于地心引力的存在，你的手机无论在世界上任何角落都会有一个重力加速度，这个加速度的值大约是9.8m/s2。当手机平放的时候，这个加速度是作用在Z轴上的，当手机竖立起来的时候，这个加速度是作用在Y轴上的，当手机横立起来的时候，这个加速度是作用在X轴上的</p>
+<h2 id="方向传感器">方向传感器</h2><blockquote>
+<p>方向传感器会记录手机在所有方向上的旋转角度，其中:</p>
+<p>values[0]记录着手机围绕Z轴的旋转角度</p>
+<p>values[1] 记录着手机围绕X轴的旋转角度</p>
+<p>values[2] 记录着手机围绕Y轴的旋转角度。</p>
+</blockquote>
+<p>遗憾的是，Android早就废弃了<code>Sensor.TYPE_ORIENTATION</code>这种传感器类型，虽然代码还是有效的，但已经不再推荐这么写了。事实上，Android获取手机旋转的方向和角度是通过加速度传感器和地磁传感器共同计算得出的，这也是Android目前推荐使用的方式。</p>
+<p>首先我们需要分别获取到加速度传感器和地磁传感器的实例，并给它们注册监听器，如下所示：</p>
+<pre><code>Sensor <span class="variable">accelerometerSensor =</span> sensorManager.getDefaultSensor(Sensor. TYPE_ACCELEROMETER);
+Sensor <span class="variable">magneticSensor =</span> sensorManager.getDefaultSensor(Sensor. TYPE_MAGNETIC_FIELD);
+sensorManager.registerListener(listener, accelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
+sensorManager.registerListener(listener, magneticSensor, SensorManager.SENSOR_DELAY_GAME);
+</code></pre><p>由于方向传感器的精确度要求通常都比较高，这里我们把传感器输出信息的更新速率提高了一些，使用的是SENSOR_DELAY_GAME。<br>接下来在<code>onSensorChanged()</code>方法中可以获取到SensorEvent的values数组，分别记录着加速度传感器和地磁传感器输出的值。然后将这两个值传入到SensorManager的<code>getRotationMatrix()</code>方法中就可以得到一个包含旋转矩阵的R数组，如下所示：</p>
+<pre><code>SensorManager.getRotationMatrix(R, <span class="literal">null</span>, accelerometerValues, magneticValues);
+</code></pre><p>其中第一个参数R是一个长度为9的float数组，getRotationMatrix()方法计算出的旋转数据就会赋值到这个数组当中。</p>
+<p>第二个参数是一个用于将地磁向量转换成重力坐标的旋转矩阵，通常指定为null即可。</p>
+<p>第三和第四个参数则分别就是加速度传感器和地磁传感器输出的values值。</p>
+<p>得到了R数组之后，接着就可以调用SensorManager的<code>getOrientation()</code>方法来计算手机的旋转数据了，如下所示：</p>
+<pre><code>SensorManager.getOrientation(R, <span class="keyword">values</span>);
+</code></pre><p>values是一个长度为3的float数组，手机在各个方向上的旋转数据都会被存放到这个数组当中。其中values[0]记录着手机围绕着Z轴的旋转弧度，values[1]记录着手机围绕X轴的旋转弧度，values[2]记录着手机围绕Y轴的旋转弧度。<br>注意这里计算出的数据都是以弧度为单位的，因此如果你想将它们转换成角度还需要调用如下方法：</p>
+<pre><code><span class="tag">Math</span><span class="class">.toDegrees</span>(<span class="tag">values</span><span class="attr_selector">[0]</span>);
+</code></pre><p>SensorManager中还有很多常量和一些常用方法：</p>
+<ul>
+<li>getDefaultSensor  :得到默认的传感器对象</li>
+<li>getInclination: 得到地磁传感器的弧度值</li>
+<li>getOrientation: 得到设备旋转的方向</li>
+<li>getSensorList:得到指定传感器的列表。</li>
+</ul>
+<h2 id="安卓中受支持的传感器：">安卓中受支持的传感器：</h2><ul>
+<li>Sensor.TYPE_AMBIENT_TEMPERATURE   <blockquote>
+<p>返回以摄氏度表示的温度。返回的温度表示环境的室温</p>
+</blockquote>
+</li>
+<li>Sensor.TYPE_ACCELEROMETER          <blockquote>
+<p>三轴加速度传感器，返回三个坐标轴当前加速度，单位m/s2</p>
+</blockquote>
+</li>
+<li>Sensor.TYPE_GRAVITY                <blockquote>
+<p>三轴重力感应器，返回当前的方向和三个坐标轴上的重力分量 m/s2.重力传感器是通过对加速度传感器的结果应用一个低通过滤器，作为一个虚拟传感器实现的</p>
+</blockquote>
+</li>
+<li>Sensor.TYPE_LINEAR_ACCELERATION    <blockquote>
+<p>一个三轴的线性加速度传感器，返回三个坐标轴上不包括重力的加速度，单位m/s2.与重力传感器一样，线性加速度通常是加速记输出，作为一个虚拟传感器实现的</p>
+</blockquote>
+</li>
+<li>Sensor.TYPE_GYROSCOPE              <blockquote>
+<p>一个陀螺仪传感器，以弧度/秒 返回了三个坐标轴上的设备旋转速度。可以对一段时间内的旋转率求积分，以确定设备的当前方向。</p>
+</blockquote>
+</li>
+<li>Sensor.TYPE_ROTATION_VECTOR        <blockquote>
+<p>返回设备的方向，表示为三个轴的角度的组合。通常作为用作传感器管理器的getRotationMatrixFromVector方法的输入，以便将返回的旋转向量转换为旋转矩阵。旋转向量传感器一般被实现为一个虚拟传感器，它可以组合并校正多个传感器（如加速度计和陀螺仪）得到的结果，以提供更加平滑的矩阵</p>
+</blockquote>
+</li>
+<li>Sensor.TYPE_MAGNETIC_FIELE         <blockquote>
+<p>磁力传感器，返回三个坐标轴上的当前磁场，单位为microteslas</p>
+</blockquote>
+</li>
+<li>Sensor.TYPE_PRESSURE               <blockquote>
+<p>一个气压传感器，返回当前的大气压力，单位为millibars毫巴。通过使用传感器管理的getAltitude方法来比较两个位置的气压值，可以把气压传感器用于确定海拔高度。</p>
+</blockquote>
+</li>
+<li>Sensor.TYPE_RELATIVE_HUMIDITY      <blockquote>
+<p>相对温度传感器，以百分比的形式返回当前相对温度。</p>
+</blockquote>
+</li>
+<li>Sensor.TYPE_PROXIMITY             <blockquote>
+<p>近距离传感器，以厘米为单位返回设备和目标对象之间的距离。</p>
+</blockquote>
+</li>
+<li>Sensor.TYPE_LIGHT                 <blockquote>
+<p>光传感器，返回一个lux(勒克斯)为单位的值，用于描述环境的亮度。</p>
+</blockquote>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a><a href="/tags/传感器/">传感器</a><a href="/tags/技术/">技术</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2015/03/17/android传感器/" data-title="android传感器 | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/17/android语音识别/" title="android语音识别">
+  <strong>上一篇：</strong><br/>
+  <span>
+  android语音识别</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/03/17/android定位服务/"  title="android定位服务">
+ <strong>下一篇：</strong><br/> 
+ <span>android定位服务
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/03/17/android传感器/" data-title="android传感器" data-url="http://wn398.github.io/2015/03/17/android传感器/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#光照传感器"><span class="toc-number">1.</span> <span class="toc-text">光照传感器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加速度传感器"><span class="toc-number">2.</span> <span class="toc-text">加速度传感器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方向传感器"><span class="toc-number">3.</span> <span class="toc-text">方向传感器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安卓中受支持的传感器："><span class="toc-number">4.</span> <span class="toc-text">安卓中受支持的传感器：</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<p class="asidetitle">Music</p>
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">24</span></li></ul>
+  </div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>24</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/NFC/" style="font-size: 10px;">NFC</a><a href="/tags/android/" style="font-size: 16.67px;">android</a><a href="/tags/android-UI/" style="font-size: 13.33px;">android_UI</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a><a href="/tags/传感器/" style="font-size: 10px;">传感器</a><a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a><a href="/tags/定位/" style="font-size: 10px;">定位</a><a href="/tags/技术/" style="font-size: 20px;">技术</a><a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a><a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a><a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2015 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

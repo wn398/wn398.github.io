@@ -1,0 +1,770 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>android多媒体和闹钟 | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="播放音频
+在android中播放音频文件一般都是使用MediaPlayer类来实现的，它对多种格式的音频文件提供了支持
+
+先调用setDataSource()方法和prepare()方法做好播放准备，
+
+然后调用play()播放，pause()暂停，stop()停止，reset()设置为刚创建状态
+">
+    
+    
+    <meta name="description" content="播放音频
+在android中播放音频文件一般都是使用MediaPlayer类来实现的，它对多种格式的音频文件提供了支持
+
+先调用setDataSource()方法和prepare()方法做好播放准备，
+
+然后调用play()播放，pause()暂停，stop()停止，reset()设置为刚创建状态
+
+setDataSource()方法可接收一个文件路径，Content Provider URI,流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android多媒体和闹钟">
+<meta property="og:url" content="http://wn398.github.io/2015/03/16/android多媒体和闹钟/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="播放音频
+在android中播放音频文件一般都是使用MediaPlayer类来实现的，它对多种格式的音频文件提供了支持
+
+先调用setDataSource()方法和prepare()方法做好播放准备，
+
+然后调用play()播放，pause()暂停，stop()停止，reset()设置为刚创建状态
+
+setDataSource()方法可接收一个文件路径，Content Provider URI,流">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android多媒体和闹钟">
+<meta name="twitter:description" content="播放音频
+在android中播放音频文件一般都是使用MediaPlayer类来实现的，它对多种格式的音频文件提供了支持
+
+先调用setDataSource()方法和prepare()方法做好播放准备，
+
+然后调用play()播放，pause()暂停，stop()停止，reset()设置为刚创建状态
+
+setDataSource()方法可接收一个文件路径，Content Provider URI,流">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/">分类</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/16/android多媒体和闹钟/" title="android多媒体和闹钟" itemprop="url">android多媒体和闹钟</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-16T09:13:49.000Z" itemprop="datePublished"> 发表于 2015-03-16</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#播放音频"><span class="toc-number">1.</span> <span class="toc-text">播放音频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#播放视频"><span class="toc-number">2.</span> <span class="toc-text">播放视频</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建视频播放表面，使用Surface"><span class="toc-number">2.1.</span> <span class="toc-text">创建视频播放表面，使用Surface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管理媒体播放输出"><span class="toc-number">2.2.</span> <span class="toc-text">管理媒体播放输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应音量控制："><span class="toc-number">2.3.</span> <span class="toc-text">响应音量控制：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应Media播放控件："><span class="toc-number">2.4.</span> <span class="toc-text">响应Media播放控件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#请求和管理音频焦点"><span class="toc-number">2.5.</span> <span class="toc-text">请求和管理音频焦点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当音频输出改变时暂停播放："><span class="toc-number">2.6.</span> <span class="toc-text">当音频输出改变时暂停播放：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remote_Control_Client简介"><span class="toc-number">3.</span> <span class="toc-text">Remote Control Client简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个Sound_Pool"><span class="toc-number">4.</span> <span class="toc-text">创建一个Sound Pool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用音效"><span class="toc-number">5.</span> <span class="toc-text">使用音效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#录制歌曲"><span class="toc-number">6.</span> <span class="toc-text">录制歌曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#录制视频："><span class="toc-number">7.</span> <span class="toc-text">录制视频：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Intent录制视频"><span class="toc-number">7.1.</span> <span class="toc-text">使用Intent录制视频</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相机设置"><span class="toc-number">8.</span> <span class="toc-text">相机设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#面部检测和面部特征："><span class="toc-number">8.1.</span> <span class="toc-text">面部检测和面部特征：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取并写入JPEG_EXIF图像的详细信息"><span class="toc-number">9.</span> <span class="toc-text">读取并写入JPEG EXIF图像的详细信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闹钟设置"><span class="toc-number">10.</span> <span class="toc-text">闹钟设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#铃声设置"><span class="toc-number">11.</span> <span class="toc-text">铃声设置</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="播放音频">播放音频</h2><blockquote>
+<p>在android中播放音频文件一般都是使用<code>MediaPlayer</code>类来实现的，它对多种格式的音频文件提供了支持</p>
+<ol>
+<li><p>先调用setDataSource()方法和prepare()方法做好播放准备，</p>
+</li>
+<li><p>然后调用play()播放，pause()暂停，stop()停止，reset()设置为刚创建状态</p>
+</li>
+<li><p>setDataSource()方法可接收一个文件路径，Content Provider URI,流式传输媒体URI路径或者文件描述符</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="播放视频">播放视频</h2><blockquote>
+<p>主要使用VideoView类来实现，它集显示与控制一身,使用它可以快速制作一个系统播放器。</p>
+<p>有两种技术可以用于播放视频内容。</p>
+<p>第一种是使用VideoView类，封装Surface的创建以及Media Player中视频内容的分配和准备。</p>
+<p>第二种技术允许指定自己的Surface并直接操作底层的Media Player实例。</p>
+<p>在将Video View添加到UI后，在代码中获得它的引用，然后调用它们的<code>setVideoPath</code>或<code>setVideoURI</code>来指定播放源。</p>
+</blockquote>
+<h3 id="创建视频播放表面，使用Surface">创建视频播放表面，使用Surface</h3><blockquote>
+<p>准备用于显示视频的<code>Surface</code>.  通常在<code>layout</code>中配置一个<code>surfaceView</code>对象。<code>SurfaceView</code>类是<code>SurfaceHolder</code>对象的包装器，后者是<code>surface</code>的包装器，而surface用于支持后台线程的可视化更新。</p>
+<p><code>Media Player</code>使用一个<code>SurfaceHolder</code>对象来显示视频内容，该对象可以使用<code>setDisplay</code>方法进行分配。<code>SurfaceHolder</code>是异步创建的，必须等到<code>surfaceCreated</code>处理程序被触发，然后再通过实现<code>SurfaceHolder.Callback</code>接口将返回的<code>SurfaceHolder</code>对象分配给Media Player.在创建和分配<code>surfaceHolder</code>给<code>MediaPlayer</code>前，使用<code>setDataSource</code>方法来指定要播放的资源路径。</p>
+</blockquote>
+<pre><code><span class="comment">//创建一个新 的mediaPlayer</span>
+mediaPlayer = <span class="keyword">new</span> MediaPlayer();
+<span class="comment">//获得对Surfaceview的引用</span>
+<span class="keyword">final</span> SurfaceView surfaceView = (SurfaceView)findViewById(R.id.surfaceView);
+<span class="comment">//配置SurfaceView</span>
+surfaceView.setKeepScreenOn(<span class="literal">true</span>);
+<span class="comment">//配置SurfaceHolder并注册回调</span>
+SurfaceHolder holder = surfaceView.getHolder();
+holder.addCallback(<span class="keyword">this</span>);
+holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BRFFERS);
+holder.setFixedSize(<span class="number">400</span>,<span class="number">300</span>);
+</code></pre><blockquote>
+<p>除了自己使用MediaPlayer自己控制媒体的播放外，andriod还提供了一个<code>MediaController</code>.这是一个标准的控件，提供了常用的媒体控制热键。如果我们要使用它，比较好的方法是在代码中实例化它，并把它与视频播放视图相关联，而不是在布局中包含它。以这种方式创建MediaController时，只有将其设置为可见，触摸其所在的VideoView或者与其进行交互时，它才是可见的。如果使用Videoview来显示视频内容，通过调用VideoView的<code>setMediaController</code>方法就可以使用Media Controller.</p>
+</blockquote>
+<pre><code>MediaController mediaController = <span class="keyword">new</span> MediaController(<span class="keyword">this</span>);
+videoView.setMediaController(mediaController);
+</code></pre><blockquote>
+<p>要直接控制Media Player或者其他音频或视频资源，需要实现一个新的<code>MediaController.MediaPlayerControl</code>.</p>
+</blockquote>
+<pre><code><span class="type">MediaController</span> mediaController = new <span class="type">MediaController</span>(this);
+mediaController.setMediaPlayer(new <span class="type">MediaPlayerControl</span>()<span class="decorator">{....}</span>);
+</code></pre><p>使用<code>setAnchorView</code>方法设置当Media Controller可见时包含在哪个视力中。调用<code>show</code>和<code>hide</code>分别可以显示和隐藏Media Controller:</p>
+<pre><code>mediaController.setAnchorView(myView);mediaController.show<span class="literal">()</span>;
+</code></pre><h3 id="管理媒体播放输出">管理媒体播放输出</h3><blockquote>
+<p>Media Player可以使用<code>setVolume</code>控制播放过程中每个声道的音量。该方法分别为左右声道采用了一个0到1之间的标题浮点数值（0是静音，1是最大音量)作为参数。 </p>
+<pre><code>mediaPlayer.setVolume(<span class="number">0.5f</span>,<span class="number">0.5f</span>);
+</code></pre><p>要强制屏幕在视频播放期间不变暗，可以使用 <code>mediaPlayer.setScreenOnWhilePlaying(true);</code></p>
+</blockquote>
+<h3 id="响应音量控制：">响应音量控制：</h3><blockquote>
+<p>使用Activity的<code>setVolueControlStream</code>方法（通常是在onCreate()方法中调用），可以指定当该Activity处于活动状态时，音频按键控制哪个音频流。但当使用Media Player时，应该指定<code>STREAM_MUSIC</code>流，使其作为音频按键的焦点：</p>
+</blockquote>
+<pre><code><span class="built_in">set</span>VolumeControlStream(AudioManager.STREAM_MUSIC);
+</code></pre><h3 id="响应Media播放控件：">响应Media播放控件：</h3><blockquote>
+<p>如果应用程序使用媒体播放器来播放音频和视频，就应该以可以预测的方式响应媒体播放器的按键控制。<br>一些设备（还有一些入耳式耳机或蓝牙耳机）带有播放，停止，暂停，下一首和前一首媒体播放按键，用户按下这些按键时，系统会广播一个带有<code>ACTION_MEDIA_BUTTON</code>动作的Intent.为接收此广播，必须在mainfest文件中声明一个监听此动作的Broadcast Receiver：</p>
+</blockquote>
+<pre><code><span class="tag">&lt;<span class="title">receiver</span> <span class="attribute">android:name</span>=<span class="value">".MediaConrolReceiver"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.action.MEDIA_BUTTON"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">receiver</span>&gt;</span>
+</code></pre><blockquote>
+<p>实现这个Broadcast Receiver在接收到媒体按键被按下的动作时，会创建一个包含相同extra的新Intent,并把该Intent广播给播放音频的Activity.<br>被按下的媒体按键的代码存储在接收到的Intent的<code>EXTRA_KEY_EVENT</code> extra中。</p>
+</blockquote>
+<pre><code>KeyEvent event = (KeyEvent)intent.getParcelableExtra(Intent.EXTR<span class="built_in">A_KEY</span>_EVENT)<span class="comment">;</span>
+//有：
+KeyEvent.KEYCODE_MEDI<span class="built_in">A_PLAY</span>_PAUSE
+KeyEvent.KEYCODE_MEDI<span class="built_in">A_PLAY</span>
+KeyEvent.KEYCODE_MEDI<span class="built_in">A_PAUSE</span>
+KeyEvent.KEYCODE_MEDI<span class="built_in">A_NEXT</span>
+KeyEvent.KEYCODE_MEDI<span class="built_in">A_PREVIOUS</span>
+KeyEvent.KEYCODE_MEDI<span class="built_in">A_STOP</span><span class="comment">;</span>
+</code></pre><blockquote>
+<p>如果应用程序希望在Activity不可见时仍在后台播放音频，一个好方法是上Media Player在Service中保持运行，并且使用Intent 来控制媒体播放。</p>
+<p>给定的设备上可能安装了多个应用程序，每个应用程序都被配置为接收媒体按键按下动作，因此还必须使用AudioManager的<code>registerMadiaButtonEventReceiver</code>方法将接收者注册为媒体按键按下动作的唯一处理程序。</p>
+</blockquote>
+<pre><code>AudioManager am = (AudioManager)getSystemService(<span class="keyword">Context</span>.AUDIO_SERVICE);
+am.registerMediaButtonEventReceiver(<span class="keyword">component</span>);
+</code></pre><h3 id="请求和管理音频焦点">请求和管理音频焦点</h3><blockquote>
+<p>有些情况下，应用程序即使不可见，或者处在非活动状态，也仍然应该断续响应媒体按键。用户的设备上可能有多个媒体播放器，因此另一个媒体应用程序获得焦点时，让你的应用程序暂停播放并交出媒体按键的控制权是很重要的。类似地，当应用程序进入活动状态时，应该通知其他音频播放应用程序暂停播放，以便它可以获得媒体按键的焦点。<br>为了在开始播放前请求音频焦点，需要使用Audio Manager的<code>requestAudioFocus</code>方法。当请求焦点时，可以指定需要的流（通常是STREAM_MUSIC）以及该流占有焦点的时间—-通常是永久占用（如播放音乐）或临时占用（如提供导航提示）。对于临时占有情况，还可以指定临时中断是否可以由当前占有焦点的应用程序通过进入“ducking”状态（减小它的音量）来处理，直到中断完成。</p>
+</blockquote>
+<pre><code>//永久占用焦点
+<span class="type">int</span> <span class="literal">result</span> = am.requestAudioFocus(focusChangeListener,
+//使用音乐流
+<span class="type">AudioManager</span>.<span class="type">STREAM_MUSIC</span>,
+//请求永久焦点
+<span class="type">AudioManager</span>.<span class="type">AUDIOFOCUS_GAIN</span>);
+<span class="keyword">if</span>(<span class="literal">result</span> == <span class="type">AudioManager</span>.<span class="type">AUDIOFOCUS_REQUEST_GRANTED</span>){mdiaPlayer.start()}
+</code></pre><blockquote>
+<p>音频焦点将依次分配给每个请求焦点的应用程序，意味着如果另一个应用程序请求音频焦点，你的应用程序就会失去焦点。你在请求音频焦点时注册的<code>Audio Focus Change Listener</code>的<code>AudioFocusChange</code>处理程序将会通知你焦点丢失情况。<br>focusChange的情况有：</p>
+</blockquote>
+<pre><code>AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK;<span class="comment">//降低音量</span>
+AudioManager.AUDIOFOCUS_TRANSIENT<span class="comment">//暂停</span>
+AudioManager.AUDIOFOCUS_LOSS<span class="comment">//停止</span>
+AudioManager.AUDIOFOCUS_GAIN<span class="comment">//获得</span>
+</code></pre><blockquote>
+<p>完成音频播放后，可以选择放弃音频焦点：<code>am.abandonAudioFocus(focusChangeListener);</code></p>
+</blockquote>
+<h3 id="当音频输出改变时暂停播放：">当音频输出改变时暂停播放：</h3><blockquote>
+<p>如果当前的输出流在入耳式耳机上播放，那么拔出耳机时，系统会自动将输出切换到设备的扬声器。在这种情况下暂停音频或者减小音量是很好的做法。<br>  为此，需要创建一个监听<code>AudioManager.ACTION_AUDIO_BECOMING_NOISY</code>广播并暂停播放的<code>Broadcast Receiver</code></p>
+</blockquote>
+<h2 id="Remote_Control_Client简介">Remote Control Client简介</h2><blockquote>
+<p>android4中引入了Remote Control Client，使用它，应用程序可以向能够显示元数据，图片和媒体传输控制按键的远程控件提供数据，并响应这些远程控件。</p>
+<p>为了在应用程序中添加对Remote Control Client的支持，必须注册一个<code>Media Button Event Receiver</code>.创建一个<code>Pending Intent</code>，使其包含一个针对你的Receiver的<code>ACTION_MEDIA_BUTTON</code>动作，然后使用该Pending Intent创建一个新的Remote Control Client.你需要使用AudioManager的<code>registerRemoteControlClient</code>方法来注册它。如：</p>
+</blockquote>
+<pre><code><span class="comment">//创建一个将会广播媒体按键按下动作的Pending Intent，将目标组件设为你的Broadcast Receiver</span>
+Intent mediaButtonIntent = <span class="keyword">new</span> Intent(Intent.ACTION_MEDIA_BUTTON);
+ComponentName component = <span class="keyword">new</span> ComponentName(<span class="keyword">this</span>,MediaControlReceiver.<span class="keyword">class</span>);
+mediaButtonIntent.setComponent(component);
+PendingIntent mediaPendingIntent = PendingIntent.getBroadcast(getApplicationContext(),<span class="number">0</span>,mediaButtonIntent,<span class="number">0</span>);
+<span class="comment">//使用Pending Intent 创建一个新的Remote Control Client，并把它注册到Audio Manager中</span>
+myRemoteControlClient = <span class="keyword">new</span> RemoteControlClient(mediaPendingIntent);
+am.registerRemoteControClient(myRemoteControlClient);
+</code></pre><blockquote>
+<p>本例中，Media Control Receiver 将会接收到Remote Control Client按键的按下动作，并把这些动作广播给Activity中注册的Receiver.</p>
+<p>在注册了Remote Control Client后，可以使用它来修改与该Remote Control Client相关的显示屏上显示的元数据。使用<code>setTransportControlFlags</code>方法来来定义应用程序支持哪些播放控件。可以使用<code>setPlaybackState</code>方法设置某个<code>RemoteControlClient.PLAYBACK_*</code>常量来更新音频播放当前状态。</p>
+<p>可以提供与当前正在播放的音频关联的位图，文本字符串和数值—-通常它们分别是专辑的艺术图，音轨的名称和已播放的时间。为此需要在Remote Control Client的editMetadata方法中使用MetadataEditor。</p>
+</blockquote>
+<pre><code>MedadataEditor <span class="keyword">editor</span> = myRemoteContorlClient.editMetadat(false);
+<span class="keyword">editor</span>.putBitmap(MetadataEditor.BITMAP_KEY_ARTWORK,artwork);
+<span class="keyword">editor</span>.apply();
+</code></pre><h2 id="创建一个Sound_Pool">创建一个Sound Pool</h2><blockquote>
+<p>当应用程序需要低音频延迟并且（或者 ）将同时播放多个音频流时（如播放多种声效和背景音乐的游戏），可以使用SoundPool 类来管理音频。</p>
+</blockquote>
+<h2 id="使用音效">使用音效</h2><blockquote>
+<p>AudioEffect有以下5个子类可用：</p>
+</blockquote>
+<ul>
+<li>Equalizer 可以修改音频输出的频率响应。使用setBandLevel方法可以为特定的频带指定一个增益值</li>
+<li>Virtualizer 使音频的立体声效果更强。它的实现会随着输出设备的配置而发生变化。使用setStrength方法可以将音效的强度设置为0-1000</li>
+<li>BassBoost 增强音频输出的低音频。使用setStrength方法可以将音效的强度设置为0-1000</li>
+<li>PressRever 允许指定多个混 声预设值之一，使音听起来好像在指定房间中播放一样，使用setPreset方法和一个<code>PresetReverb.PRESET_*</code>常量可以设置效果与大家厅，小房间，中等房间或大型房间相同的混响。</li>
+<li>EnvironmentalReverb<code>与</code>PresetRever`类似,EnviromentReverb允许通过控制音频输出来模拟不同环境的效果。与PresetReverb不同的是，这个子类允许自己指定每个混响参数，从而可以创建出自定义的效果。</li>
+</ul>
+<blockquote>
+<p>要将其中某个效果应用到<code>AudioTrack</code>或<code>MediaPlayer</code>，可以使用AudioTrack或MediaPlayer的<code>getAudioSessionId</code>方法找出其唯一音频会话ID.利用这个值，构造想要使用的AudioEffect子类的一个新实例，按照需要修改该实例，最后启用它：</p>
+</blockquote>
+<pre><code><span class="keyword">int</span> sessionId = mediaPlayer.getAudioSessionId();
+<span class="keyword">short</span> boostStrength =<span class="number">500</span>;
+<span class="keyword">int</span> priority =<span class="number">0</span>;
+BassBoost bassBoost = <span class="keyword">new</span> BassBoost(priority,sessionId);
+bassBoost.setStrength(boostStrength);
+bassBoost.setEnabled(<span class="keyword">true</span>);
+</code></pre><h2 id="录制歌曲">录制歌曲</h2><blockquote>
+<p>使用MediaRecorder类来实现</p>
+<p>当点击“开始”按钮就构建MediaRcorder对象，并且设置声音的来源（<code>setAudioSource</code>），输出文件的格式（<code>setOutputFormat</code>）,音频文件的编码（<code>setAudioEncoder</code>）输出文件的路径（<code>setOutputFile</code>）等，然后准备开始录音（prepare）,开始录音（start）</p>
+</blockquote>
+<h2 id="录制视频：">录制视频：</h2><blockquote>
+<p>Android提供了两种方法来录制视频。</p>
+<p>最简单的是使用Intent启动视频摄像头应用程序。这种方法允许指定输出位置和视频录制质量，同时让本机视频录制应用程序负责用户体验和错误处理。如果想要替换原生的应用程序，或者需要对视频捕获UI或录制设置进行更细致的控制，那么可以使用Media Recoder类。</p>
+</blockquote>
+<h3 id="使用Intent录制视频">使用Intent录制视频</h3><blockquote>
+<p>启动录制最简单的方法就是使用<code>MediaStore.ACTION_VIDEO_CAPTURE</code>动作Intent.<br>使用此Intent启动新Activity将会启动本机视频录制器，允许用户开始，停止，浏览并重新拍摄视频，当他们感到满意后，已录制视频的URI将作为返回Intent的数据参数提供给Activity.</p>
+<p>视频捕获动作Intent可以包含以三个可选的extra:</p>
+</blockquote>
+<ul>
+<li>MediaStore.EXTRA_OUTPUT  默认情况下，由视频捕获操作录制的视频将存储在默认媒体库中，如果想要在其他地方录制，则可以使用此extra指定一个替代URI.</li>
+<li>MediaStore.EXTRA_VIDEO_QUALITY 当前有两种可能 的值，0表示低质量视频（MMS）,1表示质量视频（全分辨率）。默认情况下选择高分辨率模式</li>
+<li><p>MediaStore.EXTRA_DURATION_LIMIT 所录制视频的最大长度，单位为秒。</p>
+<pre><code><span class="comment">//示例</span>
+<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">startRecording</span><span class="params">()</span></span>{
+    Intent intent = <span class="keyword">new</span> Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+    <span class="comment">//启动摄像头应用程序</span>
+   startActivityForResult(intent, RECORD_VIDEO);
+<span class="annotation">@Override</span>  
+protect <span class="function"><span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode,<span class="keyword">int</span> resultCode,Intent data)</span></span>{
+    <span class="keyword">if</span>(requestCode == RECORD_VIDEO){
+        VideoView videoView = (VideoView)findViewById(R.id.videoView);
+        videoView.setVideoURI(data.getData());
+        videoView.start(); 
+    }
+}
+}
+</code></pre></li>
+</ul>
+<h2 id="相机设置">相机设置</h2><blockquote>
+<p>在Android中专门提供了Camera来处理相机相关的事件，Camera是一个专门用来连接和断开相机服务的类。Camera下面包括如下几个事件：</p>
+<ol>
+<li>Camera.AutoFocusCallback:自动调焦功能</li>
+<li>Camera.ErrorCallback:错误的信息捕捉</li>
+<li>Camera.Paramerters 相机的属性参数</li>
+<li>Camera.PictureCallback：拍照，产生图片时触发</li>
+<li>Camera.PreviewCallback 相机预览设置</li>
+<li>Camera.ShutterCallback 快门设置</li>
+<li>Camera.Size：图片的尺寸</li>
+<li>要在Android中使用相机服务很简单，Camera没有构造方法，只要使用它直接通过open()方法来打开相机设备。</li>
+</ol>
+</blockquote>
+<h3 id="面部检测和面部特征：">面部检测和面部特征：</h3><blockquote>
+<p>为了确认设备支持面部检测功能，需要使用Camera对象的<code>getMaxNumDetectedFaces</code>方法：</p>
+</blockquote>
+<pre><code><span class="built_in">int</span> facesDetectable = camera.getParameters<span class="literal">()</span>.getMaxNumDetectedFaces<span class="literal">()</span>;
+</code></pre><blockquote>
+<p>为0不支持。</p>
+<p>在开始使用摄像检测人脸之前，需要分配一个新的<code>FaceDetectionListener</code>,使其重写<code>onFaceDetection</code>方法，你将得到一个Face对象数组，每个Face对象对应在场景中检测到的一个人脸。每个Face对象都包含一个唯一标识符，只要该Face对象表示的人脸还在场景中，就可以使用该唯一标识符跟踪这个脸。另外，Face对象还包含0-100之间的一个信心分数，表示所检测的确实是一个人脸的可能性。一个包含人脸的矩形，以及每个眼睛和嘴部的坐标。<br>为了检测和跟踪人脸，需要调用Camera的<code>startFaceDetection</code>方法，每次启动时都必须调用，因为预览结束时，它会自动停止</p>
+</blockquote>
+<h2 id="读取并写入JPEG_EXIF图像的详细信息">读取并写入JPEG EXIF图像的详细信息</h2><p><code>ExifInterface</code>类为读取并修改存储在JPEG文件中的EXIF(可交换图像文件格式)数据提供了一种机制。通过将目标JPEG图像的完整文件名传入ExifInterface构造函数来创建一个新的ExifInterface实例。</p>
+<pre><code>ExifInterface exif = <span class="keyword">new</span> ExifInterface(jpegfilename);
+</code></pre><p>EXIF数据用于为照片存储各种不同的元数据，包括拍摄日期和时间，摄像头设置（如制造商和型号），图像设置（如光圈和快门速度）以及图像描述和位置。为读取EXIF属性，需要调用ExifInterface对象的getAttribute方法，并传入将要读取的属性名。ExifInterface类包含了大量静态TAG_*常量，用于访问通用的EXIF元数据。为了修改EXIF属性，需要使用setAttribute方法，并传入要读取的属性名以及要设置的值。</p>
+<h2 id="闹钟设置">闹钟设置</h2><blockquote>
+<p>在Android中可以通过AlarmManager来实现闹钟，AlarmManager类是专门来设定在某个指定的时间去完成指定的事件。AlarmManger提供了访问系统警报的服务，只要在程序中设置了警报服务，AlarmManager就会通过<code>onReceiver()</code>方法去执行这些事件，就算系统处于待机状态，同样不会影响运行。可以通过<code>Context.getSystemService()</code>方法来获得该服务。<br>要实现闹钟，首先要创建一个继承自<code>BroadcastReceiver</code>的类，实现<code>onReceive</code>方法来接收这个Alarm服务，然后通过建立Intent和PendingIntent连接来调用Alarm组件。</p>
+</blockquote>
+<h2 id="铃声设置">铃声设置</h2><p>安卓提供了RingtoneManger类专门来操作各种铃声。Android自带的系统铃声都放置在“/system/medio/audio/”文件夹中。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a><a href="/tags/多媒体/">多媒体</a><a href="/tags/技术/">技术</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2015/03/16/android多媒体和闹钟/" data-title="android多媒体和闹钟 | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/17/android绘图/" title="android绘图">
+  <strong>上一篇：</strong><br/>
+  <span>
+  android绘图</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/03/16/Intent使用/"  title="Intent使用">
+ <strong>下一篇：</strong><br/> 
+ <span>Intent使用
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/03/16/android多媒体和闹钟/" data-title="android多媒体和闹钟" data-url="http://wn398.github.io/2015/03/16/android多媒体和闹钟/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#播放音频"><span class="toc-number">1.</span> <span class="toc-text">播放音频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#播放视频"><span class="toc-number">2.</span> <span class="toc-text">播放视频</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建视频播放表面，使用Surface"><span class="toc-number">2.1.</span> <span class="toc-text">创建视频播放表面，使用Surface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管理媒体播放输出"><span class="toc-number">2.2.</span> <span class="toc-text">管理媒体播放输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应音量控制："><span class="toc-number">2.3.</span> <span class="toc-text">响应音量控制：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应Media播放控件："><span class="toc-number">2.4.</span> <span class="toc-text">响应Media播放控件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#请求和管理音频焦点"><span class="toc-number">2.5.</span> <span class="toc-text">请求和管理音频焦点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当音频输出改变时暂停播放："><span class="toc-number">2.6.</span> <span class="toc-text">当音频输出改变时暂停播放：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remote_Control_Client简介"><span class="toc-number">3.</span> <span class="toc-text">Remote Control Client简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个Sound_Pool"><span class="toc-number">4.</span> <span class="toc-text">创建一个Sound Pool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用音效"><span class="toc-number">5.</span> <span class="toc-text">使用音效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#录制歌曲"><span class="toc-number">6.</span> <span class="toc-text">录制歌曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#录制视频："><span class="toc-number">7.</span> <span class="toc-text">录制视频：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Intent录制视频"><span class="toc-number">7.1.</span> <span class="toc-text">使用Intent录制视频</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相机设置"><span class="toc-number">8.</span> <span class="toc-text">相机设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#面部检测和面部特征："><span class="toc-number">8.1.</span> <span class="toc-text">面部检测和面部特征：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取并写入JPEG_EXIF图像的详细信息"><span class="toc-number">9.</span> <span class="toc-text">读取并写入JPEG EXIF图像的详细信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闹钟设置"><span class="toc-number">10.</span> <span class="toc-text">闹钟设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#铃声设置"><span class="toc-number">11.</span> <span class="toc-text">铃声设置</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<p class="asidetitle">Music</p>
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">24</span></li></ul>
+  </div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>24</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/NFC/" style="font-size: 10px;">NFC</a><a href="/tags/android/" style="font-size: 16.67px;">android</a><a href="/tags/android-UI/" style="font-size: 13.33px;">android_UI</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a><a href="/tags/传感器/" style="font-size: 10px;">传感器</a><a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a><a href="/tags/定位/" style="font-size: 10px;">定位</a><a href="/tags/技术/" style="font-size: 20px;">技术</a><a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a><a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a><a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2015 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

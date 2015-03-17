@@ -1,0 +1,642 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>android_UI的一些技巧 | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="隐藏标题栏调用requestWindowFeature(Window.FEATURE_NO_TITLE)要放在setContextView()之前
+将程序挂起按Home键只是把程序暂时挂起，并没有退出
+浮动标题栏getWindow().requestFeature(Window.FEATURE_AC">
+    
+    
+    <meta name="description" content="隐藏标题栏调用requestWindowFeature(Window.FEATURE_NO_TITLE)要放在setContextView()之前
+将程序挂起按Home键只是把程序暂时挂起，并没有退出
+浮动标题栏getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);这种模式，操作栏会浮动在Activity之上，有可能掩盖布局顶部">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android_UI的一些技巧">
+<meta property="og:url" content="http://wn398.github.io/2015/03/17/android UI的一些技巧/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="隐藏标题栏调用requestWindowFeature(Window.FEATURE_NO_TITLE)要放在setContextView()之前
+将程序挂起按Home键只是把程序暂时挂起，并没有退出
+浮动标题栏getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);这种模式，操作栏会浮动在Activity之上，有可能掩盖布局顶部">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android_UI的一些技巧">
+<meta name="twitter:description" content="隐藏标题栏调用requestWindowFeature(Window.FEATURE_NO_TITLE)要放在setContextView()之前
+将程序挂起按Home键只是把程序暂时挂起，并没有退出
+浮动标题栏getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);这种模式，操作栏会浮动在Activity之上，有可能掩盖布局顶部">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/">分类</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/17/android UI的一些技巧/" title="android_UI的一些技巧" itemprop="url">android_UI的一些技巧</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-17T14:47:09.000Z" itemprop="datePublished"> 发表于 2015-03-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#隐藏标题栏"><span class="toc-number">1.</span> <span class="toc-text">隐藏标题栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将程序挂起"><span class="toc-number">2.</span> <span class="toc-text">将程序挂起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮动标题栏"><span class="toc-number">3.</span> <span class="toc-text">浮动标题栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拆分操作栏"><span class="toc-number">4.</span> <span class="toc-text">拆分操作栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置操作栏图标的导航行为"><span class="toc-number">5.</span> <span class="toc-text">配置操作栏图标的导航行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用应用程序图标的向上导航功能"><span class="toc-number">6.</span> <span class="toc-text">启用应用程序图标的向上导航功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用操作栏导航tab键"><span class="toc-number">7.</span> <span class="toc-text">启用操作栏导航tab键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用操作栏的下拉列表"><span class="toc-number">8.</span> <span class="toc-text">启用操作栏的下拉列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#把菜单项设置为操作栏操作："><span class="toc-number">9.</span> <span class="toc-text">把菜单项设置为操作栏操作：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态更新菜单项"><span class="toc-number">10.</span> <span class="toc-text">动态更新菜单项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题"><span class="toc-number">11.</span> <span class="toc-text">主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ListView布局"><span class="toc-number">12.</span> <span class="toc-text">ListView布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#屏幕设置"><span class="toc-number">13.</span> <span class="toc-text">屏幕设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获得屏幕属性"><span class="toc-number">14.</span> <span class="toc-text">获得屏幕属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些特定布局文件"><span class="toc-number">15.</span> <span class="toc-text">一些特定布局文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控件的可见性："><span class="toc-number">16.</span> <span class="toc-text">控件的可见性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建Dialog:"><span class="toc-number">17.</span> <span class="toc-text">构建Dialog:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布局"><span class="toc-number">18.</span> <span class="toc-text">布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单位和尺寸"><span class="toc-number">19.</span> <span class="toc-text">单位和尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#碎片："><span class="toc-number">20.</span> <span class="toc-text">碎片：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#碎片的状态和回调："><span class="toc-number">20.1.</span> <span class="toc-text">碎片的状态和回调：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态加载布局的技巧："><span class="toc-number">21.</span> <span class="toc-text">动态加载布局的技巧：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控件引用"><span class="toc-number">22.</span> <span class="toc-text">控件引用</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="隐藏标题栏">隐藏标题栏</h2><p>调用<code>requestWindowFeature(Window.FEATURE_NO_TITLE)</code>要放在<code>setContextView()</code>之前</p>
+<h2 id="将程序挂起">将程序挂起</h2><p>按Home键只是把程序暂时挂起，并没有退出</p>
+<h2 id="浮动标题栏">浮动标题栏</h2><p><code>getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);</code>这种模式，操作栏会浮动在Activity之上，有可能掩盖布局顶部内容</p>
+<h2 id="拆分操作栏">拆分操作栏</h2><p>在activity中添加：<code>android:uiOptions=&quot;splitActionBarWhenNarrow&quot;</code></p>
+<h2 id="配置操作栏图标的导航行为">配置操作栏图标的导航行为</h2><p><code>actionBar.setHomeButtonEnabled(true);</code></p>
+<h2 id="启用应用程序图标的向上导航功能">启用应用程序图标的向上导航功能</h2><pre><code>actionBar.setDisplayUseLogoEnabled(<span class="literal">false</span>);
+actionBar.setDisplayHomeAsUpEnabled(<span class="literal">true</span>);
+</code></pre><h2 id="启用操作栏导航tab键">启用操作栏导航tab键</h2><pre><code>actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+actionBar.setDisplayShowTitleEnabled(<span class="literal">false</span>)  
+</code></pre><p>通过ActionBar的addTab方法添加tab<br>通过setTabListener添加对tab事件的监听以更新UI</p>
+<h2 id="启用操作栏的下拉列表">启用操作栏的下拉列表</h2><p><code>actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);</code>它的实现非常像spinner,可以通过创建一个新的实现<code>SpinnerAdapter</code>或<code>arrayAdapter</code>的接口适配器来填充下拉列表。调用操作栏的<code>setListNavigionCallbacks</code>,并传入适配器和一个<code>OnNavigationListener</code><br>导航tab和下拉列表只能二者选其一，使用自定义view: setCustomView();</p>
+<h2 id="把菜单项设置为操作栏操作：">把菜单项设置为操作栏操作：</h2><pre><code>menuItem.<span class="function"><span class="title">setShowAsAction</span><span class="params">(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT)</span></span>
+</code></pre><h2 id="动态更新菜单项">动态更新菜单项</h2><p>可以重写Activity的<code>onPrepareOptionMenu()</code>    方法。每当菜单按键被单击，显示溢出菜单，或者创建操作栏的时候就会触发<code>onPrepareOnptionMenu</code>方法。要动态修改菜单，可以在此方法中记录创建菜单时产生的引用，也可以使用Menu对象的<code>findItem</code>方法</p>
+<h2 id="主题">主题</h2><p>在activity中<code>android:theme</code>属性，用于给当前活动指定主题。<code>@android:style/Theme.Dialog</code>是使用对话框式的主题</p>
+<h2 id="ListView布局">ListView布局</h2><p>使用系统自带的adapter布局：<br>用<code>ArrayAdapter</code>可以实现简单的<code>ListView</code>的数据绑定。默认情况下，<code>ArrayAdapter</code>绑定每个对象的<code>toString</code>值到<code>layout</code>中预先定义的<code>TextView</code>控件上</p>
+<ol>
+<li><code>android.R.layout.simple_list_item_checked</code>这个资源，实现带选择框的<code>ListView</code>。需要用<code>setChoiceMode()</code>方法设定选择为多选还是单选，否则将不能实现选择效果</li>
+<li>通过指定<code>android.R.layout.simple_list_item_multiple_choice</code>这个资源实现带CheckBox的ListView。同样的，需要用<code>setChoiceMode()</code>方法来设置单选或者多选</li>
+<li>通过指定<code>android.R.layout.simple_list_item_single_choice</code>这个资源实现带<code>RadioButton</code>的ListView。这里要注意的是，这里并不是指定了单选。是多选还是单选要通过setChoiceMode()方法来指定</li>
+</ol>
+<p>使用simpleAdapter的数据一般都是用<code>HashMap</code>构成的列表，列表的每一节对应ListView的每一行。通过SimpleAdapter的构造函数，将HashMap的每个键的数据映射到布局文件中对应控件上。这个布局文件一般根据自己的需要来自己定义。<br>ArrayAdapter和simpleAdatper的UI里的UI事件不能被响应，所以要用BaseAdapter</p>
+<h2 id="屏幕设置">屏幕设置</h2><pre><code>/<span class="keyword">*</span> 设置为全屏模式 <span class="keyword">*</span>/
+getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+/<span class="keyword">*</span> 设置为横屏 <span class="keyword">*</span>/
+setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); 
+</code></pre><h2 id="获得屏幕属性">获得屏幕属性</h2><p>Android中的DisplayMetrics定义了屏幕的一些属性，可以通过getMetrics方法得到当前屏幕的宽和高。</p>
+<pre><code>/<span class="keyword">*</span> 定义DisplayMetrics对象 <span class="keyword">*</span>/
+  DisplayMetrics dm = new DisplayMetrics();
+
+  /<span class="keyword">*</span> 取得窗口属性 <span class="keyword">*</span>/
+  getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+  /<span class="keyword">*</span> 窗口的宽度 <span class="keyword">*</span>/
+  int screenWidth = dm.widthPixels;
+
+  /<span class="keyword">*</span> 窗口的高度 <span class="keyword">*</span>/
+  int screenHeight = dm.heightPixels;
+</code></pre><h2 id="一些特定布局文件">一些特定布局文件</h2><pre><code>res/<span class="keyword">layout</span>-long-land/ 为宽屏横屏模式提供布局
+res/<span class="keyword">layout</span>-notlong-port/ 为非宽屏竖屏模式提供布局
+
+res/<span class="keyword">layout</span>-w600dp
+res/<span class="keyword">layout</span>-h720dp
+res/<span class="keyword">layout</span>-sw320dp
+</code></pre><h2 id="控件的可见性：">控件的可见性：</h2><p>android中所有控件都有可见性，可通过android:visibility指定。</p>
+<p>有三种模式<code>visible</code>,<code>invisible</code>和<code>gone</code>. </p>
+<p>visible是默认的。</p>
+<p>invisible表示控件不可见，但它仍然占据着原来的位置和大小，可以理解成控件变成透明状态了。</p>
+<p>gone则表示控件不仅不可见，而且不再占用任何屏幕空间。</p>
+<h2 id="构建Dialog:">构建Dialog:</h2><pre><code>AlerDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">context</span>);
+</code></pre><p>ProgressDialog会在对话框中显示一个进度条：</p>
+<pre><code>PrograssDialog prd = <span class="keyword">new</span> ProgressDialog(<span class="keyword">context</span>);
+</code></pre><p>注意如果在<code>setCancleable()</code>中传入false,表示<code>progressDialog</code>是不能通过Back键取消的，这时要在数据加载完成后调用 ProgressDialog的<code>dismiss()</code>方法来关闭对话框，否则它会一直存在。</p>
+<h2 id="布局">布局</h2><p>LinearLayout中如果指定水平排列模式，则<code>android:layout_gravity</code>只能指定上下对齐方式才有效，同理如果LinearLayout如果指定为垂直排列模式，则<code>layout_gravity</code>只能指定水平对齐模式</p>
+<p>layout_weight与wrap_content对应用界面对屏幕的适配性非常好</p>
+<p>FrameLayout没有任何的定位方式，所有的控件都会摆放在布局的左上角。</p>
+<p>在TableLayout中每加入一个TableRow就表示在表格中添加了一行，然后在TableRow中每加入一个控件，就表示在该行中加入了一列。TableRow中的控件是不能指定宽度的。<br>合并单元格可以通过<code>android:layout_span=&quot;xx&quot;</code>来表示xx为要合并的个数。<br>在TableLayout中可以通过<code>android:stretchColumns=“x”</code>来对表格列进行拉伸，指定为0则拉伸第1列，指定为1则拉伸第2列</p>
+<p>在安卓布局中，可以通过include layout=”XXX”来引入其它布局</p>
+<p>自定义控件：<code>LayoutInflater.from(context).inflate(&quot;布局文件&quot;，this)</code><br>在布局文件中添加自定义控件和添加普通控件的方式基本是一样的，只不过在添加自定义控件时候，我们需要指明控件的完整类名，包名在这里不可以省略。</p>
+<p>ListView控件使用，实现自己的adapter时getView（）方法有一个convertView参数，这个参数用于将之前加载好的布局进行缓存，以便之后进行重用。</p>
+<h2 id="单位和尺寸">单位和尺寸</h2><p>pt是磅数，1磅=1/72英寸，一般pt会作为字体单位使用</p>
+<p>dp是密度无关像素，也被称作dip和px相比，它在不同密度的屏幕中的显示比例将保持一致。<br>sp是可伸缩像素，它采用了和dp同样的设计理念，解决了文字大小甜酸问题<br>Android中的密度就是屏幕每英寸所包含的像素数，通常以dpi为单位。如160dpi<br>我们可以通过代码获得当前屏幕的密度值：</p>
+<pre><code><span class="built_in">float</span> xdpi = getResources<span class="literal">()</span>.getDisplayMetrics<span class="literal">()</span>.xdpi;
+<span class="built_in">float</span> ydpi = getResources<span class="literal">()</span>.getDisplayMetrics<span class="literal">()</span>.ydpi;
+</code></pre><p>根据Android的规定，在160dpi的屏幕上，1dp=1px,而在320dpi的屏幕上，1dp = 2px,因此会用 dp来指定控件的宽和高，就可以保证控件在不同密度的屏幕中的显示比例保持一致。<br>sp的原理和dp是一样的，它主要是用于指定文字的大小。</p>
+<p>in 英寸，屏幕的物理尺寸，每英寸==2.54厘米</p>
+<p>dpi, Dots Per Inch 缩写，每英寸包含像素个数，如320 X 480分辨率的手机，宽2英寸，高3英寸，每英寸包含的像素点的数量为320/2=160dpi（横向）或480/3=160dpi（纵向），160就是这部手机的dpi，横向和纵向的这个值都是相同的，原因是大部分手机屏幕使用正方形的像素点。</p>
+<p>density :屏幕密度，density和dpi的关系为 density = dpi/160</p>
+<p>dp: 也即 dip,设置独立像素，device independent pixels缩写，Android特有的单位，在屏幕密度dpi = 160屏幕上，1dp = 1px</p>
+<p>drawable-ldpi (dpi=120, density=0.75)<br>drawable-mdpi (dpi=160, density=1)<br>drawable-hdpi (dpi=240, density=1.5)<br>drawable-xhdpi (dpi=320, density=2)<br>drawable-xxhdpi (dpi=480, density=3)<br>当你需要在不同大小的控件中使用的图片时，最好的方法就是用nine-patch图片。它是一和种被特殊处理过的图片，你可以指定哪些区域可以拉伸而哪些区域不可以。为了将图片转换成nine-patch图片，你可以从一张普通的图片开始，然后通过SDK中带有的draw9patch工具打开这张图片(工具位置在SDK的tools目录下)，你可以在图片的左边框和上边框绘制来标记哪些区域可以被拉伸。你也可以在图片的右边框和下边框绘制来标记内容需要放置在哪个区域。</p>
+<p>总结：在编写Android程序的时候，尽量将控件或布局的大小指定成match_parent或wrap_content，如果必须要指定一个固定值，则使用dp来作为单位，指定文字大小时候，使用sp作为单位。</p>
+<h2 id="碎片：">碎片：</h2><p>动态添加fragment:</p>
+<ol>
+<li>创建待添加的碎片实例</li>
+<li>获取到FragmentManger ,在活动中可以直接getFragmentManager()</li>
+<li>开启一个事务，通过调用beginTransaction()方法开启</li>
+<li>向容器内加入碎片，一般使用replace()方法实现，需要传入容器的id和待添加碎片实例</li>
+<li><p>提交事务，调用commit()方法来完成</p>
+<p> FragmentManager manager = getFragmentManager();<br> FragmentTransaction transaction = manager.beginTransaction();<br> transaction.replace(要替换的fragment id,fragment);<br> transaction.commit();</p>
+</li>
+</ol>
+<p>用碎片可以模拟返回栈，在FragmentTransaction中提供了一个<code>addToBackStack()</code>方法，可以用于将一个事务添加到返回栈中。</p>
+<p>为了方便碎片和活动之间通信，FragmentManager提供了一个类似于<code>findViewById()</code>的方法，<code>findFragmentById(id)</code>这样就可以调用碎片中的方法了。<br> 在碎片中调用活动里的方法用<code>getActivity()</code>,然后再去调用方法。<br>碎片与碎片通信，则是通过活动的中间桥梁来实现。</p>
+<h3 id="碎片的状态和回调：">碎片的状态和回调：</h3><ol>
+<li>运行状态：当一个碎片是可见的，并且它所关联的活动正处于运行状态，该碎片也处于运行状态</li>
+<li>暂停状态：当一个活动进入暂停状态时（由于另一个未占满屏幕的活动被添加到了栈顶），与它相关联的可见碎片就会进入到暂停状态。</li>
+<li>停止状态:当一个活动进入停止状态，与它相关联的碎片就会进入到停止状态。或者通过调用FragmentTransaction的remvoe(),replace()方法将碎片从活动中移除，但有在事务提交之前调用addToBackStack()方法，这时的碎片也会进入到停止状态。进入停止状态的碎片对用户是完全不可见的，有可能被系统回收</li>
+<li>销毁状态:碎片总是依附于活动而存在的，当活动被销毁时，与它相关的碎片就会进入到销毁状态。或者通过调用FragmentTransaction的remove()，replace()方法将碎片从活动中移除，但在事务提交之前并没有调用addToBackStack()方法，这时的碎片也会进入到销毁状态。</li>
+</ol>
+<p>碎片除了有活动中的回调方法外，还有一些附加的方法：</p>
+<ol>
+<li>onAttach()  当碎片和活动建立关联时调用</li>
+<li>onCreateView() 为碎片创建视图（加载布局）时调用</li>
+<li>onActivityCreated() 确保与碎片相关联的活动一定已经创建完毕时调用</li>
+<li>onDestroyView() 当与碎片关联的视图被移除时调用<br>5  onDetach() 当碎片和活动解除关联的时候调用。</li>
+</ol>
+<h2 id="动态加载布局的技巧：">动态加载布局的技巧：</h2><p>使用限定符（Qualifiers）layout文件夹与layout-large文件夹</p>
+<p>最小宽度限定符允许我们对屏幕的宽度指定一个最小值（以dp为单位），然后以这个最小值为临界点，屏幕宽度大于这个值的设备加载这个布局，屏幕小于这个值的设备就加载另一个默认布局。如在res目录下建layout-sw600dp文件夹</p>
+<h2 id="控件引用">控件引用</h2><ol>
+<li>android:id=”@+id/btn”<br>表示在R.java文件里面新增一个id为btn的控件索引，最常用的一种声明控件id的方式。</li>
+<li>android:id=”@android:id/tabhost”<br>表示引用的是系统已有的ID，在对应的sdk目录下的ids.xml里面。一般外部不去调用，是组件内部调用的时候使用。</li>
+<li>android:id=”@id/btn”<br>表示引用一个已经存在的ID</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android-UI/">android_UI</a><a href="/tags/技术/">技术</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2015/03/17/android UI的一些技巧/" data-title="android_UI的一些技巧 | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/03/17/android语音识别/"  title="android语音识别">
+ <strong>下一篇：</strong><br/> 
+ <span>android语音识别
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/03/17/android UI的一些技巧/" data-title="android_UI的一些技巧" data-url="http://wn398.github.io/2015/03/17/android UI的一些技巧/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#隐藏标题栏"><span class="toc-number">1.</span> <span class="toc-text">隐藏标题栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将程序挂起"><span class="toc-number">2.</span> <span class="toc-text">将程序挂起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮动标题栏"><span class="toc-number">3.</span> <span class="toc-text">浮动标题栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拆分操作栏"><span class="toc-number">4.</span> <span class="toc-text">拆分操作栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置操作栏图标的导航行为"><span class="toc-number">5.</span> <span class="toc-text">配置操作栏图标的导航行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用应用程序图标的向上导航功能"><span class="toc-number">6.</span> <span class="toc-text">启用应用程序图标的向上导航功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用操作栏导航tab键"><span class="toc-number">7.</span> <span class="toc-text">启用操作栏导航tab键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用操作栏的下拉列表"><span class="toc-number">8.</span> <span class="toc-text">启用操作栏的下拉列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#把菜单项设置为操作栏操作："><span class="toc-number">9.</span> <span class="toc-text">把菜单项设置为操作栏操作：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态更新菜单项"><span class="toc-number">10.</span> <span class="toc-text">动态更新菜单项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题"><span class="toc-number">11.</span> <span class="toc-text">主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ListView布局"><span class="toc-number">12.</span> <span class="toc-text">ListView布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#屏幕设置"><span class="toc-number">13.</span> <span class="toc-text">屏幕设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获得屏幕属性"><span class="toc-number">14.</span> <span class="toc-text">获得屏幕属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些特定布局文件"><span class="toc-number">15.</span> <span class="toc-text">一些特定布局文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控件的可见性："><span class="toc-number">16.</span> <span class="toc-text">控件的可见性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建Dialog:"><span class="toc-number">17.</span> <span class="toc-text">构建Dialog:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布局"><span class="toc-number">18.</span> <span class="toc-text">布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单位和尺寸"><span class="toc-number">19.</span> <span class="toc-text">单位和尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#碎片："><span class="toc-number">20.</span> <span class="toc-text">碎片：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#碎片的状态和回调："><span class="toc-number">20.1.</span> <span class="toc-text">碎片的状态和回调：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态加载布局的技巧："><span class="toc-number">21.</span> <span class="toc-text">动态加载布局的技巧：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控件引用"><span class="toc-number">22.</span> <span class="toc-text">控件引用</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<p class="asidetitle">Music</p>
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">24</span></li></ul>
+  </div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>24</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/NFC/" style="font-size: 10px;">NFC</a><a href="/tags/android/" style="font-size: 16.67px;">android</a><a href="/tags/android-UI/" style="font-size: 13.33px;">android_UI</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a><a href="/tags/传感器/" style="font-size: 10px;">传感器</a><a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a><a href="/tags/定位/" style="font-size: 10px;">定位</a><a href="/tags/技术/" style="font-size: 20px;">技术</a><a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a><a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a><a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2015 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>
