@@ -1,5 +1,6 @@
 title: "git常用命令总结"
 date: 2015-03-10 20:19:34 
+updated: 2015/3/20 9:59:09 
 tags:
 -  git
 -  技术
@@ -31,6 +32,7 @@ categories: git
 * 拉取远程仓库数据并合并到当前分支 `git pull` 前提是设置了某个分支跟踪远程仓库某分支
 * 推送某个分支到远程某个分支 `git push [远程库名] 本地分支名:远程分支名`
 * 创建并切换一个本地分支去跟踪远程分支 `git checkout -b [本地分支名] [远程名/分支名]`  如果不想重命名本地分支现在可以用 `git checkout --track 远程名/分支名`
+* 检出远程仓库一个文件 `git checkout 远程分支名（origin/master） 文件名`
 * 删除远程分支  `git push 远程名 :远程分支` 这相当于命令`git push 远程名 本地分支：远程分支` 推送一个空的本地分支上去，相当于把远程分支给删除了
 * 重命名本地的远程仓库名 `git remote rename 旧名 新名`
 * 移除本地的远程仓库链接 `git remote rm`
