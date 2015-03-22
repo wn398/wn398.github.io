@@ -1,0 +1,844 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>android网络wifi | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="管理网络和Internet连接
+Android可以广播用于监视网络连接变化的Intent，并提供了对网络设置和连接进行控制的API.
+
+Connectivity Manager
+Android网络主要是通过ConnectivityManager来处理的，该服务使你可以监视连接状态，设置自己的首选项网">
+    
+    
+    <meta name="description" content="管理网络和Internet连接
+Android可以广播用于监视网络连接变化的Intent，并提供了对网络设置和连接进行控制的API.
+
+Connectivity Manager
+Android网络主要是通过ConnectivityManager来处理的，该服务使你可以监视连接状态，设置自己的首选项网络连接以及管理连接失败转接。
+
+Connectivity Manager简介
+它用于代表网络连接服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android网络wifi">
+<meta property="og:url" content="http://wn398.github.io/2015/03/13/android/android网络wifi/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="管理网络和Internet连接
+Android可以广播用于监视网络连接变化的Intent，并提供了对网络设置和连接进行控制的API.
+
+Connectivity Manager
+Android网络主要是通过ConnectivityManager来处理的，该服务使你可以监视连接状态，设置自己的首选项网络连接以及管理连接失败转接。
+
+Connectivity Manager简介
+它用于代表网络连接服务">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android网络wifi">
+<meta name="twitter:description" content="管理网络和Internet连接
+Android可以广播用于监视网络连接变化的Intent，并提供了对网络设置和连接进行控制的API.
+
+Connectivity Manager
+Android网络主要是通过ConnectivityManager来处理的，该服务使你可以监视连接状态，设置自己的首选项网络连接以及管理连接失败转接。
+
+Connectivity Manager简介
+它用于代表网络连接服务">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/13/android/android网络wifi/" title="android网络wifi" itemprop="url">android网络wifi</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-13T10:28:49.000Z" itemprop="datePublished"> 发表于 2015-03-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#管理网络和Internet连接"><span class="toc-number">1.</span> <span class="toc-text">管理网络和Internet连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Connectivity_Manager"><span class="toc-number">1.1.</span> <span class="toc-text">Connectivity Manager</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Connectivity_Manager简介"><span class="toc-number">1.1.1.</span> <span class="toc-text">Connectivity Manager简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查找和监视网络连接"><span class="toc-number">1.1.2.</span> <span class="toc-text">查找和监视网络连接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wifi"><span class="toc-number">2.</span> <span class="toc-text">Wifi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wifi类里主要包括以下几个类和接口。"><span class="toc-number">2.1.</span> <span class="toc-text">wifi类里主要包括以下几个类和接口。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监视Wi-Fi_连接"><span class="toc-number">2.2.</span> <span class="toc-text">监视Wi-Fi 连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描热点："><span class="toc-number">2.3.</span> <span class="toc-text">扫描热点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管理wifi配置"><span class="toc-number">2.4.</span> <span class="toc-text">管理wifi配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建Wifi网络配置"><span class="toc-number">2.5.</span> <span class="toc-text">创建Wifi网络配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Wifi_Direct传输数据"><span class="toc-number">2.6.</span> <span class="toc-text">使用Wifi Direct传输数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化_Wi-Fi_Direct框架"><span class="toc-number">2.6.1.</span> <span class="toc-text">初始化 Wi-Fi Direct框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启用_Wi-Fi_Direct并监视其状态"><span class="toc-number">2.6.2.</span> <span class="toc-text">启用 Wi-Fi Direct并监视其状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发现对等设备"><span class="toc-number">2.6.3.</span> <span class="toc-text">发现对等设备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#连接对等设备"><span class="toc-number">2.6.4.</span> <span class="toc-text">连接对等设备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在对等设备之间传输数据"><span class="toc-number">2.6.5.</span> <span class="toc-text">在对等设备之间传输数据</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="管理网络和Internet连接">管理网络和Internet连接</h2><blockquote>
+<p>Android可以广播用于监视网络连接变化的Intent，并提供了对网络设置和连接进行控制的API.</p>
+</blockquote>
+<h3 id="Connectivity_Manager">Connectivity Manager</h3><blockquote>
+<p>Android网络主要是通过ConnectivityManager来处理的，该服务使你可以监视连接状态，设置自己的首选项网络连接以及管理连接失败转接。</p>
+</blockquote>
+<h4 id="Connectivity_Manager简介">Connectivity Manager简介</h4><blockquote>
+<p>它用于代表网络连接服务，用于监视网络连接状态，配置故障转移设置以及控制网络无线电。 为使用connectivity Manager,应用程序需要读取和定入网络状态访问权限</p>
+</blockquote>
+<pre><code>&lt;user-permission android:<span class="property">name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>/&gt;
+&lt;user-permission android:<span class="property">name</span>=<span class="string">"android.permission.CHANGE_NETWORK_STATE"</span>/&gt;
+</code></pre><p>   为了访问Connectivity Manager,使用getSystemService()，并传入<code>Context.CONNECTIVITY_SERVICE</code>作为服务名称。</p>
+<h4 id="查找和监视网络连接">查找和监视网络连接</h4><p><code>GetActiveNetworkInfo()</code>方法会返回一人上NetworkInfo对象，其中包含了当前活动网络的详细信息。</p>
+<pre><code><span class="comment">//获得活动网络的信息</span>
+<span class="constant">NetworkInfo activNetwork</span> = connectivity.getActiveNetworkInfo();
+</code></pre><p>也可以使用getNetworkInfo方法获得指定类型的非活动网络的详细信息。使用返回的NetworkInfo了解所返回的网络的连接状态，网络类型以及详细的状态信息。</p>
+<p>在尝试传输数据之前，应该配置一个重复警报，或者调度一个执行数据传输的后台服务，并使用Connectivity Manager检查是否连接到了Internet,如果是，则确认连接的类型，如：</p>
+<pre><code>NetworkInfo <span class="variable">network =</span> connectivity.getActiveNetworkInfo();
+boolean <span class="variable">isConnected =</span> ((network !=<span class="constant">null</span>)&amp;&amp;(network.isConnectedOrConnecting());
+boolean <span class="variable">isWiFi =</span> (network.getType() == ConnectivityManager.TYPE_WIFI);
+</code></pre><p>为了监视网络连接，可以创建一个<code>BroadcastReceiver</code>来监听ConnectivityManager.CONNECTIVITY_ACTION Broadcast Intent.如下所示</p>
+<pre><code><span class="tag">&lt;<span class="title">receiver</span> <span class="attribute">android:name</span>=<span class="value">".ConnectivityChangedReceiver"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.net.conn.CONNECTIVITY_CHANGE"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">receiver</span>&gt;</span>
+</code></pre><p>这些Intent包含了一些extra,它们提供了关于连接变化的额外详细信息。可以使用Connectivity-Manager类中可用的静态常量访问每个extra.EXTRA_NO_CONNECTIVITY是最常用的extra,它是一个布尔值，当设备未连接到任何网络时返回true.当它为false时，意味着有一个活动的连接，使用<code>getActiveNetworkInfo()</code>来获得新连接状态的更多详细信息并根据情况修改下载计划是一种很好的作法、</p>
+<h2 id="Wifi">Wifi</h2><blockquote>
+<p>Android也提供了android.net.wifi包供我们操作。</p>
+</blockquote>
+<h3 id="wifi类里主要包括以下几个类和接口。">wifi类里主要包括以下几个类和接口。</h3><ol>
+<li>ScanResult<br> 主要用来描述已经检测出的接入点，包括接入点的地址，接入点的名称，身份认证，频率，信号强度等信息</li>
+<li>WifiConfiguration<br> Wifi网络的配置，包括安全配置等</li>
+<li>WifiInfo<br> Wifi无线连接的描述，包括接入点，网络连接状态，隐藏的接入点，IP地址，连接速度，MAC地址，网络ID，信号强度等信息</li>
+<li><p>WifiManager<br> 提供了管理？Wifi连接的大部分API，它主要包括如下内容：</p>
+<ul>
+<li>已经配置好的网络的清单，这个清单可以查看和修改，而且可以修改个别记录的属性</li>
+<li>当连接中有活动的Wi-fi网络时，可以建立或者关闭这个连接，并且可以查询有关网络状态的动态信息</li>
+<li>对接入点的扫描结果包含足够的信息来决定需要与什么接入点建立连接</li>
+<li><p>还定义了许多常量来表示wi-fi状态的改变</p>
+<p>为使用WifiManager需要权限</p>
+<p>  android.permission.ACCESS_WIFI_STATE<br>  android.permission.CHANG_WIFI_STATE;<br>  WifiManger wifiManger = (WifiManager)getSystemService(Context.WIFI_SERVICE)<br>可以使用Wi-fi Manager的setWifiEnable方法启用或禁用Wi-fi硬件，或者使用getWifiState或者isWifiEnabled方法请求当前的Wi-Fi状态。</p>
+</li>
+</ul>
+</li>
+<li><p>WifiManger.WifiLock<br>允许程序一直使用wifi无线网络，通常情况下当用户在一段时间内没有任何操作时，WiFi网络就会自动关闭。我们可以通过WifiLock来锁定Wifi网络，使其一直保持连接，直到这个锁定被释放。当有多个应用程序时可能会有多个wifilock,在无线电设备中必须保证任何一个应用中都没有使用wifilock时，才可以关闭它，在使用一个wifi锁之前，必须确定应用需要wifi的接入，或者能够在移动网络下工作。注意wifi锁不能超越客户端的wifi Enabled设置，也没有飞行模式，此时它们仍然认为wifi在运行，但是设备处于空闲状态。</p>
+</li>
+</ol>
+<h3 id="监视Wi-Fi_连接">监视Wi-Fi 连接</h3><blockquote>
+<p>多数情况下，使用Connectivity Manager监视Wi-Fi连接变化是最佳实践，每当Wi-Fi网络连接状态网络发生改变时，Wi_fi Manager确实会广播Intent,它会使用在WifiManager类中定义的下列任意一种常量：</p>
+</blockquote>
+<ul>
+<li><em>WIFI_STATE_CHANGED_ACTION wifi</em> 硬件状态发生变化，包括<code>enabling</code>,<code>enabled</code>,<code>disabling</code>,<code>disabled</code>和<code>unknown</code>几种状态。它包含了<code>EXTRA_STATE</code>和<code>EXTRA_PREVIOUS_STATE</code>这两个extra,分别提供了新的和前一次的Wi-Fi状态</li>
+<li><em>SUPPLICANT_CONNECTION_CHANGE_ACTION</em> 每当与活动的请求方（接入点）之间的连接状态发生变化时广播该Intent.当新连接建立或现有连接丢失时就使用<code>EXTRA_NEW_STATE</code>触发它，并在建立新连接时该布尔值为true.</li>
+<li><em>NETWORK_STATE_CHANGED_ACTION</em> 每当wifi连接状态发生变化时触发。该Intent包含两个extra.一个是 * <code>EXTRA_NETWORK_INFO</code>，其中包含详细描述了当前网络状态的<code>NetworkINfo</code>对象，第二个是<code>EXTRA_BSSID</code>,其中包含所连接的接入点的BSSID.</li>
+<li><em>RSSI_CHANGED_ACTION</em>  可以通过监听RSSI_CHANGED_ACTION Intent来监视已连接wifi网络的当前信号强度。为了利用该信号强度，应当利用wifi manager的<code>calculateSignalLevel()</code>静态方法，以便按照你指定的范围将该信号强度转换成一个整形数值。</li>
+</ul>
+<p>当建立了wifi连接后，可以使用Wi-Fi Manager的<code>getConnectionInfo</code>方法找出连接的状态信息。所返回的WifiInfo对象包含当前接入点的<code>SSID</code>,<code>BSSID</code>,<code>Mac地址</code>，<code>IP地址</code>，以及当前的链路速度和信号强度。</p>
+<h3 id="扫描热点：">扫描热点：</h3><p>可使用WiFi Manager的<code>startScan()</code>方法进行接入点扫描。一个带有<code>SCAN_RESULTS_AVAILABLE_ACTION</code>动作的Intent将被广播以便异步宣布扫描完成并且结果可用。调用<code>getScanResult()</code>以获得这些结果，它们是ScanResult对象的列表。每个扫描结果包含了为每个检测到的接入点所检索到的详细信息，包括链路速度，信号强度，SSID以及所支持的身份验证技术。</p>
+<h3 id="管理wifi配置">管理wifi配置</h3><p>可使用wifi Manager管理已配置的网络设置并控制将要连接到哪个网络。一旦连接建立，就可以通过查询可用网络连接来获得其配置和设置的更多详细信息。</p>
+<p>使用<code>getConfiguredNetworks</code> 可以获得当前网络配置的列表。所返回的<code>WifiConfiguration</code>对象列表包含每个配置的网络ID,SSID和其他详细信息。为了使用某个特定的网络配置，需要使用enableNetwork方法，并传入要使用的网络ID,同时将disableAllOthers参数指定为true</p>
+<pre><code><span class="comment">//获得可用配置的一个列表</span>
+List&lt;WifiConfiguration&gt; <span class="keyword">configurations</span> = wifi.getConfiguredNetworks();
+<span class="comment">//获得第一个配置 的网络ID</span>
+<span class="keyword">if</span>(<span class="keyword">configurations</span>.<span class="keyword">size</span>()&gt;<span class="number">0</span>){
+    <span class="keyword">int</span> netId = <span class="keyword">configurations</span>.get(<span class="number">0</span>).networkId;
+<span class="comment">//启用该网络</span>
+  <span class="keyword">boolean</span> disableAllOthers = <span class="keyword">true</span>;
+wifi.enableNetwork(netId,disableAllOthers);    
+}
+</code></pre><h3 id="创建Wifi网络配置">创建Wifi网络配置</h3><p>为了连接到一个wifi网络，需要创建并注册一个配置。正常情况下，用户将使用本机Wifi配置设置进行该操作，但是也可以在自己的应用程序中提供相同的功能，甚至可以完全替换本机wifi配置activity.</p>
+<p>网络配置作为<code>WifiConfiguration</code>对象进行存储。下面是每个wifi配置可用的不公共域的不完全列表：</p>
+<ul>
+<li>BSSID       每个接入点的BSSID</li>
+<li>SSID        特定网络的SSID</li>
+<li>networkId   用于在当前设备上标识这个网络配置的唯一标识符</li>
+<li>priority    当对要连接到的潜在接入点的列表进行排序时用到的网络配置优先级</li>
+<li>status      该网络连接的当前状态，将会是下面结果之一：<code>WifiConfiguration.Status.ENABLED</code>,    <code>WifiConfiguration.Status.ENABLE</code>，或者是<code>WifiConfiguration.Status.CURRENT</code>.</li>
+</ul>
+<p>wificonfiguration对象还包含了所支持的验证技术，以及先前用来验证该接入点所用的密钥。<code>addNetwork</code>方法可以指定一个新的配置并将其添加到当前列表中，与此类似<code>updateNetworks</code>方法可以通过传入只包含一个网络ID和想要更改的值的WifiConfiguration对象来更新网络配置。也可以使用<code>removeNetwork</code>方法传入一个网络ID以删除某个配置。为了保存对网络配置所做的任何更改，必须调用<code>saveConfiguration</code>方法。</p>
+<h3 id="使用Wifi_Direct传输数据">使用Wifi Direct传输数据</h3><blockquote>
+<p>Wifi Direct是一种通信协议，用于中等距离，高带宽的点对点通信。与蓝牙相比，Wifi Direct更加快速可靠，而且工作距离更远。</p>
+<p>使用Wifi Direct API 可以在Wifi Direct的工作范围内搜索并连接到其他Wifi Direct设备。通过使用套接字建立通信链接，可以在支持的设备（包括一些打印机，扫描仪，摄像头和电视）之间以及在运行在不同设备上的你的应用程序的实例之间传输和接收数据流。</p>
+</blockquote>
+<h4 id="初始化_Wi-Fi_Direct框架">初始化 Wi-Fi Direct框架</h4><blockquote>
+<p>为使用Wi-Fi Direct ，应用程序需要有 <code>ACCESS_WIFI_STATE</code>,<code>CHANGE_WIFI_STATE</code>和<code>INTERNET</code>权限.wifi Direct连接是使用<code>WifiP2pManager</code>系统服务建立和管理的，通过使用<code>getSystemService</code>方法并传入<code>Context.WIFI_P2P_SERVICE</code>常量，可以访问WifiP2pManager系统服务。</p>
+<p>在使用Wifi P2P Manager之前，必须使用<code>WifiP2pManager</code>的<code>initializae</code>方法创建连接到wifi Direct框架的一个通道，需要向该方法传入当前的Context,Looper用于接收Wifi Direct事件和ChannelListener用于监听通道连接丢失情况。如下：</p>
+</blockquote>
+<pre><code><span class="keyword">private</span> WifiP2pManager wifiP2pManger;
+<span class="keyword">private</span> Channel wifiDirectChannel;
+<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">initializeWiFiDirect</span><span class="params">()</span></span>{
+    wifiP2pManager = (WifiP2pManager)getSystemService(Context.WIFI_P2P_SERVICE);
+    wifiDirectChannel = wifiP2pManager.initiallize(<span class="keyword">this</span>,getMainLooper(),
+    <span class="keyword">new</span> ChannelListener(){
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onChannelDisconnected</span><span class="params">()</span></span>{
+        initializeWiFiDirect();
+    }   
+});
+}
+</code></pre><blockquote>
+<p>使用这个通道与Wi-fi Direct框架进行交互。因此，Wifi P2P Manager的初始化操作通常是在Activity 的<code>onCreate</code>处理程序内完成的。使用wifi p2p manager执行的大多数动作（如找到和连接对等设备的尝试）会使用一个<code>ActionListener</code>立即指出它们是否成功。如下代码所示，动作成功时，通过接收Broadcast Intent可以得到与这些动作关联的返回值，</p>
+</blockquote>
+<pre><code><span class="comment">//创建一个P2p manager动作监听器</span>
+<span class="keyword">private</span> ActionListener actionListener = <span class="keyword">new</span> ActionListener(){
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(<span class="keyword">int</span>  reason)</span></span>{
+       String errorMessage = <span class="string">"WiFi Direct Failed"</span>;
+       <span class="keyword">switch</span>(reason){
+        <span class="keyword">case</span> WifiP2pmanager.BUSY:
+             errorMessage +=<span class="string">"Framework busy."</span>; <span class="keyword">break</span>;
+       <span class="keyword">case</span> WifiP2pManager.ERROR:
+            errorMessage +=<span class="string">"Internal error."</span>; <span class="keyword">break</span>;
+       <span class="keyword">case</span> WifiP2pManager.P2P_UNSUPPORTED:
+            errorMessage += <span class="string">"Unsupported."</span>; <span class="keyword">break</span>;
+       <span class="keyword">default</span>:
+             errorMesage +=<span class="string">"Unknown error."</span>; <span class="keyword">break</span>;
+
+        }
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">()</span></span>{
+        <span class="comment">//成功</span>
+        <span class="comment">//返回值将通过一个Broadcast Intent返回</span>
+    }
+    }
+}
+</code></pre><h4 id="启用_Wi-Fi_Direct并监视其状态">启用 Wi-Fi Direct并监视其状态</h4><blockquote>
+<p>为使一个Android设备能够发现其他wifi Driect设备或被其他wifi direct设备发现，用户首先必须启用wifi direct。为此可以使用<code>android.provider.Settings.ACTION_WIRELESS_SETTINGS</code>类启动一个新的Activity,从而启动设置屏幕，供用户修改此设置，如下代码所示：</p>
+</blockquote>
+<pre><code>Intent intent = <span class="keyword">new</span> Intent(android.provider.Settings.ACTION_WIRESS_SETTINGS);
+startActivity(intent);
+</code></pre><blockquote>
+<p>只有建立连接并传输数据时，wifi Direct才会一直保持启用状态。如果短时间不用，它就会自动禁用。只有设备上启用了Wifi Direct时，才能够执行wifi Driect操作，因此，监听Wifi Direct的状态变化，并通过修改UI来禁用不可行操作是非常重要的。 </p>
+<p>通过注册一个接收<code>WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION</code>动作的<code>BroadcastReceiver</code>,可以监视wifi Direct的状态。</p>
+</blockquote>
+<pre><code>IntentFilter p2pEnalbeFilter = <span class="keyword">new</span> IntentFilter(WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION);
+registerReceiver(p2pStatusReceiver,p2pEnabledFilter);
+</code></pre><p>  相关的Broadcast Receiver 收到的Intent(如下代码所示)包含一个被设置为<code>WIFI_P2P_STATE_ENABLED</code>或<code>WIFI_P2P_STATE_DISABLED</code>的<code>wifiP2pManager.EXTRA_WIFI_STATE extra</code>.</p>
+<pre><code><span class="comment">//接收 wifi Direct的状态变化</span>
+BroadcastReceiver p2pStatusReceiver = <span class="keyword">new</span> BroadcastReceiver(){
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context,Intent intent)</span></span>{
+        <span class="keyword">int</span> state = intent.getIntExtra(WifiP2pManager.EXTRA_WIFI_STATE,
+         WifiP2pManager.WIFI_P2P_STATE_DISABLED);
+       <span class="keyword">switch</span>(state){
+        <span class="keyword">case</span>(WifiP2pManager.WIFI_P2P_STATE_ENABLE):
+            buttonDiscover.setEnabled(<span class="keyword">true</span>);
+           <span class="keyword">break</span>;
+        <span class="keyword">default</span>:
+            buttonDiscover.setEnalbed(<span class="keyword">false</span>);
+
+}
+    }
+}
+</code></pre><p>在onReceive处理程序内，可以根据Wifi Direct的状态变化相应地修改UI。</p>
+<h4 id="发现对等设备">发现对等设备</h4><blockquote>
+<p>为扫描对待设备，需要调用<code>WiFi P2P manager</code>的<code>discoverPeers()</code>方法，并传入一个处于活动状态的通道和一个Action Listener。对等设备列表的变化将作为一个Intent,通过使用<code>WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION</code>动作广播出去。在建立一个连接或创建一个组之前，对等设备的搜索过程会一直进行。当收到通知你对等设备列表发生变化的Intent后，可以使用<code>WifiP2pManager.requestPeers</code>方法请求当前发现的对等设备的列表。如下所示：</p>
+</blockquote>
+<pre><code><span class="comment">//发现wifi Direct对等设备</span>
+<span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">discoverPeers</span><span class="params">()</span></span>{
+    wifiP2pManager.discoverPeers(wifiDirectChannel,actionListener);
+}
+BroadcastReceiver peerDiscoverReceiver = <span class="keyword">new</span> BroadcastReceiver(){
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context,Intent intent)</span></span>{
+        wifiP2pManager.requestPeers(wifiDirectChannel,<span class="keyword">new</span> PeerLislistener(){
+            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onPeerAvailabe</span><span class="params">(WifiP2pDeviceList peers)</span></span>{
+                deviceList.clear();
+                deviceList.addAll(peers.getDeviceList()):
+                   aa.notifyDataSetChanged();
+            }
+        }
+    }
+}
+</code></pre><p>   <code>requesetPeers()</code>方法接受一个<code>PeerListListener</code>,当检索对待设备列表时，就会执行<code>PeerListListener</code>的<code>onPeersAvailable</code>处理程序。对待设备列表可以通过<code>WifiP2pDeviceList</code>访问，你可以查询它来找出所有对等设备的名称和地址。</p>
+<h4 id="连接对等设备">连接对等设备</h4><blockquote>
+<p>为了与对等设备建立wifi Direct连接，需要使用<code>wifi P2p Manage</code>r的<code>connect</code>方法，并传入活动的通道，一个ActionListener以及一个指定了要连接的对等设备的地址的WifiP2pConfig对象，如下所示：</p>
+</blockquote>
+<pre><code>  <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">connectTo</span><span class="params">(WifiP2pDevice device)</span></span>{
+    WifiP2pConfig config = <span class="keyword">new</span> WifiP2pConfig();
+      config.deviceAddress = device.deviceAddress;
+      wifiP2pManager.connect(wifiDirectChannel,config,actionListener);
+
+}
+</code></pre><blockquote>
+<p>当尝试建立连接时，远程设备就会被提示接受连接请求。在Android设备上，这需要用户手动接受连接请求。如果远程设备接受了建立连接的请求，成功的连接将使用<code>WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION</code> Intent动作在两个设备上广播。</p>
+<p>Broadcast Intent将包含一个打包在<code>WifiP2pManager.EXTRA_NETWORK_INFO</code> extra中的NetworkInfo对象。可以查询Network Info来确认连接状态的变化表示建立了一个新的连接还是已有的连接断开了：</p>
+</blockquote>
+<pre><code><span class="type">boolean</span> connected = networkInfo.isConnected();
+</code></pre><blockquote>
+<p>如果是建立了新连接，则可以使用<code>WifiP2pManager.requestConnectionInfo</code>方法查询连接的详细信息。需要向该方法传入活动的 通道以及一个ConnectionInfoListener,如下所示：</p>
+</blockquote>
+<pre><code><span class="comment">//连接到Wifi Direct对等设备</span>
+BroadcastReceiver connectionChanagedReceiver = <span class="keyword">new</span> BroadcastReicever(){
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context,Intent intent)</span></span>{
+        <span class="comment">//提取NetworkInfo</span>
+        String extraKey = WifiP2pmanger.EXTRA_NETWORK_INFO;
+       NetworkInfo networkInfo = (NetworkInfo)intent.getParcelableExtra(extraKey);
+        <span class="comment">//检查连接是否已经连接</span>
+        <span class="keyword">if</span>(networkInfo.isConnected()){
+            wifiP2pManager.requestConnectionInfo(wifiDirectChannel,
+                <span class="keyword">new</span> ConnectionInfoListener(){
+                    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onConnectionInfoAvailable</span><span class="params">(WifiP2pInfo info)</span></span>{   
+                        <span class="comment">//如果建立了连接</span>
+                            <span class="keyword">if</span>(info.groupFormed){
+                                    <span class="comment">//如果这个设备是服务器</span>
+                                    <span class="keyword">if</span>(info.isGroupOwner){<span class="comment">//TODO:启动Server Socket}</span>
+                                    <span class="comment">//如果这个设备是客户机</span>
+                                       <span class="keyword">else</span> <span class="keyword">if</span>(info.groupFormed)｛<span class="comment">//TOD:启动Client Socket｝</span>
+                            }
+
+                     }
+                }
+        }
+    }
+
+}
+</code></pre><blockquote>
+<p>当连接信息可用时，<code>ConnectionInfoListener</code>会触发其<code>onConnectionInfoAvailable</code>处理程序，并传入一个包含这些详细信息的WifiP2pInfo对象。建立连接后，所连接的对等设备会形成一个组。连接发起者将作为该组的所有者返回，并且通常（并非总是）承担服务器的角色进行进一步通信。建立连接后，可以使用Tcp/IP套接字在设备之间传输数据。</p>
+</blockquote>
+<h4 id="在对等设备之间传输数据">在对等设备之间传输数据</h4><blockquote>
+<p>这是用java的套接字传输数据一样的</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a><a href="/tags/wifi网络/">wifi网络</a><a href="/tags/技术/">技术</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2015/03/13/android/android网络wifi/" data-title="android网络wifi | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/13/android/android-NFC/" title="android-NFC">
+  <strong>上一篇：</strong><br/>
+  <span>
+  android-NFC</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/03/12/android/Android电话和SMS/"  title="Android电话和SMS">
+ <strong>下一篇：</strong><br/> 
+ <span>Android电话和SMS
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/03/13/android/android网络wifi/" data-title="android网络wifi" data-url="http://wn398.github.io/2015/03/13/android/android网络wifi/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#管理网络和Internet连接"><span class="toc-number">1.</span> <span class="toc-text">管理网络和Internet连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Connectivity_Manager"><span class="toc-number">1.1.</span> <span class="toc-text">Connectivity Manager</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Connectivity_Manager简介"><span class="toc-number">1.1.1.</span> <span class="toc-text">Connectivity Manager简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查找和监视网络连接"><span class="toc-number">1.1.2.</span> <span class="toc-text">查找和监视网络连接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wifi"><span class="toc-number">2.</span> <span class="toc-text">Wifi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wifi类里主要包括以下几个类和接口。"><span class="toc-number">2.1.</span> <span class="toc-text">wifi类里主要包括以下几个类和接口。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监视Wi-Fi_连接"><span class="toc-number">2.2.</span> <span class="toc-text">监视Wi-Fi 连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扫描热点："><span class="toc-number">2.3.</span> <span class="toc-text">扫描热点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管理wifi配置"><span class="toc-number">2.4.</span> <span class="toc-text">管理wifi配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建Wifi网络配置"><span class="toc-number">2.5.</span> <span class="toc-text">创建Wifi网络配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Wifi_Direct传输数据"><span class="toc-number">2.6.</span> <span class="toc-text">使用Wifi Direct传输数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化_Wi-Fi_Direct框架"><span class="toc-number">2.6.1.</span> <span class="toc-text">初始化 Wi-Fi Direct框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启用_Wi-Fi_Direct并监视其状态"><span class="toc-number">2.6.2.</span> <span class="toc-text">启用 Wi-Fi Direct并监视其状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发现对等设备"><span class="toc-number">2.6.3.</span> <span class="toc-text">发现对等设备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#连接对等设备"><span class="toc-number">2.6.4.</span> <span class="toc-text">连接对等设备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在对等设备之间传输数据"><span class="toc-number">2.6.5.</span> <span class="toc-text">在对等设备之间传输数据</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<!--<p class="asidetitle">Music</p>-->
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期文章</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/03/17/android/android UI的一些技巧/">android_UI的一些技巧</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/17/android/android语音识别/">android语音识别</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/17/android/android传感器/">android传感器</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期更新</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2013/03/19/mysql数据库/">mysql数据库</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/10/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2012/10/18/SQL综合整理/">SQL综合整理</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/11/android/活动-Activity/">活动-Activity</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/11/android/service-服务/">service-服务</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>29</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+		
+			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>1</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/NFC/" style="font-size: 10px;">NFC</a><a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a><a href="/tags/UML/" style="font-size: 10px;">UML</a><a href="/tags/android/" style="font-size: 17.5px;">android</a><a href="/tags/android-UI/" style="font-size: 15px;">android_UI</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/mysql/" style="font-size: 10px;">mysql</a><a href="/tags/spring/" style="font-size: 10px;">spring</a><a href="/tags/sql/" style="font-size: 10px;">sql</a><a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a><a href="/tags/传感器/" style="font-size: 10px;">传感器</a><a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a><a href="/tags/定位/" style="font-size: 10px;">定位</a><a href="/tags/技术/" style="font-size: 20px;">技术</a><a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a><a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a><a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a><a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2015 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

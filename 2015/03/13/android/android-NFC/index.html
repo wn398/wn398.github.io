@@ -1,0 +1,789 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>android-NFC | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="NFC
+NFC(Near Field Communication)  是一种非接触式的技术，用于在短距离内（通常小于4cm）内少量数据的传输。NFC传输可以在两个支持NFC的设备或者一个设备和一个NFC“标签”之间进行。NFC标签即包括在扫描时会传输URL的被动标签，也包括复杂的系统。在Androi">
+    
+    
+    <meta name="description" content="NFC
+NFC(Near Field Communication)  是一种非接触式的技术，用于在短距离内（通常小于4cm）内少量数据的传输。NFC传输可以在两个支持NFC的设备或者一个设备和一个NFC“标签”之间进行。NFC标签即包括在扫描时会传输URL的被动标签，也包括复杂的系统。在Android中，NFC消息是通过使用NFC Data Exchange Format(NDEF)处理的。 为读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android-NFC">
+<meta property="og:url" content="http://wn398.github.io/2015/03/13/android/android-NFC/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="NFC
+NFC(Near Field Communication)  是一种非接触式的技术，用于在短距离内（通常小于4cm）内少量数据的传输。NFC传输可以在两个支持NFC的设备或者一个设备和一个NFC“标签”之间进行。NFC标签即包括在扫描时会传输URL的被动标签，也包括复杂的系统。在Android中，NFC消息是通过使用NFC Data Exchange Format(NDEF)处理的。 为读">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android-NFC">
+<meta name="twitter:description" content="NFC
+NFC(Near Field Communication)  是一种非接触式的技术，用于在短距离内（通常小于4cm）内少量数据的传输。NFC传输可以在两个支持NFC的设备或者一个设备和一个NFC“标签”之间进行。NFC标签即包括在扫描时会传输URL的被动标签，也包括复杂的系统。在Android中，NFC消息是通过使用NFC Data Exchange Format(NDEF)处理的。 为读">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/13/android/android-NFC/" title="android-NFC" itemprop="url">android-NFC</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-13T10:44:09.000Z" itemprop="datePublished"> 发表于 2015-03-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC"><span class="toc-number">1.</span> <span class="toc-text">NFC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取NFC标签"><span class="toc-number">1.1.</span> <span class="toc-text">读取NFC标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用前台分派系统"><span class="toc-number">1.2.</span> <span class="toc-text">使用前台分派系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android_Beam"><span class="toc-number">1.3.</span> <span class="toc-text">Android Beam</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建Android_Beam消息"><span class="toc-number">1.3.1.</span> <span class="toc-text">创建Android Beam消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分配Android_Beam有效载荷"><span class="toc-number">1.3.2.</span> <span class="toc-text">分配Android Beam有效载荷</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接收Android_Beam消息"><span class="toc-number">1.3.3.</span> <span class="toc-text">接收Android Beam消息</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="NFC">NFC</h2><blockquote>
+<p>NFC(Near Field Communication)  是一种非接触式的技术，用于在短距离内（通常小于4cm）内少量数据的传输。NFC传输可以在两个支持NFC的设备或者一个设备和一个NFC“标签”之间进行。NFC标签即包括在扫描时会传输URL的被动标签，也包括复杂的系统。在Android中，NFC消息是通过使用NFC Data Exchange Format(NDEF)处理的。 为读取，写入或广播NFC消息，应用程序需要具有NFC manifest权限。</p>
+</blockquote>
+<pre><code>&lt;uses-permission android:<span class="property">name</span>=<span class="string">"android.permission.NFC"</span>/&gt;
+</code></pre><h3 id="读取NFC标签">读取NFC标签</h3><blockquote>
+<p>当一个android设备用于扫描一个NFC标签时，其系统将使用自己的标签分派系统解码传入的有效载荷。这个标签分派系统会分析标签，将数据归类，并使用Intent启动一个应用程序来接收数据。</p>
+</blockquote>
+<p>为使应用程序能够接收NFC数据，需要添加一个Activity Intent Filter来监听以下的某个Intent 动作：</p>
+<ul>
+<li>NfcAdapter.ACTION_NDEF_DISCOVERED 这是优先级最高，也是最具体的NFC消息动作。使用这个动作的INtent包括MEME类型    和、或URI数据。最好的做法就是只要有可能就监听这个广播，因为其exra数据允许更加具体地定义要响应的标签。</li>
+<li>NfcAdapter.ACTION_TECH_DISCOVERED 当NFC技术已知，但是标签不包含数据（或者包含的数据不能被映射为MIME类型或    URI）时广播这个动作</li>
+<li>NfcAdapter.ACTION_TAG_DISCOVERED 如果从未知技术收到一个标签，则使用此Intent动作广播该标签</li>
+</ul>
+<p>//如下示例，显示了如何注册一个Activity,使其只响应对应于作者博客的URI的NFC标签</p>
+<pre><code><span class="tag">&lt;<span class="title">activity</span> <span class="attribute">android:name</span>=<span class="value">".BlogViewer"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.nfc.action.NDEF_DISCOVERED"</span>/&gt;</span>
+        <span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category.DEFAULT"</span>/&gt;</span>
+        <span class="tag">&lt;<span class="title">data</span> <span class="attribute">android:scheme</span>=<span class="value">"http"</span>
+                   <span class="attribute">android:host</span>=<span class="value">"blog.radioactiveyak.com"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">activity</span>&gt;</span>
+</code></pre><blockquote>
+<p>NFC Intent Filter尽可能具体是一种很好的做法，这样可以将能够响应指定NFC标签的应用程序数减至最少，从而提供最好，最快的用户体验。</p>
+<p>很多时候，应用程序使用Intent数据、URI和MIME类型就足以做出合适的响应。但是需要时，可以通过Intent(启动Activity的Intent)内的extra使用NFC消息提供的有效载荷。<code>NfcAdapter.EXTRA_TAG</code> extra包含一个代表扫描标签的原始tag对象。<code>NfcAdapter.EXTRA_TNDEF_MESSAGES</code> extra中包含了一个NDEF Message的数组，如下所示：</p>
+</blockquote>
+<pre><code><span class="comment">//提取NFC标签的有效载荷 </span>
+String action = getIntent().getAction();
+<span class="keyword">if</span>(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)){
+    Parcelable[] messages = intent.getPareclableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;messages.<span class="built_in">length</span>;i++){
+            NdefMessage message = (NdefMessage)message[i];
+            NdefRecord[]  records = message.getRecords();
+
+            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;records.<span class="built_in">length</span>;j++){
+                NdefRecord record = records[j];
+                <span class="comment">//TODO 处理单独的记录</span>
+            }
+    }
+}
+</code></pre><h3 id="使用前台分派系统">使用前台分派系统</h3><blockquote>
+<p>默认情况下，标签分派系统会根据标准的Intent解析过程确定哪个应用程序应该收到特定的标签。在Intent解析过程中，位于前台的Activity并不比其他应用程序的优先级高。因此，如果几个应用程序都被注册为接收扫描类型的标签，用户就需要选择使用哪个应用程序，即使此时你的应用程序位于前台。</p>
+<p>通过使用前台分派系统，可以指定特定的一个具有优先级的Activity使得当它位于前台时，成为默认接收标签的应用程序。使用NFC Adapter的<code>enable</code>/<code>disableForegroundDispathc</code>方法可以切换前台分派系统。只有当一个Acitivy位于前台时才能使用前台分派系统，所以应该分别在<code>onResume()</code>和<code>onPause()</code>处理程序内启用和禁用该系统，如下示例：</p>
+</blockquote>
+<pre><code><span class="comment">//使用前台分派系统</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span></span>{
+    <span class="keyword">super</span>.onPause();
+    nfcAdapter.disableForegroundDispatch(<span class="keyword">this</span>);
+}
+
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span></span>{
+    <span class="keyword">super</span>.onResume();
+    nfcAdapter.enableForegroundDispathc(<span class="keyword">this</span>,
+        <span class="comment">//用于打包Tag Intent的Intent</span>
+        nfcPendingIntent,
+        <span class="comment">//用于声明想要拦截的Intent的Intent Filter数组</span>
+        intentFilterArray,
+        <span class="comment">//想要处理的标签技术的数组</span>
+        techListArray);
+    String action = getIntent().getAction();
+    <span class="keyword">if</span>(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)){
+        processIntent(getIntent());
+
+    }
+}
+</code></pre><blockquote>
+<p>Intent Filter数据应该声明想要拦截的URI或MIME类型,如果收到的任何标签的类型与这些条件不匹配，那么将会利用标准的标签分派系统处理它们。为了确保良好的用户体验，只指定你的应用程序处理的标签内容是很重要的。通过显式指定想要处理的技术（通常是添加NfcF类），可以进一步细化收到的标签。最后，NFC Adapter会填充Pending Intent，以便把收到的标签直接传输给你的应用程序。</p>
+<p>如下的程序清单显示了为了启用上一个程序清单中的前台分派系统所需要使用的Pending Intent,MIME类型数组和技术数组：</p>
+</blockquote>
+<pre><code><span class="comment">//配置前台分派参数</span>
+PendingIntent nfcPendingIntent;
+IntentFilter intentFilterArray;
+<span class="built_in">String</span>[] techListsArray;
+
+public <span class="keyword">void</span> onCreate(Bundle savedInstanceState){
+    <span class="keyword">super</span>.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+    [...Existing onCreate logic...]
+    <span class="comment">//创建Pending Intent</span>
+    <span class="built_in">int</span> requestCode = <span class="number">0</span>;
+    <span class="built_in">int</span> flags = <span class="number">0</span>;
+
+    Intent nfcIntent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>,getClass());
+    nfcIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    nfcPendingIntent = PendingIntent.getActivity(<span class="keyword">this</span>,requestCode,nfcIntent,flags);
+    <span class="comment">//创建局限为URI或MIME类型的Intent Filter 从中拦截TAG扫描</span>
+    IntentFilter tagIntentFilter = <span class="keyword">new</span> IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED);
+    tagIntentFilter.addDataSchema(<span class="string">"http"</span>);
+    tagIntentFilter.addDataAuthority(<span class="string">"blog.radioactivyak.com"</span>,<span class="keyword">null</span>);
+    intentFilterArray = <span class="keyword">new</span> IntentFilter[]{tagIntentFilter};
+    <span class="comment">//创建要处理的技术数组</span>
+    techListsArray = <span class="keyword">new</span> <span class="built_in">String</span>[][]{
+     <span class="keyword">new</span> <span class="built_in">String</span>[]{
+        NfcF.<span class="keyword">class</span>.getName();
+        }
+    }
+}
+</code></pre><h3 id="Android_Beam">Android Beam</h3><blockquote>
+<p>android4中引入了Android Beam提供了一个简单的API。应用程序可以使用该API在使用NFC的两个设备之间传输数据，只要将这两个设备背靠背放在一起即可。（为使用Android Beam传输消息，你的应用程序必须位于前台，而且接收数据的设备不能牌锁住状态。）</p>
+<p>当设备被放到一起时，Android Beam会使用NFC在设备之间推送<code>NDEF</code>消息。通过在应用程序内启用Android Beam,可以定义所传输的消息的有效载荷。如果没有自定义消息，应用程序的默认动作会在目标设备上启动它。如果目标设备上没有安装你的应用程序，那么Googel Play就会启动，并显示你的应用程序的详细信息页面。</p>
+<p>为定义应用程序传输的消息，需要在mainfest文件中请求NFC权限：<code>android.permission.NFC</code></p>
+<p>定义自己的有效载荷的过程如下：</p>
+</blockquote>
+<ol>
+<li>创建一个包含NdefRecord的NdefMessage对象，NdefRecord包含了消息的有效载荷 </li>
+<li>将你的NdefMessage 作为Android Beam的有效载荷分配给NFC Adapter</li>
+<li>配置应用程序来监听传入的Android Beam消息 </li>
+</ol>
+<h4 id="创建Android_Beam消息">创建Android Beam消息</h4><blockquote>
+<p>要创建一个新的Ndef Messae,需要创建一个NdefMessage对象，并在其中创建至少一个NdefRecord,用于包含你想要传递给目标设备上的应用程序的有效载荷。</p>
+<p>创建新的NdefRecord时，必须指定它表示的记录类型，一个MIME类型，一个ID和有效载荷。有几种公共的NdefRecord类型，可以用在Android Beam中来传递数据。要注意，它们总是应该作为第一条记录添加到要传输的消息中。<br>使用NdefRecord.TNF_MINME_MEDIA类型可以传输绝对URI:</p>
+</blockquote>
+<pre><code>NdefRecord uriRecord = <span class="keyword">new</span> NdefRecord(
+    NdefRecord.TNF_ABSOLUTE_URI,
+    <span class="string">"http://blog.radiativiak.com"</span>.getBytes(Charset.forName(<span class="string">"US-ASCII"</span>)),
+      <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">0</span>], <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">0</span>]);
+</code></pre><blockquote>
+<p>这是使用Android Beam传输的最常见的NdefRecord,因为收到的Intent和任何启动Activity的Intent具有一样的形式。用来确定特定的Activity应该接收哪些NFC消息的Intent Filter可以使用schema,host和path Prefix属性。如果需要传输的消息所包含的信息不容易被解释为<code>URI</code>,<code>NdefRecord.TNF_MIME_MEDA</code>类型支持创建一个应用程序特定MIME类型，并包含相关的有效载荷：</p>
+</blockquote>
+<pre><code><span class="keyword">byte</span>[] mimeType = <span class="string">"application/com.paad.nfcbeam"</span>.getBytes(Charset.forName(<span class="string">"US-ASCII"</span>));
+<span class="keyword">byte</span>[] tagId = nwe <span class="keyword">byte</span>[<span class="number">0</span>];
+<span class="keyword">byte</span>[] payload = <span class="string">"Not a URI"</span>.getBytes(Charset.forName(<span class="string">"US-ASCII"</span>));
+NdefRecord mimeRecord = <span class="keyword">new</span> NdefRecord(NdefRecord.TNF_MIME_MEDIA,mimeType,tagId,payload);
+</code></pre><blockquote>
+<p>包含Android Application Record(AAR)形式的NdefRecord是一种很好的做法。这可以保证你的应用程序会在目标设备上启动;如果目标设备上没有安装你的应用程序，则会启动google Play Store,让用户可以安装它。</p>
+<p>要创建一个ARR Ndef Record,需要使用Ndef Record类的createApplicationRecord静态方法，并指定应用程序的包名，如下所示：</p>
+</blockquote>
+<pre><code><span class="comment">//创建一条Android Beam NDEF消息 </span>
+String payload = <span class="string">"Two ot beam across"</span>;
+String mimeType = <span class="string">"application/com.paad.nfcbeam"</span>;
+byte[] mimeBytes = mimeType.getByte(Charset.forName(<span class="string">"US-ASCII));</span>
+
+NdefMessage nfcMessage = new NdefMessage(new NdefRecord[]{
+    <span class="comment">//创建NFC有效载荷</span>
+    new NdefRecord(
+        NdefRecord.TNF_MIME_MEDIA,
+        mimeBytes,
+        new byte[<span class="number">0</span>],
+        payload.getBytes()),
+        <span class="comment">//添加ARR(Android Application Record)),</span>
+        NdefRecord.createApplicationRecord(<span class="string">"com.paad,nfcbeam"</span>)
+    )
+};
+</code></pre><h4 id="分配Android_Beam有效载荷">分配Android Beam有效载荷</h4><blockquote>
+<p>使用NFC Adapter可以指定Android Beam的有效载荷，通过使用NfcAdapter类的<code>getDefaultAdapter</code>静态方法，可以访问默认的NFC Adapter:</p>
+</blockquote>
+<pre><code>N<span class="built_in">fc</span>Adapter nfcAdapter = N<span class="built_in">fc</span>Adapter.getDefaultAdapter(this);
+</code></pre><blockquote>
+<p>有两种方法可以把以上程序中创建的NDEF Message指定为应用程序的Android Beam有效载荷。最简单的方法是使用<code>setNdefPushMessage</code>方法来分配当Android Beam启动时总是应该从当前的Activity发送的消息。通常，这种分配只需要在Activity的onResume方法中完成一次：</p>
+</blockquote>
+<pre><code>nfcAdapter.setNdefPushMessage(nfcMessage,<span class="keyword">this</span>);
+</code></pre><blockquote>
+<p>更好的方法是使用<code>setNdefPushMessageCallback</code>方法。该处理程序在消息被传输之前立即触发，允许你根据应用程序当前的上下文—-如，在看哪个视频，浏览哪个网页，或者哪个地图坐标居中—-动态设置有效载荷的内容，如下程序所示：</p>
+</blockquote>
+<pre><code><span class="comment">//动态设置android beam消息</span>
+nfcAdapter.setNdefPushMessageCallback(<span class="keyword">new</span> CreateNdefMessageCallback(){
+    <span class="function"><span class="keyword">public</span> NdefMessage <span class="title">createNdefMessage</span><span class="params">(NfcEvent <span class="keyword">event</span>)</span></span>{
+        String payload = <span class="string">"Beam me up,Android !\n\n"</span>+
+        <span class="string">"Beam Time:"</span> + System.currentTimeMillis();
+        NdefMessage message = createMessage(payload);
+        <span class="keyword">return</span> message;
+        }
+    },<span class="keyword">this</span>);
+</code></pre><blockquote>
+<p>如果使用回调处理程序同时设置了静态和动态消息，那么只有动态消息会被传输。</p>
+</blockquote>
+<h4 id="接收Android_Beam消息">接收Android Beam消息</h4><blockquote>
+<p>Android Beam消息的接收方式与前面介绍的NFC标签十分类似。为了接收在前面打包的有效载荷，首先要在Activity中添加一个新的Intent Filter如下</p>
+</blockquote>
+<pre><code><span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"android.nfc.action.NDEF_DISCOVERED"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category,DEFAULT"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">data</span> <span class="attribute">android:mimeType</span>=<span class="value">"application/com.paad.nfcbeam"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span>
+</code></pre><blockquote>
+<p>Android Beam启动后，接收设备上的Activity就会被启动，如果接收设备上没有安装你的应用程序，那么Google Play Store将会启动，以允许用户下载你的应用程序。</p>
+<p>传输的数据会使用一个具有<code>NfcAdapter.ACTION_NDEF_DISCOVERED</code>动作的Intent传输给你的Activity,其有效载荷可作为一个NdfMessage数组用于存储对应的<code>NfcAdapter.EXTRA_NDEF_MESSAGES</code> extra,如下面程序所示：</p>
+</blockquote>
+<pre><code><span class="comment">//提取Android beam有效载荷</span>
+Parcelable[] messages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+NdefMessage <span class="keyword">message</span> = (NdefMessage)messages[<span class="number">0</span>];
+NdefRecord <span class="keyword">record</span> = <span class="keyword">message</span>.getRecords()[<span class="number">0</span>];
+<span class="keyword">String</span> payload = new <span class="keyword">String</span>(<span class="keyword">record</span>.getPayload());
+</code></pre><p>通常，有效载荷字符串是一个URI的形式，可以像对待Intent内封装的数据一样提取和处理它，以显示合适的视频，网页或地图坐标。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/NFC/">NFC</a><a href="/tags/android/">android</a><a href="/tags/技术/">技术</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2015/03/13/android/android-NFC/" data-title="android-NFC | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/13/android/android-蓝牙/" title="android-蓝牙">
+  <strong>上一篇：</strong><br/>
+  <span>
+  android-蓝牙</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/03/13/android/android网络wifi/"  title="android网络wifi">
+ <strong>下一篇：</strong><br/> 
+ <span>android网络wifi
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/03/13/android/android-NFC/" data-title="android-NFC" data-url="http://wn398.github.io/2015/03/13/android/android-NFC/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NFC"><span class="toc-number">1.</span> <span class="toc-text">NFC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#读取NFC标签"><span class="toc-number">1.1.</span> <span class="toc-text">读取NFC标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用前台分派系统"><span class="toc-number">1.2.</span> <span class="toc-text">使用前台分派系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android_Beam"><span class="toc-number">1.3.</span> <span class="toc-text">Android Beam</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建Android_Beam消息"><span class="toc-number">1.3.1.</span> <span class="toc-text">创建Android Beam消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分配Android_Beam有效载荷"><span class="toc-number">1.3.2.</span> <span class="toc-text">分配Android Beam有效载荷</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接收Android_Beam消息"><span class="toc-number">1.3.3.</span> <span class="toc-text">接收Android Beam消息</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<!--<p class="asidetitle">Music</p>-->
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期文章</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/03/17/android/android UI的一些技巧/">android_UI的一些技巧</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/17/android/android语音识别/">android语音识别</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/17/android/android传感器/">android传感器</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期更新</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2013/03/19/mysql数据库/">mysql数据库</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/10/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2012/10/18/SQL综合整理/">SQL综合整理</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/11/android/活动-Activity/">活动-Activity</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/11/android/service-服务/">service-服务</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>29</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+		
+			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>1</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/NFC/" style="font-size: 10px;">NFC</a><a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a><a href="/tags/UML/" style="font-size: 10px;">UML</a><a href="/tags/android/" style="font-size: 17.5px;">android</a><a href="/tags/android-UI/" style="font-size: 15px;">android_UI</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/mysql/" style="font-size: 10px;">mysql</a><a href="/tags/spring/" style="font-size: 10px;">spring</a><a href="/tags/sql/" style="font-size: 10px;">sql</a><a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a><a href="/tags/传感器/" style="font-size: 10px;">传感器</a><a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a><a href="/tags/定位/" style="font-size: 10px;">定位</a><a href="/tags/技术/" style="font-size: 20px;">技术</a><a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a><a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a><a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a><a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2015 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

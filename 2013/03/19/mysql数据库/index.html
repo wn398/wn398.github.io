@@ -1,0 +1,857 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>mysql数据库 | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="mysql手动配置目录
+在mysql安装目录下的my.ini，其它的ini文件都是针对不同数据库大小的配置模板，真正起作用的是my.ini所以修改配置就是修改my.ini文件
+
+mysql的数值类型整数类型
+tinyint 1字节
+smallint 2字节, 
+mediumint 3字节, 
+int">
+    
+    
+    <meta name="description" content="mysql手动配置目录
+在mysql安装目录下的my.ini，其它的ini文件都是针对不同数据库大小的配置模板，真正起作用的是my.ini所以修改配置就是修改my.ini文件
+
+mysql的数值类型整数类型
+tinyint 1字节
+smallint 2字节, 
+mediumint 3字节, 
+integer 4字节, 
+int 4字节, 
+bigint 8字节
+
+浮点数类型
+float 4字节,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql数据库">
+<meta property="og:url" content="http://wn398.github.io/2013/03/19/mysql数据库/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="mysql手动配置目录
+在mysql安装目录下的my.ini，其它的ini文件都是针对不同数据库大小的配置模板，真正起作用的是my.ini所以修改配置就是修改my.ini文件
+
+mysql的数值类型整数类型
+tinyint 1字节
+smallint 2字节, 
+mediumint 3字节, 
+integer 4字节, 
+int 4字节, 
+bigint 8字节
+
+浮点数类型
+float 4字节,">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql数据库">
+<meta name="twitter:description" content="mysql手动配置目录
+在mysql安装目录下的my.ini，其它的ini文件都是针对不同数据库大小的配置模板，真正起作用的是my.ini所以修改配置就是修改my.ini文件
+
+mysql的数值类型整数类型
+tinyint 1字节
+smallint 2字节, 
+mediumint 3字节, 
+integer 4字节, 
+int 4字节, 
+bigint 8字节
+
+浮点数类型
+float 4字节,">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/03/19/mysql数据库/" title="mysql数据库" itemprop="url">mysql数据库</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-03-19T06:44:43.000Z" itemprop="datePublished"> 发表于 2013-03-19</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql手动配置目录"><span class="toc-number">1.</span> <span class="toc-text">mysql手动配置目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql的数值类型"><span class="toc-number">2.</span> <span class="toc-text">mysql的数值类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#整数类型"><span class="toc-number">2.1.</span> <span class="toc-text">整数类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮点数类型"><span class="toc-number">2.2.</span> <span class="toc-text">浮点数类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定点数类型"><span class="toc-number">2.3.</span> <span class="toc-text">定点数类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日期与时间类型"><span class="toc-number">2.4.</span> <span class="toc-text">日期与时间类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串类型"><span class="toc-number">2.5.</span> <span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二进制类型"><span class="toc-number">2.6.</span> <span class="toc-text">二进制类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔类型"><span class="toc-number">2.7.</span> <span class="toc-text">布尔类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql存储路径"><span class="toc-number">3.</span> <span class="toc-text">mysql存储路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql存储引擎"><span class="toc-number">4.</span> <span class="toc-text">mysql存储引擎</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql的运算符"><span class="toc-number">5.</span> <span class="toc-text">mysql的运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql数据库函数"><span class="toc-number">6.</span> <span class="toc-text">mysql数据库函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数学函数"><span class="toc-number">6.1.</span> <span class="toc-text">数学函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串函数"><span class="toc-number">6.2.</span> <span class="toc-text">字符串函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日期和时间函数"><span class="toc-number">6.3.</span> <span class="toc-text">日期和时间函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取日期和时间函数"><span class="toc-number">6.3.1.</span> <span class="toc-text">获取日期和时间函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算日期和时间的函数"><span class="toc-number">6.3.2.</span> <span class="toc-text">计算日期和时间的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日期和时间格式化函数"><span class="toc-number">6.3.3.</span> <span class="toc-text">日期和时间格式化函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程函数"><span class="toc-number">6.4.</span> <span class="toc-text">流程函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统信息函数"><span class="toc-number">6.5.</span> <span class="toc-text">系统信息函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库信息函数"><span class="toc-number">6.5.1.</span> <span class="toc-text">数据库信息函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取用户名的函数"><span class="toc-number">6.5.2.</span> <span class="toc-text">获取用户名的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取字符串的字符集和排序方式的函数"><span class="toc-number">6.5.3.</span> <span class="toc-text">获取字符串的字符集和排序方式的函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密函数"><span class="toc-number">6.6.</span> <span class="toc-text">加密函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同进制的数字转换的函数"><span class="toc-number">6.7.</span> <span class="toc-text">不同进制的数字转换的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip地址与数字相互转换的函数"><span class="toc-number">6.8.</span> <span class="toc-text">ip地址与数字相互转换的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加锁函数和解锁函数"><span class="toc-number">6.9.</span> <span class="toc-text">加锁函数和解锁函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重复执行指定操作的函数"><span class="toc-number">6.10.</span> <span class="toc-text">重复执行指定操作的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改变字符集的函数"><span class="toc-number">6.11.</span> <span class="toc-text">改变字符集的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改变字段数据类型的函数"><span class="toc-number">6.12.</span> <span class="toc-text">改变字段数据类型的函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql用户管理"><span class="toc-number">7.</span> <span class="toc-text">mysql用户管理</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="mysql手动配置目录">mysql手动配置目录</h1><blockquote>
+<p>在mysql安装目录下的my.ini，其它的ini文件都是针对不同数据库大小的配置模板，真正起作用的是my.ini所以修改配置就是修改my.ini文件</p>
+</blockquote>
+<h1 id="mysql的数值类型">mysql的数值类型</h1><h2 id="整数类型">整数类型</h2><ul>
+<li>tinyint 1字节</li>
+<li>smallint 2字节, </li>
+<li>mediumint 3字节, </li>
+<li>integer 4字节, </li>
+<li>int 4字节, </li>
+<li>bigint 8字节</li>
+</ul>
+<h2 id="浮点数类型">浮点数类型</h2><ul>
+<li>float 4字节,</li>
+<li>double 8字节</li>
+<li>float(6,2)长度为6，小数点后保留2位  超过之后会四舍五入</li>
+</ul>
+<h2 id="定点数类型">定点数类型</h2><ul>
+<li>decimal 16字节</li>
+<li>decimal(6,2)  此类型默认为整型（10，0）小数后保留一位，超过之后会报错</li>
+</ul>
+<h2 id="日期与时间类型">日期与时间类型</h2><ul>
+<li>year 1字节 以YYYY形式存储 范围从1901-2155超过之后会为0000,</li>
+<li><p>time 3字节 以HH:MM:SS表示 范围 -838：59:59—838:59:59,</p>
+<pre><code><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">time</span> <span class="keyword">values</span> (<span class="keyword">now</span>())</span>
+</code></pre></li>
+<li>date 4字节 以YYYY-MM-DD 范围 1000-1-1——9999-12-31,使用<code>CURRENT_DATE</code>或<code>NOW()</code>输出当前日期</li>
+<li>datetime 8字节 YYYY-MM-DD HH:MM:范围SS,1000-1-1 ——9999-12-31</li>
+<li>timetamp 4个字节 范围从1970-01-01 08：00：01到2038-01-19 11：14：07</li>
+</ul>
+<h2 id="字符串类型">字符串类型</h2><ul>
+<li>char类型与varchar类型 在创建表时指定类型如CHAR(5)指定之后不可变长，VARCHAR(5)指定之后可变长，最长255</li>
+<li>TEXT 只能保存字符数据  <code>tinytext</code> <code>text</code> <code>mediumtext</code> <code>longtext</code></li>
+<li>ENUM类型 在创建表时以列表形式指定了形式如： <code>属性名 ENUM(&#39;值1&#39;，‘值2’...)</code></li>
+<li><p>SET类型  基本形式如下：<code>属性名 SET(&#39;值 1&#39;，‘值2’....)</code> set类型的值可以取列表中的一个元素或者多个元素的组合，最多有64个 如 </p>
+<pre><code><span class="operator"><span class="keyword">create</span> <span class="keyword">table</span> sets(a <span class="keyword">SET</span>(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>));</span>
+</code></pre></li>
+</ul>
+<h2 id="二进制类型">二进制类型</h2><ul>
+<li>binary(M) 字节数为M长度固定不足以‘\0’补充，</li>
+<li><p>varbinary(M) 这与char与varchar类型类似</p>
+<pre><code><span class="operator"><span class="keyword">create</span> <span class="keyword">table</span> vb (b <span class="built_in">binary</span>(<span class="number">4</span>),vb varbinary(<span class="number">4</span>));</span>  
+<span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> vb <span class="keyword">values</span>(<span class="string">'d'</span>,<span class="string">'d'</span>)    
+<span class="keyword">select</span> length(b),length(vb) <span class="keyword">from</span> vb;</span>
+</code></pre></li>
+<li><p>bit（M）M的最大值是65 创建表指定了最大长度 也是二进制类型</p>
+</li>
+<li>blob类型是一种特殊的二进制类型，可以保存数据量很大的数据如图片等，包括<code>tinyblob</code>,<code>blob</code>,<code>mediumblob</code>,<code>longblob</code>. 它和text类型相似<h2 id="布尔类型">布尔类型</h2>在sql中存在bool boolean类型，最后存储为tinyint(1)</li>
+</ul>
+<h1 id="mysql存储路径">mysql存储路径</h1><p>mysql中，<code>char</code>,<code>varchar</code>,<code>text</code>等字符串类型都可以存储路径。但是，如果路径中使用‘\’符号时，这个符号会被过滤。解决办法是，路径中用‘/’或者‘\’来代替‘\’</p>
+<h1 id="mysql存储引擎">mysql存储引擎</h1><ul>
+<li>innoDB存储引擎（默认） 提供了事务，回滚，崩溃修复能力，多版本并发控制的事务安全， 支持自动增长列，支持外键， 缺点是读写效率稍差，占用的数据空间大</li>
+<li>MyISAM存储引擎 占用空间小，处理速度快，缺点是不支持事务的完整性和并发性</li>
+<li>Memery存储引擎，特殊存储引擎。其使用存储在内存中的内容来创建表，而且所有数据也放在内存中。这样有利于对数据的快速的处理，提高整个表的处理效率。但表的大小是受限制的，取决于两个参数</li>
+</ul>
+<p>查看支持的存储引擎：</p>
+<pre><code><span class="operator"><span class="keyword">show</span> <span class="keyword">engines</span> 
+<span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'have%'</span></span>
+</code></pre><p>查看默认存储引擎</p>
+<pre><code><span class="operator"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'storage_engine'</span>;</span>
+</code></pre><h1 id="mysql的运算符">mysql的运算符</h1><ul>
+<li><p>算术运算符  + - * / div  %  mod</p>
+<p>  如：mod(a,3)</p>
+</li>
+<li>比较运算符  = &lt;&gt; != &lt;=&gt; &lt; &gt;  is null is not null between and  in like regexp</li>
+<li><p>逻辑运算符  &amp;&amp; and 与  ||  or 或  ！ not 非   xor 异或</p>
+</li>
+<li><p>位运算符 &amp;按位与，|按位或，`按位取反，&lt;&lt;按位左移 左移右边补0，&gt;&gt;按位右移 右移左边补0</p>
+</li>
+</ul>
+<h1 id="mysql数据库函数">mysql数据库函数</h1><hr>
+<h2 id="数学函数">数学函数</h2><ul>
+<li>ABS(x) 用来求绝对值</li>
+<li>pi() 获取圆周率</li>
+<li>Sort(x) 求平方根</li>
+<li>mod(x,y) 用来求余数</li>
+<li>ceil(x)和ceiling(x) 返回大于或等于x的最小整数</li>
+<li>floor(x)函数 返回小于或等于x的最大整数</li>
+<li>rand()和rand(x) 返回0-1的随机数 rand()完全随机 rand(x)x相同时返回的值是相同的</li>
+<li>四舍五入函数 round(x) 返回离x最近的整数，round(x,y)返回x保留到小数点后y位的值，截断时要四舍五入,</li>
+<li>truncate(x,y) 返回x保留到小数点后y位的值，不进行四舍五入</li>
+<li>符号函数 sign(x)  返回x的符号，x是负数，0，正数分别返回-1，0，1.</li>
+<li>幂运算函数 pow(x,y)和power(x,y) 这两个函数计算x的y次方，exp(x)函数计算e的x次方</li>
+<li>对数运算函数 log(x)计算x的自然对数。log10(x)函数计算以10为底的对数。</li>
+<li>角度与弧度相互转换的函数 radians(x)将角度转换为弧度，degrees(x)将弧度转换为角度</li>
+<li>正弦函数和反正弦函数 sin(x) asin(x)</li>
+<li>余弦函数和反余弦函数 cos(x) acos(x) 超出范围返回null</li>
+<li>正切函数，反正切函数和余切函数 tan(x) atan(x) cot(x)</li>
+</ul>
+<h2 id="字符串函数">字符串函数</h2><ul>
+<li>char_length(s)函数 计算字符串s的字符数;</li>
+<li>length(s)函数 计算字符串S的长度</li>
+<li>合并字符串的函数concat(s1,s2,..)和concat_ws(x,s1,s2,..)第二个函数用参数x隔开</li>
+<li>替换字符串的函数insert(s1,x,len,s2)将字符串s1中x位置开始长度为len的字符串用s2替换</li>
+<li>字母大小写转换的函数 upuer(s) ucase（s)变大写。lower(s) lcase(s)变小写</li>
+<li>获取指定长度的字符串函数left(s,x),right(s,x)获取前几个字符和后几个字符</li>
+<li>填充字符串的函数lpad(s1,len,s2)将字符串s2填充到s1的开始处，使字符串长度达到len,rpad(s1,len,s2)将字符串s2填充到s1的结尾处，使字符串长度达到len</li>
+<li>删除空格的函数 ltrim(s)去掉字符串s开始处空格 rtrim(s)去掉字符串结尾处的空格,trim(s)去掉开始处和结尾处的空格</li>
+<li>删除指定字符串的函数 trim(s1 from s)去掉字符串s中开始处和结尾处的字符串s1</li>
+<li>重复生成字符串函数 repeat(s,x)将字符串s重复x次</li>
+<li>空格函数space（n）返回n个空格 replace(s,s1,s2)函数将字符串s2替代字符串s中的s1</li>
+<li>比较字符串 strcmp(s1,s2)</li>
+<li>获取子串的函数 substring(s,n,len)和mid（s,n,len)从字符串s的第n个位置开始获取长度<br>为len的字符串</li>
+<li>匹配子串开始位置locate(s1,s).position(s1 in s) instr(s,s1)从字符串s中获取s1的开始位置</li>
+<li>字符串逆序函数 reverse(s)</li>
+<li>返回指定位置的字符串的函数 elt(n,s1,s2,…)返回第n个字符串</li>
+<li>返回指定字符串位置的函数 field(s,s1,s2,..)返回第一个与字符串s匹配的位置</li>
+<li>返回子串位置的函数 find_in_set(s1,s2)返回在字符串s2中与s1匹配的字符串的位置</li>
+<li>选取字符串的函数 make_set(x,s1,s2,..)函数按x的二进制从s1,s2,..sn中选取字符串。如<br>12的二进制为1100。这个二进制数从右到左的第三位和第四位是1.所以选取s3和s4.</li>
+</ul>
+<h2 id="日期和时间函数">日期和时间函数</h2><h3 id="获取日期和时间函数">获取日期和时间函数</h3><ul>
+<li>curdate()和current_date() 获取当前日期</li>
+<li>current_time（）获取当前时间</li>
+<li>获取当前日期和时间的函数 now(),current_timestamp(),localtime()和sysdate()</li>
+<li>unix时间戳函数  unix_timestamp()函数以unix时间戳形式返回当前时间</li>
+<li>unix_timestamp(d)函数 将时间d以unix时间戳形式返回。</li>
+<li>from_unixtime(d)函数 把unix时间戳的时间转换为普通格式的时间</li>
+<li>unix_timestamp(d)函数和from_unixtime(d)互为反函数</li>
+<li>返回utc日期的函数和返回utc时间的函数  utc_date()返回utc日期 utc_time()返回<br>utc时间。</li>
+<li>获取月份的函数month(d)和monthname(d)前者是数字，后者是英文单词</li>
+<li>获取星期的函数 dayname(d)显示其英文名 dayofweek(d)1表示星期日，2为星期一,weekday(d) 0表示星期一，1表示星期二,获取星期数的函数 week(d)和weekofyear(d);</li>
+<li>获取天数的函数dayofyear(d)本年第几天 和dayofmonth(d)本月的第几天;</li>
+<li>year(d)返回年份值</li>
+<li>quarter（d）函数返回日期d是本年第几季度</li>
+<li>hour(t)返回时间中的 t 的小时值</li>
+<li>minute(t)函数返回时间t时间T中的分钟值</li>
+<li>second(d）返回秒钟值</li>
+<li>获取日期的指定值extract(type from d)</li>
+<li>时间和秒钟转换的函数 time_to_sec(t） sec_to_time(s)<h3 id="计算日期和时间的函数">计算日期和时间的函数</h3></li>
+<li>to_days(d)把日期转换成天数</li>
+<li>from_days(n)天数转换成日期</li>
+<li>datediff(d1,d2)两个日期差</li>
+<li>adddate(d,n)给日期d加n天</li>
+<li>subdate(d,n)给日期d减去n天,</li>
+<li>addtime(t,n)给时间t加n秒 </li>
+<li>subtime(t,n)给时间减去n秒</li>
+<li><p>adddate(d,interval expr type)和date_add(d,interval expr type)<br>  计算一年一个月后的日期和时间</p>
+<pre><code><span class="operator"><span class="keyword">select</span> dt,<span class="keyword">adddate</span>(dt,<span class="built_in">interval</span> <span class="string">'1 1'</span>year_month)<span class="keyword">from</span> t4;</span>
+</code></pre><h3 id="日期和时间格式化函数">日期和时间格式化函数</h3></li>
+<li>date_format(d,f)</li>
+<li>time_format(t,f)</li>
+<li>get_format(type,s)   参见mysql日期格式</li>
+</ul>
+<h2 id="流程函数">流程函数</h2><blockquote>
+<p>这类函数主要用于在SQL语句中控制条件选择。包括if语句，case语句，when语句等</p>
+</blockquote>
+<ul>
+<li>if(expr,v1,v2)表达式expr成立，满足返回v1,否则返回v2</li>
+<li>ifnull(v1,v2)如果v1不为空，就显示v1否则显示v2</li>
+<li>case expr when expr1 then v1 [when expr2 then v2 …][else vn] end</li>
+</ul>
+<p>如</p>
+<pre><code><span class="operator"><span class="keyword">select</span> id,grade, <span class="keyword">case</span> <span class="keyword">when</span> grade&gt;<span class="number">60</span> <span class="keyword">then</span> <span class="string">'good'</span> <span class="keyword">when</span> grade=<span class="number">60</span> <span class="keyword">then</span> <span class="string">'pass'</span>
+   <span class="keyword">else</span> <span class="string">'fail'</span> <span class="keyword">end</span> <span class="keyword">level</span> <span class="keyword">from</span> t6;</span>
+</code></pre><h2 id="系统信息函数">系统信息函数</h2><blockquote>
+<p>获取mysql数据库的系统信息。其中包括获取数据库名的函数，获取当前用户的函数。获取数据库<br>版本的函数。</p>
+<h3 id="数据库信息函数">数据库信息函数</h3><ul>
+<li>version()函数返回数据库的版本号</li>
+<li>connection_id()返回服务器的连接数，也就是到现在为止mysql服务的连接次数</li>
+<li>database()和schema()返回当前数据库名</li>
+<li>last_insert_id()函数返回最后生成的auto_increment值<h3 id="获取用户名的函数">获取用户名的函数</h3></li>
+<li>user(),system_user(),session_user(),current_user(),current_user返回当前用户名称<h3 id="获取字符串的字符集和排序方式的函数">获取字符串的字符集和排序方式的函数</h3></li>
+<li>charset(str)返回字符串str的字符集</li>
+<li>collation(str)返回字符串str的字符排列方式</li>
+</ul>
+</blockquote>
+<h2 id="加密函数">加密函数</h2><blockquote>
+<p>对字符串进行加密解密。包括字符串加密函数，字符串解密函数等。</p>
+</blockquote>
+<ul>
+<li>password(str)对字符串str进行加密</li>
+<li>md5(str)可以对字符串str进行加密</li>
+<li>encode(str,pswd_str)可以使用字符串pswd_str来加密字符串str.加密的结果是一个二进制<br>数，必须使用blob类型的字段来保存它。</li>
+<li>decode(crypt_str,pswd_str)可以使用字符串pswd_str来为crypt_str解密。</li>
+<li>format(x,n)函数可以将数字x进行格式化，将x保留到小数点后n位，这个过程要四舍五入</li>
+</ul>
+<h2 id="不同进制的数字转换的函数">不同进制的数字转换的函数</h2><ul>
+<li>ascii(s)返回字符串S的第一个字符的ASCII码</li>
+<li>Bin(x)返回X的二进制编码</li>
+<li>hex(x)返回x的十六进制编码</li>
+<li>oct(x)返回x的八进制编码</li>
+<li>conv(x,f1,f2)将x从f1进制数变成f2进制数</li>
+</ul>
+<h2 id="ip地址与数字相互转换的函数">ip地址与数字相互转换的函数</h2><ul>
+<li>inet_aton(ip)将ip地址转换为数字表示</li>
+<li>inet_ntoa(n)将数字n转换成ip的形式，其中ip值要加引号，互为反函数</li>
+</ul>
+<h2 id="加锁函数和解锁函数">加锁函数和解锁函数</h2><ul>
+<li>get_lock(naem,time)定义一个名称为name，持续时间长度为time秒的锁。如果锁定成功返回1,如果尝试失败返回0，如果遇到错误，返回null</li>
+<li>release_lock(name)解除名称为name的锁，如果解锁成功返回1，如果尝试超时，返回0，如果解锁失败返回null，</li>
+<li>is_free_lock(name)判断是否使用名为name的锁。如果使用返回0，否则返回1</li>
+</ul>
+<h2 id="重复执行指定操作的函数">重复执行指定操作的函数</h2><ul>
+<li>benchmark(count,expr)函数将表达式expr重复执行count次，然后返回执行时间。该函数用来判断mysql处理表达式的速度</li>
+</ul>
+<h2 id="改变字符集的函数">改变字符集的函数</h2><ul>
+<li>convert(s using cs)将字符串s的字符集变成cs</li>
+</ul>
+<h2 id="改变字段数据类型的函数">改变字段数据类型的函数</h2><ul>
+<li>cast(x as type) convert(x,type)将x变成type类型这两个函数只对binary,char,date,datetime,time,signed integer, unsignde integer这些类型起作用，但两种方法只是改变了输出值的数据类型，并没有改变表中字段的类型</li>
+</ul>
+<h1 id="mysql用户管理">mysql用户管理</h1><blockquote>
+<p>mysql用户包括普通用户和root用户。这两种用户的权限不一样。root 用户是超级管理员，拥有所有的权限。root用户的权限包括创建用户，删除用户。修改普通用户的密码等管理权限。而普通用户只拥有创建该用户时赋予它的权限。用户管理包括管理用户的账户，权限等。</p>
+</blockquote>
+<p>权限表介绍<br> 安装mysql时会自动安装一个mysql的数据库。mysql数据库下面存储的都是权限表。这些权限表 中最重要的是user表，，db表和host表。除此之外，还有tables_priv表，columns_priv表 proc_priv表等</p>
+<ul>
+<li>user表 基本包括四种列 用户列，权限列，安全列，资源控制列    </li>
+<li>db表和host表也是权限表。db表存储了某个用户对一个数据库的权限。db表比较常用，而host表少用到。 基本包括 用户列 和 权限列</li>
+<li>tables_priv表可以对单个表进行权限设置。tables_priv包含8个字段。分别是Host.Db,User.Table_name,Table_priv,Colunm_priv,Timestamp和Grantor。前四个字段分别表示主机名，数据库名，用户名和表名。</li>
+<li>columns_priv表可对单个列进行权限设置</li>
+<li>table_priv表示对表进行操作的权限。这些权限包括select,insert,update,delete,create,drop,grant,references,index和alter.</li>
+<li>column_priv表示对表中的数据列进行操作的权限。这些权限包括select,insert,update和references。timestamp表示修改权限的时间。</li>
+<li>grantor表示权限是谁设置的。</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/数据库/">数据库</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/mysql/">mysql</a><a href="/tags/技术/">技术</a><a href="/tags/数据库/">数据库</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2013/03/19/mysql数据库/" data-title="mysql数据库 | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2013/03/22/spring笔记/" title="spring笔记">
+  <strong>上一篇：</strong><br/>
+  <span>
+  spring笔记</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2013/01/20/nosql简介/"  title="nosql简介">
+ <strong>下一篇：</strong><br/> 
+ <span>nosql简介
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2013/03/19/mysql数据库/" data-title="mysql数据库" data-url="http://wn398.github.io/2013/03/19/mysql数据库/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql手动配置目录"><span class="toc-number">1.</span> <span class="toc-text">mysql手动配置目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql的数值类型"><span class="toc-number">2.</span> <span class="toc-text">mysql的数值类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#整数类型"><span class="toc-number">2.1.</span> <span class="toc-text">整数类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮点数类型"><span class="toc-number">2.2.</span> <span class="toc-text">浮点数类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定点数类型"><span class="toc-number">2.3.</span> <span class="toc-text">定点数类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日期与时间类型"><span class="toc-number">2.4.</span> <span class="toc-text">日期与时间类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串类型"><span class="toc-number">2.5.</span> <span class="toc-text">字符串类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二进制类型"><span class="toc-number">2.6.</span> <span class="toc-text">二进制类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔类型"><span class="toc-number">2.7.</span> <span class="toc-text">布尔类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql存储路径"><span class="toc-number">3.</span> <span class="toc-text">mysql存储路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql存储引擎"><span class="toc-number">4.</span> <span class="toc-text">mysql存储引擎</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql的运算符"><span class="toc-number">5.</span> <span class="toc-text">mysql的运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql数据库函数"><span class="toc-number">6.</span> <span class="toc-text">mysql数据库函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数学函数"><span class="toc-number">6.1.</span> <span class="toc-text">数学函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串函数"><span class="toc-number">6.2.</span> <span class="toc-text">字符串函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日期和时间函数"><span class="toc-number">6.3.</span> <span class="toc-text">日期和时间函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取日期和时间函数"><span class="toc-number">6.3.1.</span> <span class="toc-text">获取日期和时间函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算日期和时间的函数"><span class="toc-number">6.3.2.</span> <span class="toc-text">计算日期和时间的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日期和时间格式化函数"><span class="toc-number">6.3.3.</span> <span class="toc-text">日期和时间格式化函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程函数"><span class="toc-number">6.4.</span> <span class="toc-text">流程函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统信息函数"><span class="toc-number">6.5.</span> <span class="toc-text">系统信息函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库信息函数"><span class="toc-number">6.5.1.</span> <span class="toc-text">数据库信息函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取用户名的函数"><span class="toc-number">6.5.2.</span> <span class="toc-text">获取用户名的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取字符串的字符集和排序方式的函数"><span class="toc-number">6.5.3.</span> <span class="toc-text">获取字符串的字符集和排序方式的函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密函数"><span class="toc-number">6.6.</span> <span class="toc-text">加密函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同进制的数字转换的函数"><span class="toc-number">6.7.</span> <span class="toc-text">不同进制的数字转换的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip地址与数字相互转换的函数"><span class="toc-number">6.8.</span> <span class="toc-text">ip地址与数字相互转换的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加锁函数和解锁函数"><span class="toc-number">6.9.</span> <span class="toc-text">加锁函数和解锁函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重复执行指定操作的函数"><span class="toc-number">6.10.</span> <span class="toc-text">重复执行指定操作的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改变字符集的函数"><span class="toc-number">6.11.</span> <span class="toc-text">改变字符集的函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改变字段数据类型的函数"><span class="toc-number">6.12.</span> <span class="toc-text">改变字段数据类型的函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql用户管理"><span class="toc-number">7.</span> <span class="toc-text">mysql用户管理</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<!--<p class="asidetitle">Music</p>-->
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期文章</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/03/17/android/android UI的一些技巧/">android_UI的一些技巧</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/17/android/android语音识别/">android语音识别</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/17/android/android传感器/">android传感器</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期更新</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2013/03/19/mysql数据库/">mysql数据库</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/10/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2012/10/18/SQL综合整理/">SQL综合整理</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/11/android/活动-Activity/">活动-Activity</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/11/android/service-服务/">service-服务</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>29</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+		
+			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>1</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/NFC/" style="font-size: 10px;">NFC</a><a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a><a href="/tags/UML/" style="font-size: 10px;">UML</a><a href="/tags/android/" style="font-size: 17.5px;">android</a><a href="/tags/android-UI/" style="font-size: 15px;">android_UI</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/mysql/" style="font-size: 10px;">mysql</a><a href="/tags/spring/" style="font-size: 10px;">spring</a><a href="/tags/sql/" style="font-size: 10px;">sql</a><a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a><a href="/tags/传感器/" style="font-size: 10px;">传感器</a><a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a><a href="/tags/定位/" style="font-size: 10px;">定位</a><a href="/tags/技术/" style="font-size: 20px;">技术</a><a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a><a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a><a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a><a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2015 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

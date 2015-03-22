@@ -1,0 +1,825 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>spring笔记 | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="spring简介
+spring是一个容器框架，它用于配置bean并维护bean之间的关系的框架(bean是java中的任何一种对象，javabean/service/action/数据源/dao,ioc(控制反转)，di(依赖注入))。它可以管理web层，业务层，dao层，持久层，该spring可以">
+    
+    
+    <meta name="description" content="spring简介
+spring是一个容器框架，它用于配置bean并维护bean之间的关系的框架(bean是java中的任何一种对象，javabean/service/action/数据源/dao,ioc(控制反转)，di(依赖注入))。它可以管理web层，业务层，dao层，持久层，该spring可以配置各个层的组件（bean）并且维护各个bean之间的关系当spring框架加载的时候，spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring笔记">
+<meta property="og:url" content="http://wn398.github.io/2013/03/22/spring笔记/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="spring简介
+spring是一个容器框架，它用于配置bean并维护bean之间的关系的框架(bean是java中的任何一种对象，javabean/service/action/数据源/dao,ioc(控制反转)，di(依赖注入))。它可以管理web层，业务层，dao层，持久层，该spring可以配置各个层的组件（bean）并且维护各个bean之间的关系当spring框架加载的时候，spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring笔记">
+<meta name="twitter:description" content="spring简介
+spring是一个容器框架，它用于配置bean并维护bean之间的关系的框架(bean是java中的任何一种对象，javabean/service/action/数据源/dao,ioc(控制反转)，di(依赖注入))。它可以管理web层，业务层，dao层，持久层，该spring可以配置各个层的组件（bean）并且维护各个bean之间的关系当spring框架加载的时候，spring">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/03/22/spring笔记/" title="spring笔记" itemprop="url">spring笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-03-22T14:47:39.000Z" itemprop="datePublished"> 发表于 2013-03-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#spring简介"><span class="toc-number">1.</span> <span class="toc-text">spring简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开发spring项目"><span class="toc-number">2.</span> <span class="toc-text">开发spring项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在java文件中使用spring"><span class="toc-number">3.</span> <span class="toc-text">在java文件中使用spring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#得到spring的applicationContext对象（容器对象）"><span class="toc-number">3.1.</span> <span class="toc-text">得到spring的applicationContext对象（容器对象）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ioc_（inverse_of_controll）控制反转"><span class="toc-number">4.</span> <span class="toc-text">ioc （inverse of controll）控制反转</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#di_(dependency_injection)依赖注入"><span class="toc-number">5.</span> <span class="toc-text">di (dependency injection)依赖注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bean"><span class="toc-number">6.</span> <span class="toc-text">bean</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#bean的scope"><span class="toc-number">6.1.</span> <span class="toc-text">bean的scope</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bean工厂介绍"><span class="toc-number">6.2.</span> <span class="toc-text">bean工厂介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#装配bean"><span class="toc-number">6.3.</span> <span class="toc-text">装配bean</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ApplicationContext"><span class="toc-number">6.3.1.</span> <span class="toc-text">ApplicationContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用应用上下文applicationContext"><span class="toc-number">6.3.2.</span> <span class="toc-text">使用应用上下文applicationContext</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bean的生命周期："><span class="toc-number">6.4.</span> <span class="toc-text">bean的生命周期：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置bean："><span class="toc-number">6.5.</span> <span class="toc-text">配置bean：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何给集合类型注入值"><span class="toc-number">6.5.1.</span> <span class="toc-text">如何给集合类型注入值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承配置"><span class="toc-number">6.5.2.</span> <span class="toc-text">继承配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造器注入方式"><span class="toc-number">6.5.3.</span> <span class="toc-text">构造器注入方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动装配方式注入（自动装配bean的属性值）："><span class="toc-number">6.5.4.</span> <span class="toc-text">自动装配方式注入（自动装配bean的属性值）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用spring的特殊bean"><span class="toc-number">6.5.5.</span> <span class="toc-text">使用spring的特殊bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对bean进行后处理"><span class="toc-number">6.5.6.</span> <span class="toc-text">对bean进行后处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册后处理Bean"><span class="toc-number">6.5.7.</span> <span class="toc-text">注册后处理Bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对bean工厂进行后处理"><span class="toc-number">6.5.8.</span> <span class="toc-text">对bean工厂进行后处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分散配置(有两种方式引入文件)"><span class="toc-number">6.5.9.</span> <span class="toc-text">分散配置(有两种方式引入文件)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分散配置(续)"><span class="toc-number">6.5.10.</span> <span class="toc-text">分散配置(续)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#感知其他bean"><span class="toc-number">6.5.11.</span> <span class="toc-text">感知其他bean</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AOP编程"><span class="toc-number">7.</span> <span class="toc-text">AOP编程</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="spring简介">spring简介</h1><blockquote>
+<p>spring是一个容器框架，它用于配置bean并维护bean之间的关系的框架(bean是java中的任何一种对象，javabean/service/action/数据源/dao,ioc(控制反转)，di(依赖注入))。它可以管理web层，业务层，dao层，持久层，该spring可以配置各个层的组件（bean）并且维护各个bean之间的关系<br>当spring框架加载的时候，spring会自动的创建bean放入到内存中</p>
+</blockquote>
+<h1 id="开发spring项目">开发spring项目</h1><ol>
+<li>引入spring架包（最小配置spring.jar该包把常用的jar都包括，还有common-loggings.jar） </li>
+<li>创建一个spring的核心文件，<code>applicationContext.xml</code>,该文件一般放在src目录下，该文件中引入xsd文件，可以从给出的案例中拷贝一份 </li>
+<li><p>配置bean </p>
+<pre><code><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"id"</span> <span class="attribute">class</span>=<span class="value">".."</span>&gt;</span> 
+<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"属性性名"</span>&gt;</span> 
+<span class="tag">&lt;<span class="title">value</span>&gt;</span>&amp;&amp;<span class="tag">&lt;/<span class="title">value</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">property</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span> 
+</code></pre></li>
+</ol>
+<h1 id="在java文件中使用spring">在java文件中使用spring</h1><h2 id="得到spring的applicationContext对象（容器对象）">得到spring的applicationContext对象（容器对象）</h2><pre><code>ApplicationContext <span class="keyword">ac</span> = new ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);<span class="comment">//创建spring容器对象，同时加载配置中的bean,此类为重量级，最好写一个工具类，单例模式设计 </span>
+
+UserService <span class="keyword">us</span> =(UserService)<span class="keyword">ac</span>.getBean(<span class="string">"bean的id"</span>);    <span class="comment">//调用对象的方法 </span>
+</code></pre><p>spring实际上是一个容器构架，可以配置各种bean并且可以维护bean与bean之间的关系，当我们需要使用某个bean的时候，我们可以getBean(id)，使用即可。 </p>
+<h1 id="ioc_（inverse_of_controll）控制反转">ioc （inverse of controll）控制反转</h1><blockquote>
+<p>所谓控制反转就是把创建对象和维护对象的关系的权力从程序中转移到spring容器文件（applicationContext.xml） </p>
+</blockquote>
+<h1 id="di_(dependency_injection)依赖注入">di (dependency injection)依赖注入</h1><blockquote>
+<p>实际上di和ioc是同一个概念，spring的设计者认为di更能表示spring的核心 </p>
+</blockquote>
+<p>spring开发提倡接口编程，配合di技术可以解决层与层之间的解耦，如web层与modle层<br>bean工厂:最简单的容器，提供了基础的依赖<br>注入支持。创建各种类型的Bean.<br>应用上下文(ApplicationContext):建立在bean工厂基础之上，提供系统架构服务。 </p>
+<h1 id="bean">bean</h1><h2 id="bean的scope">bean的scope</h2><pre><code>&lt;bean scope=“singleton|prototype|request|session” /&gt; 
+<span class="string">singleton:</span> 单例 默认值 
+<span class="string">prototype:</span> 原型 ，多例 
+<span class="string">request:</span> 一次请求有效( java web开发中) 
+<span class="string">session:</span> session级有效(java web开发中) 
+global-<span class="string">session:</span>在web中spring容器ApplicationContext一致 
+</code></pre><h2 id="bean工厂介绍">bean工厂介绍</h2><p>工厂设计模式，创建分发各种bean。配置好它们之间的写作关系，参与bean的生命周期。</p>
+<pre><code>BeanFactory <span class="literal">factory</span> = <span class="keyword">new</span> XmlBeanFactory( 
+<span class="keyword">new</span> ClassPathResource(<span class="string">"applicationContext.xml"</span>)); 
+</code></pre><p>bean工厂只把bean的定义信息载进来，用到的时候才实例化。factory.getBean(“mybean”);就可得到一个bean。 </p>
+<h2 id="装配bean">装配bean</h2><h3 id="ApplicationContext">ApplicationContext</h3><p>与bean工厂中bean的区别： </p>
+<p>从ApplicationContext应用上下文加载配置文件时就会实例化所有的单例bean，而用bean工厂加载配置文件时不会实例化bean，只有在使用的时候才去实例化。<br><strong>结论</strong>：如果使用ApplicationContext，则配置的bean如果是singlton不管用不用都会实例化（好处是可以预先加载，缺点就是耗内存）。如果是BeanFactory则当你实例化该对象时候，配置的bean不会被实例化，当你使用的时候，才被实例化（好处是节约内存，缺点是速度），一般没有特殊要求，应当使用Application完成，手持设备可以使用beanfactory </p>
+<h3 id="使用应用上下文applicationContext">使用应用上下文applicationContext</h3><blockquote>
+<p>三种经常用到的实现 </p>
+<ul>
+<li>ClassPathXmlApplicationContext:从类路径中加载 </li>
+<li>FileSystemXmlApplictionContext:从文件系统中加载 </li>
+<li>XmlWebApplicationContext：从web系统中加载，就是当web容器启动的时候就会加载 </li>
+</ul>
+</blockquote>
+<h2 id="bean的生命周期：">bean的生命周期：</h2><ol>
+<li>实例化（当程序加载配置文件的时候），把我们的bean(前提是scope=singleton)实例化到内存中 </li>
+<li>调用set方法，设置属性 </li>
+<li>如果实现了bean名字关注接口（beanNameAware），则可以通过setBeanName方法的参数获得bean在文件中配置的id </li>
+<li>如果实现了bean工厂关注接口（beanFactoryAware）,则可以通过setBeanFactory方法获得beanFactory </li>
+<li>如果实现了applicationContext关注接口（applicationContextAware）同样通过setApplicationContext方法获得上下文对象 </li>
+<li>BeanPostProcessor后置处理器，写一个类实现这个接口，把这个类的bean配置到文件中，每实例化一个对象都会调用该处理器实现类的两个方法（before,after）,面向切面编程，针对所有对象编程，会调用before方法 </li>
+<li>如果实现的InitializingBean接口，则会调用afterPropertySet方法 </li>
+<li>如果自己在<bean init-method="init">则可以在bean定义自己的初始化方法，init为方法名<br>也可用注解@PostConstruct </bean></li>
+<li>如果bean和一个后置处理器关联，则会调用Object postProcessAfterInitialization的after方法 </li>
+<li>现在可以使用bean了 </li>
+<li>关闭容器 </li>
+<li>如果实现disposiable接口，则在它的destroy方法中我们可以处理关闭bean之前做一些处理 </li>
+<li>也可以自己定制销毁方法<bean destroy-method="mydestroy">同定制初始化方法类似也可用注解@PreDestroy </bean></li>
+</ol>
+<p>我们在实际开发中往往没有用到上面这么多的过程，常见的流程是1，2，6，9，10，11<br>bean在工厂中创建的生命周期与applicationContext中生命周期不一样，factory相对简单一些 </p>
+<h2 id="配置bean：">配置bean：</h2><ol>
+<li>使用xml配置（三种方式，）spring的bean默认配置是单例模式，使用原型bean会对性能产生影响，尽量不要设置为singleton </li>
+<li><p>bean元素的property子元素指明了使用它的set方法来注入，可以注入任何东西，从基本类型到集合类，甚至是应用系统的bean,也可使用内部bean </p>
+<pre><code>&lt;bean id=<span class="string">""</span>&gt; 
+&lt;property name=<span class="string">""</span>&gt; 
+&lt;!--第一种方法引用bean&gt; 
+&lt;<span class="keyword">ref</span> bean=<span class="string">""</span>&gt; 
+&lt;!--第二种方法，内部bean&gt; 
+&lt;bean&gt;&lt;/bean&gt; 
+&lt;/property&gt; 
+&lt;/bean&gt; 
+</code></pre></li>
+</ol>
+<h3 id="如何给集合类型注入值">如何给集合类型注入值</h3><ol>
+<li><p>数组配置</p>
+<pre><code><span class="variable">&lt;property name="数据组名"&gt;</span> 
+    <span class="variable">&lt;list&gt;</span> 
+        <span class="variable">&lt;value&gt;</span><span class="keyword">*</span><span class="keyword">*</span><span class="variable">&lt;/value&gt;</span> 
+        <span class="variable">&lt;value&gt;</span><span class="keyword">*</span><span class="keyword">*</span><span class="variable">&lt;/value&gt;</span> 
+        ... 
+    <span class="variable">&lt;/list&gt;</span> 
+<span class="variable">&lt;/property&gt;</span> 
+</code></pre></li>
+<li><p>list配置</p>
+<pre><code>&lt;property name=<span class="string">"list名"</span>&gt; 
+    &lt;list&gt; 
+        &lt;<span class="keyword">ref</span> bean=<span class="string">"b1"</span>&gt; 
+        &lt;<span class="keyword">ref</span> bean=<span class="string">"b2"</span>&gt; 
+        ... 
+    &lt;/list&gt; 
+&lt;/property&gt; 
+</code></pre></li>
+<li><p>set配置</p>
+<pre><code>&lt;property name=<span class="string">"set名"</span>&gt; 
+    &lt;<span class="type">set</span>&gt; 
+        &lt;<span class="keyword">ref</span> bean=<span class="string">"b1"</span>&gt; 
+        &lt;<span class="keyword">ref</span> bean=<span class="string">"b2"</span>&gt; 
+        ... 
+    &lt;/<span class="type">set</span>&gt; 
+&lt;/property&gt; 
+</code></pre></li>
+<li><p>map配置 </p>
+<pre><code>&lt;property name=<span class="string">"map名"</span>&gt; 
+    &lt;map&gt; 
+        &lt;entry key=<span class="string">""</span> value-<span class="keyword">ref</span>=<span class="string">""</span>/&gt; 
+        &lt;entry key=<span class="string">""</span> value-<span class="keyword">ref</span>=<span class="string">""</span>/&gt; 
+    &lt;/map&gt; 
+&lt;/property&gt; 
+</code></pre></li>
+<li><p>property配置 </p>
+<pre><code><span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"property名"</span>&gt;</span> 
+    <span class="tag">&lt;<span class="title">props</span>&gt;</span> 
+        <span class="tag">&lt;<span class="title">prop</span> <span class="attribute">key</span>=<span class="value">""</span>&gt;</span>值 <span class="tag">&lt;/<span class="title">prop</span>&gt;</span> 
+    <span class="tag">&lt;/<span class="title">props</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">property</span>&gt;</span> 
+</code></pre></li>
+</ol>
+<h3 id="继承配置">继承配置</h3><blockquote>
+<p>在bean标签中配置一个parent=’父对象id”，则会继承父对象中的属性值，如果自己再配置则会覆盖父对象中传过来的属性值 </p>
+</blockquote>
+<h3 id="构造器注入方式">构造器注入方式</h3><pre><code>&lt;bean <span class="variable">id=</span><span class="string">"id"</span> <span class="variable">class=</span><span class="string">""</span>&gt; 
+    &lt;constructor-arg <span class="variable">index=</span><span class="string">"0"</span> <span class="variable">type=</span><span class="string">"java.lang.String"</span> <span class="variable">value=</span><span class="string">".."</span>/&gt; 
+    &lt;constructor-arg <span class="variable">index=</span><span class="string">"1"</span> <span class="variable">type=</span><span class="string">"java.lang.String"</span> <span class="variable">value=</span><span class="string">".."</span>/&gt; 
+&lt;/bean&gt; 
+</code></pre><p>set注入的缺点是无法清晰表达哪些属性是必须的，哪些是可选的，构造注入的优势是通过构造强制依赖关系，不可能实例化不完全或无法使用的bean </p>
+<h3 id="自动装配方式注入（自动装配bean的属性值）：">自动装配方式注入（自动装配bean的属性值）：</h3><blockquote>
+<p>有5种方式：<code>autowire=no,byName,byType,autodetect,constructor</code>. </p>
+<ol>
+<li>byName根据属性名自动装配（找id名与属性名相同的bean） </li>
+<li>byType根据类型自动装配，找不到，找到多个会报错 </li>
+<li>constructor查找和bean的构造参数一致的一个或多个bean，若找不到或找到多个抛异常，按照参数的类型装配,构造函数只能有一个 </li>
+<li>autodetect 3和2之间选一个， </li>
+<li>default 这个需要在beans属性中指定default-autowire=”…”,它指定了它下面所有bean的autowire的默认值。当你在<beans>指定了default-autowire后，所有有bean的默认autowire就是指定的装配方法,如果没有在<beans defautl-autowire="“指定”/">没有default-autowire=”指定”,则默认是default-autowire=”no” </beans></beans></li>
+<li>no 不自动装配 </li>
+</ol>
+</blockquote>
+<p>spring提供了<code>&lt;context:annotation-config/&gt;</code>配置，该配置可激活在类中探测到的各种注解 <code>@Required``@Autowire``@PostConstruct``@PreDestroy``@Resource``@EJB``@Persistence``@WebServiceRef</code>等等也可以选择为这此注解激活单独的后处理器。<br>如AutowiredAnnotationBeanPostProcessor(处理自动装配)<br>CommonAnnotationBeanPostProcessor(生命周期等)<br>注意：该标记不能激活事务处理，需要使用tx:annotaion-driven </p>
+<h3 id="使用spring的特殊bean">使用spring的特殊bean</h3><p>让spring特殊对待这些bean。使它们可以：</p>
+<ol>
+<li>通过配置后加工bean，涉及到Bean和Bean工厂生命周期。 </li>
+<li>改变依赖注入，将字符串转换成其它类型。 </li>
+<li>从属性文本装载信息，包括信息国际化。 </li>
+<li>监听并处理其它bean及spring发布的系统消息。 </li>
+<li>知道自己在spring中的唯一表识。 </li>
+</ol>
+<h3 id="对bean进行后处理">对bean进行后处理</h3><p>BeanPostProcessor接口提供机会来修改bean。</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">BeanPostProcessor</span>{ 
+<span class="comment">//Bean初始化(调用afterPropertiesSet()以及Bean的指 </span>
+<span class="comment">//定initmethod方法)之前被调用。 </span>
+<span class="function">Object <span class="title">postProcessorBeforeInitialation</span><span class="params">(…)</span></span>; 
+<span class="comment">//在初始化之后马上调用 </span>
+<span class="function">Object <span class="title">postProcessorAfterInitialization</span><span class="params">(…)</span></span>; 
+} 
+</code></pre><h3 id="注册后处理Bean">注册后处理Bean</h3><p>如果使用的是Bean工厂,需要调用工厂的addBeanPostProcessor()来注册.<br>factory.addBeanPostProcessor(…);<br>如果使用的是上下文同其他Bean一样:<br><code>&lt;bean id=&quot;&quot; class=&quot;……&quot; /&gt;</code></p>
+<h3 id="对bean工厂进行后处理">对bean工厂进行后处理</h3><p>BeanPostProcessor在bean载入后，对bean进行一些后处理工作。而BeanFactoryPostProcessor在bean工厂载入所有bean的定义后，实例化bean之前，对Bean工厂做一些后处理工作。</p>
+<pre><code>　 <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">BeanFactoryPostProcessor</span>{ 
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postProcessorBeanFactory</span><span class="params">(…)</span></span>; 
+} 
+</code></pre><p>如果使用的是应用上下文不需要将他注册为Bean工厂后处理器。上下文会自动注册它。按照正常的Bean声明即可 </p>
+<h3 id="分散配置(有两种方式引入文件)">分散配置(有两种方式引入文件)</h3><p>将配置文件分成几个分散的配置文件。如数据源。 </p>
+<pre><code><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">class</span>=<span class="value">"...PropertyPlaceholderConfigurer"</span>&gt;</span> 
+    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"locations"</span>&gt;</span> 
+        <span class="tag">&lt;<span class="title">list</span>&gt;</span> 
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>xx/yy/db.properties<span class="tag">&lt;/<span class="title">value</span>&gt;</span> 
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>xx/yy/db2.properties<span class="tag">&lt;/<span class="title">value</span>&gt;</span> 
+        <span class="tag">&lt;/<span class="title">list</span>&gt;</span> 
+    <span class="tag">&lt;/<span class="title">property</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span> 
+<span class="tag">&lt;<span class="title">!–</span> 名字空间配置(<span class="attribute">2.5</span>) <span class="attribute">--</span>&gt;</span> 
+<span class="tag">&lt;<span class="title">context:property-placeholder</span> <span class="attribute">location</span>=<span class="value">"classpath:com/hsp/spring/dispatcher/db.properties"</span>/&gt;</span> 
+</code></pre><p>如果有多个文件，在classpath后用逗号隔开写多个文件路径 </p>
+<pre><code>jdbc.properties 
+database.<span class="variable">url=</span> 
+database.<span class="variable">driver=</span> 
+datebase.<span class="variable">username=</span> 
+datebase.<span class="variable">password=</span> 
+</code></pre><h3 id="分散配置(续)">分散配置(续)</h3><p>使用占位符变量代替bean装配文件中的硬编码配置。占位符采 </p>
+<pre><code>${variable}形式。 
+<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"datasource"</span> 
+　　　 <span class="attribute">class</span>=<span class="value">"...DriverManagerDataSource"</span>&gt;</span> 
+<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"url"</span>&gt;</span> 
+    <span class="tag">&lt;<span class="title">value</span>&gt;</span>${database.url}<span class="tag">&lt;/<span class="title">value</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">property</span>&gt;</span> 
+...... 
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span> 
+</code></pre><h3 id="感知其他bean">感知其他bean</h3><p>运行在spring容器中的bean不知道自己的注册名，运行在哪里。实现以下三个接口：</p>
+<ul>
+<li><code>BeanNameAware</code>:知道自己的名字。 </li>
+<li><code>BeanFactoryAware</code>：所处的bean工厂。 </li>
+<li><code>ApplicationContextAware</code>：所在上下文 </li>
+</ul>
+<p>实现BeanNameAware接口。无需为该接口的setBeanName()方法作任何处理，bean被载入时，容器会自动调用该方法，为其设置id或name的值。<br>知道你在哪里<br>实现BeanFactoryAware(感知)或ApplicationContextAware接口。分别定义了setBeanFactory()和setApplicationContext()方法。 </p>
+<h1 id="AOP编程">AOP编程</h1><blockquote>
+<p>面向切面（方面）编程，是对所有对象或者是一类对象编程，核心是在不增加代码的基础上，还增加新功能<br>配置包括：被代理的对象，通知，代理对象<br>前两个普通bean配置<br>代理对象配置如下：</p>
+</blockquote>
+<pre><code><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"proxyFactoryBean"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span> 
+    <span class="comment">&lt;!--代理接口集--&gt;</span> 
+    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"proxyInterfaces"</span>&gt;</span> 
+    <span class="tag">&lt;<span class="title">list</span>&gt;</span> 
+    <span class="tag">&lt;<span class="title">value</span>&gt;</span>接口类<span class="tag">&lt;/<span class="title">value</span>&gt;</span> 
+    <span class="tag">&lt;<span class="title">value</span>&gt;</span>接口类<span class="tag">&lt;/<span class="title">value</span>&gt;</span> 
+    <span class="tag">&lt;/<span class="title">list</span>&gt;</span> 
+    <span class="tag">&lt;/<span class="title">property</span>&gt;</span> 
+<span class="comment">&lt;!--把通知织入到代理对象，配置通知--&gt;</span> 
+    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"interceptorNames"</span>&gt;</span> 
+    <span class="comment">&lt;!--相当于拦截器--&gt;</span> 
+    <span class="tag">&lt;<span class="title">value</span>&gt;</span>通知id<span class="tag">&lt;/<span class="title">value</span>&gt;</span> 
+    <span class="tag">&lt;/<span class="title">property</span>&gt;</span> 
+    <span class="tag">&lt;<span class="title">！--配置代理的对象--</span>&gt;</span> 
+    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"target"</span> <span class="attribute">ref</span>=<span class="value">""</span>/&gt;</span> 
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span> 
+</code></pre><p>步骤: </p>
+<ol>
+<li>定义被代理的接口 </li>
+<li>编写对象（被代理对象=目标对象） </li>
+<li>编写通知（前置通知） </li>
+<li>在spring文件中配置<br>配置被代理对象，配置通知，配置代理对象是ProxyFactoryBean实例<br>在代理对象中配置代理接口，织入通知 </li>
+</ol>
+<p>spring中aop中当你通过代理对象去实现aop技术的时候，获取的proxyFactoryBean是什么类型？<br>返回的是一个动态代理对象，如果目标对象实现了接口，则spring使用jdk的proxy动态代理技术完成，如果目标对象没有实现接口，则spring使用cglib动态代理技术完成</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ssh2/">ssh2</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/spring/">spring</a><a href="/tags/技术/">技术</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2013/03/22/spring笔记/" data-title="spring笔记 | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/10/git常用命令总结/" title="git常用命令总结">
+  <strong>上一篇：</strong><br/>
+  <span>
+  git常用命令总结</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2013/03/19/mysql数据库/"  title="mysql数据库">
+ <strong>下一篇：</strong><br/> 
+ <span>mysql数据库
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2013/03/22/spring笔记/" data-title="spring笔记" data-url="http://wn398.github.io/2013/03/22/spring笔记/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#spring简介"><span class="toc-number">1.</span> <span class="toc-text">spring简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开发spring项目"><span class="toc-number">2.</span> <span class="toc-text">开发spring项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在java文件中使用spring"><span class="toc-number">3.</span> <span class="toc-text">在java文件中使用spring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#得到spring的applicationContext对象（容器对象）"><span class="toc-number">3.1.</span> <span class="toc-text">得到spring的applicationContext对象（容器对象）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ioc_（inverse_of_controll）控制反转"><span class="toc-number">4.</span> <span class="toc-text">ioc （inverse of controll）控制反转</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#di_(dependency_injection)依赖注入"><span class="toc-number">5.</span> <span class="toc-text">di (dependency injection)依赖注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bean"><span class="toc-number">6.</span> <span class="toc-text">bean</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#bean的scope"><span class="toc-number">6.1.</span> <span class="toc-text">bean的scope</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bean工厂介绍"><span class="toc-number">6.2.</span> <span class="toc-text">bean工厂介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#装配bean"><span class="toc-number">6.3.</span> <span class="toc-text">装配bean</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ApplicationContext"><span class="toc-number">6.3.1.</span> <span class="toc-text">ApplicationContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用应用上下文applicationContext"><span class="toc-number">6.3.2.</span> <span class="toc-text">使用应用上下文applicationContext</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bean的生命周期："><span class="toc-number">6.4.</span> <span class="toc-text">bean的生命周期：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置bean："><span class="toc-number">6.5.</span> <span class="toc-text">配置bean：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何给集合类型注入值"><span class="toc-number">6.5.1.</span> <span class="toc-text">如何给集合类型注入值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承配置"><span class="toc-number">6.5.2.</span> <span class="toc-text">继承配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造器注入方式"><span class="toc-number">6.5.3.</span> <span class="toc-text">构造器注入方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动装配方式注入（自动装配bean的属性值）："><span class="toc-number">6.5.4.</span> <span class="toc-text">自动装配方式注入（自动装配bean的属性值）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用spring的特殊bean"><span class="toc-number">6.5.5.</span> <span class="toc-text">使用spring的特殊bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对bean进行后处理"><span class="toc-number">6.5.6.</span> <span class="toc-text">对bean进行后处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册后处理Bean"><span class="toc-number">6.5.7.</span> <span class="toc-text">注册后处理Bean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对bean工厂进行后处理"><span class="toc-number">6.5.8.</span> <span class="toc-text">对bean工厂进行后处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分散配置(有两种方式引入文件)"><span class="toc-number">6.5.9.</span> <span class="toc-text">分散配置(有两种方式引入文件)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分散配置(续)"><span class="toc-number">6.5.10.</span> <span class="toc-text">分散配置(续)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#感知其他bean"><span class="toc-number">6.5.11.</span> <span class="toc-text">感知其他bean</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AOP编程"><span class="toc-number">7.</span> <span class="toc-text">AOP编程</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<!--<p class="asidetitle">Music</p>-->
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期文章</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/03/17/android/android UI的一些技巧/">android_UI的一些技巧</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/17/android/android语音识别/">android语音识别</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/17/android/android传感器/">android传感器</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期更新</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2013/03/19/mysql数据库/">mysql数据库</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/10/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2012/10/18/SQL综合整理/">SQL综合整理</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/11/android/活动-Activity/">活动-Activity</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/11/android/service-服务/">service-服务</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>29</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+		
+			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>1</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/NFC/" style="font-size: 10px;">NFC</a><a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a><a href="/tags/UML/" style="font-size: 10px;">UML</a><a href="/tags/android/" style="font-size: 17.5px;">android</a><a href="/tags/android-UI/" style="font-size: 15px;">android_UI</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/mysql/" style="font-size: 10px;">mysql</a><a href="/tags/spring/" style="font-size: 10px;">spring</a><a href="/tags/sql/" style="font-size: 10px;">sql</a><a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a><a href="/tags/传感器/" style="font-size: 10px;">传感器</a><a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a><a href="/tags/定位/" style="font-size: 10px;">定位</a><a href="/tags/技术/" style="font-size: 20px;">技术</a><a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a><a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a><a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a><a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2015 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

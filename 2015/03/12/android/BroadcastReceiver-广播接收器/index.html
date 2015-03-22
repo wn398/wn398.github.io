@@ -1,0 +1,659 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>BroadcastReceiver-广播接收器 | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="广播
+标准广播：所有广播接收器都会在同一时刻接收到这条广播信息，它们之前没有任何先后顺序
+有序广播：同步执行的广播，在广播发出后，同一时刻只会有一个广播接收器能够收到这条广播信息。在这个广播接收器执行完后，广播会继续传递。所有接收的广播接收器是有先后顺序的，优先级高的先收到，并且前面的广播接收器还可">
+    
+    
+    <meta name="description" content="广播
+标准广播：所有广播接收器都会在同一时刻接收到这条广播信息，它们之前没有任何先后顺序
+有序广播：同步执行的广播，在广播发出后，同一时刻只会有一个广播接收器能够收到这条广播信息。在这个广播接收器执行完后，广播会继续传递。所有接收的广播接收器是有先后顺序的，优先级高的先收到，并且前面的广播接收器还可以拦截正在传递的广播，这样后面的广播接收器就无法收到广播消息了。
+
+广播注册
+一般有2种，在代码中注">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BroadcastReceiver-广播接收器">
+<meta property="og:url" content="http://wn398.github.io/2015/03/12/android/BroadcastReceiver-广播接收器/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="广播
+标准广播：所有广播接收器都会在同一时刻接收到这条广播信息，它们之前没有任何先后顺序
+有序广播：同步执行的广播，在广播发出后，同一时刻只会有一个广播接收器能够收到这条广播信息。在这个广播接收器执行完后，广播会继续传递。所有接收的广播接收器是有先后顺序的，优先级高的先收到，并且前面的广播接收器还可以拦截正在传递的广播，这样后面的广播接收器就无法收到广播消息了。
+
+广播注册
+一般有2种，在代码中注">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BroadcastReceiver-广播接收器">
+<meta name="twitter:description" content="广播
+标准广播：所有广播接收器都会在同一时刻接收到这条广播信息，它们之前没有任何先后顺序
+有序广播：同步执行的广播，在广播发出后，同一时刻只会有一个广播接收器能够收到这条广播信息。在这个广播接收器执行完后，广播会继续传递。所有接收的广播接收器是有先后顺序的，优先级高的先收到，并且前面的广播接收器还可以拦截正在传递的广播，这样后面的广播接收器就无法收到广播消息了。
+
+广播注册
+一般有2种，在代码中注">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/12/android/BroadcastReceiver-广播接收器/" title="BroadcastReceiver-广播接收器" itemprop="url">BroadcastReceiver-广播接收器</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-12T04:44:22.000Z" itemprop="datePublished"> 发表于 2015-03-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#广播"><span class="toc-number">1.</span> <span class="toc-text">广播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#广播注册"><span class="toc-number">2.</span> <span class="toc-text">广播注册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#动态注册："><span class="toc-number">2.1.</span> <span class="toc-text">动态注册：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静态注册"><span class="toc-number">2.2.</span> <span class="toc-text">静态注册</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发送自定义广播"><span class="toc-number">3.</span> <span class="toc-text">发送自定义广播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用本地广播"><span class="toc-number">4.</span> <span class="toc-text">使用本地广播</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="广播">广播</h2><ol>
+<li>标准广播：所有广播接收器都会在同一时刻接收到这条广播信息，它们之前没有任何先后顺序</li>
+<li>有序广播：同步执行的广播，在广播发出后，同一时刻只会有一个广播接收器能够收到这条广播信息。在这个广播接收器执行完后，广播会继续传递。所有接收的广播接收器是有先后顺序的，优先级高的先收到，并且前面的广播接收器还可以拦截正在传递的广播，这样后面的广播接收器就无法收到广播消息了。</li>
+</ol>
+<h2 id="广播注册">广播注册</h2><blockquote>
+<p>一般有2种，在代码中注册和在AndroidManifest.xml中注册，其中前者就是动态注册，后者为静态注册。</p>
+</blockquote>
+<h3 id="动态注册：">动态注册：</h3><p>创建广播接收器：只需要新建一个类，让它继承自BroadcastReciever,并重写父类的onReceive()方法就行了</p>
+<pre><code><span class="type">IntentFilter</span> intentFilter = <span class="keyword">new</span> <span class="type">IntentFilter</span><span class="literal">()</span>;
+intentFilter.addAction(<span class="string">"系统广信息"</span>)
+</code></pre><p>创建自己的定义的广播接收类</p>
+<pre><code>registerReceiver<span class="comment">(自己定义的广播接收类，intentFilter)</span>;
+</code></pre><p>这样就注册成功了，需要注意的是在onDestroy()方法中要<br>unregisterReceiver(自己定义的广播接收类对象)取消注册</p>
+<h3 id="静态注册">静态注册</h3><blockquote>
+<p>动态注册必须要在程序启动后才能收到广播。而静态注册可以让程序在未启动下就能收到广播。</p>
+</blockquote>
+<pre><code><span class="tag">&lt;<span class="title">receiver</span> <span class="attribute">android:name</span>=<span class="value">".自定义广播接收器类名"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"广播信息"</span>/&gt;</span>
+         <span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">receiver</span>&gt;</span>//在<span class="tag">&lt;<span class="title">application</span>&gt;</span>标签包含此定义
+</code></pre><h2 id="发送自定义广播">发送自定义广播</h2><ol>
+<li><p>发送标准广播</p>
+<pre><code>Intent intent = <span class="keyword">new</span> Intent(<span class="string">"广播信息"</span>);
+sendBroadcast(intent);
+</code></pre></li>
+<li><p>发送有序广播</p>
+<pre><code>Intent  intent = <span class="keyword">new</span> Intent(<span class="string">"广播信息"</span>);
+sendOrderedBraodcast(intent,权限信息);
+</code></pre></li>
+</ol>
+<p>注册权限信息在<code>&lt;intent-filter android:priority=&quot;100&quot;&gt;</code>中权限大的最先收到广播，想阻止广播继承传下去调用方法abortBroadcast();</p>
+<h2 id="使用本地广播">使用本地广播</h2><blockquote>
+<p>全局广播可以被其它应用程序接收到，安全性不足。而使用本地广播，只能在应用程序内部进行传递，并且广播接收器也只能接收来自本应用程序发出的广播。本地广播主要是使用LocalBoradcastManager来对广播进行管理，并提供了发送广播和注册广播接收器的方法。</p>
+</blockquote>
+<pre><code><span class="built_in">local</span>BroadcastManager = LocalBroadcastManager.getInstance(this);
+Intent intent = new Intent(<span class="string">"广播信息"</span>);
+<span class="built_in">local</span>BroadcastManager.sendBroadcast(intent)//发送广播
+
+<span class="built_in">local</span>BroadcastManager.unregisterReceiver(<span class="built_in">local</span>Receiver);
+</code></pre><p>需要注意的是本地广播是无法通过静态注册的方式来接收的。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a><a href="/tags/技术/">技术</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2015/03/12/android/BroadcastReceiver-广播接收器/" data-title="BroadcastReceiver-广播接收器 | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/12/android/android编程一些技巧/" title="android编程一些技巧">
+  <strong>上一篇：</strong><br/>
+  <span>
+  android编程一些技巧</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/03/12/android/Context Provider-内容提供器/"  title="Context Provider-内容提供器">
+ <strong>下一篇：</strong><br/> 
+ <span>Context Provider-内容提供器
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/03/12/android/BroadcastReceiver-广播接收器/" data-title="BroadcastReceiver-广播接收器" data-url="http://wn398.github.io/2015/03/12/android/BroadcastReceiver-广播接收器/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#广播"><span class="toc-number">1.</span> <span class="toc-text">广播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#广播注册"><span class="toc-number">2.</span> <span class="toc-text">广播注册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#动态注册："><span class="toc-number">2.1.</span> <span class="toc-text">动态注册：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静态注册"><span class="toc-number">2.2.</span> <span class="toc-text">静态注册</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发送自定义广播"><span class="toc-number">3.</span> <span class="toc-text">发送自定义广播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用本地广播"><span class="toc-number">4.</span> <span class="toc-text">使用本地广播</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<!--<p class="asidetitle">Music</p>-->
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期文章</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/03/17/android/android UI的一些技巧/">android_UI的一些技巧</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/17/android/android语音识别/">android语音识别</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/17/android/android传感器/">android传感器</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期更新</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2013/03/19/mysql数据库/">mysql数据库</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/10/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2012/10/18/SQL综合整理/">SQL综合整理</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/11/android/活动-Activity/">活动-Activity</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/11/android/service-服务/">service-服务</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>29</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+		
+			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>1</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/NFC/" style="font-size: 10px;">NFC</a><a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a><a href="/tags/UML/" style="font-size: 10px;">UML</a><a href="/tags/android/" style="font-size: 17.5px;">android</a><a href="/tags/android-UI/" style="font-size: 15px;">android_UI</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/mysql/" style="font-size: 10px;">mysql</a><a href="/tags/spring/" style="font-size: 10px;">spring</a><a href="/tags/sql/" style="font-size: 10px;">sql</a><a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a><a href="/tags/传感器/" style="font-size: 10px;">传感器</a><a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a><a href="/tags/定位/" style="font-size: 10px;">定位</a><a href="/tags/技术/" style="font-size: 20px;">技术</a><a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a><a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a><a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a><a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2015 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>
