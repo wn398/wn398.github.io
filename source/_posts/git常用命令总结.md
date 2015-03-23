@@ -1,11 +1,11 @@
 title: "git常用命令总结"
 date: 2015-03-10 20:19:34 
-updated: 2015/3/20 9:59:09 
+updated: 2015/3/23 14:34:02  
 tags:
 -  git
 -  技术
 
-categories: git
+categories: 技术辅助
 ---
 ##git 配置
 * 查看配置信息 `git config --list`
