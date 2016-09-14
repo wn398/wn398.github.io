@@ -1921,6 +1921,12 @@ section.comment {
 .doubanshow div {
   padding: 0.5em 0;
 }
+.entry {
+  color: #00f;
+}
+.entry a {
+  color: #008000;
+}
 footer {
   margin-top: 0.5em;
   background: #1f1f1f;

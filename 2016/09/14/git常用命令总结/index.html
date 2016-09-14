@@ -1,0 +1,935 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>git常用命令总结 | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="git 配置
+git init [文件夹名] 初始化一个git版本控制系统
+查看所有配置信息 git config --list
+git帮助命令  git help &amp;lt;verb&amp;gt; 或 git &amp;lt;verb&amp;gt; --help
+命令配置别名  git config --global[">
+    
+    
+    <meta name="description" content="git 配置
+git init [文件夹名] 初始化一个git版本控制系统
+查看所有配置信息 git config --list
+git帮助命令  git help &amp;lt;verb&amp;gt; 或 git &amp;lt;verb&amp;gt; --help
+命令配置别名  git config --global[或 --system] alias.别名 命令，如git config --global alias">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git常用命令总结">
+<meta property="og:url" content="http://wn398.github.io/2016/09/14/git常用命令总结/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="git 配置
+git init [文件夹名] 初始化一个git版本控制系统
+查看所有配置信息 git config --list
+git帮助命令  git help &amp;lt;verb&amp;gt; 或 git &amp;lt;verb&amp;gt; --help
+命令配置别名  git config --global[或 --system] alias.别名 命令，如git config --global alias">
+<meta property="og:updated_time" content="2016-09-14T15:26:44.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git常用命令总结">
+<meta name="twitter:description" content="git 配置
+git init [文件夹名] 初始化一个git版本控制系统
+查看所有配置信息 git config --list
+git帮助命令  git help &amp;lt;verb&amp;gt; 或 git &amp;lt;verb&amp;gt; --help
+命令配置别名  git config --global[或 --system] alias.别名 命令，如git config --global alias">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/14/git常用命令总结/" title="git常用命令总结" itemprop="url">git常用命令总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-14T15:26:42.000Z" itemprop="datePublished"> 发表于 2016-09-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git_配置"><span class="toc-number">1.</span> <span class="toc-text">git 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git_查看"><span class="toc-number">2.</span> <span class="toc-text">git 查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git_操作"><span class="toc-number">3.</span> <span class="toc-text">git 操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git_标签"><span class="toc-number">4.</span> <span class="toc-text">Git 标签</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="git_配置">git 配置</h2><ul>
+<li><code>git init [文件夹名]</code> 初始化一个git版本控制系统</li>
+<li>查看所有配置信息 <code>git config --list</code></li>
+<li>git帮助命令  <code>git help &lt;verb&gt; 或 git &lt;verb&gt; --help</code></li>
+<li>命令配置别名  <code>git config --global[或 --system] alias.别名 命令</code>，如<code>git config --global alias.ci commit</code></li>
+<li>打开配置文件： <ul>
+<li><code>git config -e</code> 打开版本库级别配置文件（位置在<code>.git/config</code>，要求在命令执行在版本库目录下）;  </li>
+<li><code>git config -e --global</code> 打开全局配置文件（位置在 <code>用户名/.gitcofnig</code>）; </li>
+<li><code>git config -e --system</code> 打开系统配置文件  这三个配置文件的优先级别是从高到低</li>
+</ul>
+</li>
+</ul>
+<h2 id="git_查看">git 查看</h2><ul>
+<li><code>git diff</code> <ul>
+<li>不带任何选项参数选项和参数显示工作区与暂存区（提交暂存区，stage）中相比的差异</li>
+<li><code>git diff HEAD</code>  将工作区和HEAD（当前工作分支的版本库文件）相比</li>
+<li><code>git diff --cached(--staged)</code> 提交暂存区和版本库中文件的差异</li>
+</ul>
+</li>
+<li>查看本地文件状态 <code>git status -s</code> -s参数显示精简格式输出</li>
+<li>Git 查看对象内容 <code>git cat-file -p 哈希值</code></li>
+<li>Git 提供了很多方法访问Git库中的对象（提交对象）<ol>
+<li>采用部分哈希值，只采用开头部分4位以上</li>
+<li>使用master代表分支master中最新的提交，也可以使用全称<code>refs/heads/master</code>或<code>heads/master</code></li>
+<li>使用HEAD代表版本库中最近的一次提交</li>
+<li>符号<code>^</code>可以用于指父提交<ul>
+<li><code>HEAD^</code> 代表版本库中上一次提交，最近提交的父提交<ul>
+<li><code>HEAD^^</code>代表HEAD^的父提交</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对于一个提交有多个父提交，可以在符号<code>^</code>后面用数字表示是第几个父提交</li>
+<li>符号<code>~&lt;n&gt;</code>也可以用于指代祖先提交，如 <code>a5889~5</code>即相当于<code>a5889^^^^^</code></li>
+<li>提交对应的树对象，可以用类似如下语法访问<code>a5899^{tree}</code></li>
+<li>某一次提交对应的文件对象，可以用如下语法访问<code>a58999:path/to/file</code></li>
+<li>暂存区中的文件对象，可以用如下语法访问:<code>path/to/file</code><blockquote>
+<p>查看的文件状态包括<em>已跟踪</em>、<em>未跟踪</em>文件的修改状态，<em>暂存状态（add之后未提交）</em></p>
+<blockquote>
+<p>只要在Changes to be commited这行下面的文件是已暂存状态（即git add了些文件的修改或新add此文件作为追踪）</p>
+<p>在Changes not staged for commit下面的，是已跟踪文件发生的变化，但还没有放到暂存区，要暂存这次更新，只要运行git add 此文件</p>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>版本表示法：<code>git rev-parse</code></p>
+<ol>
+<li><code>git rev-parse --symbolic --branches</code> 显示分支</li>
+<li><code>git rev-parse --symbolic --tags</code> 显示里程碑</li>
+<li><code>git rev-parse --symbolic --glob=refs/*</code> 显示定义的所有引用</li>
+<li>命令<code>git rev-parse</code>的另外一个重要功能就是将一个Git对象表达式表示为对应的SHA1哈希值。<pre><code><span class="number">1</span>. 显示 head的哈希值   <span class="escape">`g</span>it rev-parse head<span class="escape">`
+</span><span class="number">2</span>. 命令git describe输出也可以解析为正确的sha1哈希值
+<span class="number">3</span>. 可以同时显示多个表达式的sha1哈希值 <span class="escape">` </span>git rev-parse master refs/heads/master<span class="escape">`
+</span><span class="number">4</span>. 可以用哈希值的前几位指代整个哈希值  <span class="escape">`g</span>it rev-parse <span class="number">6522</span> <span class="number">6522</span>a0d<span class="escape">`
+</span><span class="number">5</span>. 里程碑的两种表示法均指向相同的对象  <span class="escape">`g</span>it rev-parse <span class="literal">A</span> refs/tags/<span class="literal">A</span><span class="escape">`
+</span><span class="number">6</span>. 显示里程碑<span class="literal">A</span>对应的目录树。<span class="escape">`g</span>it rev-parse <span class="literal">A</span>^{tree}<span class="escape">` </span> 或<span class="escape">`A</span>:<span class="escape">`
+</span><span class="number">7</span>. 显示树里面的文件，两种方法：<span class="escape">`g</span>it rev-parse <span class="literal">A</span>^{tree}:src/Makefile<span class="escape">` </span> 或<span class="escape">`A</span>:src/Makefile`
+</code></pre></li>
+</ol>
+</li>
+<li>版本范围表示法：<code>git rev-list</code>   <ol>
+<li><code>git rev-list --oneline A</code> 版本A开始后的所有历史提交</li>
+</ol>
+</li>
+<li>查看文件具体更改内容 <code>git diff 文件名</code>  <em>查看尚未暂存的文件更新了那些内容</em></li>
+<li>浏览日志 <code>git log</code><pre><code><span class="number">1</span>. 显示的日志范围  <span class="escape">`g</span>it log<span class="escape">` </span>后面可以接表示版本范围的参数，当不使用任何表示版本范围的参数时，相当于使用默认的参数HEAD，即显示当前head能够访问到的所有历史提交。  
+<span class="number">2</span>. 分支图显示  通过<span class="escape">`-</span>-graph<span class="escape">`参</span>数调用<span class="escape">`g</span>it log<span class="escape">` </span>可以显示字符界面的提交关系图，而且不同分支还可以用不同的颜色来表示。如果希望每次查看日志的时候都看到提交关系图，可以设置一个别名：<span class="escape">`g</span>it config --global alias.glog <span class="string">"log --graph"</span><span class="escape">`.</span>  
+<span class="number">3</span>. 显示最近的几条日志 可以使用参数-&lt;n&gt;显示最近的&lt;n&gt;条日志。如下面显示<span class="number">3</span>条日志：<span class="escape">`g</span>it log -<span class="number">3</span> --oneline<span class="escape">`
+</span><span class="number">4</span>. 显示每次提交的具体改动，使用参数-p可以在显示日志的时候同时显示改动。  <span class="escape">`g</span>it log -p -<span class="number">1</span><span class="escape">`
+</span><span class="number">5</span>. 显示每次提交的变更概要。 使用-p参数会让日志输出显得非常冗余，当不需要知道具体的改动而只想知道改动在哪些文件上时，可以使用<span class="escape">`-</span>-stat<span class="escape">`参</span>数。
+<span class="number">6</span>. 如果只想查看和分析某一个提交，也可以使用<span class="escape">`g</span>it show<span class="escape">`或</span><span class="escape">`g</span>it cat-file<span class="escape">`命</span>令
+</code></pre></li>
+<li>查看已经暂存的文件和上次提交时的差异 <code>git diff --cached 文件名</code></li>
+<li>查看提交日志  <code>git log --stat</code> <em>最近的显示在上面.加上stat可以显示每次提交的文件变更统计</em></li>
+<li><code>git log --graph --oneline -数字</code> 查看提交历史图 </li>
+<li>查看相应commit id的一条记录 <code>git id -1</code></li>
+<li>查看相应commit id的一条记录和相应修改内容 <code>git id -1 -p</code></li>
+<li>查看当前版本库所有分支(包括远程) <code>git branch -a</code> （带*的是当前所有分支）</li>
+<li>查看所有本地分支 <code>git branch</code></li>
+<li>查看各个分支最后一个提交对象 <code>git branch -v</code></li>
+<li>查看哪些分支合并到当前分支 <code>git branch --merged</code></li>
+<li>查看尚未合并的工作 <code>git branch --no-merged</code></li>
+<li><p>查看当前本地配置有哪些远程仓库 <code>git remote (-v)</code>  </p>
+<blockquote>
+<p>在克隆完某一个项目后，至少可以看到一个名为origin的远程库，Git默认使用这个名字来标识所克隆的原始仓库</p>
+</blockquote>
+</li>
+<li><p>查看远程仓库信息  <code>git remote show 远程库名</code> </p>
+</li>
+<li>查看引用日志(Head和分支的引用) <code>git reflog</code></li>
+<li>查看具体某次的更改 <code>git show (id)</code> <em>不加id显示所有更改内容，加commt id显示具体一次的</em></li>
+<li>用<code>reflog</code>挽救错误的重置 如果没有记下重置前master分支指向的提交id，想要重置回原来的提交就麻烦了。git通过<code>.git/logs</code>目录下日志文件记录了分支的变更。用<code>tail -5 .git/logs/refs/heads/master</code>可以查看。Git提供了一个命令<code>git reflog</code>命令对这个文件进行操作，使用<code>show</code>子命令可以显示此文件内容如：<code>git reflog show master | head -5</code> 这时只要使用<code>git reset --hard master@｛n｝</code>就可以重置到列出的生意引用了。</li>
+</ul>
+<h2 id="git_操作">git 操作</h2><ul>
+<li>git重置  git重置命令有两种用法<ol>
+<li>用法一：<code>git reset [-q] [&lt;commit&gt;] [--] &lt;paths&gt;</code></li>
+<li>用法二：<code>git reset [--soft|--mixed|--hard|--merge|--keep] [-q] [&lt;commit&gt;]</code><pre><code>* 上面两种用法,其中<span class="escape">`&lt;</span>commit&gt;<span class="escape">` </span>都是可选项，可以使用引用或提交ID,如果省略<span class="escape">`&lt;</span>commit&gt;<span class="escape">`则</span>相当于使用HEAD的指向作为提交ID
+</code></pre><ul>
+<li>两种用法的区别在于第一种用法在命令中包含路径<code>&lt;paths&gt;</code>,为了避免路径和引用（或者提交ID）同名而发生生冲突，可以在<code>&lt;paths&gt;</code>前面用两个连续的短线作为分隔</li>
+<li>第一种用法（包含了路径<code>&lt;paths&gt;</code>的用法），不会重置引用，更不会改变工作区，而是用指定提交状态（<code>&lt;commit&gt;</code>）下的文件(<code>&lt;paths&gt;</code>)替换掉暂存区中的文件。如命令<code>git reset HEAD &lt;paths&gt;</code> 相当于取消之前执行的<code>git add &lt;paths&gt;</code> 命令时改变的暂存区</li>
+<li>第二种用法（不使用路径<code>&lt;paths&gt;</code>的用法）则会重置引用。根据不同的选项，可以对暂存区或工作区进行重置。命令格式：<code>git reset [--soft | --mixed | --hard] [&lt;commit&gt;]</code><pre><code><span class="number">1</span>. 使用参数 <span class="escape">`-</span>-hard<span class="escape">` </span>如 <span class="escape">`g</span>it reset --hard &lt;commit&gt;<span class="escape">`
+</span>    * 替换引用的指向。引用指向指定的提交id
+    * 替换暂存区。替换后，暂存区内容和引用指向的目录树一致
+    * 替换工作区。替换后，工作区的内容变得和暂存区一致，也和HEAD所指向的目录树内容相同
+<span class="number">2</span>. 使用参数<span class="escape">`-</span>-soft<span class="escape">` </span>如 <span class="escape">`g</span>it reset --soft &lt;commit&gt;<span class="escape">`
+</span>    * 只会改变引用的指向，不改变暂存区和工作
+<span class="number">3</span>. 使用参数<span class="escape">`-</span>-mixed<span class="escape">`或</span>不使用参数（默认为<span class="escape">`-</span>-mixed<span class="escape">`）</span> 如 <span class="escape">`g</span>it reset --mixed &lt;commit&gt;<span class="escape">`
+</span>    * 会改变引用的指向和重置暂存区，但不改变工作区
+</code></pre></li>
+</ul>
+</li>
+<li>一些常用的重置命令<pre><code><span class="number">1</span>. <span class="escape">`g</span>it reset<span class="escape">` </span>仅用head指向的目录树重置暂存区，工作区不会受到影响，相当于将之前的git add 命令更新到暂存区的内容撤出暂存区。引用了未改变，因为引用重置到head相当于没有重置
+<span class="number">2</span>.  <span class="escape">`g</span>it reset head<span class="escape">` </span>同上
+<span class="number">3</span>.  <span class="escape">`g</span>it reset -- filename<span class="escape">` </span>仅将文件filename的改变撤出暂存区，暂存区中其他文件不改变。相当于对命令<span class="escape">`g</span>it add filename<span class="escape">`的</span>反向操作
+<span class="number">4</span>. <span class="escape">`g</span>it reset HEAD filename<span class="escape">` </span>同上
+<span class="number">5</span>. <span class="escape">`g</span>it reset --soft HEAD^<span class="escape">` </span>工作区和暂存区不改变，但是引用向前回退一次。当对最新提交的提交说明或提交的更改不满意时，撤销最新的提交以便重新提交。  之前介绍过一个修补提交命令 <span class="escape">`g</span>it commit --amend<span class="escape">`，</span>用于对最新的提交进行重新提交以修补错误提交说明或错误的提交文件。修补命令实际上相当于执行了下面两条命令（文件<span class="escape">`.</span>git/COMMIT_EDITMSG<span class="escape">`）</span>保存了上次的提交日志。) 
+    <span class="number">1</span>. <span class="escape">`g</span>it reset --soft HEAD^<span class="escape">`
+</span>    <span class="number">2</span>. <span class="escape">`g</span>it commit -e -F .git/COMMIT_EDITMSG<span class="escape">`
+</span><span class="number">6</span>. <span class="escape">`g</span>it reset head^<span class="escape">` </span>工作区不改变，但是暂存区会回退到上一次提交之前，引用也会回退一次。
+<span class="number">7</span>. <span class="escape">`g</span>it reset --mixed head^<span class="escape">` </span>同上
+<span class="number">8</span>. <span class="escape">`g</span>it reset --hard head^<span class="escape">` </span>彻底撤销最近的提交。引用也会回到前一次，而且工作区和暂存区都会回退到上一次提交状态。自上一次以来的提交全部丢失。
+</code></pre></li>
+</ol>
+</li>
+<li>git checkout 命令 Git是最常用的命令之一，同时也是一个危险的命令，因为这条命令会重写工作区。检出命令的用法用三：<ol>
+<li>用法一：<code>git checkout [-q] [&lt;commit&gt;] [--] &lt;paths&gt;</code></li>
+<li>用法二：<code>git checkout [&lt;branch&gt;]</code></li>
+<li>用法三：<code>git checkout [-m] [[-b] --orphan &lt;new_branch&gt;] [&lt;start_point&gt;]</code><ul>
+<li>上面第一种用法和第二种用法的区别在于，第一种用法在命令中包含路径<code>&lt;paths&gt;</code>。为了避免路径和引用（或者提交ID）同名而发生冲突，可以<code>&lt;paths&gt;</code>前用两个连续的短线作为分隔。</li>
+<li>第一种用法的<code>&lt;commit&gt;</code> 是可选项，如果省略则相当于从暂存区（index）进行检出。这和重置命令大不相同：重置的默认是值是HEAD，而检出的默认值是暂存区。因此重置一般用于暂存区重置（除非使用<code>--hard</code>参数，否则工作区不重置），而检出命令主要是覆盖工作区（如果<code>&lt;commit&gt;</code>不省略，也会替换暂存区中相应的文件）</li>
+<li>第一种用法（包含了路径<code>&lt;paths&gt;</code>的用法）不会改变<code>HEAD</code>头指针，主要用于指定版本的文件覆盖工作区中对应的文件。如果省略<commit>，则会用暂存区的文件覆盖工作区的文件，否则用指定提交中的文件覆盖暂存区和工作区中对应的文件。</commit></li>
+<li>第二种用法（不使用路径<code>&lt;paths&gt;</code>的用法）则会改变HEAD头指针。之所以后面参数写作<code>&lt;branch&gt;</code>,是因为只有Head切换到一个分支才可以对提交进行跟踪，否则仍然会进入“分离头指针”的状态。在“分离头指针”状态下的提交不能被引用关联到，从而可能丢失。所以第二种用法最主要的作用是切换到分支。如果省略<branch>则相当于对工作区进行状态检查。</branch></li>
+<li>第三种用法主要是创建和切换到新的分支（<code>&lt;new_branch&gt;</code>）,新的分支从<code>&lt;start_point&gt;</code>指定的提交开始创建。新分支和我们熟悉的master分支没有什么实质的不同，都是在<code>refs/heads/</code>命令空间下的引用。<ol>
+<li>关于git checkout的常用命令</li>
+</ol>
+</li>
+<li><code>git checkout branch</code> 检出branch分支。更新HEAD以指向branch分支，以及用branch指向的树更新暂存区和工作区</li>
+<li><code>git checkout</code> 汇总显示工作区，暂存区与HEAD的差异</li>
+<li><code>git checkout -- filename</code> 用暂存区中filename文件来覆盖工作区的filename文件。相当于取消自上次执行<code>git add filename</code>以来的本地修改</li>
+<li><code>git checkout branch -- filename</code> 维护HEAD对象不变，用branch所指向的提交中的filename替换暂存区和工作区中相应的文件。注意会将暂存区和工作区中的filename文件直接覆盖。</li>
+<li><code>git checkout -- .</code>或<code>git checkout .</code>   注意用点号，会取消所有本地的修改（相对于暂存区）。相当于用暂存区的所有文件直接覆盖本地文件。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>使用git stash可以用于保存和恢复工作进度，掌握这个命令对日常工作会有很大帮助。<ol>
+<li><code>git stash</code>  备份当前的工作区的内容，从最近的一次提交中读取相关内容，让工作区保证和上次提交的内容一致。同时，将当前的工作区内容保存到Git栈中。会分别对暂存区和工作区的状态进行保存</li>
+<li><code>git stash list</code> 显示进度列表。此命令显然暗示了<code>git stash</code>可以多次保存工作进度，并且在恢复的进行选择。</li>
+<li><code>git stash pop [--index] [&lt;stash&gt;]</code> 如果不使用任何参数，会恢复最新保存的工作进度，并将恢复的工作进度从存储的工作列表中清除。  选项<code>--index</code> 除了恢复工作区的文件外，还尝试恢复暂存区。</li>
+<li>命令:<code>git stash [save [--patch]  [-k|--[no-] keep-index] [-q|--quiet] [&lt;message&gt;]]</code>  这条命令实际上是第一条<code>git stash</code>命令的完整版。如果需要在保存工作进度的时候使用指定的说明，必须使用如下格式：<code>git stash save &quot;message.....&quot;</code><ul>
+<li>使用参数<code>--patch</code> 会显示工作区和HEAD的差异，通过对差异文件的编辑决定在进度中最终要保存的工作区的内容，通过编辑差异文件可以在进度中排除无关内容</li>
+<li>使用<code>-k</code>或<code>--keep-index</code> 参数，在保存进度后不会将暂存区重置。默认会将暂存区和工作区强制重置</li>
+</ul>
+</li>
+<li>命令：<code>git stash apply [--indxe] [&lt;stash&gt;]</code>除了不删除恢复的进度之外，其余和git stash pop命令一样</li>
+<li>命令：<code>git stash drop [&lt;stash&gt;]</code> 删除一个存储的进度。默认删除最新的进度</li>
+<li>命令：<code>git stash clear</code> 删除所有存储的进度。</li>
+<li>命令：<code>git stash branch &lt;branchname&gt; &lt;stash&gt;</code> 基于进度创建分支。</li>
+</ol>
+</li>
+<li>变基操作：<code>git rebase --onto &lt;newbase&gt;  &lt;since&gt;  &lt;till&gt;</code>  变基操作如下：<ol>
+<li>首先会执行<code>git checkout</code> 切换到<code>&lt;till&gt;</code>. 因为会切换到<code>&lt;till&gt;</code>,因此如果<code>&lt;till&gt;</code>指向的不是一个分支，则变基操作是在<code>detached HEAD</code>(分离头指针)状态进行的，当变基操作结束后，还要对master分支重置以实现变基结果在分支中生效。</li>
+<li>将<code>&lt;since&gt;..&lt;till&gt;</code> 所标识的提交范围写到一个临时文件中。<code>&lt;since&gt;..&lt;till&gt;</code>指包含<code>&lt;till&gt;</code>的所有历史提交排除<code>&lt;since&gt;</code>及<code>&lt;since&gt;</code>之前的历史提交后形成的版本范围。</li>
+<li>将当前分支强制重置（<code>git reset --hard</code>）到<code>&lt;newbase&gt;</code>.相当于执行：<code>git reset --hard &lt;newbase&gt;</code></li>
+<li>从保存在临时文件中的提交列表中，将提交逐一按顺序重新提交到重置之后的分支上。</li>
+<li>如果遇到提交已经在分支中包含，则跳过该提交</li>
+<li>如果在提交过程中遇到冲突，则变基过程暂停。用户解决冲突后，执行<code>git rebase --continue</code>继续变基操作。或者执行<code>git rebase --skip</code>跳过此提交。或者执行<code>git rebase --abort</code>就此终止变基操作切换到变基前的分支上。</li>
+</ol>
+</li>
+<li>克隆操作 <code>git clone</code>的三种用法：<ol>
+<li>用法一：<code>git clone &lt;repository&gt;  &lt;directory&gt;</code></li>
+<li>用法二：<code>git clone --bare &lt;repository&gt;  &lt;directory.git&gt;</code></li>
+<li>用法三：<code>git clone --mirror &lt;repository&gt; &lt;directory.git&gt;</code><ul>
+<li>用法一将<code>&lt;repository&gt;</code> 指向的版本库创建一个克隆到<code>&lt;directory&gt;</code>目录。目录<code>&lt;directory&gt;</code>相当于克隆版本库的工作区，文件都会检出，版本库位于工作区下的<code>.git</code>目录中。</li>
+<li>用法2和用法3创建的克隆版本库都不包含工作区，直接就是版本库的内容，这样的版本库称为裸版本库。一般约定俗成裸版本库的目录名以<code>.git</code>为后缀，所以上面示例中将克隆了出来的裸版本库目录名写作<code>&lt;directory.git&gt;</code></li>
+<li>用法3区别于用法2之处在于用法3克隆出来的裸版本对上游版本库进行了注册，这样可以在裸版本库中使用<code>git fetch</code>命令和上游版本库进行持续同步</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>合并操作 <code>git merge [选项] &lt;commit&gt;</code>   合并操作大多数情况下，只须提供一个<code>&lt;commit&gt;</code>（提交ID或对应的引用 <code>：分支</code>，里程碑等）作为参数。合并操作将<code>&lt;commit&gt;</code>对应的目录树和当前工作分支的目录树的内容进行合并，合并后的提交以当前分支的提交作为第一个父提交，以<code>&lt;commit&gt;</code>为第二个父提交。合并操作还支持将多个<code>&lt;commit&gt;</code>代表的分支和当前分支进行合并，过程类似。 默认情况下，合并后的结果会自动提交，但是如果提供<code>--no-commit</code>选项，则合并后的结果会放入暂存区，用户可以对合并结果进行检查，更改，然后手动提交。</li>
+<li>增加文件到暂存区    <code>git add 文件名(-A所有文件变化)</code> </li>
+<li><code>git add -i</code> 交互式选择性增加文件</li>
+<li>文件追溯：<code>git blame</code>    Git的文件追溯命令可以指出是谁在什么时候，以及什么版本引入的此BUG。当针对文件执行git blame命令时，就会逐行显示文件，在每一行的行首显示此行最早是在什么版本引入的，由谁引入的</li>
+<li>提交文件           <code>git commit -m &quot;提交信息&quot;</code></li>
+<li>跳过使用暂存直接提交 <code>git commit -a -m &quot;提交信息&quot;</code> (git会自动把所有已经跟踪文件暂存起来一并提交，从而跳过git add)</li>
+<li>将add并commit的文件转化为未追踪状态 <code>git reset HEAD 文件名</code></li>
+<li>在本地创建一个分支 <code>git branch 分支名</code></li>
+<li>切换到本地另一个分支 <code>git checkout 要切换分支名</code></li>
+<li>本地新建并切换到新建的分支 <code>git checkout -b 分支名</code></li>
+<li>合并分支到当前分支 <code>git merge 要合并的分支名</code></li>
+<li>基于某一点创建分支 <code>git branch [start-point] 分支名</code> <em>开始点可以是分支名，提交id，tag，如果省略则使用当下的HEAD.</em></li>
+<li>删除本地分支 <code>git branch -D 分支名</code></li>
+<li>克隆远程版本库 <code>git clone (-n) 地址</code>(克隆远程代码到本地，默认为master,如果不想要文件可以加-n参数)</li>
+<li>把本地代码push到远程具体分支 <code>git push (远程仓库名) (分支名)</code> <blockquote>
+<p>如 git push origin master</p>
+<blockquote>
+<p>origin部分指定的是远程版本库git地址，master部分指定是push到哪一个分支上 </p>
+</blockquote>
+</blockquote>
+</li>
+<li>添加远程仓库（可以指定短名）<code>git remote add [shortname] [url]</code></li>
+<li>拉取远程仓库所有本地仓库没有的数据但不合并 <code>git fetch [remote-name]</code><blockquote>
+<p>拉取下来的数据放在 （origin/对应远程分支名）下，你可以在本地访问该远程仓库中的所有分支，最后将某个分支合并到本地。fetch只拉取，并不会合并</p>
+</blockquote>
+</li>
+<li>拉取远程仓库数据并合并到当前分支 <code>git pull</code> 前提是设置了某个分支跟踪远程仓库某分支</li>
+<li>推送某个分支到远程某个分支 <code>git push [远程库名] 本地分支名:远程分支名</code></li>
+<li>创建并切换一个本地分支去跟踪远程分支 <code>git checkout -b [本地分支名] [远程名/分支名]</code>  如果不想重命名本地分支现在可以用 <code>git checkout --track 远程名/分支名</code></li>
+<li>检出远程仓库一个文件 <code>git checkout 远程分支名（origin/master） 文件名</code></li>
+<li>删除远程分支  <code>git push 远程名 :远程分支</code> 这相当于命令<code>git push 远程名 本地分支：远程分支</code> 推送一个空的本地分支上去，相当于把远程分支给删除了</li>
+<li>重命名本地的远程仓库名 <code>git remote rename 旧名 新名</code></li>
+<li>移除本地的远程仓库链接 <code>git remote rm</code></li>
+<li>从版本控制中移除文件并从硬盘上删除此文件 <code>git rm 文件名</code> <em>彻底删除</em></li>
+<li>仅从版本控制中移除文件，变成未跟踪文件 <code>git rm --cached 文件</code></li>
+<li>修改文件名 <code>git mv 旧文件名 新文件名</code></li>
+<li>撤消最后一次提交 <code>git commit --amend</code></li>
+<li><code>git checkout HEAD .</code>或<code>git checkout HEAD &lt;file&gt;</code>  命令会用HEAD指向的master分支中的全部或部分文件替换暂存区和工作区中的文件。这个命令是危险的，它不但会清除工作区中未提交的改动，也会清除暂存区中未提交的变动</li>
+<li><code>git checkout .</code>或 <code>git checkout -- &lt;file&gt;</code> 命令，会用暂存区全部的文件或指定的文件替换工作区的文件。这个操作会清除工作区中未添加到暂存区中的改动</li>
+<li>取消对文件的修改 <code>git checkout --文件</code> <em>相当于覆盖</em></li>
+<li><code>git clean -fd</code> 清除工作区中没有加入版本库的文件和目录（非跟踪文件和目录）.</li>
+<li>git分支 <ol>
+<li>用法1：<code>git branch</code></li>
+<li>用法2: <code>git branch &lt;branchname&gt;</code></li>
+<li>用法3: <code>git branch &lt;branchname&gt;  &lt;start-point&gt;</code></li>
+<li>用法4：<code>git branch -d &lt;branchname&gt;</code></li>
+<li>用法5：<code>git branch -D &lt;branchname&gt;</code></li>
+<li>用法6：<code>git branch -m &lt;oldbranch&gt; &lt;newbranch&gt;</code></li>
+<li>用法7：<code>git branch -M &lt;oldbranch&gt; &lt;newbranch&gt;</code></li>
+<li>用法1用于显示本地分支列表。当前分支在输出中会显示为特别的颜色，并用星号“*”标识出来。用法2和用法3用于创建分支。用法2基于当前头指针（HEAD）指向的提交创建分支，新分支的分支名为<code>&lt;branchname&gt;</code>。用法3基于提交<code>&lt;start-point&gt;</code>创建新分支，新分支的分支名为<code>&lt;branchname&gt;</code>.  用法4和5用于删除分支。用法4在删除分支<code>&lt;branchname&gt;</code>时会检查所要删除的分支是否已经合并到其他分支中，否则拒绝删除。用法5会强制删除分支<code>&lt;branchname&gt;</code>，即使该分支没有合并到任何一个分支中。 用法6和用法7用于重命名分支。如果版本库中存在名为<code>&lt;newbranch&gt;</code>的分支，用法6拒绝执行重命名，而用法7会强制执行。</li>
+</ol>
+</li>
+<li>git branch -r 显示所有远程分支</li>
+</ul>
+<h2 id="Git_标签">Git 标签</h2><blockquote>
+<p>Git使用标签有两种类型，轻量级的（lightweight）和含附注的（annotated）.轻量级标签就像是个不会变化的分支，实际上它就是个指向特定提交对象的引用。而含附注的标签，实际上就是存储仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，电子邮件地址和日期，以及标签说明，标签本身也允许使用GPG来签署或验证</p>
+</blockquote>
+<ul>
+<li>列出所有标签 <code>git tag</code></li>
+<li>创建一个含附注的标签 <code>git tag -a 标签 -m 附注说明</code> <em>-a指定标签名字，-m指定标签说明，签署标签：如果你有自己的私钥，可以用GPG来签署标签，只需要把-a必为-s(git tab -s 标签名 -m “附注说明”)</em></li>
+<li>创建轻量级标签 <code>git tag 标签名</code></li>
+<li>后期加注标签<blockquote>
+<p>用 git log —pretty=oneline 列出所有提交时的检验值<br>  只要在打标签时跟上对应提交对象的校验和（或前几位字符）即可如：<code>git tag -a v1.2 9fceb02</code></p>
+</blockquote>
+</li>
+<li>分享标签<blockquote>
+<p>默认情况下，git push并不会把标签传送到远端服务器上，只有通过显式命令才能分享标签到远端仓库，其命令格式如同推送分支，运行<code>git push origin [tagname]</code><br>  如果要一次推送所有本地新增的标签上去，可以使用[—tags]选项     <code>git push origin --tags</code></p>
+</blockquote>
+</li>
+<li>Git里程碑  <ol>
+<li>显示里程碑  <ul>
+<li><code>git tag -n&lt;num&gt;</code>   <code>-n</code>参数显示创建里程碑时的说明，<code>num</code>是限制显示的行数</li>
+<li>在查看日志时使用参数<code>--decorate</code>可以查看提交对应的里程碑及其他引用  <code>git log --oneline --decorate</code></li>
+<li>使用命令<code>git describe</code>将提示显示为一个易记的名称。这个易记的名称来自于建立在该提交上的里程碑，若该提交没有里程碑则使用该提交历史版本上的里程碑并加上可理解寻址信息。</li>
+</ul>
+</li>
+<li>创建里程碑<ol>
+<li>用法一：<code>git tag             &lt;tagname&gt; [&lt;commit&gt;]</code></li>
+<li>用法二：<code>git tag -a          &lt;tagname&gt; [&lt;commit&gt;]</code></li>
+<li>用法三：<code>git tag -m &lt;msg&gt;    &lt;tagname&gt; [&lt;commit&gt;]</code></li>
+<li>用法四：<code>git tag -s          &lt;tagname&gt; [&lt;commit&gt;]</code></li>
+<li>用法五：<code>git tag -u &lt;key-di&gt;    &lt;tagname&gt; [&lt;commit&gt;]</code></li>
+<li>用法一是创建轻量级里程碑，用法2和3相同，都是创建带有说明的里程碑。用法3直接通过-m参数提供里程碑创建说明。 用法4和5相同，都是创建带GnuPG签名的里程碑，用法5用-u参数选择指定的私钥进行签名。创建里程碑需要输入里程碑的名称和一个可选的提交ID(<code>&lt;commit&gt;</code>),如果没有提供提交ID，则基于头指针HEAD创建里程碑。轻量级里程碑的创建过程没有记录，因此无法知道是谁创建的，何时创建的。在团队协同开发时不要用此种方式，使用后两种。</li>
+</ol>
+</li>
+<li>删除里程碑  <code>git tag -d 名字</code></li>
+<li>共享里程碑  创建的里程碑默认只在本地版本库中可见，不会因为对分支执行推送而将里程碑也推送到远程版本库。<ol>
+<li>显式推送以共享里程碑  <code>git push origin &lt;tagname&gt;</code>  </li>
+<li>用户从版本库执行拉回操作时，会自动获取里程碑</li>
+<li>如果共享库里的里程碑被更新，本地里程碑不会自动同步，必须采用显示的拉回操作，如：<code>git pull origin refs/tags/mytag2:refs/tags/mytag2</code>  代表用远程共享版本库的引用<code>refs/tag/mytag2</code>覆盖本地版本库的同名引用。这也就是如果本地已有同名的里程碑，默认不会从上游同步里程碑，即使两者里程碑的指向是不同的。这也就是里程碑一旦共享，就不要轻易再修改。</li>
+</ol>
+</li>
+<li>删除远程版本库的里程碑  使用命令<code>git push &lt;remote_url&gt;   :&lt;tagname&gt;</code>  该命令最后一个参数实际上是一个引用表达式，引用表达式一般的格式为<code>&lt;ref&gt;:&lt;ref&gt;</code>。该推送命令使用的引用表达式冒号前面的引用省略，其含义是将一个空值推送到远程版本库对应的引用中，亦即删除远程版本库中相关的引用。这个命令不但可以删除里程碑，还可以删除远程版本库中的分支。</li>
+</ol>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术辅助/">技术辅助</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/技术/">技术</a><a href="/tags/git/">git</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2016/09/14/git常用命令总结/" data-title="git常用命令总结 | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/06/01/VI的使用/"  title="VI的使用">
+ <strong>下一篇：</strong><br/> 
+ <span>VI的使用
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/09/14/git常用命令总结/" data-title="git常用命令总结" data-url="http://wn398.github.io/2016/09/14/git常用命令总结/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git_配置"><span class="toc-number">1.</span> <span class="toc-text">git 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git_查看"><span class="toc-number">2.</span> <span class="toc-text">git 查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git_操作"><span class="toc-number">3.</span> <span class="toc-text">git 操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git_标签"><span class="toc-number">4.</span> <span class="toc-text">Git 标签</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<!--<p class="asidetitle">Music</p>-->
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期文章</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/14/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/01/VI的使用/">VI的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2015/05/02/CSS/">CSS</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期更新</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/14/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/01/VI的使用/">VI的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2015/05/02/CSS/">CSS</a>
+      </li>
+    
+      <li>
+        <a href="/2015/04/26/html5/">HTML5</a>
+      </li>
+    
+      <li>
+        <a href="/2015/04/13/Java7的一些新特性/">Java7的一些新特性</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>44</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/前端/" title="前端">前端<sup>5</sup></a></li>
+		
+			<li><a href="/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+			<li><a href="/tags/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>2</sup></a></li>
+		
+			<li><a href="/tags/字节码/" title="字节码">字节码<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
+		
+			<li><a href="/tags/实例/" title="实例">实例<sup>1</sup></a></li>
+		
+			<li><a href="/tags/项目构建/" title="项目构建">项目构建<sup>1</sup></a></li>
+		
+			<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/grails/" title="grails">grails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+		
+			<li><a href="/tags/依赖注入/" title="依赖注入">依赖注入<sup>1</sup></a></li>
+		
+			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java新特性/" title="Java新特性">Java新特性<sup>1</sup></a></li>
+		
+			<li><a href="/tags/JDK/" title="JDK">JDK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/groovy/" title="groovy">groovy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/categories/JVM/" title="JVM">JVM<sup>2</sup></a></li>
+		
+			<li><a href="/categories/JavaSE/" title="JavaSE">JavaSE<sup>3</sup></a></li>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/grails/" title="grails">grails<sup>1</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>3</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>3</sup></a></li>
+		
+			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>3</sup></a></li>
+		
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>1</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JDK/" style="font-size: 10px;">JDK</a> <a href="/tags/JS/" style="font-size: 11.67px;">JS</a> <a href="/tags/Java新特性/" style="font-size: 10px;">Java新特性</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/android-UI/" style="font-size: 16.67px;">android_UI</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/grails/" style="font-size: 10px;">grails</a> <a href="/tags/groovy/" style="font-size: 10px;">groovy</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/ssh2/" style="font-size: 10px;">ssh2</a> <a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a> <a href="/tags/传感器/" style="font-size: 10px;">传感器</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a> <a href="/tags/字节码/" style="font-size: 11.67px;">字节码</a> <a href="/tags/定位/" style="font-size: 10px;">定位</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/并发/" style="font-size: 10px;">并发</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/数据库/" style="font-size: 13.33px;">数据库</a> <a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a> <a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a> <a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2016 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

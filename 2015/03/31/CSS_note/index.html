@@ -1,0 +1,804 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CSS_note | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="CSS基本概念CSS的特性：
+继承—网页中子元素，将继承父元素的样式（因为有些子元素本身就有默认值，所以它就覆盖了父元素中的属性） 
+层叠—网页中子元素定义了与父元素相同的样式，则子元素的样式将覆盖掉父元素的样式。后面定义的样式，会覆盖前面定义的样式（子元素如果定义了与父元素相同的样式，会覆盖掉父元">
+    
+    
+    <meta name="description" content="CSS基本概念CSS的特性：
+继承—网页中子元素，将继承父元素的样式（因为有些子元素本身就有默认值，所以它就覆盖了父元素中的属性） 
+层叠—网页中子元素定义了与父元素相同的样式，则子元素的样式将覆盖掉父元素的样式。后面定义的样式，会覆盖前面定义的样式（子元素如果定义了与父元素相同的样式，会覆盖掉父元素的样式） CSS样式的优先权：4种方式的优先权：内联式【行内样式】—-》内嵌式【内部式】—-》链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS_note">
+<meta property="og:url" content="http://wn398.github.io/2015/03/31/CSS_note/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="CSS基本概念CSS的特性：
+继承—网页中子元素，将继承父元素的样式（因为有些子元素本身就有默认值，所以它就覆盖了父元素中的属性） 
+层叠—网页中子元素定义了与父元素相同的样式，则子元素的样式将覆盖掉父元素的样式。后面定义的样式，会覆盖前面定义的样式（子元素如果定义了与父元素相同的样式，会覆盖掉父元素的样式） CSS样式的优先权：4种方式的优先权：内联式【行内样式】—-》内嵌式【内部式】—-》链接">
+<meta property="og:image" content="http://wn398.github.io/images/相对定位.png">
+<meta property="og:image" content="http://wn398.github.io/images/绝对定位.png">
+<meta property="og:updated_time" content="2015-03-31T02:44:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS_note">
+<meta name="twitter:description" content="CSS基本概念CSS的特性：
+继承—网页中子元素，将继承父元素的样式（因为有些子元素本身就有默认值，所以它就覆盖了父元素中的属性） 
+层叠—网页中子元素定义了与父元素相同的样式，则子元素的样式将覆盖掉父元素的样式。后面定义的样式，会覆盖前面定义的样式（子元素如果定义了与父元素相同的样式，会覆盖掉父元素的样式） CSS样式的优先权：4种方式的优先权：内联式【行内样式】—-》内嵌式【内部式】—-》链接">
+<meta name="twitter:image" content="http://wn398.github.io/images/相对定位.png">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/31/CSS_note/" title="CSS_note" itemprop="url">CSS_note</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-31T02:44:36.000Z" itemprop="datePublished"> 发表于 2015-03-31</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS基本概念"><span class="toc-number">1.</span> <span class="toc-text">CSS基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS的特性："><span class="toc-number">1.1.</span> <span class="toc-text">CSS的特性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS样式的优先权："><span class="toc-number">1.2.</span> <span class="toc-text">CSS样式的优先权：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#伪类"><span class="toc-number">1.3.</span> <span class="toc-text">伪类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css选择符类型："><span class="toc-number">1.4.</span> <span class="toc-text">css选择符类型：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS中元素的分类："><span class="toc-number">1.5.</span> <span class="toc-text">CSS中元素的分类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS盒子模型"><span class="toc-number">1.6.</span> <span class="toc-text">CSS盒子模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#css盒子的相关属性"><span class="toc-number">1.6.1.</span> <span class="toc-text">css盒子的相关属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面模块的常用css命名"><span class="toc-number">1.7.</span> <span class="toc-text">页面模块的常用css命名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS控制属性"><span class="toc-number">2.</span> <span class="toc-text">CSS控制属性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#css控制文本"><span class="toc-number">2.1.</span> <span class="toc-text">css控制文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css控制字体"><span class="toc-number">2.2.</span> <span class="toc-text">css控制字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css控制背景"><span class="toc-number">2.3.</span> <span class="toc-text">css控制背景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#div+css布局："><span class="toc-number">3.</span> <span class="toc-text">div+css布局：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的div+css布局方式"><span class="toc-number">3.1.</span> <span class="toc-text">常见的div+css布局方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#清除浮动"><span class="toc-number">3.1.1.</span> <span class="toc-text">清除浮动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css中溢出的使用："><span class="toc-number">3.1.2.</span> <span class="toc-text">css中溢出的使用：</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="CSS基本概念">CSS基本概念</h1><h2 id="CSS的特性：">CSS的特性：</h2><ol>
+<li>继承—网页中子元素，将继承父元素的样式（因为有些子元素本身就有默认值，所以它就覆盖了父元素中的属性） </li>
+<li>层叠—网页中子元素定义了与父元素相同的样式，则子元素的样式将覆盖掉父元素的样式。后面定义的样式，会覆盖前面定义的样式（子元素如果定义了与父元素相同的样式，会覆盖掉父元素的样式） <h2 id="CSS样式的优先权：">CSS样式的优先权：</h2>4种方式的优先权：内联式【行内样式】—-》内嵌式【内部式】—-》链接式【外部式】—-》@import导入式</li>
+</ol>
+<p><strong>行内样式</strong>：应用于一个标签<code>&lt;p style=&quot;css&quot;&gt;&lt;/p&gt;</code> </p>
+<p><strong>内嵌式</strong>：应用于一类标签(在head中加<code>&lt;style&gt;p{css}&lt;/style&gt;</code>) </p>
+<p><strong>外部链接</strong>：<code>&lt;link href=&quot;url&quot; rel=&#39;stylesheet&#39; type=&quot;text/css&quot;/&gt;</code>推荐使用 </p>
+<p><strong>导入式</strong>：<code>&lt;style type=&quot;text/css&quot;&gt;@import url(&#39;basic.css&#39;);&lt;/style&gt;</code>导入式与内嵌式是相类似的，都是将样式加入到网页里（缺点1，导入式会占用html空间。2.有些浏览器，解析会有问题。浏览器会，最后读取@import中内容）<br>@import url(‘basic.css’);也可以应用到css文件中 </p>
+<p>Css优先权：就近原则 </p>
+<ol>
+<li>作用范围越小，优先权越高 </li>
+<li>离要修饰目标越近的样式优先权越高。 </li>
+<li>选择符优先权：行内&gt;id&gt;class&gt;标签选择符 </li>
+<li>特殊情况，我们可以提升某个属性的权限，我们可以采用<code>！important</code>语法来提升重要性（加在属性后面，如<code>color:green !important;</code> ie6不支持 </li>
+</ol>
+<h2 id="伪类">伪类</h2><p>伪类语法：元素名称{属性：值}  如超链接的鼠标经过状态 <code>a:hover{text-decoratin:underline}</code> </p>
+<ul>
+<li>未访问的链接：<code>a:link</code>    </li>
+<li>已访问的链接 <code>a:visited</code>     </li>
+<li>鼠标移动到链接上<code>a:hover</code></li>
+<li>鼠标按下链接 <code>a:active</code>(如果鼠标上的效果不起作用，请修改链接状态顺序l-v-h-a):</li>
+</ul>
+<p>focus也是伪类 </p>
+<h2 id="css选择符类型：">css选择符类型：</h2><ol>
+<li>标签类选择符（html标签）。</li>
+<li>类选择符(某一类属性)。某一个元素可以加多个类,如<code>&lt;p class=&quot;a1 a2&quot;/&gt;</code>类名与类名之间以空格隔开 </li>
+<li>id类选择符（某一个id） 类名与id名不能以数字开关 </li>
+<li>通配选择符：<code>*</code>表示所有（作用范围很广，但效率很低）,前端开发的极限就是代码精简，加快了页面显示速度 </li>
+<li>如果我们针对某个元素中的子元素进行控制，可以使用嵌套的方式，不必再为子元素设置id（<code>父元素 子元素｛属性：值｝</code>） </li>
+<li>选择符分组（集体控制）：将同样的样式定义用于多个选择符，选择符之间用逗号分隔。如<code>p,div,warning</code> </li>
+<li>标签指定式选择符：如果既想使用<code>id</code>或<code>class</code>，也想同时使用标签选择符,<code>h1#content{}</code>表示针对所有id为content的h1标签, <code>h1.p1{}</code>表示针对所有class为p1的h1标签 </li>
+<li>组合选择符：将以上选择符进行组合使用 <code>h1.p1,#content h1{}</code></li>
+</ol>
+<h2 id="CSS中元素的分类：">CSS中元素的分类：</h2><p>我们在布局页面的时候，会将html标签分为两种，<code>块状元素</code>和<code>内联元素</code>（我们平时用到的标签div和p就是块状元素，链接标签a就是内联元素），可以通过css修改元素的类型</p>
+<ol>
+<li>块状元素：｛display:block｝ </li>
+</ol>
+<p>一般是其他元素的容器，可容纳内联元素和其他块状元素，块状元素排斥其他元素与其位于同一行，宽度和高度起作用，常见的块状元素为div，body,h1-h6等,块状元素很霸道：能设宽和高！，独占一行！ </p>
+<ol>
+<li>内联元素｛display:inline｝ </li>
+</ol>
+<p>内联元素只能容纳文本或者其他内联元素，它允许其他内联元素与其位于同一行，但宽度和高度不起作用，常见内联元素为<code>a,em,span</code>等,内联元素很温柔：不能设宽和高！不影响换行！（就像橡皮筋包住字）</p>
+<h2 id="CSS盒子模型">CSS盒子模型</h2><ol>
+<li>盒子中的内容：content</li>
+<li>盒子的边框border </li>
+<li>盒子边框与内容之间的距离，称为填充-padding，内边距（内补丁） </li>
+<li>多个盒子存在，盒子与盒子之间的距离，称为边界—-margin，外边距（外补丁）<br>边界margin,边框border，填充padding,内容content</li>
+</ol>
+<h3 id="css盒子的相关属性">css盒子的相关属性</h3><ol>
+<li>内容属性：内容本身的宽=width,内容本身的高=height </li>
+<li>内容填充属性：内容与边界之间的距离 <code>padding</code>:（如果为4个参数则顺序为上，右，下，左）<code>padding-top,padding-right,padding-bottom,padding-left</code> </li>
+</ol>
+<p>在定义盒子的宽度时，要考虑到，内填充，边框，边界的存在,在使用外边距的时候要注意浏览器的兼容性，除了值为0的情况下，其它所有值都要加单位</p>
+<p>由于各个浏览器存在着内外边距的默认值，还不同，所以我们需要将所有浏览器的默认内外边距都从零开始计算，在实际工作中，不要用<code>*｛margin:0;padding:0｝</code>效率太低，所以用到了哪些元素就设置那些元素 </p>
+<p>css边框属性：<br>让盒子水平居中，只要让盒子的左右外边距设为auto </p>
+<h2 id="页面模块的常用css命名">页面模块的常用css命名</h2><p>头：header    内容：content    尾：footer    </p>
+<p>导航：nav    侧栏：sidebar    栏目：column    </p>
+<p>页面外围控制整体布局宽度：wrapper    左右中：left right center    </p>
+<p>登录条：loginbar 标志：logo    热点：hot</p>
+<p>新闻：news    下载：download 广告：banner</p>
+<p>页面主体：main    子导航：subnav    菜单：menu </p>
+<p>子菜单：submenu    版权：copyright    友情链接：friendlinks </p>
+<h1 id="CSS控制属性">CSS控制属性</h1><h2 id="css控制文本">css控制文本</h2><ul>
+<li>设置字体样式：<code>font-style:normal正常italic斜体</code> </li>
+<li>修饰文字：<code>text-decoration:none正常underline下划线overline上划线line-through删除线</code> </li>
+<li>字符间距：<code>letter-spacing:normal默认length长度单位</code> </li>
+<li>单词间距：<code>word-spacing:normal默认length长度单位</code> </li>
+<li>设置文本缩进：<code>text-indent:2em可以为负值</code> </li>
+<li>文本水平对齐方式：<code>text-align:left,center,right</code> </li>
+<li>对象中空白处理：<code>white-space：normal[自动换行]pre[换行和空白受保护]nowrap[强制在同一行显示]</code> </li>
+<li>文本大小写控制：<code>text-transform:none[正常大小]capitalize[每个单词的第一个字母转换成大写]uppercase[转换成大写]lowercase[转换成小写]</code></li>
+<li>元素的垂直对齐方式：<code>vertical-align：sub[设置文字为下标]super[设置文字为上标]top[把元素的顶端与行中最高元素的顶端对齐]text-bottom[把元素的底端与父元素字体的底端对齐]</code><br>我们在应用css样式时，一定要注意它的默认值，因为不同的浏览器它的css默认值是不同的，为了网页的兼容性，尽量使用通用属性，不用存在兼容性差别的属性 </li>
+</ul>
+<h2 id="css控制字体">css控制字体</h2><ul>
+<li>设置字号：<code>font-size:12px;</code></li>
+<li>设置字色：<code>color:#000000</code></li>
+<li>设置字体：<code>font-family:Arila,&#39;宋体&#39;</code></li>
+<li>设置行高（行与行之间的间距）：<code>line-height:150% =    line-height:1.5em</code> </li>
+<li>设置字体粗细：<code>font-weight:normal[正常]    bold[粗体]</code> </li>
+</ul>
+<h2 id="css控制背景">css控制背景</h2><ul>
+<li>背景：<code>background:颜色，图片，平铺方式，固定方式，位置</code> </li>
+<li>背景颜色：<code>background-color:#CCC</code> </li>
+<li>背景图像：<code>background-image:url</code> </li>
+<li>背景图像重复方式：<code>background-repeat:repeat,no-repeat,repeat-x,repeat-y</code> </li>
+<li>背景图像的位置：<code>background-position:top[left center right] center[left center right] bottom[left center right],x坐标 y坐标</code></li>
+<li>背景图像的依附方式：<code>background-attachment:scroll,fixed</code> </li>
+</ul>
+<p>&amp;背景图片默认情况下在水平和垂直平铺 </p>
+<h1 id="div+css布局：">div+css布局：</h1><ol>
+<li>默认的文档流布局方式 </li>
+<li>浮动布局 float </li>
+<li>定位布局 </li>
+</ol>
+<p>position控制元素的位置</p>
+<ul>
+<li>static静态定位，页面中的每一个对象的默认值</li>
+<li>absolute绝对定位：将对象从文档流中分离出来，通过设置left,right,top.bottom四个方向相对于父级对象进行绝对定位。如果不存在这样的父对象，是依据body对象。</li>
+<li>relative相对定位：对象不从文档流中分离，通过设置left,right,top,bottom四个方向相对于自身位置进行相对定位）</li>
+</ul>
+<p>当我们要想使用绝对定位时，必须要有两个条件：1.必须给父元素加定位属性，一般建议使用positiona:relative;2.给子元素，加绝对定位position:absolute同时要加方向属性。<br>绝对定位是以父元素为基准点，进行定位，会脱离文档流。相对定位是根据其自身为基准点，进行定位。会离开原位置，但还占着原来的空间。 </p>
+<h2 id="常见的div+css布局方式">常见的div+css布局方式</h2><p>浮动（float）是css实现布局的一种方式，包括div在内的任何元素都可以浮动的方式进行显示。值：none：不浮动。left:对象向左浮动，而后面的内容流向对象的右侧,right:对象向右浮动，而后面的内容流向对象的左侧。浮动是将块元素的霸道属性，独占一行的行为取消，允许别人和它在同一行。浮动其实是，这个块，从原来的文档流模式中，分离出来，它后面的对象，就视它不存在。 </p>
+<p>浮动，先浮后动，浮动的对象会先漂浮起来，离开原来的位置，后动就是它后面的对象，会向它原来的位置上，动起来<br>—————————————————————————— </p>
+<h3 id="清除浮动">清除浮动</h3><p>就是可以去掉前面对象浮动，对后面对象的影响,当元素有浮动属性时，会对其父元素或后面的元素产生影响，会出现一个布局错乱的现象，可以通过清除浮动的方法来解决，浮动元素的影响<br>浮动的清理：（clear）值：</p>
+<ul>
+<li>none:默认值，允许两边都可以有浮动对象 </li>
+<li>left:不充许左边有浮动对象 </li>
+<li>right:不充许右边有浮动对象 </li>
+<li>both:左右两侧不允许有浮动对象 </li>
+</ul>
+<p>当父元素没有指定高度时，并且它的子元素有浮动，这时这个父元素的高度不会自动增加，则导致父元素的一些东西（如背景）无法显示，此时要清除浮动带来的影响<br>清除浮动的三种方法： </p>
+<ol>
+<li><p>额外标签法： </p>
+<p> 这种方法应该说是最简单的一种，w3c建议在容器末尾增加一个<code>clear:both</code>的元素，强迫容器适应它的高度以便装下所有float元素 </p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"main"</span>&gt; 
+&lt;<span class="keyword">div</span> <span class="property">id</span>='left'&gt;左盒子&lt;/<span class="keyword">div</span>&gt; 
+&lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"right"</span>&gt;右盒子&lt;/<span class="keyword">div</span>&gt; 
+&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"clear"</span>&gt;&lt;/<span class="keyword">div</span>&gt;增加一个空<span class="keyword">div</span> 
+&lt;/<span class="keyword">div</span>&gt; 
+&lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"footer"</span>&gt;底部&lt;/<span class="keyword">div</span>&gt; 
+</code></pre><p> 这种方法的缺点就是会增加代码 </p>
+</li>
+<li><p>父元素使用overflow方法： </p>
+<p> 通过设置父元素overflow值设置为hidden，是最简单的清除浮动方法，但如果子元素使用了定位布局，就会很难实现 </p>
+</li>
+<li>利用伪对象after方法： </li>
+</ol>
+<p>定义一个类，使用伪对象after，控制浮动元素影响 网上最流行的清除浮动代码：</p>
+<pre><code><span class="class">.clearFix</span><span class="pseudo">:after</span><span class="rules">{ 
+<span class="rule"><span class="attribute">clear</span>:<span class="value">both</span></span>; 
+<span class="rule"><span class="attribute">display</span>:<span class="value">block</span></span>; 
+<span class="rule"><span class="attribute">visibility</span>:<span class="value">hidden</span></span>; 
+<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">0</span></span></span>; 
+<span class="rule"><span class="attribute">line-height</span>:<span class="value"><span class="number">0</span></span></span>; 
+<span class="rule"><span class="attribute">content</span>:<span class="value"><span class="string">''</span></span></span>; 
+<span class="rule">}</span></span> 
+<span class="class">.clearFix</span><span class="rules">{<span class="rule"><span class="attribute">zoom</span>:<span class="value"><span class="number">1</span></span></span></span>}<span class="comment">/*解决ie67兼容问题，高度*/</span> 
+</code></pre><p>浮动的特别说明：如果浮动元素的高度不同，那么它们向下移动时可能被其它浮动元素“卡住”，直到有足够空间。</p>
+<p>如果使用了浮动属性：则该元素不管是不是块元素，都会按照display:block来显示。<br>如果不希望别的元素在某个元素的左边或右边，可以使用清除浮动的方法<code>clear:right;clear:left;clear:both</code></p>
+<p>相对定位，相对该元素应当显示的左上角重新定位，虽然它脱离了标准流，但它的空间，默认被占用。<br><img src="/images/相对定位.png" alt=""><br>绝对定位，对该元素最近的那个脱离了标准流的元素定位，如果没有父元素，则相对body左上角定位。<br><img src="/images/绝对定位.png" alt=""><br>Fixed定位，就不管怎样，总是以视窗左上角定位。</p>
+<p>left top属性对static定位不起作用，要使用margin-left/top</p>
+<h3 id="css中溢出的使用：">css中溢出的使用：</h3><p>设置当对象的内容超过其指定高度及宽度时如何管理内容：<code>overflow:visible</code>(默认值，不剪切内容也不添加滚动条)<code>auto</code>(在必需时对象内容才会被裁切或显示滚动条)，<code>hidden</code>(不显示超过对象尺寸的内容)<code>scroll</code>(总是显示滚动条) </p>
+<p>ie6的双倍边距问题加一个<code>display=inline</code></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/css/">css</a><a href="/tags/前端/">前端</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2015/03/31/CSS_note/" data-title="CSS_note | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/04/13/Java依赖注入/" title="Java依赖注入">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Java依赖注入</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/03/24/Java多线程下载实例/"  title="Java多线程下载实例">
+ <strong>下一篇：</strong><br/> 
+ <span>Java多线程下载实例
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/03/31/CSS_note/" data-title="CSS_note" data-url="http://wn398.github.io/2015/03/31/CSS_note/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS基本概念"><span class="toc-number">1.</span> <span class="toc-text">CSS基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS的特性："><span class="toc-number">1.1.</span> <span class="toc-text">CSS的特性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS样式的优先权："><span class="toc-number">1.2.</span> <span class="toc-text">CSS样式的优先权：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#伪类"><span class="toc-number">1.3.</span> <span class="toc-text">伪类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css选择符类型："><span class="toc-number">1.4.</span> <span class="toc-text">css选择符类型：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS中元素的分类："><span class="toc-number">1.5.</span> <span class="toc-text">CSS中元素的分类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS盒子模型"><span class="toc-number">1.6.</span> <span class="toc-text">CSS盒子模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#css盒子的相关属性"><span class="toc-number">1.6.1.</span> <span class="toc-text">css盒子的相关属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面模块的常用css命名"><span class="toc-number">1.7.</span> <span class="toc-text">页面模块的常用css命名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS控制属性"><span class="toc-number">2.</span> <span class="toc-text">CSS控制属性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#css控制文本"><span class="toc-number">2.1.</span> <span class="toc-text">css控制文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css控制字体"><span class="toc-number">2.2.</span> <span class="toc-text">css控制字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css控制背景"><span class="toc-number">2.3.</span> <span class="toc-text">css控制背景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#div+css布局："><span class="toc-number">3.</span> <span class="toc-text">div+css布局：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的div+css布局方式"><span class="toc-number">3.1.</span> <span class="toc-text">常见的div+css布局方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#清除浮动"><span class="toc-number">3.1.1.</span> <span class="toc-text">清除浮动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css中溢出的使用："><span class="toc-number">3.1.2.</span> <span class="toc-text">css中溢出的使用：</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<!--<p class="asidetitle">Music</p>-->
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期文章</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/14/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/01/VI的使用/">VI的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2015/05/02/CSS/">CSS</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期更新</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/14/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/01/VI的使用/">VI的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2015/05/02/CSS/">CSS</a>
+      </li>
+    
+      <li>
+        <a href="/2015/04/26/html5/">HTML5</a>
+      </li>
+    
+      <li>
+        <a href="/2015/04/13/Java7的一些新特性/">Java7的一些新特性</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>44</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/前端/" title="前端">前端<sup>5</sup></a></li>
+		
+			<li><a href="/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+			<li><a href="/tags/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>2</sup></a></li>
+		
+			<li><a href="/tags/字节码/" title="字节码">字节码<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
+		
+			<li><a href="/tags/实例/" title="实例">实例<sup>1</sup></a></li>
+		
+			<li><a href="/tags/项目构建/" title="项目构建">项目构建<sup>1</sup></a></li>
+		
+			<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/grails/" title="grails">grails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+		
+			<li><a href="/tags/依赖注入/" title="依赖注入">依赖注入<sup>1</sup></a></li>
+		
+			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java新特性/" title="Java新特性">Java新特性<sup>1</sup></a></li>
+		
+			<li><a href="/tags/JDK/" title="JDK">JDK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/groovy/" title="groovy">groovy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/categories/JVM/" title="JVM">JVM<sup>2</sup></a></li>
+		
+			<li><a href="/categories/JavaSE/" title="JavaSE">JavaSE<sup>3</sup></a></li>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/grails/" title="grails">grails<sup>1</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>3</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>3</sup></a></li>
+		
+			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>3</sup></a></li>
+		
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>1</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JDK/" style="font-size: 10px;">JDK</a> <a href="/tags/JS/" style="font-size: 11.67px;">JS</a> <a href="/tags/Java新特性/" style="font-size: 10px;">Java新特性</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/android-UI/" style="font-size: 16.67px;">android_UI</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/grails/" style="font-size: 10px;">grails</a> <a href="/tags/groovy/" style="font-size: 10px;">groovy</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/ssh2/" style="font-size: 10px;">ssh2</a> <a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a> <a href="/tags/传感器/" style="font-size: 10px;">传感器</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a> <a href="/tags/字节码/" style="font-size: 11.67px;">字节码</a> <a href="/tags/定位/" style="font-size: 10px;">定位</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/并发/" style="font-size: 10px;">并发</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/数据库/" style="font-size: 13.33px;">数据库</a> <a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a> <a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a> <a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2016 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

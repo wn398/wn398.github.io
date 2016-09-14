@@ -1,0 +1,1108 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CSS | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="CSS特性-继承
+网页中子元素，将继承父元素的样式（因为有些子元素本身就有默认值，所以它就覆盖了父元素中的属性） 
+
+哪些属性会被继承?
+
+文本
+color（颜色，a 元素除外）
+direction（方向）
+font（字体）
+font-family（字体系列）
+font-size（字体大小）
+fon">
+    
+    
+    <meta name="description" content="CSS特性-继承
+网页中子元素，将继承父元素的样式（因为有些子元素本身就有默认值，所以它就覆盖了父元素中的属性） 
+
+哪些属性会被继承?
+
+文本
+color（颜色，a 元素除外）
+direction（方向）
+font（字体）
+font-family（字体系列）
+font-size（字体大小）
+font-style（用于设置斜体）
+font-variant（用于设置小型大写字母）
+font-weig">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS">
+<meta property="og:url" content="http://wn398.github.io/2015/05/02/CSS/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="CSS特性-继承
+网页中子元素，将继承父元素的样式（因为有些子元素本身就有默认值，所以它就覆盖了父元素中的属性） 
+
+哪些属性会被继承?
+
+文本
+color（颜色，a 元素除外）
+direction（方向）
+font（字体）
+font-family（字体系列）
+font-size（字体大小）
+font-style（用于设置斜体）
+font-variant（用于设置小型大写字母）
+font-weig">
+<meta property="og:image" content="http://wn398.github.io/images/css/属性选择参考表.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/盒子模型.png">
+<meta property="og:image" content="http://wn398.github.io/images/修改鼠标指针.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/CSS属性和值1.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/CSS属性和值2.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/CSS属性和值3.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/CSS属性和值4.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/CSS属性和值5.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/CSS属性和值6.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/CSS属性和值7.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/CSS选择器和结合符1.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/CSS选择器和结合符2.png">
+<meta property="og:image" content="http://wn398.github.io/images/css/CSS选择器和结合符3.png">
+<meta property="og:updated_time" content="2015-05-02T06:19:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS">
+<meta name="twitter:description" content="CSS特性-继承
+网页中子元素，将继承父元素的样式（因为有些子元素本身就有默认值，所以它就覆盖了父元素中的属性） 
+
+哪些属性会被继承?
+
+文本
+color（颜色，a 元素除外）
+direction（方向）
+font（字体）
+font-family（字体系列）
+font-size（字体大小）
+font-style（用于设置斜体）
+font-variant（用于设置小型大写字母）
+font-weig">
+<meta name="twitter:image" content="http://wn398.github.io/images/css/属性选择参考表.png">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/05/02/CSS/" title="CSS" itemprop="url">CSS</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-05-02T06:19:24.000Z" itemprop="datePublished"> 发表于 2015-05-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS特性-继承"><span class="toc-number">1.</span> <span class="toc-text">CSS特性-继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性值的类型"><span class="toc-number">2.</span> <span class="toc-text">属性值的类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样式表的优先级别"><span class="toc-number">3.</span> <span class="toc-text">样式表的优先级别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义选择器"><span class="toc-number">4.</span> <span class="toc-text">定义选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为文本添加样式"><span class="toc-number">5.</span> <span class="toc-text">为文本添加样式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置字体"><span class="toc-number">5.1.</span> <span class="toc-text">设置字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建斜体"><span class="toc-number">5.2.</span> <span class="toc-text">创建斜体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用粗体"><span class="toc-number">5.3.</span> <span class="toc-text">应用粗体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字体大小"><span class="toc-number">5.4.</span> <span class="toc-text">字体大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置行高"><span class="toc-number">5.5.</span> <span class="toc-text">设置行高</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置颜色"><span class="toc-number">5.6.</span> <span class="toc-text">设置颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置背景"><span class="toc-number">5.7.</span> <span class="toc-text">设置背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制间距"><span class="toc-number">5.8.</span> <span class="toc-text">控制间距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加缩进"><span class="toc-number">5.9.</span> <span class="toc-text">添加缩进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对齐文本"><span class="toc-number">5.10.</span> <span class="toc-text">对齐文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改文本的大小写"><span class="toc-number">5.11.</span> <span class="toc-text">修改文本的大小写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用小型大写字母"><span class="toc-number">5.12.</span> <span class="toc-text">使用小型大写字母</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#装饰文本"><span class="toc-number">5.13.</span> <span class="toc-text">装饰文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置空白属性"><span class="toc-number">5.14.</span> <span class="toc-text">设置空白属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用CSS进行布局"><span class="toc-number">6.</span> <span class="toc-text">用CSS进行布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#盒子模型"><span class="toc-number">6.1.</span> <span class="toc-text">盒子模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制元素的显示类型和可见性"><span class="toc-number">6.2.</span> <span class="toc-text">控制元素的显示类型和可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置元素的高度和宽度"><span class="toc-number">6.3.</span> <span class="toc-text">设置元素的高度和宽度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在元素周围添加内边距"><span class="toc-number">6.4.</span> <span class="toc-text">在元素周围添加内边距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置边框"><span class="toc-number">6.5.</span> <span class="toc-text">设置边框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置元素周围的外边距"><span class="toc-number">6.6.</span> <span class="toc-text">设置元素周围的外边距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使元素浮动"><span class="toc-number">6.7.</span> <span class="toc-text">使元素浮动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#控制元素浮动的位置"><span class="toc-number">6.7.1.</span> <span class="toc-text">控制元素浮动的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#控制元素浮动位置的步骤"><span class="toc-number">6.7.2.</span> <span class="toc-text">控制元素浮动位置的步骤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对元素进行相对定位"><span class="toc-number">6.8.</span> <span class="toc-text">对元素进行相对定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#偏移自然流中元素的步骤"><span class="toc-number">6.8.1.</span> <span class="toc-text">偏移自然流中元素的步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用overflow_创建自清除浮动元素"><span class="toc-number">6.8.2.</span> <span class="toc-text">使用overflow 创建自清除浮动元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对元素进行绝对定位"><span class="toc-number">6.9.</span> <span class="toc-text">对元素进行绝对定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在栈中定位元素"><span class="toc-number">6.10.</span> <span class="toc-text">在栈中定位元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理溢出"><span class="toc-number">6.11.</span> <span class="toc-text">处理溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垂直对齐元素"><span class="toc-number">6.12.</span> <span class="toc-text">垂直对齐元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改鼠标指针"><span class="toc-number">6.13.</span> <span class="toc-text">修改鼠标指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建响应式网站"><span class="toc-number">7.</span> <span class="toc-text">构建响应式网站</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建响应式网站基于三点"><span class="toc-number">7.1.</span> <span class="toc-text">构建响应式网站基于三点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建可伸缩的图像"><span class="toc-number">7.2.</span> <span class="toc-text">创建可伸缩的图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建弹性布局风格"><span class="toc-number">7.3.</span> <span class="toc-text">创建弹性布局风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解和实现媒体查询"><span class="toc-number">7.4.</span> <span class="toc-text">理解和实现媒体查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组合使用"><span class="toc-number">7.5.</span> <span class="toc-text">组合使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用CSS3进行增强"><span class="toc-number">8.</span> <span class="toc-text">使用CSS3进行增强</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为元素创建圆角"><span class="toc-number">8.1.</span> <span class="toc-text">为元素创建圆角</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为文本添加阴影"><span class="toc-number">8.2.</span> <span class="toc-text">为文本添加阴影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用多重背景"><span class="toc-number">8.3.</span> <span class="toc-text">应用多重背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用渐变背景"><span class="toc-number">8.4.</span> <span class="toc-text">使用渐变背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为元素设置不透明度"><span class="toc-number">8.5.</span> <span class="toc-text">为元素设置不透明度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript事件："><span class="toc-number">9.</span> <span class="toc-text">Javascript事件：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试和调试网页"><span class="toc-number">10.</span> <span class="toc-text">测试和调试网页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS属性和值—参考"><span class="toc-number">11.</span> <span class="toc-text">CSS属性和值—参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS选择器和结合符—参考"><span class="toc-number">12.</span> <span class="toc-text">CSS选择器和结合符—参考</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="CSS特性-继承">CSS特性-继承</h2><blockquote>
+<p>网页中子元素，将继承父元素的样式（因为有些子元素本身就有默认值，所以它就覆盖了父元素中的属性） </p>
+</blockquote>
+<p>哪些属性会被继承?</p>
+<ol>
+<li><p>文本</p>
+<pre><code><span class="attribute">color</span>（颜色，<span class="tag">a</span> 元素除外）
+<span class="attribute">direction</span>（方向）
+<span class="attribute">font</span>（字体）
+<span class="attribute">font-family</span>（字体系列）
+<span class="attribute">font-size</span>（字体大小）
+<span class="attribute">font-style</span>（用于设置斜体）
+<span class="attribute">font-variant</span>（用于设置小型大写字母）
+<span class="attribute">font-weight</span>（用于设置粗体）
+<span class="attribute">letter-spacing</span>（字母间距）
+<span class="attribute">line-height</span>（行高）
+<span class="attribute">text-align</span>（用于设置对齐方式）
+<span class="attribute">text-indent</span>（用于设置首行缩进）
+<span class="attribute">text-transform</span>（用于修改大小写）
+<span class="attribute">visibility</span>（可见性）
+<span class="attribute">white-space</span>（用于指定如何处理空格）
+<span class="attribute">word-spacing</span>（字间距）
+</code></pre></li>
+<li><p>列表</p>
+<pre><code><span class="built_in">list</span>-style（列表样式）
+<span class="built_in">list</span>-style-image（用于为列表指定定制的标记）
+<span class="built_in">list</span>-style-position（用于确定列表标记的位置）
+<span class="built_in">list</span>-style-<span class="keyword">type</span>（用于设置列表的标记）
+</code></pre></li>
+<li><p>表格</p>
+<pre><code><span class="attribute">border-collapse</span>（用于控制表格相邻单元格的边框是否合并为单一边框）
+<span class="attribute">border-spacing</span>（用于指定表格边框之间的空隙大小）
+<span class="attribute">caption-side</span>（用于设置表格标题的位置）
+<span class="attribute">empty-cells</span>（用于设置是否显示表格中的空单元格）
+</code></pre></li>
+<li><p>页面设置（对于印刷物）</p>
+<pre><code><span class="attribute">orphans</span>（用于设置当元素内部发生分页时在页面底部需要保留的最少行数）
+<span class="attribute">page-break-inside</span>（用于设置元素内部的分页方式）
+<span class="attribute">widows</span>（用于设置当元素内部发生分页时在页面顶部需要保留的最少行数）
+</code></pre></li>
+<li><p>其他</p>
+<pre><code><span class="attribute">cursor</span>（鼠标指针）
+<span class="attribute">quotes</span>（用于指定引号样式）
+</code></pre></li>
+</ol>
+<h2 id="属性值的类型">属性值的类型</h2><blockquote>
+<p>每个css属性对于它可以接受哪些值都有不同规定</p>
+</blockquote>
+<ol>
+<li>inherit     对于任何属性，如果希望显式地指出该属性的值与对应元素的父元素对该属性设定的值相同，可以使用inherit值.   如假设有一个article元素，其中包含几个段落。article元素设置了一个边框。边框通常不会被继承，因此  p {border: inherit;}这条规则可以让这些段落获得相同的边框样式。</li>
+<li>预定义的值</li>
+<li>长度和百分数   </li>
+<li>纯数字， 只有极少数css属性接受不带单位的数字，其中常见的就 是line-height,z-index和opacity</li>
+<li>url 如图像</li>
+<li>css 颜色</li>
+<li>RGB  可以通过红，绿，蓝的量来构建自己的颜色 color: rgb(89,0,127)</li>
+<li>十六进制数  color: #895632;  两位两位红绿蓝</li>
+<li>更多CSS3提供的指定颜色的方式：RGBA,HSLA和HSL<ul>
+<li>RGBA:  在rgb的基础上加了一个代表alpha透明度的A,  可以在红，绿，蓝数值后面加上一个用以指定透明度的0到1之间的小数   rgba(89,0,127,0.75)</li>
+<li>HSL: HSL代表色相（hue）,饱和度（saturation）,和亮度（lightness）,其中色相的取值范围为0~360，饱和度和亮度均为百分数  color: hsl(280,100%,25%);</li>
+<li>HSLA:  hsl的基础上加了一个透明度</li>
+</ul>
+</li>
+</ol>
+<h2 id="样式表的优先级别">样式表的优先级别</h2><ol>
+<li>嵌入样式表（位于style元素内，在文件的一个特殊位置声明）与任何链接的外部样式表之间的关系取决于它们在html中的相对位置。在两者发生冲突时，如果link元素在HTML代码中出现的早，style元素就会覆盖链接的样式表，如果link元素出现的晚，其中的样式及其包含的任何导入样式表就会覆盖style元素的规则。</li>
+<li>内联样式（实际上直接应用于元素）。在外部样式表和嵌入样式表之后。由于顺序最靠后，其优先级是最高的。一旦应用到任何地方，都会覆盖与之冲突的其他样式</li>
+<li>关于冲突的样式的顺序对优先级的影响，有一种例外情况，就是标记！important的样式总是具有最高的优先级，无论它在任何地方。如p {margin-top: 1em !important;}.不过，要尽量避免这种做法。</li>
+</ol>
+<h2 id="定义选择器">定义选择器</h2><blockquote>
+<p>选择器决定样式规则应用于哪些元素</p>
+</blockquote>
+<ol>
+<li>创建选择器<br><br>选择器可以定义5个不同的标准来选择要进行格式化的元素：<ul>
+<li>元素的类型或名称</li>
+<li>元素所在的上下文</li>
+<li>元素的类或ID</li>
+<li>元素的伪类或伪元素</li>
+<li>元素是否有某些属性和值</li>
+</ul>
+</li>
+<li><p>按名称选择元素</p>
+<pre><code>元素名 ｛
+        属性名：值
+    ｝
+</code></pre><p> <code>*</code> （星号）匹配代码中的任何元素名称。可以在一个选择器中使用一组元素名称，名称之间用逗号分隔。</p>
+</li>
+<li><p>按类或ID选择元素</p>
+<ul>
+<li>类选择器   <code>点号类名  .类名</code></li>
+<li>ID选择器  <code>#id值</code> </li>
+</ul>
+</li>
+<li><p>按上下文选择元素</p>
+<blockquote>
+<p>在css中，可以根据元素的祖先，父元素或同胞元素来定位它们</p>
+</blockquote>
+</li>
+<li><p>按祖先元素选择要格式化的元素（空格号）<br><br>输入ancestor,  输入一个空格，输入希望格式化的选择器。如  <code>article p{}</code>  aritlce下面的p,不管隔几代继承</p>
+</li>
+<li>按父元素选择要格式化的元素（&gt;号）<br><br>为父元素的直接后代定义规则。输入parent,输入&gt;(大于号)，输入child<br>如  <code>.architect &gt; p{}</code>   类为architect的元素的直接子元素中p元素</li>
+<li>按相邻同胞元素选择要格式化的元素（+号）<br><br>选择相邻的同胞元素</li>
+<li>普通同胞元素选择符（~号）<br><br>可以选择出现在另一同胞元素后面的同胞元素。（可以直接相邻，也可不直接相邻）</li>
+<li>选择第一个或最后一个元素<br><br>使用<code>：first-child</code>和<code>：last-child</code>伪类</li>
+<li>选择元素的第一个字母或者第一行<br><br>可以分别使用<code>：first-letter</code>和<code>：first-line</code>伪元素只选择元素的第一个字母或第一行</li>
+<li><p>按状态选择注册元素</p>
+<ul>
+<li><code>：link</code>  从未激活或指向，当前也没有被激活或指向的链接的外观</li>
+<li><code>：visited</code> 访问者已激活过的链接的外观</li>
+<li><code>：focus</code>  链接通过键盘选择并准备好激活的</li>
+<li><code>：hover</code> 光标指向链接时链接的外观</li>
+<li><p><code>：activie</code> 激活过的链接的外观</p>
+<p>由于链接可能同时处于多种状态（如同时处于激活和鼠标停留状态），且晚出现的规则会覆盖前面出现的规则，所以一般按以下顺序定义：link,visited,focus,hover,active</p>
+</li>
+</ul>
+</li>
+<li><p>按属性选择元素<br> 可以对具有给定属性或属性值的元素进行格式化。CSS提供了多种方式匹配属性和属性值，包括只检查属性名，检查全部或部分属性值。如果在选择器中忽略属性值，就可以为具有给定属性的元素应用样式，而不管具体的属性值是什么。 用方括号表示</p>
+<p>  <img src="/images/css/属性选择参考表.png" alt=""></p>
+</li>
+<li><p>指定元素组<br><br>用逗号分隔各选择元素</p>
+</li>
+<li><p>组合使用选择器<br>css3所有伪类选择器： <a href="http://www.w3.org/TR/css3-selectors/#selectors" target="_blank" rel="external">http://www.w3.org/TR/css3-selectors/#selectors</a></p>
+</li>
+</ol>
+<h2 id="为文本添加样式">为文本添加样式</h2><blockquote>
+<p>使用css可以修改文本的字段，大小，粗细，倾斜，行高，前景和背景颜色，间距和对齐方式，可以决定是否为文本添加下划线或删除线，可以将文本转化为全部使用大写字母，或小写字母</p>
+</blockquote>
+<h3 id="设置字体">设置字体</h3><p> <code>font-family</code>(虽然font-family属性是继承的，但有几个元素不会继承父元素的字体设置，其中有表单的select,textarea和input元素)。  提示使用通用的font属性可以一次性定义字体，大小和行高。</p>
+<h3 id="创建斜体">创建斜体</h3><p> <code>font-style:italic/oblique</code>    取消斜体：<code>font-style:normal</code><br><code>font-style</code>是继承的</p>
+<h3 id="应用粗体">应用粗体</h3><p> <code>font-weight:bold或100-900之间100的倍数</code>，400代表正常或bolder,lighter,  normal取消粗体</p>
+<h3 id="字体大小">字体大小</h3><p> <code>font-size:value</code>直接使用像素指定要使用的特定字号，或使用百分数，em或rem指定相对于父元素文本的大小。一般情况下，浏览器默认字体大小是16px,rem（root em）同em很相像，不过它总是以根元素为参照系。根元素是html元素。而em是相对于父元素大小为参照的。  font-size的属性是继承的. 如：<code>font-size:0.6rem</code></p>
+<h3 id="设置行高">设置行高</h3><p><code>line-height:value</code>   行高指段落内每行之间的距离，数字为字体大小的倍数</p>
+<h3 id="设置颜色">设置颜色</h3><p><code>color:value</code>    除了link元素，其他元素都会继承body元素中的color属性</p>
+<h3 id="设置背景">设置背景</h3><p>几乎可以对所有元素应用背景样式，甚至是表单和图像，设置背景有很属性可以利用，包括<code>background-color</code>,<code>backgound-image</code>,<code>background-repeat</code>,<code>background-attachment</code>及<code>background-position</code>等。</p>
+<p>  还可以使用background简记法，该属性将上述属性合并了。<br><code>background-repeat</code>可以取四个值：<code>repeat</code>,<code>repeat-x</code>,<code>repeat-y</code>和<code>no-repeat</code>.忽略<code>backgound-repeat</code>相当于设置为repeat，从横向和纵向重复</p>
+<p>控制背景图像是否随页面滚动<code>background-attachment</code>,值有<code>fixed</code>或<code>scroll</code>,或<code>local</code>，只有访问者滚动背景图像所在的元素（而不是整个页面）时，背景图像才移动。忽略此项，浏览器通常会使用默认值<code>scroll</code>.</p>
+<p><code>background-position:x,y</code>,其中x和y可以表示为距离左上角的绝对距离或百分数，也可以用left(左对齐)，center(居中)或right(右对齐)表示x, 用top(顶端对齐)，center(居中)或bottom(底端对齐)表示y.</p>
+<p><code>background-color</code>的默认值是<code>transparent</code>透明，<code>background-image</code>的默认值是<code>none</code>,<code>background-position</code>的默认值是0，0（等价于top,left左上角）</p>
+<p>默认情况下，元素的背景会填充其内容和内边距所在的区域，并延伸到边框的边缘</p>
+<h3 id="控制间距">控制间距</h3><p>指定字间距 <code>word-spacing:length</code> 这里length是一个带单位的数字<br><code>letter-spacing:length</code>.要将字母间距和单词间距设为默认值，可以使用<code>normal</code>或0.（<code>word-spacing</code>和<code>letter-spacing</code>是继承的）</p>
+<h3 id="添加缩进">添加缩进</h3><p><code>text-indent</code>可以指定段落第一行前面应该空出多大的空间。我们可以为其他元素应用 text-indent属性，而不仅是段落元素。但默认情况下对<code>em</code>,<code>strong</code>,<code>cite</code>等内联元素没有效果，可以将它们设置为<code>display:block</code>或<code>displacy:inline-block</code>就可以强制为其应用<code>text-indent</code>属性。<code>text-indent</code>属性是继承的。如果使用百分数或em值，那么只有生成的大小会被继承，而不管继承的元素的父元素的大小。</p>
+<h3 id="对齐文本">对齐文本</h3><p><code>text-align :left,right,center,justify两端对齐</code>。text-align对于块元素是起作用的，对于行内元素则不起作用。<code>text-align</code>属性是继承的。它的默认取决于文档的语言和书写系统，大多数情况下是左对齐</p>
+<h3 id="修改文本的大小写">修改文本的大小写</h3><p><code>text-transform:capitalize</code>让每个单词的首字母大写，<code>uppercase</code>让所有字母大写，<code>lowercase</code>让所有字母小写，或输入none让文本本来的样子（可以用来取消继承的值）它是继承的</p>
+<h3 id="使用小型大写字母">使用小型大写字母</h3><p>很多字体都有对应的小型大写字母变体，其中一些字母是大写的，但缩小到了小写字母大小。<code>font-variant</code>调用小型大写字母</p>
+<h3 id="装饰文本">装饰文本</h3><p><code>text-decoration:underline</code>添加下划线，<code>overline</code>添加上划线，<code>line-through</code>添加删除线，<code>none</code>取消文本装饰</p>
+<h3 id="设置空白属性">设置空白属性</h3><p>默认情况下，html文档里的多个空格和回车会显示为一个空格，或被忽略。如果要让浏览器显示这些额外的空格，可以使用<code>white-space</code>属性，<code>pre</code>让浏览器显示原文本中所有空格和回车，<code>nowrap</code>，确保所有空格不断行，也就是文本全部显示在一行。或者<code>normal</code>，按正常方式 处理空格</p>
+<h2 id="用CSS进行布局">用CSS进行布局</h2><h3 id="盒子模型">盒子模型</h3><p><img src="/images/css/盒子模型.png" alt=""></p>
+<blockquote>
+<p>平常css属性里设置的宽度，高度都是指内容的宽度和高度，即不算边框和边距的长度。</p>
+</blockquote>
+<h3 id="控制元素的显示类型和可见性">控制元素的显示类型和可见性</h3><p>块级元素被设置成<code>display:block</code>（对于li元素为<code>display:list-item</code>）,而行内元素被设置为<code>display:inline</code>.  在设置时有一种混合显示方式<code>inline-block</code>，让元素与其他内容出现在同一行，同时具有块级元素的属性。设置为<code>inline</code>的元素会忽略任何<code>width</code>,<code>height</code>,<code>margin-top</code>和<code>margin-bottom</code>设置，不过设置为<code>inline-block</code>的元素可以使用这些属性。所有的display类型都接受background样式。 <code>none</code>属性，隐藏元素，并将其从文档流中完全移除。</p>
+<p>文档流：  默认情况下，元素会按照它们在HTML中自上而下出现的次序显示（这称为文档流，document flow）,并在每个非行内元素的开头和结尾处换行。</p>
+<p><code>visibility</code>属性可以控制元素的可见性、与display不同的是，使用<code>visibility</code>隐藏元素时，元素及其内容应该出现的位置会留下一片空白区域。隐藏元素的空白区域仍然会在文档流中占据位置。</p>
+<p>设置为<code>display:inline</code>的元素不接受<code>padding</code>的设置，但<code>padding-top</code>和<code>padding-bottom</code>会越界进入相邻元素的区域，而不是局限于该元素本身的空间。</p>
+<p>设置为<code>display：none</code>或<code>visibility:hidden</code>的元素里的所有内容（包括所有后代）也会受到影响。</p>
+<h3 id="设置元素的高度和宽度">设置元素的高度和宽度</h3><p><code>width:w</code>   其中的w是元素内容区域的宽度，可以表示为长度（带单位，如px，em等）或父元素的百分数，或使用<code>auto</code>让浏览器计算宽度（这是默认值）,<code>height</code>类似</p>
+<h3 id="在元素周围添加内边距">在元素周围添加内边距</h3><p>内边距是元素内容周围，边框以内的空间。<code>padding</code>: 4个值上右下左,使用两个值，前一个对应上下两边，后一个值对应左右两边，使用三个值，第一个对应于上边，第二值对应左右两边，第三个值对应下边。也可以输入<code>padding-top</code>, <code>padding-right</code>,<code>padding-bottom</code>,<code>padding-left</code>单独为一个边添加内边距</p>
+<p>默认情况下，元素的width和height不包含padding的大小。内边距不是继承的</p>
+<h3 id="设置边框">设置边框</h3><p>边框可应用于任何元素</p>
+<ul>
+<li>定义边框风格： <code>border-style: type</code>，其中的type可以是<code>none</code>,<code>dotted</code>(点线)，<code>ashed</code>(虚线)，<code>solid</code>(实线)，<code>double</code>(双线)，<code>groove</code>(槽线)，<code>ridge</code>(脊线)，<code>inset</code>(凹边)或（凸边）</li>
+<li>设置边框宽度  <code>border-width</code></li>
+<li>设置边框颜色 <code>border-color</code></li>
+<li>可以使用简记法同时设置多个边框属性</li>
+<li>输入<code>border</code>+ <code>-top</code>,<code>-right</code>,<code>-bottom</code>或<code>left</code>将边框效果限制在某一条边上，如<code>border: 1px solid black.   border</code> 简写属性及各个边框属性（border-width、border-style 和bordercolor）均可接受一至四个值。如果使用一个值，那么它会应用于全部四个边。如果使用两个值，那么前一个值会应用于上下两边， 后一个值会应用于左右两边。如果使用三个值，那么第一个值会应用于上边，第二个值 会应用于左右两边，第三个值会应用于下边。 如果使用四个值，那么它们会按照时钟顺序，依次应用于上、右、下、左四个边。</li>
+</ul>
+<p>要让边框显示出来，至少必须定义边框样式。如果没有定义样式，就不会显示边框。<br>边框样式的默认值是<code>border-style: none</code>。css3中引入了<code>border-image</code>属性。边框不是继承的</p>
+<h3 id="设置元素周围的外边距">设置元素周围的外边距</h3><p>输入<code>margin: x</code> ，其中的x是要添加的空间量，可以表示为长度、相对父元素宽度的百分数或<code>auto</code>。 也可以输入<code>margin-top: x ;、margin-right: x ;、margin-bottom: x ;</code>或者<code>margin-left: x ;</code> 为元素的一条边应用外边距。</p>
+<p>margin属性的<code>auto</code>值依赖于<code>width</code>属性的值.</p>
+<p>如果元素位于另一个元素的上面，对于相互接触的两个margin（即元素相互接触的下外边距和上外边距），仅使用其中较大的一个，另一个外边距会被叠加。左右外边距不叠加。 外边距不是继承的</p>
+<p>让网页的主体内容在浏览器里水平居 中显示是一种常见的样式，要实现这种样式其实并不难。首先，对内容的容器添加width（也可以用max-width）。然后将其左右外边距都设为auto。 这样做的话，浏览器会基于浏览器宽度和容器宽度之差计算这些外边距。</p>
+<p>当em 值用于内边距和外边距时，它的值是相对于元素的字体大小的，而不是相对于父元素的字体大小的（你可能会这样认为）</p>
+<h3 id="使元素浮动">使元素浮动</h3><p>可以通过<code>float</code> 属性使元素浮动在文本或其他元素上。可以使用这种技术让文本环绕在图像或者其他元素周围，也可以使用这种技术创建多栏布局等，可选的值有<code>left</code>,<code>right</code>,<code>none</code>, float属性不是继承的</p>
+<h4 id="控制元素浮动的位置">控制元素浮动的位置</h4><p>浮动的元素对文档流的影响与非浮动的元素是不同的。图像等浮动元素会让接下来的内容环绕在它周围。不过，它并不会影响父元素或其他祖先元素的高度，从这一点来说，它不属于文档流的一部分。也就是说父元素的高度可能没有它的高度大，只有普通文档流的内容会影响父元素的高度。浮动元素完全不影响父元素的高度</p>
+<p>清除浮动<code>clear</code>,如果对某个元素使用该属性，该元素和它后面的元素就会显示在浮动元素的下面。</p>
+<h4 id="控制元素浮动位置的步骤">控制元素浮动位置的步骤</h4><ol>
+<li>输入clear:</li>
+<li>输入left，阻止元素浮动在该元素的左边；或输入right，阻止元素浮动在该元素的右边； 或输入both，阻止元素浮动在该元素的左右两边；或输入none（默认值），允许元素浮动 在该元素的左右两边。 </li>
+<li>如果要让浮动元素的祖先元素在高 度上包含浮动元素，并消除浮动，可以使用<br>clearfix （浮动元素不会影响祖先元素的高度，如果父元素下的所有子元素都是浮动的，则这个父元素div的高度就为0，则父元素后面的元素就会顶上来形成内容重叠）或  overflow 方法替代第(1) 步和第(2) 步。</li>
+</ol>
+<p>使用clearfix清除浮动的方法，在父元素上加类clearfix</p>
+<pre><code><span class="class">.clearfix</span><span class="pseudo">:before</span>,
+<span class="class">.clearfix</span><span class="pseudo">:after</span> <span class="rules">{
+    <span class="rule"><span class="attribute">content</span>:<span class="value"> <span class="string">" "</span></span></span>;
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> table</span></span>;
+<span class="rule">}</span></span>
+<span class="class">.clearfix</span><span class="pseudo">:after</span> <span class="rules">{
+    <span class="rule"><span class="attribute">clear</span>:<span class="value"> both</span></span>;
+<span class="rule">}</span></span>
+<span class="class">.clearfix</span> <span class="rules">{
+    <span class="rule">*<span class="attribute">zoom</span>:<span class="value"> <span class="number">1</span></span></span>;
+<span class="rule">}</span></span>
+</code></pre><p>应该将clear 属性添加到不希望环绕浮 动对象的元素上。因此，如果要让一个元素在右侧没有浮动 元素（以及任何靠向右侧的元素）之后才显示，就为它添加clear: right;（而不是为浮 动的元素添加此样式规则）。而clearfix 和overflow 方法是应用于浮动元素的父元素或 祖先元素的</p>
+<p>浮动元素的display属性会变成display:block;哪怕将其设置为display:inline,(无论是浏览器的默认样式还是手动显式设置),该属性依然是block</p>
+<h3 id="对元素进行相对定位">对元素进行相对定位</h3><p>每个元素在页面的文档流中都有一个自然位置，相对于这个原始位置进行移动就称为相对定位。周围的元素完全不受此影响。</p>
+<h4 id="偏移自然流中元素的步骤">偏移自然流中元素的步骤</h4><ol>
+<li>输入position: relative;。</li>
+<li><p>输入top、right、bottom 或left。 再输入:d ，这里的d 是希望元素从它的自然位置偏移的距离，可以表示为绝对值（如 10px）、相对值（如2em）或百分数。值可负可正。需要添加其他偏移量，可重复这一步。如：</p>
+<pre><code><span class="class">.example</span> <span class="rules">{
+        <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;
+        <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">35px</span></span></span>;
+        <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">100px</span></span></span>;
+<span class="rule">}</span></span>
+</code></pre></li>
+</ol>
+<p>其他元素不会受到偏移的影响，仍然 按照这个元素原来的盒子进行排列（此元素原来的位置将空白）。设置了相对定位的内容可能与其他内容重叠，这取决于top、right、bottom 和left 的值。使用相对定位、绝对定位或固定定 位时，对于相互重叠的元素，可以用z-index 属性指定它们的叠放次序。 对元素设置position: static，可以 覆盖position: relative 设置。static 是元素的默认值，这就是元素出现在常规文档流中的原因</p>
+<h4 id="使用overflow_创建自清除浮动元素">使用overflow 创建自清除浮动元素</h4><p>通常，可以对浮动元素的父元素使用 overflow 属性以替代clearfix 方法。例如，在示例页面中可以使用以下代码： </p>
+<pre><code><span class="class">.container</span> <span class="rules">{
+<span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;
+<span class="rule">}</span></span>
+</code></pre><p>在某些情况下，<code>overflow: hidden;</code> 会将内容截断，对此要多加注意。有时使用<br><code>overflow: auto;</code> 也有效，但这样做可能会 出现一个滚动条，这显然是我们不希望看到的<br>可以将clearfix 或 overflow 应用到浮动元素的任何一个非父元素的祖先元素。这样做不会让父元素变高，但祖先元素的高度会包含浮动元素。</p>
+<h3 id="对元素进行绝对定位">对元素进行绝对定位</h3><p>通过对元素进行绝对定位，即指定它们 相对于body或最近的已定位祖先元素的精确位置，可以让元素脱离正常的文档流。</p>
+<p>这与相对定位不同，绝对定位的元素不会在原先的位置留下空白。这与让元素浮动也不同。对于绝对定位的元素，其他元素不会环绕在它的周围。事实上，其他内容不知道它的存在，它也不知道其他内容的存在。</p>
+<p>对元素进行绝对定位的步骤</p>
+<ol>
+<li>输入position: absolute;。</li>
+<li>根据需要，输入top、right、bottom 或left。再输入:d ，这里的d 是希望元素相对于<br>其祖先元素偏移的距离（如10px 或2em）或相对于其祖先的百分数</li>
+<li>根据需要，对其他方向重复第(2) 步。</li>
+<li>根据需要，对希望成为绝对定位参照 体的祖先元素添加position: relative;如果跳过这<br>一步，将对元素相对于body 计算偏移量</li>
+</ol>
+<p>还有一种定位类型称为固定定位。当访问者滚动浏览器窗口时，页面内容通常随之上下移动。如果对元素设置position: fixed;，它就会固定在浏览器窗口中。当访问者上下滚动浏览器窗口时，该元素不会随 之移动，页面的其余部分仍照常滚动。这跟固定背景图像的工作原理类似。固定定位在很多移动浏览器中效果不佳，因此如果你希望自己的网页能很好地适应移动设备，最好不要使用固定定位。</p>
+<p>定位不是继承的</p>
+<h3 id="在栈中定位元素">在栈中定位元素</h3><p>在栈中定位元素<br>输入<code>z-index: n</code> ，其中的n 是表示元素 在定位过的对象堆中的层级的数字。z-index 的值越大，元素在堆中就越高。z-index 属性仅对定位过的元素（即 设为绝对定位、相对定位或固定定位的元素）有效。对一个在文档流中的元素设置再大的都没有用。</p>
+<p>z-index属性不是继承的</p>
+<h3 id="处理溢出">处理溢出</h3><p>元素并不总是包含在它们自己的盒子里。这可能是因为盒子不够大，例如，图像比它的容器更宽就会溢出；也可能是因为使用负的外边距或绝对定位让内容处于盒子的外面；还有可能你对元素设置了显式高度，它的内 容太高而无法装入盒子内部。无论是哪种情况，都可以使用overflow 属性控制元素在盒 子外面的部分，</p>
+<p>决定浏览器如何处理溢出的步骤</p>
+<ol>
+<li>输入overflow:。</li>
+<li>输入visible，让元素盒子中的所有 内容可见，这是默认项；或者输入hidden，隐藏元素盒子容纳不了的内容；或者输入scroll，无论元素是否需要，都在元素上添加滚动条； 或者输入auto，让滚动条仅在访问者访问溢出内容时出现。<br>overflow 属性还可以很方便地清除float，overflow 属性不是继承的</li>
+</ol>
+<h3 id="垂直对齐元素">垂直对齐元素</h3><p>可以使用除默认对齐方式以外的多种方 式对齐元素，让它们在页面上显得较为整齐</p>
+<p>使元素垂直对齐的步骤</p>
+<ol>
+<li>输入vertical-align:。</li>
+<li>输入baseline，使元素的基准线对齐 父元素的基准线；或者输入middle， 使元素位于父元素中央；或者输入sub，使元素成为父元素的下标；或者输入super，使元素成为父元素的上标；或者输入text-top，使元素的顶部对齐父元素的顶部；或者输入text-bottom，使元素的底部对 齐父元素的底部；或者输入top，使元素的顶部对齐当前行<br>里最高元素的顶部；或者输入bottom，使元素的底部对齐当前行里最低元素的底部；<br>或者输入元素行高的百分比，可以是正 数，也可以是负数；或者输入某个值（正负均可，单位为像素或em）分别按照特定的值向上或者向下移动元素</li>
+</ol>
+<p>可以使用vertical-align 设置表格单 元格中内容的对齐方式。通常，默认的样式是中间对齐，而不像表格以外的内容那样与基线对齐。除了表格以外，vertical-align 属性仅适<br>用于行内元素，不能应用于块级元素</p>
+<h3 id="修改鼠标指针">修改鼠标指针</h3><p>一般情况下，浏览器负责控制鼠标指针 的形状。大多数时候使用箭头形状，指向链<br>接时使用手指形状，等等。使用CSS 可以修改指针的形状<br><img src="/images/修改鼠标指针.png" alt=""></p>
+<h2 id="构建响应式网站">构建响应式网站</h2><h3 id="构建响应式网站基于三点">构建响应式网站基于三点</h3><ol>
+<li>灵活的图像和媒体。图像和媒体资源的尺寸是用百分数定义的，从而可以根据环境进行缩放。 </li>
+<li>灵活的、基于网格的布局，也就是流式布局。对于响应式网站， 所有的width 属性都用百分数设定，因此所有的布局成分都是相对的。其他水平属性通常也会使用相对单位（em、百分数和rem 等）</li>
+<li>媒体查询。使用这项技术，可以根据 媒体特征（如浏览器可视页面区域的宽度）对设计进行调整。</li>
+</ol>
+<h3 id="创建可伸缩的图像">创建可伸缩的图像</h3><p>默认情况下， 图像显示的尺寸是HTML中指定的width 和height 属性值。如果不指定这些属性值，图像就会自动按照其原始尺寸 显示。此外，你还可以通过CSS 以像素为单位设置width 和height。</p>
+<p>制作可伸缩图像的步骤:</p>
+<ol>
+<li>对任何想做成可伸缩图像的图像，在 HTML 的img 标签中省略width 和height 属<br>性。</li>
+<li>在样式表中，为每个想做成可伸缩图像的图像应用<code>max-width: 100%</code>.可以使用<code>background-size</code> 属性对背景图像进行缩放。还可以使用<code>video</code>, <code>embed</code>, <code>object { max-width: 100%; }</code> 让HTML5 视频及其他媒体变成可伸缩的（同样也不要在HTML中为它们指定width 和height<h3 id="创建弹性布局风格">创建弹性布局风格</h3></li>
+</ol>
+<p>创建弹性布局的步骤<br>对于需要某个宽度实现预期布局的元素，设置<code>width: percentage</code>;， 其中percentage<br>表示你希望元素在水平方向上占据容器空间的比例。通常说来，不必设置width: 100%;，因为默认设置为display:block; 的元素（如p 以及其他很多元素）或 手动设置为display: block; 的元素在默认情况下会占据整个可用空间。作为可选的一步，对包含整个页面内容的元素设置max-width: value;，其中value表示你希望页面最多可增长到的最大宽度。通常，value 以像素为单位，不过也可以使用百分数、em 值或其他单位值。如果父元素有水平方向上的内边距， 它为子元素建立的容器就会变小。还可以对元素设置基于百分数的 margin 和padding 值。内边距和外边距的em 值是相对于元素的,font-size 的，而基于百分数的值则是相对于包含元素的容器的。百分比都相对于父元素的</p>
+<h3 id="理解和实现媒体查询">理解和实现媒体查询</h3><p>第一种方式是使用link 元素的media属性，位于head 内。</p>
+<pre><code>&lt;head&gt;
+<span class="keyword">...</span>
+&lt;link rel=<span class="string">"stylesheet"</span> href= <span class="string">"your-styles.css"</span> media=<span class="string">"screen"</span> /&gt; 
+&lt;/head&gt;
+</code></pre><p>第二种方式是在样式表中使用@media 规则</p>
+<pre><code><span class="comment">/* 只用于打印的样式 */</span>
+<span class="at_rule">@<span class="keyword">media</span> print </span>{
+    <span class="tag">header</span><span class="attr_selector">[role="banner"]</span> <span class="tag">nav</span>,
+    . <span class="tag">ad</span> <span class="rules">{
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> none</span></span>;
+    <span class="rule">}</span></span>
+}
+</code></pre><p>还有第三种方式，即使用@import 规则，我们不讨论这种方法，因为它会影响性能</p>
+<p>媒体查询增强了媒体类型方法，允许根据特定的设备特性定位样式。要调整网站的呈现样式，让其适应不同的屏幕尺寸，采用媒体查询特别方便。下面列出了可以包含在媒体查询里的媒体特性。</p>
+<pre><code><span class="variable">width</span>（宽度）
+<span class="variable">height</span>（高度）
+device-<span class="variable">width</span>（设备宽度）
+device-<span class="variable">height</span>（设备高度）
+orientation（方向）
+aspect-ratio（高宽比）
+device-aspect-ratio（设备高宽比）
+<span class="built_in">color</span>（颜色）
+<span class="built_in">color</span>-index（颜色数）
+monochrome（单色）
+resolution（分辨率）
+scan（扫描）
+grid（栅格）
+</code></pre><p>还有一些非标准的媒体特性，如</p>
+<pre><code>-<span class="ruby">webkit-device-pixel-rati（o <span class="constant">WebKit</span>①设备像素比） 
+</span>-<span class="ruby">moz-device-pixel-ratio（<span class="constant">Mozilla</span> ②设备像素比）</span>
+</code></pre><p>除了orientation、scan 和grid 以外，上述属性均可添加min- 和max- 前缀。min-<br>前缀定位的是“大于等于”对应值的目标，而max- 前缀定位的则是“小于等于”对应值<br>的目标。</p>
+<p>以下是媒体 查询的基本语法。 </p>
+<ol>
+<li><p>指向外部样式表的链接：</p>
+ <link rel="stylesheet" media="logic  type and (feature: value)" href="your-stylesheet.css"></li>
+<li><p>位于样式表中的媒体查询：</p>
+<p> @media logic type and (feature:  value) {<br> /<em> 目标CSS样式规则写在这里 </em>/<br> }</p>
+</li>
+</ol>
+<p>例：<br>        <link rel="stylesheet" media="only
+         screen and (min-width: 480px)" href="styles-480.css"></p>
+<pre><code><span class="at_rule">@<span class="keyword">media</span> only screen and (min-width:
+ <span class="number">480px</span>) </span>{
+<span class="tag">p</span> <span class="rules">{
+<span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+<span class="rule"><span class="attribute">font-weight</span>:<span class="value"> bold</span></span>;
+<span class="rule">}</span></span>
+}
+</code></pre><p>回到语法，让我们看看这些代码的组成 部分。</p>
+<ol>
+<li><p>logic（逻辑）部分是可选的，其值可以是only 或not。only 关键字可以确 保旧的浏览器不读取余下的媒体查询，同时一并忽略链接的样式表。not 关键字可以对媒体查询的结果求反，让其反面为真。例如，使用media=”not screen” 会在媒体类型为screen 以外的任何类型时加载样式表。</p>
+</li>
+<li><p>type（类型）部分是媒体类型，如screen、print 等。 </p>
+</li>
+<li>feature : value 对是可选的，但一旦包含它们，它们必须用括号包围且前面要有and 这个字。feature 是预定义的媒体特性， 如min-width、maxwidth或者resolution。对color、color-index 和monochrome 特性来说，value 是可选的。</li>
+</ol>
+<h3 id="组合使用">组合使用</h3><p>构建响应式Web 页面</p>
+<ol>
+<li>创建内容和HTML。</li>
+<li>在HTML 页面的head 元素中， 输 入<meta name="viewport" content="width=device-width"> 或 <meta name="viewport" content="width= device-width, initialscale=1">。 </li>
+<li>创建适用于所有设备的基准样式（参 见“移动优先方法”）。确保页面中的图像<br>可伸缩</li>
+<li>识别出适合你的内容的断点。创建相关的媒体查询，让布局适应从小屏幕到大屏<br>幕的不同可视区域宽度。（参见“逐步完善 布局”）。 </li>
+<li>如果需要为第(4) 步中页面的一些内 容指定宽度，使用百分数（参见12.3 节）。 </li>
+<li>选择你希望的旧版IE 显示页面的方式</li>
+<li>开始测试（参见“测试响应式网页”）。</li>
+<li>根据需要，修改第(3) ～ (5) 步中的 CSS，并进行测试，直到页面在各种设备下都<br>呈现出预期的效果。</li>
+</ol>
+<h2 id="使用CSS3进行增强">使用CSS3进行增强</h2><p>每个主流浏览器都有其自身的前缀：<code>-webkit-(webkit/safari/旧版本chrome)</code>,<code>-moz-(firefox),-ms-(Internet Explorer)</code>,<code>-o-(Opera)</code>.  应该将前缀放在CSS属性名的前面。</p>
+<h3 id="为元素创建圆角">为元素创建圆角</h3><p>使用CSS3，可以在不引入额外的标记或 图像的情况下，为大多数元素（包括表单元素、图像，甚至段落文本）创建圆角</p>
+<ol>
+<li><p>为元素创建四个相同的圆角<br><br>(1) 这一步可选， 输入-webkit-borderradius: r ，这里的r 是圆角的半径大小，表示为长度（带单位）。<br>(2) 输入border-radius: r ，这里的r 是 圆角的半径大小，使用与第(1) 步中相同的值</p>
+</li>
+<li><p>为元素创建一个圆角<br><br>(1) 这一步可选， 输入-webkit-bordertop- left-radius: r ，这里的r 是左上方圆角的半径大小，表示为长度（带单位）。<br>(2) 输入border-top-left-radius: r，这里的r 使用与第(1) 步中相同的值。这是该属性的标准长形式语法。注意这些步骤仅演示了如何创建左上方圆角，此外，还可以单独创建其他方位的圆角，<br>步骤如下。<br>创建右上方圆角：用 top-right 替换 第(1) 步和第(2) 步中的top-left。创建右下方圆角：用 bottom-right 替 换第(1) 步和第(2) 步中的top-left。 创建左下方圆角：用 bottom-left 替换第(1) 步和第(2) 步中的top-left。</p>
+</li>
+<li>创建椭圆形圆角<br><br>(1) 这一步可选， 输入-webkit-borderradius: x /y ，其中x 是圆角在水平方向上的<br>半径大小，y 是圆角在垂直方向上的半径大小，均表示为长度（带单位）。<br>(2) 输入border-radius: x /y ，其中x 和 y 跟第(1) 步中的值相等</li>
+<li>使用border-radius 创建圆形<br><br>(1) 输入-webkit-border-radius: r ， 这 里的r 是元素的半径大小（带长度单位）。要创建圆形，可以使用短形式的语法，r 的值应该等于元素高度或宽度的一半。<br>(2) 输入border-radius: r ，这里的r 是 元素的半径大小（带长度单位），跟第(1) 步<br>中的r 相等</li>
+</ol>
+<p>border-radius 仅影响施加该样式的元素的角，不会影响其子元素的角.<br>有时元素的背景（这里讲的不是子元 素的背景）会透过其圆角。为了避免这种情况，<br>可以在元素的border-radius 声明后面增加一 条样式规则：background-clip: padding-box;。</p>
+<h3 id="为文本添加阴影">为文本添加阴影</h3><ol>
+<li><p>为元素的文本添加阴影<br><br>(1) 输入text-shadow:。<br>(2) 分别输入表示x-offset（水平偏移 量）、y-offset（垂直偏移量）、blur-radius（模<br>糊半径）和color 的值（前三个值带长度单位，四个值之间不用逗号分隔），例如-2px 3px 7px #999</p>
+</li>
+<li><p>为元素的文本添加多重阴影<br><br>(1) 输入text-shadow:。<br>(2) 分别输入x-offset、y-offset、blurradius和color 的值（前三个带长度单位，四个值之间不用逗号分隔）。blur-radius 的值是可选的。<br>(3) 输入,（逗号）。<br>(4) 对四种属性使用不同的值重复第(2) 步。</p>
+</li>
+<li><p>将text-shadow 改回默认值<br><br>输入text-shadow: none;。</p>
+</li>
+</ol>
+<p>text-shadow 属性接受四个值：带长度 单位的x-offset、带长度单位的y-offset、可<br>选的带长度单位的blur-radius以及color值。如果不指定blur-radius， 将假定其值为0</p>
+<p>text-shadow属性是继承的。</p>
+<p>为其他元素添加阴影<br>使用text-shadow 属性可以为元素的文 本添加阴影，使用box-shadow 属性则可以为<br>元素本身添加阴影，它们的基础属性集是相同的，不过 box-shadow 还允许使用两个可选的属性—— inset 关键字属性和spread 属性（用于扩张 或收缩阴影）。</p>
+<p>box-shadow 属性接受六个值：带长度单 位的x-offset 和y-offset、可选的带长度单位的blur-radius、可选的inset 关键字、可 选的带长度单位的spread 值及color 值。如果不指定blur-radius 和spread 的值，则设为0。inset关键字可以让阴影位于元素内部。box-shadow 属性是不继承的</p>
+<h3 id="应用多重背景">应用多重背景</h3><p>为单个HTML 元素指定多个背景是CSS3 引入的一个特性</p>
+<ol>
+<li>为单个元素应用多重背景图像<br><br>(1) 输入background-color: b ， 这里的 b 是希望为元素应用的备用背景颜色<br>(2) 输入background-image: u ，这里的u是绝对或相对路径图像引用的URL 列表（用<br>逗号分隔）。<br>(3) 输入background-position: p ，这里 的p 是成对的x-offset 和y-offset（可以是<br>正的，也可以是负的；带长度单位或者关键 字，如center top）的集合，用逗号分隔。<br>对于第(2) 步中指定的每个URL，都应有一 组x-offset 和y-offset。<br>(4) 输入background-repeat: r ，这里的 r 是repeat-x、repeat-y 或no-repeat 值，用<br>逗号分隔，第(2) 步中指定的每个URL 对应一个值。</li>
+</ol>
+<h3 id="使用渐变背景">使用渐变背景</h3><p>渐变背景也是CSS3 中的新特性，通过它可以在不使用图像的情况下创建从一种颜 色到另一种颜色的过渡</p>
+<ol>
+<li>创建备用背景颜色 输入background: color 或者backgroundcolor: color ，这里的color 可以是十六进制 数、RGB 值以及其他任何支持的颜色名称，另外也可以使用图像。最好不要将RGBA、HSL 或HSLA 值作为备用背景颜色， 因为 IE8 及以前的版本不支持。</li>
+<li><p>定义线性渐变<br><br>(1) 输入background: linear-gradient(。<br>(2) 如果你希望渐变的方向是从上往下（默认方向），则跳过这一步。输入方向后面加一个逗号， 这里的方 向指的是to top、to right、to left、to bottom right、to bottom left、to top right 或to top left 这样的值。或者输入方向后面加一个逗号， 这里 的方向指的是角度值（ 如45deg、107deg、180deg 或310deg）。(3) 根据后面讲到的“指定颜色”或“指 定颜色和颜色的停止位置”，定义渐变的颜色。<br>(4) 输入); 完成渐变。</p>
+</li>
+<li><p>定义径向渐变<br><br>(1) 输入background: radial-gradient(。<br>(2) 指定渐变的形状。如果你希望渐变的 形状根据第(3) 步中指定的尺寸自行确定，则<br>跳过这一步。否则，输入circle 或ellipse。（注意这一声明在某些情况下会被忽略。）<br>(3) 指定渐变的尺寸。如果你希望渐变的 尺寸为自动指定的值（默认值为arthestcorner，<br>最远的角），则跳过这一步。输入size ，这里的size 可以是同时代表 渐变宽度和高度的一个长度值（如200px 或 7em），也可以是代表宽度和高度的一对值（如 390px 175px 或60% 85%）。注意，如果只使 用一个值，则这个值不能是百分数。或者输入size ，这里的size 是closestside 、farthest-side、closest-corner 或 farthest-corner。这些关键字代表相对于渐变的中心，渐变可以伸展到多大的空间。边 界决定了渐变的尺寸。<br>(4) 指定渐变的位置。如果你希望渐变从元素的中心开始（默认值），则跳过这一步<br>输入pos ， 这里的pos 是at top、at  right、at left、at bottom right、at bottom<br>left、at top right 或at top left 等表示渐 变中心位置的值。或者输入pos ，这里的pos 是表示渐变中 心位置的一对坐标，并以at 开头。例如at 200px 43px、at 33% 70%、at 50% -10px 等。（仅指定一对。）<br>(5) 如果指定了第(2) 步至第(4) 步中的任 何一步，输入一个逗号。需要说明的是，如<br>果指定了这些步骤中的多个值，这些值之间 不需要以逗号分隔。<br>(6) 根据后面讲到的“指定颜色”或“指 定颜色和颜色的停止位置”，定义渐变的颜色。<br>(7) 输入); 完成渐变。</p>
+</li>
+<li>指定颜色<br><br>输入至少两种颜色，每个颜色之间用逗 号分隔。指定的第一个颜色出现在渐变的开<br>始位置，最后一个颜色出现在渐变的结束位 置。对于径向渐变，它们分别为最里边的颜<br>色和最外边的颜色。颜色值可以是十六进制数、RGB、RGBA、HSL 或HSLA 值的组合。除非指定一种颜色向另一种颜色过渡的位置，否则浏览器会自行决定不同颜色之间的过渡。</li>
+<li>指定颜色和颜色的停止位置根据“ 指定颜色” 中的说明进行操作。如果需要，对每个颜色值指定一个百分数以控制颜色出现在渐变中的位置</li>
+</ol>
+<h3 id="为元素设置不透明度">为元素设置不透明度</h3><p>使用opacity 属性可以修改元素（包括图 像）的透明度<br>修改元素不透明度的方法<br>输入<code>opacity: o</code> ，这里的o 表示元素的 不透明程度（两位小数，不带单位）。opacity 的默认值为1，该属性值可以使用0.00（完全透明）至1.00 （ 完全不透明） 之间的两位小数。opacity 影响的是整个元素（ 包括其内容）， 而<br>background-color: rgba(128,0,64,.6); 这样的设置仅影响背景的透明度。opacity 属<br>性并不是继承的。opacity 的值小于1 的元 素的子元素也会受到影响，但这些子元素的<br>opacity 值仍为1。<br>生成内容的效果<br>使用:before 和:after 伪元素可以很方便地为页面添加一些令人难以置信的设计效果。它们可以与content 属性结合使用，从而创建所谓的生成内容（generated content）。<br>生成内容指的是通过CSS 创建的内容，而不是由HTML 生成的。可以 对生成内容添加背景颜色、背景图像（包括渐变）、宽度、高度、圆角等样式。</p>
+<pre><code><span class="comment">/* 气泡下的三角形 */</span>
+<span class="class">.cities</span><span class="pseudo">:after</span> <span class="rules">{
+<span class="rule"><span class="attribute">border</span>:<span class="value"> solid transparent</span></span>;
+<span class="rule"><span class="attribute">border-top-color</span>:<span class="value"> <span class="hexcolor">#2b2b2b</span></span></span>;
+<span class="rule"><span class="attribute">border-width</span>:<span class="value"> <span class="number">15px</span></span></span>;
+<span class="rule"><span class="attribute">content</span>:<span class="value"> <span class="string">" "</span></span></span>; <span class="comment">/* 空格 */</span>
+<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">0</span></span></span>;
+<span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">50%</span></span></span>;
+<span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">15px</span></span></span>;
+<span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;
+<span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">99.9%</span></span></span>;
+<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">0</span></span></span>;
+<span class="rule">}</span></span>
+</code></pre><h2 id="Javascript事件：">Javascript事件：</h2><pre><code>onblur：访问者离开先前获得焦点的元素（参见onfocus）。 
+onchange：访问者改变元素的值或内 容。通常用于表单字段
+onclick：访问者点击特定的区域或在 元素（如链接）获得焦点时按下回车键。 
+ondblclick：访问者双击特定的区域。
+onfocus：访问者选择、点击或用制表 键将焦点移至特定的元素。 
+onkeydown：在指定的元素上，访问者 按下一个键。 
+onkeypress：在指定的元素上，访问者按下并松开一个键。
+onkeyup：在指定的元素上，访问者在输入后松开一个键。 
+onload：浏览器完成页面的加载，包 括所有的外部文件（如图像、样式表、JavaScript 等）。 
+onmousedown：在指定的元素上，访问者按下鼠标键。 
+onmousemove：访问者移动鼠标指针。
+onmouseout：访问者在鼠标指针停留 的特定元素上移开鼠标。 
+onmouseover：访问者将鼠标指向元素。
+onmouseup：访问者在点击元素后松开 鼠标键（与nmousedown 相反）。 
+onreset：访问者点击表单的重置按钮 或在该按钮获得焦点时按下回车键。 
+onselect：访问者选择元素中的一个 或多个字符。 
+onsubmit：访问者点击表单的提交按 钮或在该按钮获得焦点时按下回车键。
+</code></pre><h2 id="测试和调试网页">测试和调试网页</h2><p>验证代码的步骤</p>
+<ol>
+<li>首先使用<a href="http://html5.validator.nu或W3C" target="_blank" rel="external">http://html5.validator.nu或W3C</a> 的<a href="http://validator.w3.org" target="_blank" rel="external">http://validator.w3.org</a> 对HTML 进行检查。</li>
+<li>修复标出来的HTML错误，保存修改。需要的话，将文件再次上传到服务器，再重复第(1) 步。</li>
+<li>可以使用<a href="http://jigsaw.w3.org/css-validator/检查CSS" target="_blank" rel="external">http://jigsaw.w3.org/css-validator/检查CSS</a> 错误。类似地，修复你看到的错误，再重新检查页面。</li>
+</ol>
+<h2 id="CSS属性和值—参考">CSS属性和值—参考</h2><p><img src="/images/css/CSS属性和值1.png" alt=""><br><img src="/images/css/CSS属性和值2.png" alt=""><br><img src="/images/css/CSS属性和值3.png" alt=""><br><img src="/images/css/CSS属性和值4.png" alt=""><br><img src="/images/css/CSS属性和值5.png" alt=""><br><img src="/images/css/CSS属性和值6.png" alt=""><br><img src="/images/css/CSS属性和值7.png" alt=""></p>
+<h2 id="CSS选择器和结合符—参考">CSS选择器和结合符—参考</h2><p><img src="/images/css/CSS选择器和结合符1.png" alt=""><br><img src="/images/css/CSS选择器和结合符2.png" alt=""><br><img src="/images/css/CSS选择器和结合符3.png" alt=""></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/前端/">前端</a><a href="/tags/CSS/">CSS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2015/05/02/CSS/" data-title="CSS | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/06/01/VI的使用/" title="VI的使用">
+  <strong>上一篇：</strong><br/>
+  <span>
+  VI的使用</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/04/26/html5/"  title="HTML5">
+ <strong>下一篇：</strong><br/> 
+ <span>HTML5
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/05/02/CSS/" data-title="CSS" data-url="http://wn398.github.io/2015/05/02/CSS/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS特性-继承"><span class="toc-number">1.</span> <span class="toc-text">CSS特性-继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性值的类型"><span class="toc-number">2.</span> <span class="toc-text">属性值的类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样式表的优先级别"><span class="toc-number">3.</span> <span class="toc-text">样式表的优先级别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义选择器"><span class="toc-number">4.</span> <span class="toc-text">定义选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为文本添加样式"><span class="toc-number">5.</span> <span class="toc-text">为文本添加样式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置字体"><span class="toc-number">5.1.</span> <span class="toc-text">设置字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建斜体"><span class="toc-number">5.2.</span> <span class="toc-text">创建斜体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用粗体"><span class="toc-number">5.3.</span> <span class="toc-text">应用粗体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字体大小"><span class="toc-number">5.4.</span> <span class="toc-text">字体大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置行高"><span class="toc-number">5.5.</span> <span class="toc-text">设置行高</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置颜色"><span class="toc-number">5.6.</span> <span class="toc-text">设置颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置背景"><span class="toc-number">5.7.</span> <span class="toc-text">设置背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制间距"><span class="toc-number">5.8.</span> <span class="toc-text">控制间距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加缩进"><span class="toc-number">5.9.</span> <span class="toc-text">添加缩进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对齐文本"><span class="toc-number">5.10.</span> <span class="toc-text">对齐文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改文本的大小写"><span class="toc-number">5.11.</span> <span class="toc-text">修改文本的大小写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用小型大写字母"><span class="toc-number">5.12.</span> <span class="toc-text">使用小型大写字母</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#装饰文本"><span class="toc-number">5.13.</span> <span class="toc-text">装饰文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置空白属性"><span class="toc-number">5.14.</span> <span class="toc-text">设置空白属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用CSS进行布局"><span class="toc-number">6.</span> <span class="toc-text">用CSS进行布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#盒子模型"><span class="toc-number">6.1.</span> <span class="toc-text">盒子模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制元素的显示类型和可见性"><span class="toc-number">6.2.</span> <span class="toc-text">控制元素的显示类型和可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置元素的高度和宽度"><span class="toc-number">6.3.</span> <span class="toc-text">设置元素的高度和宽度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在元素周围添加内边距"><span class="toc-number">6.4.</span> <span class="toc-text">在元素周围添加内边距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置边框"><span class="toc-number">6.5.</span> <span class="toc-text">设置边框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置元素周围的外边距"><span class="toc-number">6.6.</span> <span class="toc-text">设置元素周围的外边距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使元素浮动"><span class="toc-number">6.7.</span> <span class="toc-text">使元素浮动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#控制元素浮动的位置"><span class="toc-number">6.7.1.</span> <span class="toc-text">控制元素浮动的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#控制元素浮动位置的步骤"><span class="toc-number">6.7.2.</span> <span class="toc-text">控制元素浮动位置的步骤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对元素进行相对定位"><span class="toc-number">6.8.</span> <span class="toc-text">对元素进行相对定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#偏移自然流中元素的步骤"><span class="toc-number">6.8.1.</span> <span class="toc-text">偏移自然流中元素的步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用overflow_创建自清除浮动元素"><span class="toc-number">6.8.2.</span> <span class="toc-text">使用overflow 创建自清除浮动元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对元素进行绝对定位"><span class="toc-number">6.9.</span> <span class="toc-text">对元素进行绝对定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在栈中定位元素"><span class="toc-number">6.10.</span> <span class="toc-text">在栈中定位元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理溢出"><span class="toc-number">6.11.</span> <span class="toc-text">处理溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垂直对齐元素"><span class="toc-number">6.12.</span> <span class="toc-text">垂直对齐元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改鼠标指针"><span class="toc-number">6.13.</span> <span class="toc-text">修改鼠标指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建响应式网站"><span class="toc-number">7.</span> <span class="toc-text">构建响应式网站</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建响应式网站基于三点"><span class="toc-number">7.1.</span> <span class="toc-text">构建响应式网站基于三点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建可伸缩的图像"><span class="toc-number">7.2.</span> <span class="toc-text">创建可伸缩的图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建弹性布局风格"><span class="toc-number">7.3.</span> <span class="toc-text">创建弹性布局风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解和实现媒体查询"><span class="toc-number">7.4.</span> <span class="toc-text">理解和实现媒体查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组合使用"><span class="toc-number">7.5.</span> <span class="toc-text">组合使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用CSS3进行增强"><span class="toc-number">8.</span> <span class="toc-text">使用CSS3进行增强</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为元素创建圆角"><span class="toc-number">8.1.</span> <span class="toc-text">为元素创建圆角</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为文本添加阴影"><span class="toc-number">8.2.</span> <span class="toc-text">为文本添加阴影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用多重背景"><span class="toc-number">8.3.</span> <span class="toc-text">应用多重背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用渐变背景"><span class="toc-number">8.4.</span> <span class="toc-text">使用渐变背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为元素设置不透明度"><span class="toc-number">8.5.</span> <span class="toc-text">为元素设置不透明度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript事件："><span class="toc-number">9.</span> <span class="toc-text">Javascript事件：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试和调试网页"><span class="toc-number">10.</span> <span class="toc-text">测试和调试网页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS属性和值—参考"><span class="toc-number">11.</span> <span class="toc-text">CSS属性和值—参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS选择器和结合符—参考"><span class="toc-number">12.</span> <span class="toc-text">CSS选择器和结合符—参考</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<!--<p class="asidetitle">Music</p>-->
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期文章</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/14/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/01/VI的使用/">VI的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2015/05/02/CSS/">CSS</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期更新</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/14/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/01/VI的使用/">VI的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2015/05/02/CSS/">CSS</a>
+      </li>
+    
+      <li>
+        <a href="/2015/04/26/html5/">HTML5</a>
+      </li>
+    
+      <li>
+        <a href="/2015/04/13/Java7的一些新特性/">Java7的一些新特性</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>44</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/前端/" title="前端">前端<sup>5</sup></a></li>
+		
+			<li><a href="/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+			<li><a href="/tags/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>2</sup></a></li>
+		
+			<li><a href="/tags/字节码/" title="字节码">字节码<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
+		
+			<li><a href="/tags/实例/" title="实例">实例<sup>1</sup></a></li>
+		
+			<li><a href="/tags/项目构建/" title="项目构建">项目构建<sup>1</sup></a></li>
+		
+			<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/grails/" title="grails">grails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+		
+			<li><a href="/tags/依赖注入/" title="依赖注入">依赖注入<sup>1</sup></a></li>
+		
+			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java新特性/" title="Java新特性">Java新特性<sup>1</sup></a></li>
+		
+			<li><a href="/tags/JDK/" title="JDK">JDK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/groovy/" title="groovy">groovy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/categories/JVM/" title="JVM">JVM<sup>2</sup></a></li>
+		
+			<li><a href="/categories/JavaSE/" title="JavaSE">JavaSE<sup>3</sup></a></li>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/grails/" title="grails">grails<sup>1</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>3</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>3</sup></a></li>
+		
+			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>3</sup></a></li>
+		
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>1</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JDK/" style="font-size: 10px;">JDK</a> <a href="/tags/JS/" style="font-size: 11.67px;">JS</a> <a href="/tags/Java新特性/" style="font-size: 10px;">Java新特性</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/android-UI/" style="font-size: 16.67px;">android_UI</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/grails/" style="font-size: 10px;">grails</a> <a href="/tags/groovy/" style="font-size: 10px;">groovy</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/ssh2/" style="font-size: 10px;">ssh2</a> <a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a> <a href="/tags/传感器/" style="font-size: 10px;">传感器</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a> <a href="/tags/字节码/" style="font-size: 11.67px;">字节码</a> <a href="/tags/定位/" style="font-size: 10px;">定位</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/并发/" style="font-size: 10px;">并发</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/数据库/" style="font-size: 13.33px;">数据库</a> <a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a> <a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a> <a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2016 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

@@ -34,7 +34,7 @@
     <link rel="apple-touch-icon" href="/img/jacman.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
     
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
@@ -77,17 +77,17 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2015/03/12/android/Context Provider-内容提供器/" title="Context Provider-内容提供器" itemprop="url">
+    <a href="/2015/03/17/android/android绘图/" title="android绘图" itemprop="url">
   
-    <h1 itemprop="name">Context Provider-内容提供器</h1>
+    <h1 itemprop="name">android绘图</h1>
     
      
-           <p itemprop="description" >内容提供器Context Provider
-它主要用于在不同应用程序之间实现数据共享的功能，它提供了一套完整的机制，允许一个程序访问另一个程序中的数据，同时还能保证被访问数据的安全性。目前，使用内容提供器是Android实现跨程序共享数据的标准方式。
-内容提供器的用法一般有两种，</p>
+           <p itemprop="description" >Graphics包Graphics包中包括了Canvas,Paint,Color,Bitmap,2D几何图形等常用类。Graphics具有绘制点，线，颜色，图像处理，2D几何图形等功能
+绘制图像用canvas.drawBitmap,可以利用Matrix来实现图像的旋转和缩放功能
+</p>
         
     
-    <time datetime="2015-03-12T04:43:24.000Z" itemprop="datePublished">2015-03-12</time>
+    <time datetime="2015-03-17T01:21:33.000Z" itemprop="datePublished">2015-03-17</time>
   </a>
 </section>
 
@@ -112,21 +112,20 @@ var duoshuoQuery = {short_name:"wn398"};
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2015/03/11/android/service-服务/" title="service-服务" itemprop="url">
+    <a href="/2015/03/16/android/android多媒体和闹钟/" title="android多媒体和闹钟" itemprop="url">
   
-    <h1 itemprop="name">service-服务</h1>
+    <h1 itemprop="name">android多媒体和闹钟</h1>
     
      
-           <p itemprop="description" >服务Service
+           <p itemprop="description" >播放音频
+在android中播放音频文件一般都是使用MediaPlayer类来实现的，它对多种格式的音频文件提供了支持
 
-android中服务并不是运行在一个独立的进程当中的，而是依赖于创建服务时所在的应用程序进程。当某个应用程序的进程被杀掉时，所有依赖于该进程的服务也会停止运行。
+先调用setDataSource()方法和prepare()方法做好播放准备，
 
-Service用法1 创建service
-写一个类继承抽象类service
-实现抽象方法onB</p>
+然后调用play()播放，pause()暂停，stop()停止，reset(</p>
         
     
-    <time datetime="2015-03-11T05:17:20.000Z" itemprop="datePublished">2015-03-11</time>
+    <time datetime="2015-03-16T09:13:49.000Z" itemprop="datePublished">2015-03-16</time>
   </a>
 </section>
 
@@ -151,27 +150,19 @@ var duoshuoQuery = {short_name:"wn398"};
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2015/03/11/android/活动-Activity/" title="活动-Activity" itemprop="url">
+    <a href="/2015/03/16/android/Intent使用/" title="Intent使用" itemprop="url">
   
-    <h1 itemprop="name">活动-Activity</h1>
+    <h1 itemprop="name">Intent使用</h1>
     
      
-           <p itemprop="description" >销毁活动的方法：
-销毁一个活动 在活动代码里调用finish()方法或者按下back键
+           <p itemprop="description" >Intent
+Intent是程序中各组件之间进行交互的一种重要方式，不仅可以指明当前组件想要执行的活动，还可以在不同组件之间传递数据，Intent一般用于启动活动，启动服务，以及发送广播等场景
 
-Activity的7个回调方法：
-1.onCreate()
-
-完成活动的初始化操作，如加载布局，绑定UI事件
-
-2.onStart()
-
-这个方法在活动由不可见变为可见时候调用
-
-3.onR</p>
+显式Intent:
+调用构造函数Intent(Context packeageCon</p>
         
     
-    <time datetime="2015-03-11T03:20:26.000Z" itemprop="datePublished">2015-03-11</time>
+    <time datetime="2015-03-16T07:12:10.000Z" itemprop="datePublished">2015-03-16</time>
   </a>
 </section>
 
@@ -196,21 +187,21 @@ var duoshuoQuery = {short_name:"wn398"};
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2015/03/10/git常用命令总结/" title="git常用命令总结" itemprop="url">
+    <a href="/2015/03/16/android/android通知、PendingIntent、定时机制/" title="android通知、PendingIntent、定时机制" itemprop="url">
   
-    <h1 itemprop="name">git常用命令总结</h1>
+    <h1 itemprop="name">android通知、PendingIntent、定时机制</h1>
     
      
-           <p itemprop="description" >git 配置
-查看配置信息 git config --list
-git帮助命令  git help &amp;lt;verb&amp;gt; 或 git &amp;lt;verb&amp;gt; --help
+           <p itemprop="description" >使用通知的步骤
+获取通知管理器
+NotificationManager manager =(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE)
 
-git 操作
-增加文件到暂存区    git add 文件名(-A所有文件变化) 
-提交文件    </p>
+创建Notification对象
+
+</p>
         
     
-    <time datetime="2015-03-10T12:19:34.000Z" itemprop="datePublished">2015-03-10</time>
+    <time datetime="2015-03-16T06:04:24.000Z" itemprop="datePublished">2015-03-16</time>
   </a>
 </section>
 
@@ -235,16 +226,20 @@ var duoshuoQuery = {short_name:"wn398"};
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2013/03/22/spring笔记/" title="spring笔记" itemprop="url">
+    <a href="/2015/03/14/android/android异步消息处理机制/" title="android异步消息处理机制" itemprop="url">
   
-    <h1 itemprop="name">spring笔记</h1>
+    <h1 itemprop="name">android异步消息处理机制</h1>
     
      
-           <p itemprop="description" >spring简介
-spring是一个容器框架，它用于配置bean并维护bean之间的关系的框架(bean是java中的任何一种对象，javabean/service/action/数据源/dao,ioc(控制反转)，di(依赖注入))。它可以管理web层，业务层，dao层，持久层</p>
+           <p itemprop="description" >安卓异步消息机制
+Android不允许在子线程中进行UI操作。但Android提供了一套异步消息处理机制，解决了在子线程中进行UI操作的问题。
+
+异步消息处理：使用handler如：
+public static final int UPDATE_TEXT = 1;
+//在onCr</p>
         
     
-    <time datetime="2013-03-22T14:47:39.000Z" itemprop="datePublished">2013-03-22</time>
+    <time datetime="2015-03-14T07:57:26.000Z" itemprop="datePublished">2015-03-14</time>
   </a>
 </section>
 
@@ -269,21 +264,18 @@ var duoshuoQuery = {short_name:"wn398"};
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2013/03/19/mysql数据库/" title="mysql数据库" itemprop="url">
+    <a href="/2015/03/13/android/android数据持久化/" title="android数据持久化" itemprop="url">
   
-    <h1 itemprop="name">mysql数据库</h1>
+    <h1 itemprop="name">android数据持久化</h1>
     
      
-           <p itemprop="description" >mysql手动配置目录
-在mysql安装目录下的my.ini，其它的ini文件都是针对不同数据库大小的配置模板，真正起作用的是my.ini所以修改配置就是修改my.ini文件
+           <p itemprop="description" >安卓数据持久化三种类型：文件存储，sharedPreference存储和数据库存储
 
-mysql的数值类型整数类型
-tinyint 1字节
-smallint 2字节, 
-mediumint</p>
+文件存储1.将数据存储在文件中
+Context类中提供了一个openFileOutput()方法，可以用于将数据存储到指定的文件中。它接收两个参数，第一个文件名，文件名不包括路径，默认存储到/d</p>
         
     
-    <time datetime="2013-03-19T06:44:43.000Z" itemprop="datePublished">2013-03-19</time>
+    <time datetime="2015-03-13T12:42:50.000Z" itemprop="datePublished">2015-03-13</time>
   </a>
 </section>
 
@@ -308,16 +300,21 @@ var duoshuoQuery = {short_name:"wn398"};
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2013/01/20/nosql简介/" title="nosql简介" itemprop="url">
+    <a href="/2015/03/13/android/android-蓝牙/" title="android-蓝牙" itemprop="url">
   
-    <h1 itemprop="name">nosql简介</h1>
+    <h1 itemprop="name">android-蓝牙</h1>
     
      
-           <p itemprop="description" >NoSQL定义
-NoSQL(Not only SQL),泛指非关系型数据库。nosql-database.org对NoSQL有一个较为全面的解释，指出NoSQL的特点：非关系、分布式、开源、水平扩展、schema-free、easy replication support、sim</p>
+           <p itemprop="description" >蓝牙
+有关蓝牙的类和接口位于android.bluetooth包中。
+
+BluetoothAdapter  蓝牙适配器（代表本地蓝牙适配器）
+BluetoothClass 蓝牙类（主要包括服务和设备）
+BluetoothClass.Device  蓝牙设备类
+BluetoothC</p>
         
     
-    <time datetime="2013-01-20T03:12:56.000Z" itemprop="datePublished">2013-01-20</time>
+    <time datetime="2015-03-13T10:52:31.000Z" itemprop="datePublished">2015-03-13</time>
   </a>
 </section>
 
@@ -342,22 +339,16 @@ var duoshuoQuery = {short_name:"wn398"};
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2012/10/20/UML关系/" title="UML关系" itemprop="url">
+    <a href="/2015/03/13/android/android-NFC/" title="android-NFC" itemprop="url">
   
-    <h1 itemprop="name">UML关系</h1>
+    <h1 itemprop="name">android-NFC</h1>
     
      
-           <p itemprop="description" >UML中的关系列表
-继承关系(Generalization)；
-实现关系(Realization)；
-依赖关系(Dependency)；
-关联关系(Association)；
-有方向的关联(DirectedAssociation)；
-聚合关系(Aggregation)；
-组合关系</p>
+           <p itemprop="description" >NFC
+NFC(Near Field Communication)  是一种非接触式的技术，用于在短距离内（通常小于4cm）内少量数据的传输。NFC传输可以在两个支持NFC的设备或者一个设备和一个NFC“标签”之间进行。NFC标签即包括在扫描时会传输URL的被动标签，也包括复杂的</p>
         
     
-    <time datetime="2012-10-20T03:52:08.000Z" itemprop="datePublished">2012-10-20</time>
+    <time datetime="2015-03-13T10:44:09.000Z" itemprop="datePublished">2015-03-13</time>
   </a>
 </section>
 
@@ -382,20 +373,53 @@ var duoshuoQuery = {short_name:"wn398"};
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/2012/10/18/SQL综合整理/" title="SQL综合整理" itemprop="url">
+    <a href="/2015/03/13/android/android网络wifi/" title="android网络wifi" itemprop="url">
   
-    <h1 itemprop="name">SQL综合整理</h1>
+    <h1 itemprop="name">android网络wifi</h1>
     
      
-           <p itemprop="description" >SQL语言分为三部分:
-数据定义语言  (Data Definition Language) DDL
-数据操作语言   (Data Manipulation Language)DML
-数据控制语言  （Data Control Language）DCL
+           <p itemprop="description" >管理网络和Internet连接
+Android可以广播用于监视网络连接变化的Intent，并提供了对网络设置和连接进行控制的API.
 
-数据定义语言DDL创建数</p>
+Connectivity Manager
+Android网络主要是通过ConnectivityManager来处理的，该服务使你可以监视连接状态</p>
         
     
-    <time datetime="2012-10-18T05:28:14.000Z" itemprop="datePublished">2012-10-18</time>
+    <time datetime="2015-03-13T10:28:49.000Z" itemprop="datePublished">2015-03-13</time>
+  </a>
+</section>
+
+<script src="/js/snowstorm-min.js"></script>
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/2015/03/12/android/Android电话和SMS/" title="Android电话和SMS" itemprop="url">
+  
+    <h1 itemprop="name">Android电话和SMS</h1>
+    
+     
+           <p itemprop="description" >电话服务的硬件支持  为了指定应用程序需要设备支持电话服务，需要在应用程序的mainfest文件中添加一个 uses-feature节点
+&amp;lt;uses-feature android:name=&quot;android.hardware.telephony&quot; android:requ</p>
+        
+    
+    <time datetime="2015-03-12T08:06:10.000Z" itemprop="datePublished">2015-03-12</time>
   </a>
 </section>
 
@@ -419,7 +443,7 @@ var duoshuoQuery = {short_name:"wn398"};
 
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
   </nav>
 
 </div>
@@ -447,15 +471,15 @@ var duoshuoQuery = {short_name:"wn398"};
   <ul class="entry">
     
       <li>
-        <a href="/2015/03/17/android/android UI的一些技巧/">android_UI的一些技巧</a>
+        <a href="/2016/09/14/git常用命令总结/">git常用命令总结</a>
       </li>
     
       <li>
-        <a href="/2015/03/17/android/android语音识别/">android语音识别</a>
+        <a href="/2015/06/01/VI的使用/">VI的使用</a>
       </li>
     
       <li>
-        <a href="/2015/03/17/android/android传感器/">android传感器</a>
+        <a href="/2015/05/02/CSS/">CSS</a>
       </li>
     
   </ul>
@@ -468,23 +492,23 @@ var duoshuoQuery = {short_name:"wn398"};
   <ul class="entry">
     
       <li>
-        <a href="/2013/03/19/mysql数据库/">mysql数据库</a>
+        <a href="/2016/09/14/git常用命令总结/">git常用命令总结</a>
       </li>
     
       <li>
-        <a href="/2015/03/10/git常用命令总结/">git常用命令总结</a>
+        <a href="/2015/06/01/VI的使用/">VI的使用</a>
       </li>
     
       <li>
-        <a href="/2012/10/18/SQL综合整理/">SQL综合整理</a>
+        <a href="/2015/05/02/CSS/">CSS</a>
       </li>
     
       <li>
-        <a href="/2015/03/11/android/活动-Activity/">活动-Activity</a>
+        <a href="/2015/04/26/html5/">HTML5</a>
       </li>
     
       <li>
-        <a href="/2015/03/11/android/service-服务/">service-服务</a>
+        <a href="/2015/04/13/Java7的一些新特性/">Java7的一些新特性</a>
       </li>
     
   </ul>
@@ -496,31 +520,61 @@ var duoshuoQuery = {short_name:"wn398"};
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
-			<li><a href="/tags/技术/" title="技术">技术<sup>29</sup></a></li>
+			<li><a href="/tags/技术/" title="技术">技术<sup>44</sup></a></li>
 		
 			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
 		
 			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
 		
+			<li><a href="/tags/前端/" title="前端">前端<sup>5</sup></a></li>
+		
 			<li><a href="/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
 		
-			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+			<li><a href="/tags/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>2</sup></a></li>
+		
+			<li><a href="/tags/字节码/" title="字节码">字节码<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
 		
 			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
 		
+			<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
+		
+			<li><a href="/tags/实例/" title="实例">实例<sup>1</sup></a></li>
+		
+			<li><a href="/tags/项目构建/" title="项目构建">项目构建<sup>1</sup></a></li>
+		
+			<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/grails/" title="grails">grails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+		
+			<li><a href="/tags/依赖注入/" title="依赖注入">依赖注入<sup>1</sup></a></li>
+		
+			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java新特性/" title="Java新特性">Java新特性<sup>1</sup></a></li>
+		
+			<li><a href="/tags/JDK/" title="JDK">JDK<sup>1</sup></a></li>
+		
 			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>1</sup></a></li>
-		
-			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
-		
-			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
-		
-			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
 		
 			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
 		
-			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
 		
-			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+			<li><a href="/tags/groovy/" title="groovy">groovy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
 		
 			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
 		
@@ -528,9 +582,15 @@ var duoshuoQuery = {short_name:"wn398"};
 		
 			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
 		
-			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
 		
-			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
 		
 		</ul>
 </div>
@@ -541,13 +601,25 @@ var duoshuoQuery = {short_name:"wn398"};
 	<p class="asidetitle">分类</p>
 		<ul>
 		
+			<li><a href="/categories/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/categories/JVM/" title="JVM">JVM<sup>2</sup></a></li>
+		
+			<li><a href="/categories/JavaSE/" title="JavaSE">JavaSE<sup>3</sup></a></li>
+		
 			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
 		
-			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+			<li><a href="/categories/grails/" title="grails">grails<sup>1</sup></a></li>
 		
-			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
 		
-			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>1</sup></a></li>
+			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>3</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>3</sup></a></li>
+		
+			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>3</sup></a></li>
+		
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>1</sup></a></li>
 		
 			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
 		
@@ -559,7 +631,7 @@ var duoshuoQuery = {short_name:"wn398"};
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/NFC/" style="font-size: 10px;">NFC</a><a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a><a href="/tags/UML/" style="font-size: 10px;">UML</a><a href="/tags/android/" style="font-size: 17.5px;">android</a><a href="/tags/android-UI/" style="font-size: 15px;">android_UI</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/mysql/" style="font-size: 10px;">mysql</a><a href="/tags/spring/" style="font-size: 10px;">spring</a><a href="/tags/sql/" style="font-size: 10px;">sql</a><a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a><a href="/tags/传感器/" style="font-size: 10px;">传感器</a><a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a><a href="/tags/定位/" style="font-size: 10px;">定位</a><a href="/tags/技术/" style="font-size: 20px;">技术</a><a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a><a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a><a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a><a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a>
+       <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JDK/" style="font-size: 10px;">JDK</a> <a href="/tags/JS/" style="font-size: 11.67px;">JS</a> <a href="/tags/Java新特性/" style="font-size: 10px;">Java新特性</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/android-UI/" style="font-size: 16.67px;">android_UI</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/grails/" style="font-size: 10px;">grails</a> <a href="/tags/groovy/" style="font-size: 10px;">groovy</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/ssh2/" style="font-size: 10px;">ssh2</a> <a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a> <a href="/tags/传感器/" style="font-size: 10px;">传感器</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a> <a href="/tags/字节码/" style="font-size: 11.67px;">字节码</a> <a href="/tags/定位/" style="font-size: 10px;">定位</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/并发/" style="font-size: 10px;">并发</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/数据库/" style="font-size: 13.33px;">数据库</a> <a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a> <a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a> <a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
     </div>
   </div>
 
@@ -567,7 +639,7 @@ var duoshuoQuery = {short_name:"wn398"};
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
   </div>
 
 
@@ -603,7 +675,7 @@ var duoshuoQuery = {short_name:"wn398"};
 <div class="widget">
   <p class="asidetitle">最近评论</p>
     
-<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="0" data-excerpt-length="70"></ul>
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
 </div>
 
 
@@ -667,7 +739,7 @@ var duoshuoQuery = {short_name:"wn398"};
 	 
 	
 	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2015 
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2016 
 		
 		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
 		

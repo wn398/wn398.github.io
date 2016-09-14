@@ -1,0 +1,1120 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>hibernate曾旧的笔记 | 自由之翼</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tim Wang">
+    
+    <meta name="description" content="使用hibernate步骤
+创建Hibernate的配置文件
+创建持久化类
+创建对象-关系映射文件
+通过Hiberante api 编写访问数据库的代码
+
+SessionFactory一个SessionFactory实例对应一个数据存储源，应用从SessionFactory中获得Session实例，">
+    
+    
+    <meta name="description" content="使用hibernate步骤
+创建Hibernate的配置文件
+创建持久化类
+创建对象-关系映射文件
+通过Hiberante api 编写访问数据库的代码
+
+SessionFactory一个SessionFactory实例对应一个数据存储源，应用从SessionFactory中获得Session实例，SessionFactory有以下特点：它是线程安全的，这意味着它只有一个实例可以被多个线程共享，这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hibernate曾旧的笔记">
+<meta property="og:url" content="http://wn398.github.io/2013/08/14/hibernate曾旧的笔记/index.html">
+<meta property="og:site_name" content="自由之翼">
+<meta property="og:description" content="使用hibernate步骤
+创建Hibernate的配置文件
+创建持久化类
+创建对象-关系映射文件
+通过Hiberante api 编写访问数据库的代码
+
+SessionFactory一个SessionFactory实例对应一个数据存储源，应用从SessionFactory中获得Session实例，SessionFactory有以下特点：它是线程安全的，这意味着它只有一个实例可以被多个线程共享，这">
+<meta property="og:updated_time" content="2013-08-14T06:24:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hibernate曾旧的笔记">
+<meta name="twitter:description" content="使用hibernate步骤
+创建Hibernate的配置文件
+创建持久化类
+创建对象-关系映射文件
+通过Hiberante api 编写访问数据库的代码
+
+SessionFactory一个SessionFactory实例对应一个数据存储源，应用从SessionFactory中获得Session实例，SessionFactory有以下特点：它是线程安全的，这意味着它只有一个实例可以被多个线程共享，这">
+<meta name="twitter:creator" content="@wn1698">
+<link rel="publisher" href="108412565662276580000">
+
+    
+    <link rel="alternative" href="/atom.xml" title="自由之翼" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="自由之翼" title="自由之翼"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="自由之翼">自由之翼</a></h1>
+				<h2 class="blog-motto">The perfect day Going to bed with a dream ,waking up with a purpose</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= null ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2013/08/14/hibernate曾旧的笔记/" title="hibernate曾旧的笔记" itemprop="url">hibernate曾旧的笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108412565662276580000?rel=author" title="Tim Wang" target="_blank" itemprop="author">Tim Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2013-08-14T06:24:10.000Z" itemprop="datePublished"> 发表于 2013-08-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用hibernate步骤"><span class="toc-number">1.</span> <span class="toc-text">使用hibernate步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SessionFactory"><span class="toc-number">2.</span> <span class="toc-text">SessionFactory</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session接口"><span class="toc-number">3.</span> <span class="toc-text">Session接口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hibernate类型对应关系"><span class="toc-number">4.</span> <span class="toc-text">hibernate类型对应关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构建SessionFactory及Session支持类"><span class="toc-number">5.</span> <span class="toc-text">构建SessionFactory及Session支持类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hibernate的事务控制示例"><span class="toc-number">6.</span> <span class="toc-text">hibernate的事务控制示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用hql查询语句"><span class="toc-number">7.</span> <span class="toc-text">使用hql查询语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#query方法与list方法区别"><span class="toc-number">8.</span> <span class="toc-text">query方法与list方法区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#理解Session的缓存"><span class="toc-number">9.</span> <span class="toc-text">理解Session的缓存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在Hibernate应用中Java对象的状态"><span class="toc-number">10.</span> <span class="toc-text">在Hibernate应用中Java对象的状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hibernate的检索策略："><span class="toc-number">11.</span> <span class="toc-text">hibernate的检索策略：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#映射配置"><span class="toc-number">12.</span> <span class="toc-text">映射配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一对一映射："><span class="toc-number">12.1.</span> <span class="toc-text">一对一映射：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查询排序（内存排序及数据库排序）"><span class="toc-number">13.</span> <span class="toc-text">查询排序（内存排序及数据库排序）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库联合主键"><span class="toc-number">14.</span> <span class="toc-text">数据库联合主键</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hibernate的查询"><span class="toc-number">15.</span> <span class="toc-text">Hibernate的查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hql检索步骤："><span class="toc-number">15.1.</span> <span class="toc-text">hql检索步骤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#qbc检索方式"><span class="toc-number">15.2.</span> <span class="toc-text">qbc检索方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库的事务与并发处理"><span class="toc-number">16.</span> <span class="toc-text">数据库的事务与并发处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hibernate拦截器与事务"><span class="toc-number">17.</span> <span class="toc-text">hibernate拦截器与事务</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="使用hibernate步骤">使用hibernate步骤</h1><ol>
+<li>创建Hibernate的配置文件</li>
+<li>创建持久化类</li>
+<li>创建对象-关系映射文件</li>
+<li>通过Hiberante api 编写访问数据库的代码</li>
+</ol>
+<h1 id="SessionFactory">SessionFactory</h1><p>一个SessionFactory实例对应一个数据存储源，应用从SessionFactory中获得Session实例，SessionFactory有以下特点：它是线程安全的，这意味着它只有一个实例可以被多个线程共享，这是重量级的。如果应用只访问一个数据库，只需要创建一个SessionFactory实例，在应用初始化时候创建一个该实例，如果应用同时访问多个数据库，则需要为每个数据库创建一个单独的<code>SessionFactory</code>实例。它主要用来创建session</p>
+<h1 id="Session接口">Session接口</h1><p>Session接口是Hibernate应用使用最广泛的接口。session也被称为持久化管理器，它提供了和持久化相关的操作，如<em>添加，更新，删除，加载和查询对象</em></p>
+<p>它有以下特点：不是线程安全的，应该避免多个线程共享同一个Session实例,Session实例是轻量级的。session相当于一个数据库连接</p>
+<p>注意：此session非彼Session(HttpSession)</p>
+<h1 id="hibernate类型对应关系">hibernate类型对应关系</h1><p><table><br>    <tr><td>java类型</td><td>Hibernate类型</td><td>Sql类型</td></tr><tr><br>    </tr><tr><td>java.lang.String</td><td>string</td><td>varchar</td></tr><tr><br>    </tr><tr><td>int</td><td>int</td><td>int</td></tr><tr><br>    </tr><tr><td>char</td><td>character</td><td>char(1)</td></tr><tr><br>    </tr><tr><td>boolean</td><td>boolean</td><td>bit</td></tr><tr><br>    </tr><tr><td>String</td><td>text</td><td>text</td></tr><tr><br>    </tr><tr><td>byte[]</td><td>binary</td><td>blot</td></tr><tr><br>    </tr><tr><td>java.sql.Date</td><td>date</td><td>date</td></tr><tr><br>    </tr><tr><td>java.sql.Timestamp</td><td>timestamp</td><td>timestamp</td></tr><tr></tr></table></p>
+<h1 id="构建SessionFactory及Session支持类">构建SessionFactory及Session支持类</h1><pre><code><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">hibernateUtil</span> {
+    <span class="keyword">static</span> SessionFactory factory=<span class="keyword">null</span>;
+    <span class="keyword">static</span> Session session=<span class="keyword">null</span>;
+      <span class="keyword">static</span>{
+        <span class="keyword">try</span> {
+            <span class="comment">//读取配置文件（hibernate.cfg.xml）</span>
+            Configuration cfg=<span class="keyword">new</span> Configuration().configure();
+            <span class="comment">//根据配置文件取得SessionFactory工厂</span>
+            factory=cfg.buildSessionFactory();
+        } <span class="keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    <span class="comment">//取得Session</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Session <span class="title">getSession</span><span class="params">()</span></span>{
+
+        session=factory.openSession();
+        <span class="keyword">return</span> session;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeSession</span><span class="params">(Session session)</span></span>{
+        <span class="keyword">if</span>(session!=<span class="keyword">null</span>){
+            <span class="keyword">if</span>(session.isOpen())
+                session.close();
+        }
+
+    }
+}
+</code></pre><h1 id="hibernate的事务控制示例">hibernate的事务控制示例</h1><pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">savePerson</span><span class="params">(Person person)</span>
+</span>{
+    Session session = HibernateUtil.getSession();
+               Transaction tx = session.beginTransaction();
+               <span class="keyword">try</span>
+    {
+        session.save(person);
+                                tx.commit();
+    }<span class="keyword">catch</span>(Exception ex)
+    {
+        <span class="keyword">if</span>(<span class="keyword">null</span>!=tx)
+        {
+            tx.rollback();
+        }
+    }
+    <span class="keyword">finally</span>
+    {
+        HibernateUtil.close(session);
+    }
+}
+</code></pre><h1 id="使用hql查询语句">使用hql查询语句</h1><pre><code><span class="keyword">Query</span> <span class="keyword">query</span> = session.createQuery(<span class="string">"HQL语句"</span>);
+<span class="keyword">List</span>&lt;People&gt; <span class="keyword">list</span> = (<span class="keyword">List</span>&lt;People&gt;)<span class="keyword">query</span>.<span class="keyword">list</span>();
+</code></pre><p>如果加入分页则可以用如下：</p>
+<pre><code><span class="variable">Query</span> <span class="keyword">query</span> = session.create<span class="variable">Query</span>(<span class="string">"HQL语句"</span>).set<span class="variable">FirstResult</span>(<span class="string">"开始记录数"</span>).set<span class="variable">MaxResult</span>(<span class="string">"每页多少条记录"</span>);
+</code></pre><p>把二进制文件从数据库里读出来：</p>
+<pre><code>byte[] <span class="keyword">buffer</span> = people.getFile();//获得从查出来的属性
+OutputStream os = <span class="keyword">new</span> FileOutputStream(<span class="string">"c:/"</span>+people.getId+<span class="string">".pdf"</span>);
+os.<span class="keyword">write</span>(<span class="keyword">buffer</span>）;
+os.<span class="keyword">close</span>();
+</code></pre><h1 id="query方法与list方法区别">query方法与list方法区别</h1><p>对于query接口的list()方法与iterator()方法来说，都可以实现获取查询的对象，但是list()方法返回的每个对象都是完整的（对象中的每个属性都被表中的字段填充上了），而iterator()方法所返回的对象中仅包含了主键值（标识符），只有当你对iterator()中的对象进行操作时，Hiberante才会向数据库再次发送SQL语句来获取该对象的属性值。实际上就是延迟加载</p>
+<h1 id="理解Session的缓存">理解Session的缓存</h1><ol>
+<li>当Session的save()方法持久化一个Customer对象时，Customer对象被加入到Session的缓存中，以后即使应用程序中的引用变量不再引用Customer对象，只要Session的缓存还没有被清空，Customer对象仍然处于生命周期中。</li>
+<li>当Session的load()方法试图从数据库中加载一个Customer对象时，Session先判断缓存中是否已经存在这个Customer对象，如果存在，就不需要再到数据库中检索。</li>
+<li>减少访问数据库的频率，应用程序从内存中读取持久化对象的速度显然比到数据库中查询数据的速度快多了，因此Session的缓存可以提高数据访问的性能。</li>
+<li>保证缓存中的对象与数据库中的相关记录保持同步。当缓存中持久化对象的状态发生了变化，Session并不会立即执行相关的SQL语句，这使得Session能够把几条相关的Sql语句合并成一条SQL语句，以便减少访问数据库的次数，从而提高应用程序的性能。</li>
+</ol>
+<p>清理缓存（关闭session）是指按照缓存中对象的状态的变化同步更新数据库</p>
+<p>Session会以下面的时间点清理缓存：</p>
+<ol>
+<li>当应用程序调用org.hibernate.Transaction的commit()方法的时候，commit()方法先清理缓存，然后再向数据库提交事务</li>
+<li>当应用程序显式调用Session的flush()方法的时候</li>
+</ol>
+<p>hibernate自身一对多双向关系，可以表示无限的层级关系（任何孩子只有一个父母），在实体类里有一个对父对象的引用，还有一个集合表示它下面的孩子</p>
+<p>Hibernate的二级缓存结构</p>
+<ol>
+<li>Hibernate提供了两级缓存，第一级缓存是Session的缓存。由于Session对象的生命周期通常对应一个数据库事务或者一个应用事务，因此它的缓存是事务范围的缓存。第一级缓存是必须的，不允许而且事实上也无法被卸除。在第一级缓存中，持久化类的每一个实例都具有唯一的OID.</li>
+<li>第二级缓存是一个可插拔插件，它由SesssionFactory负责管理。由于SessionFactory对象的生命周期和应用程序的整个进程对应，因此第二级缓存是进程范围的缓存。这个缓存中存放的是对象的散装数据。第二级缓存是可选的，可以在每个类或每个集合的粒度上配置第二级缓存。</li>
+</ol>
+<p>二级缓存EhCache在sessionFactory中配置</p>
+<pre><code>&lt;<span class="keyword">property</span> <span class="property">name</span>=<span class="string">"hibernate.cache.user_second_level_cache"</span>&gt;<span class="constant">true</span>&lt;/<span class="keyword">property</span>&gt;
+&lt;<span class="keyword">property</span> <span class="property">name</span>=<span class="string">"hibernate.cache.provider_class"</span>&gt;org.hibernate.EhCacheProvider&lt;/<span class="keyword">property</span>&gt;
+</code></pre><p>二级缓存一对多，多的一方，在set中加<code>&lt;cache usage=&quot;read-only&quot;/&gt;</code>在多的对方配置文件里也要加<code>&lt;cache usage=&quot;read-only&quot;/&gt;</code><br>在src目录下加一个<code>ehcache.xml</code>,常见配置如下 </p>
+<pre><code><span class="subst">&lt;</span>ehcache<span class="subst">&gt;</span>
+<span class="subst">&lt;</span>diskStore path<span class="subst">=</span><span class="string">"c:/ehcache"</span><span class="subst">/</span><span class="subst">&gt;</span><span class="comment">//在磁盘的存放目录</span>
+<span class="comment">//默认的缓存策略</span>
+<span class="subst">&lt;</span>defaultCache  maxElementsInMemory<span class="subst">=</span><span class="string">"200"</span><span class="comment">//内存最多存放多少个对象</span>
+       eternal<span class="subst">=</span><span class="string">"false"</span><span class="comment">//是否永恒</span>
+    timeToIdleSeconds<span class="subst">=</span><span class="string">"50"</span><span class="comment">//</span>
+    timeToLiveSeconds<span class="subst">=</span><span class="string">"60"</span><span class="comment">//</span>
+    overflowToDisk<span class="subst">=</span><span class="string">"true"</span>
+<span class="subst">/</span><span class="subst">&gt;</span>
+
+    <span class="subst">&lt;</span><span class="keyword">cache</span> name<span class="subst">=</span><span class="string">"com.hibernate.Student"</span><span class="subst">/</span><span class="subst">&gt;</span><span class="comment">//针对具体类的配置，它继承上面默认的也可以在里面设置覆盖。</span>
+
+<span class="subst">&lt;</span>/ehcache<span class="subst">&gt;</span>
+</code></pre><p>二级缓存：</p>
+<ol>
+<li>transactional:必须在受管的环境下使用，保证可重复读的事务隔离级别，对于读/写比例大，很少更新的数据通常可以采取这种方式。</li>
+<li>read-write:使用timestamp机制维护已提交事务隔离级别，对于读/写比例大，很少更新的数据通常可以采取这种方式。</li>
+<li>nonstrict-read-write:二级缓存与数据库中的数据可能会出现不一致的情况。在使用这种策略的时候，应该设置足够短的缓存过期时间，否则就有可能从缓存中读取到脏数据。当一些数据很少改变（一天，两天都不改变的数据），并且这些数据如果出现数据库与缓存不一致的情况下影响并不大的时候，那么可以采取这种缓存策略。</li>
+<li>read-only:当确定数据不会被改变时，我们可以使用这种缓存策略</li>
+</ol>
+<h1 id="在Hibernate应用中Java对象的状态">在Hibernate应用中Java对象的状态</h1><ol>
+<li>临时状态（transient）:刚刚用new语句创建，还没有被持久化，不处于Session的缓存中。处于临时状态的Java对象被称为临时对象</li>
+<li>持久化状态（persistent）:已经被持久化，加入到Session的缓存中。处于持久化状态的Java对象被称为持久化对象</li>
+<li>游离状态（detached）:已经被持久化，但不再处于Session的缓存中。处于游离状态的Java对象被称为游离对象</li>
+</ol>
+<p>Session的方法主要作用是把对象从游离状态转化为持久化状态</p>
+<ol>
+<li>把customer对象重新加入到Session缓存中，使它变为持久化对象</li>
+<li>计划执行一个update语句，值得注意的是，Session只有在清理缓存的时候才会执行update语句，并且在执行时才会把Customer对象当前的属性值组装到update语句中。因此，即使程序中多次修改了Customer对象的属性，在清理缓存时只会执行一次update语句。</li>
+</ol>
+<h1 id="hibernate的检索策略：">hibernate的检索策略：</h1><ol>
+<li>立即检索策略</li>
+<li>延迟检索策略</li>
+<li>左外连接检索策略</li>
+</ol>
+<p>在多对一关联级别使用左外连接检索策略</p>
+<ol>
+<li>默认情况下，多对一关联使用左外连接检索策略</li>
+<li>如果把Order.hbm.xml文件的<many-to-one>元素的outer-join属性高为true，总是使用左外连接检索策略，即在查询的时候就会把关联一的那一方查询出来，只用一条sql语句，从而节省了sql语句。</many-to-one></li>
+</ol>
+<p><strong>优点：</strong>对应用程序完全透明，不管对象处于持久化状态，还是游离状态，应用程序都可以方便的从一个对象导航到与它关联的对象。使用了外连接，select语句数目减少。<br><strong>缺点：</strong>可能会加载应用程序不需要访问的对象，白白浪费了许多内存空间。复杂的数据库表连接也会影响检索性能。</p>
+<p>适用范围：</p>
+<ol>
+<li>多对一或才一对一关联</li>
+<li>应用程序需要立即访问的对象</li>
+<li>数据库系统具有良好的表连接性能</li>
+</ol>
+<p>在程序中显式指定左外连接检索策略</p>
+<ol>
+<li>在映射文件中设定的检索策略是固定的，要么是延迟检索，要么是立即检索，要么是外连接检索。</li>
+<li>但应用逻辑是多种多样的，有些情况下需要延迟检索，而有些情况下需要外连接检索。</li>
+<li>Hibernate允许在应用程序中覆盖映射文件中设定的检索策略，由应用程序在运行时决定检索对象力的深度。</li>
+</ol>
+<p>以下Session的方法都用于检索OID为1的Customer对象：</p>
+<pre><code>session.createQuery("<span class="keyword">from</span> Customer <span class="keyword">as</span> c where c.id=1");
+session.createQuery("<span class="keyword">from</span> Customer <span class="keyword">as</span> c left join fetch c.orders  where c.id =1");
+</code></pre><p>在执行第一个方法时，将使用映射文件配置的检索策略，<br>在执行第二个方法时，在HQL语句中显式指定左外连接检索关联的Oreder对象，因此覆盖映射文件配置的检索策略。不管在Customer.hbm.xml文件中<set>元素的lazy属性是true还是false，Hibernate都会执行以下select语句：</set></p>
+<pre><code><span class="operator"><span class="keyword">select</span>＊<span class="keyword">from</span> CUSTOMERS <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> ORDERS <span class="keyword">on</span> CUSTOMERS.ID = ORDERS.CUSTOMER_ID <span class="keyword">where</span> CUTROMERS.ID =<span class="number">1</span>;</span>
+</code></pre><h1 id="映射配置">映射配置</h1><h2 id="一对一映射：">一对一映射：</h2><ol>
+<li><p>主键关联（主键值是一样的）</p>
+<p> <id name="id" column="id" type="string"></id></p>
+<pre><code><span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"foreign"</span>&gt;</span>//表示作为外键来使用，使用别的表的主键，只在一方这样配置，另一方正常
+    <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"property"</span>&gt;</span>student<span class="tag">&lt;/<span class="title">param</span>&gt;</span>//使用那个表的主键，使用本类中student对象的表的id
+<span class="tag">&lt;/<span class="title">generator</span>&gt;</span>
+</code></pre><p> 后面还要加上one-to-one配置，再配置上级联<br>一对一默认使用的是立即加载，如需要使用延迟加载，那么需要在one-to-one元素中将<code>constrained</code>属性设为true，并且将待加载的一方的class元素中的lazy属性高为true(或者不去设置，因为该属性默认值是true).一对一加载时默认使用左外连接，可以通过修改fetch属性为select修改成每次发送一条select语句的形式</p>
+</li>
+</ol>
+<p>fetch属性可以改变查询语句的方式，join表示连接查询，select表示单独select查询，one-to-one默认的是join连接查询</p>
+<ol>
+<li>外键关联（特殊的一对多）<br>在一方使用many-to-one加上属性unique=”true”表示唯一就变成了one-to-one。</li>
+</ol>
+<p>根据实体类配置生成数据库表结构</p>
+<pre><code>SchemaExport <span class="reserved">export</span> = <span class="keyword">new</span> SchemaExport(<span class="keyword">new</span> Configuration().configuer());
+<span class="reserved">export</span>.create(<span class="literal">true</span>,<span class="literal">true</span>);
+</code></pre><p>第一个参数打印出sql语句，第二个参数把sql语句导入到数据库</p>
+<p>多对多关系类似于一对多，只是要在set中指定中间表，并在key与one-to-many中指定相关外键</p>
+<p>map映射采用map标签,实际上是采用另外一张表的形式存储它</p>
+<pre><code>&lt;<span class="built_in">map</span> <span class="variable">name=</span><span class="string">"students"</span> <span class="variable">table=</span><span class="string">"student"</span>&gt;
+    &lt;key <span class="variable">column=</span><span class="string">"team_id"</span>&gt;&lt;/key&gt;//关联的表中的外键 
+    &lt;index <span class="variable">column=</span><span class="string">"name"</span> <span class="variable">type=</span><span class="string">"string"</span>&gt;&lt;/index&gt;//指定<span class="built_in">map</span>中的键存储
+    &lt;element <span class="variable">column=</span><span class="string">"description"</span> <span class="variable">type=</span><span class="string">"string"</span>&gt;&lt;/element&gt;//指定<span class="built_in">map</span>中的值
+&lt;/<span class="built_in">map</span>&gt;
+</code></pre><p>如果map的值是另一个实体</p>
+<pre><code>&lt;<span class="built_in">map</span> <span class="variable">name=</span><span class="string">"students"</span> <span class="variable">table=</span><span class="string">"student"</span>&gt;
+    &lt;key <span class="variable">column=</span><span class="string">"team_id"</span>&gt;&lt;/key&gt;//关联的表中的外键 
+    &lt;index <span class="variable">column=</span><span class="string">"name"</span> <span class="variable">type=</span><span class="string">"string"</span>&gt;&lt;/index&gt;//指定<span class="built_in">map</span>中的键存储
+    &lt;one-to-many <span class="variable">class=</span><span class="string">"com.hibernate.Student"</span>/&gt;//必须有student映射文件
+&lt;/<span class="built_in">map</span>&gt;
+</code></pre><p>set集合中存放的全是简单属性(一个类对应两张表)</p>
+<pre><code><span class="tag">&lt;<span class="title">set</span> <span class="attribute">name</span>=<span class="value">"student"</span> <span class="attribute">talbe</span>=<span class="value">"student"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"team_id"</span>&gt;</span><span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">element</span> <span class="attribute">column</span>=<span class="value">"name"</span> <span class="attribute">type</span>=<span class="value">"string"</span>&gt;</span><span class="tag">&lt;/<span class="title">element</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">set</span>&gt;</span>
+</code></pre><p>map与set标签中的element子标签映射的是原子类型（string,date,int,long…）,即使能够直接映射到数据库表字段上的类型，而one-to-many映射的则是实体类型，指的是无法映射到表的某个字段，而是要映射到整张表的类型</p>
+<p>list的元素是可以重复的，而且是有顺序的。set中的元素是不允许重复的</p>
+<pre><code><span class="tag">&lt;<span class="title">list</span> <span class="attribute">name</span>=<span class="value">"student"</span> <span class="attribute">table</span>=<span class="value">"student"</span> <span class="attribute">cascade</span>=<span class="value">"all"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"team_id"</span>&gt;</span><span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">index</span> <span class="attribute">column</span>=<span class="value">"index_"</span>&gt;</span><span class="tag">&lt;/<span class="title">index</span>&gt;</span>//数据库中存放顺序的字符（不然无法排序）
+    <span class="tag">&lt;<span class="title">one-to-many</span> <span class="attribute">class</span>=<span class="value">"com.hibernate.Student"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="title">list</span>&gt;</span>
+</code></pre><p>不能加inverse=”true”因为多的一方是无法知道排序的，所以要在一的一方进行维护</p>
+<p>Bag（结合了List与Set），可以重复且没有顺序的一种集合，是Hiberante提供的，可以用list来模拟bag</p>
+<pre><code>&lt;bag <span class="variable">name=</span><span class="string">"student"</span> <span class="variable">table=</span><span class="string">"student"</span> <span class="variable">cascade=</span><span class="string">"all"</span> <span class="variable">inverse=</span><span class="string">"true"</span>&gt;
+    &lt;key <span class="variable">column=</span><span class="string">"team_id"</span>&gt;&lt;/key&gt;
+    &lt;one-to-many <span class="variable">class=</span><span class="string">"com.hibernate.Student"</span>/&gt;
+&lt;/bag&gt;
+</code></pre><h1 id="查询排序（内存排序及数据库排序）">查询排序（内存排序及数据库排序）</h1><p>数据库排序使用order-by=”name asc”(name是数据库里的字段)，在set,list,bag，map标签上使用，order-by的内容可以指定多个字段排序，先按第一个字段排序，如果相等则按第二个字段排序</p>
+<p>内存排序用<code>sort=&quot;natural&quot;</code>按自然排序，它有三个属性（nusorted,natural）,其中的natural指的是按照自然的升序排序。第三个属性值是我们自定义的排序规则类（实现Comparator接口里的<code>comparat</code>方法），在sort中指定我们排序规则类的全称</p>
+<h1 id="数据库联合主键">数据库联合主键</h1><ol>
+<li><p>类中的每个属性都对应到数据表中的每个主键列</p>
+<p> 一个类有联合主键，则它必须实现serializable接口，并且重写equls和hashcode方法(两个方法中关联联合主键涉及到的属性)。hibernate要求具有联合主键的实体类实现Serializable接口，并且重写hashCode与equals方法，重写这两个方法的原因在于Hibernate要根据数据库的联合主键来判断某两行记录是否是一样的，如果一样认为是同一个对象，如果不一样，那么认为是不同的对象，这反映到程序领域中就是根据hashCode与equals方法来判断某两个对象是否能够放到诸如Set这样的集合当中。</p>
+<p> 联合主键映射：</p>
+<pre><code>&lt;composite-<span class="property">id</span>&gt;
+    &lt;key-<span class="keyword">property</span> <span class="property">name</span>=<span class="string">"cardId"</span> column=<span class="string">"cardId"</span> type=<span class="string">"string"</span>&gt;&lt;/key-<span class="keyword">property</span>&gt;
+               &lt;key-<span class="keyword">property</span> <span class="property">name</span>=<span class="string">"name"</span> column=<span class="string">"name"</span> type=<span class="string">"string"</span>&gt;&lt;/key-<span class="keyword">property</span>&gt;
+&lt;/composite-<span class="property">id</span>&gt;
+</code></pre><p> 联合主键的实体类实现Serializable接口的原因在于使用get或load方法的时候需要先构建出该实体的对象，并且将查询依据（联合主键）设置进去，然后作为get或load访求的第二个参数传进去即可</p>
+</li>
+<li><p>将主键所对应的属性提取出来一个类（称之为主键类），并且主键类需要实现Seriliable接口并且重写hashCode()与equlas接口，在主类中引用这个主键类<br> 映射文件如下：</p>
+<pre><code>&lt;composite-<span class="property">id</span> <span class="property">name</span>=<span class="string">"stuentPrimaryKey"</span> <span class="type">class</span>=<span class="string">"com.hibernate.StudentPrimaryKey"</span>&gt;
+  &lt;key-<span class="keyword">property</span> <span class="property">name</span>=<span class="string">"cardId"</span> column=<span class="string">"cardId"</span> type=<span class="string">"string"</span>&gt;&lt;/key-<span class="keyword">property</span>&gt;
+               &lt;key-<span class="keyword">property</span> <span class="property">name</span>=<span class="string">"name"</span> column=<span class="string">"name"</span> type=<span class="string">"string"</span>&gt;&lt;/key-<span class="keyword">property</span>&gt;
+&lt;/composite-<span class="property">id</span>&gt;
+</code></pre><p> 这两种方式生成的表结构是一样的</p>
+<p> 组件映射（把一对一关联映射到一张表中也只是针对单向的如学生的家庭地址和学校地址组成一个地址类在学生表中的映射）</p>
+<pre><code>&lt;component <span class="property">name</span>=<span class="string">"address"</span> <span class="type">class</span>=<span class="string">"com.hibernate.Address"</span>&gt;
+    &lt;<span class="keyword">property</span> <span class="property">name</span>=<span class="string">"homeaddress"</span> type=<span class="string">"string"</span>&gt;&lt;/<span class="keyword">property</span>&gt;
+    &lt;<span class="keyword">property</span> <span class="property">name</span>=<span class="string">"schooladdress"</span> type=<span class="string">"string"</span>&gt;&lt;/<span class="keyword">property</span>&gt;
+&lt;/component&gt;
+</code></pre><p> 在set标签中也可以用组件映射，适用于单向</p>
+</li>
+<li><p>继承映射</p>
+<ol>
+<li>每个子类一张表（映射方式没有特别，把父类的属性映射到子类文件中）<br><code>Query query = session.createQuery(&quot;from com.hibernate.Person&quot;);</code>//多态查询，会查询出它所有子类及它本身.如果没有映射文件，则必须加上包的名字</li>
+<li><p>一张表存储体系中所有类的信息（数据库表实体上是继承体系中所有类的属性的并集构成的字段），映射用继承的父类来命名,需要在hbm文件中增加如下一行用来区分不同子类<br><code>&lt;discriminator column=&quot;personType&quot; type=&quot;string&quot;&gt;&lt;/discriminatro&gt;</code></p>
+<p>子类信息配置</p>
+<pre><code>&lt;subclass name=<span class="string">"com.hibernate.Student"</span> discriminator-value=<span class="string">"student"</span>&gt;<span class="comment">//类名</span>
+    &lt;property name=<span class="string">"cardId"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"string"</span>/&gt;<span class="comment">//属性</span>
+&lt;/subclass&gt;
+&lt;subclass name=<span class="string">"com.hibernate.Teacher"</span> discriminator-value=<span class="string">"teacher"</span>&gt;<span class="comment">//类名</span>
+    &lt;property name=<span class="string">"salary"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"int"</span>/&gt;<span class="comment">//属性</span>
+&lt;/subclass&gt;
+</code></pre><p>查询可以获得所有信息，通过instanceof比较子类，可以获得特定子类的信息</p>
+</li>
+<li><p>每个类一张表,公共信息放在父类表中，独有信息放在子类表中，每个子类对应一张表<br>其中有关联父类表的id</p>
+<p> <joined-subclass name="com.hibernate.Student" table="student"></joined-subclass></p>
+<pre><code><span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"id"</span>&gt;</span><span class="tag">&lt;/<span class="title">key</span>&gt;</span>//主键关联父类
+<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"cardId"</span> <span class="attribute">type</span>=<span class="value">"string"</span>&gt;</span><span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+</code></pre><p> </p>
+<p> <joined-subclass name="com.hibernate.Teacher" table="teacher"></joined-subclass></p>
+<pre><code><span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"id"</span>&gt;</span><span class="tag">&lt;/<span class="title">key</span>&gt;</span>//主键关联父类
+<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"salary"</span> <span class="attribute">type</span>=<span class="value">"int"</span>&gt;</span><span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+</code></pre><p> </p>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="Hibernate的查询">Hibernate的查询</h1><ol>
+<li>导航对象图检索方式：根据已经加载的对象，导航到其他对象，如，对于已经加载的Customer对象，调用它的getOrders().iterator()方法可以导航到所有关联的Order对象，假如在关联级别使用了延迟加载检索策略，那么首先执行此方法时，Hibernate会从数据库中加载关联的Order对象，否则就从缓存中取得Order对象</li>
+<li>OID检索方式：按照对象的OID来检索对象。Session的get()和load()方法提供了这种功能。如果在应用程序中事先知道了OID，就可以使用这种检索对象的方式</li>
+<li>HQL检索方式： Hibernate提供了Query接口，这是Hibernate提供的专门的HQL查询接口，能够执行各种复杂的HQL查询语句</li>
+<li>QBC查询方式：使用QBC（Query By Criteria）api来检索对象。这种api封装了基于字符串形式的查询语句，提供了更加面向对象的接口。</li>
+</ol>
+<h2 id="hql检索步骤：">hql检索步骤：</h2><pre><code><span class="comment">//创建一个Query对象</span>
+<span class="keyword">Query</span> <span class="keyword">query</span> = session.createQuery("from Customer <span class="keyword">as</span> c where 
+    + <span class="string">"c.name=:customerName"</span>
+    + <span class="string">"and c.age=:customerAge"</span>);
+<span class="comment">//动态绑定参数</span>
+<span class="keyword">query</span>.setString(<span class="string">"customerName","tom"</span>);
+<span class="keyword">query</span>.setInteger(<span class="string">"customerAge"</span>,21);
+<span class="comment">//执行查询语句，返回查询结果</span>
+<span class="keyword">List</span> result = <span class="keyword">query</span>.<span class="keyword">list</span>();
+</code></pre><h2 id="qbc检索方式">qbc检索方式</h2><p>采用hql检索方式时，在应用程序中需要定义基于字符串形式的hql查询语句<br>qbc api提供了检索对象的另一种方式，它主要由Criteria接口，Criterion接口和Expression类组成，它支持在运行时动态生成查询语句</p>
+<pre><code>//创建一个<span class="type">Criteria</span>对象
+<span class="type">Criteria</span> criteria = session.createCriteria(<span class="type">Custome</span>.class);
+//设定查询条件，然后把查询条件加入到<span class="type">Criteria</span>中
+<span class="type">Criterion</span> creiterion1 = <span class="type">Expression</span>.like(<span class="string">"name"</span>,<span class="string">"T%"</span>);
+<span class="type">Criterion</span> creiterion2 = <span class="type">Expression</span>.eq(<span class="string">"age"</span>,new <span class="type">Interger</span>(<span class="number">21</span>));
+criteria=criteria.add(criterion1);
+criteria=criteria.add(criterion2);
+//执行查询语句，返回查询结果
+<span class="type">List</span> <span class="literal">result</span> = criteria.list();
+</code></pre><p>查询部分属性</p>
+<pre><code><span class="keyword">Query</span> <span class="keyword">query</span> = session.createQuery(<span class="string">"select s.name,s.age from Student s"</span>);<span class="comment">//查询部分属性</span>
+<span class="keyword">List</span> <span class="keyword">list</span> = <span class="keyword">query</span>.<span class="keyword">list</span>();
+<span class="keyword">for</span>(int i=0;i&lt;<span class="keyword">list</span>.size();i++)
+{
+    Object[] obj = (Object[])<span class="keyword">list</span>.<span class="literal">get</span>(i);<span class="comment">//查询出来的每一行数据都是以object[]形式返回</span>
+    System.<span class="keyword">out</span>.println(obj[0]+<span class="string">","</span>+obj[1]);<span class="comment">//第一个是name，第二个是age</span>
+}
+
+<span class="keyword">Query</span> <span class="keyword">query</span> = session.createQuery(<span class="string">"select new Student(s.name,s.age) from Student s"</span>);
+</code></pre><p>此时返回的是包含部分信息的student对象集合（但必须提供以上形式的构造函数）</p>
+<p>连接操作</p>
+<p>内连接，返回的是两个对象的数组的集合</p>
+<pre><code><span class="keyword">Query</span> <span class="keyword">query</span> = session.createQuery(<span class="string">"from Team t join t.students"</span>);<span class="comment">//根据team与student内连接</span>
+<span class="keyword">List</span> <span class="keyword">list</span> = <span class="keyword">query</span>.<span class="keyword">list</span>();
+<span class="keyword">for</span>(int i=0;i&lt;<span class="keyword">list</span>.size();i++)
+{
+    Object[] obj =(Object[])<span class="keyword">list</span>.<span class="literal">get</span>(i);
+               Team team = (Team)obj[0];<span class="comment">//连接的第一张表</span>
+     Student student =(Student)obj[1];<span class="comment">//连接的第二张表</span>
+    System.<span class="keyword">out</span>.println(team.getName());
+}
+</code></pre><p>进行表的连接查询，在hql中实际上是覆盖了延迟加载，都变成了直接加载了，配置文件中的不起使用。</p>
+<p>对实体进行参数绑定查询方法</p>
+<pre><code>Team team = (Team)session.<span class="literal">get</span>(Team.<span class="keyword">class</span>,<span class="string">"id值"</span>);
+<span class="keyword">Query</span> <span class="keyword">query</span> = session.createQuery(<span class="string">"from Student  s where s.team=:team and s.age &gt;20"</span>);
+
+<span class="keyword">query</span>.setParameter(<span class="string">"team"</span>,team,Hibernate.entity(Team.<span class="keyword">class</span>));<span class="comment">//1.命名参数名字去掉冒号2.参数所赋值对象3.对象转化成type类型</span>
+
+<span class="comment">//以上也可以用这个简便方法 query.setEntity("team",team);</span>
+<span class="keyword">List</span>&lt;Student&gt; <span class="keyword">list</span> = <span class="keyword">query</span>.<span class="keyword">list</span>();
+
+
+<span class="keyword">Query</span> <span class="keyword">query</span> = session.createFillter(<span class="string">"参数1"，"hql查询条件(where age&gt;20) "</span>);参数1为获得的持久化对象的集合，这就是hibernate的过滤查询
+<span class="keyword">Query</span> <span class="keyword">query</span> = session.createFillter(tema.getStudents(),<span class="string">"where age&gt;20"</span>);
+
+Criteria criteria = session.createCriteria(Student.<span class="keyword">class</span>).add(Restrictions.between(<span class="string">"age"</span>,new Integer(20),new Integer(30));查询年龄在20到30之间的学生
+<span class="keyword">List</span>&lt;Student&gt; <span class="keyword">list</span> = criteria.<span class="keyword">list</span>();
+between是包含小的也包含大的
+
+Criteria criteria = session.createCriteria(Student.<span class="keyword">class</span>).addOrder(<span class="keyword">Order</span>.asc(<span class="string">"age")).addOrder(Order.desc("cardId"</span>));
+</code></pre><p>hibernate官方推荐使用hql查询</p>
+<h1 id="数据库的事务与并发处理">数据库的事务与并发处理</h1><p>事务transation是一组相互依赖的操作行为，如银行交易，股票交易或网上购物，事务的成功取决于这些相互依赖的操作行为是否都能执行成功，只要有一个操作行为失败，就意味着整个事务的失败。数据库事务是对现实生活的模拟，它由一组在业务逻辑上相互依赖的SQL语句组成。</p>
+<p>在实际系统中除了查询操作外，绝对不允许设计为自动提交</p>
+<p>JTA java事务接口</p>
+<p>每启动一个mysql.exe程序，就会得到一个单独的数据库连接，每个数据库连接都有个全局变量@@autocommit,表示当前的事务模式，它有两个值：</p>
+<p>0—：表示手工提交模式</p>
+<p>1—：默认值，表示自动提交模式</p>
+<p>如果要察看当前的事务模式，可使用如下sql命令：<code>select @@autocommit</code><br>如果要把当前的事务模式改为手工提交模式，可以使用sql命令：<code>set autocommit=0</code><br>在自动提交模式下，每个sql语句都是一个独立的事务，mysql会自动提交这个事务</p>
+<p>数据库事务的4个特性acid：</p>
+<ol>
+<li>原子性atom</li>
+<li>持久性consistence</li>
+<li>隔离性isolation</li>
+<li>持久性duration</li>
+</ol>
+<p>在手工模式下，必须显式指定事务开始边界和结束边界：<br>事务的开始边界：begin<br>提交事务：commit<br>撤销事务：rollback</p>
+<p>jdbc Connection提供了以下用于控制事务的方法<br><code>setAutoCommit(boolean autoCommit)</code>设置是否提交事务,<code>commit（）</code>提交事务<br><code>rollback（）</code>撤销事务</p>
+<pre><code><span class="keyword">try</span>{
+    con=java.sql.<span class="type">DriveManager</span>.getConnection(dbUrl,dbUser,dbPwd);
+    //设置手工提交模式
+    con.setAutoCommit(<span class="literal">false</span>);
+    <span class="type">stmt</span>=con.createStatement();
+    //数据库更新操作<span class="number">1</span>
+    <span class="type">stmt</span>.executeUpdate(<span class="string">"更新语句"</span>);
+    //数据库更新操作<span class="number">2</span>
+    <span class="type">stmt</span>.executeUpdate(<span class="string">"更新语句"</span>);
+    con.commit();//提交事务
+}catch(<span class="type">Exception</span> e){
+    tyr{
+        con.rollback();//操作不成功则撤销事务
+    }catch(<span class="type">Exception</span> ex){
+    //处理异常
+    。。。
+    }
+    //处理异常
+}<span class="keyword">finally</span><span class="decorator">{...}</span>
+</code></pre><p>多个事务并发运行时的并发问题</p>
+<ol>
+<li>丢失更新：撤销一个事务时，把其他事务已提交的更新数据覆盖</li>
+<li>脏读：一个事务读到另一个事务未提交的更新数据</li>
+<li>虚读：一个事务读到另一个事务已提交的新插入的数据</li>
+<li>不可重复读：一个事务读到另一个事务已提交的更新数据</li>
+<li>第二类丢失更新：这是不可重复读中的特例，一个事务覆盖另一个事务已提交的更新数据</li>
+</ol>
+<p>数据库的事务隔离级别：<br><code>ReadUncommited</code>,<code>ReadCommited</code>,<code>Repeatable Read</code>,<code>Serializable</code></p>
+<p>查看当前的隔离级别：<br><code>select @@tx_isolation</code></p>
+<p>设置隔离级别<br><code>set transaction isolation level read committed</code></p>
+<p>在Hibernate的配置文件中中可以显式设置隔离级别。每一种隔离级别都对应一个整数：</p>
+<ol>
+<li>Read Uncommitted</li>
+<li>Read Committed</li>
+<li>Repeatable Read</li>
+<li>Serializable<br>在hibernate.cfg.xml文件中 <code>hibernate.connection.isolation=2</code></li>
+</ol>
+<p>使用悲观锁</p>
+<pre><code>Account account = (Account)session.<span class="keyword">get</span>(Account.<span class="keyword">class</span>,<span class="keyword">new</span> <span class="built_in">Long</span>(<span class="number">1</span>),LockMode.UPGRADE);
+</code></pre><p>hibernate执行的select语句为：</p>
+<pre><code><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> ACCOUNTS <span class="keyword">where</span> ID=<span class="number">1</span> <span class="keyword">for</span> <span class="keyword">update</span>;</span>//多了个for <span class="operator"><span class="keyword">update</span></span>
+</code></pre><p>乐观锁是由应用程序提供的一种机制，这种机制既能保证多个事务并发访问数据，又能防止第二类丢失更新问题<br>在应用程序中，可以利用Hibernate提供的版本控制功能来实现乐观锁。对象-关系映射文件中的<version>元素和<timestamp>元素都具有版本控制功能<br>-<version>元素利用一个递增的整数来跟踪数据库表中记录的版本<br>-<timestamp>元素用时间戳来跟踪数据库表中记录的版本</timestamp></version></timestamp></version></p>
+<p>使用乐观锁</p>
+<ol>
+<li>在实体类中加一个version属性，作为版本控制，映射该属性的时候用<code>&lt;version name=&quot;version&quot; column=&quot;version&quot; type=&quot;integer&quot;&gt;</code><br>时间戳方式控制<br>在实体类中另一个日期类型的属性作为时间戳，配置文件中<code>&lt;timestamp name=&quot;lastDate&quot; column=&quot;lastDate&quot;/&gt;</code></li>
+</ol>
+<p>悲观锁是由数据库底层实现的，乐观锁是由应用程序来实现的</p>
+<p>实现乐观锁的其他方法：</p>
+<p>如果应用程序是基于已有的数据库，而数据库表中不包含代表版本或时间戳的字段，Hibernate提供了其他实现乐观锁的办法。把<class>元素的optimistic-lock属性设为“all”：</class></p>
+<pre><code>&lt;class <span class="variable">name=</span><span class="string">"Account"</span> <span class="variable">table=</span><span class="string">"ACCOUNTS"</span> <span class="variable">optimistic-lock=</span><span class="string">"all"</span> <span class="variable">dynamic-update=</span><span class="string">"true"</span>&gt;
+</code></pre><p>hibernate会在update语句的where子句中包含Account对象被加载时的所有属性：</p>
+<pre><code>update ACCOUNTS <span class="keyword">set</span> balanec=<span class="number">900</span> <span class="keyword">where</span> <span class="property">id</span>=<span class="number">1</span> <span class="keyword">and</span> <span class="property">name</span>=<span class="string">"tom"</span> <span class="keyword">and</span> balance=<span class="string">"1000"</span>;
+</code></pre><h1 id="hibernate拦截器与事务">hibernate拦截器与事务</h1><p>应用程序能够响应hibernate内部产生的特定事件是非常有用的。这样就允许实现某些通用的功能以及允许对hibernate功能进行扩展（监听事件）</p>
+<p>持久层框架底层的拦截器机制是对诸如spring等业务管理容器拦截机制的有益的补充，使得我们可以在更低层次，更广的对象范围上进行AOP操作（Spring虽然将hibernate纳入到其容器管理的范围内，但是并没有途径实现对其实体对象的管理）。这样就允许实现某些通知的功能，以及允许对hibernate功能进行扩展。</p>
+<p>Interceptor接口提供了从会话（session）回调（callback）应用程序（application）的机制，这种回调机制可以允许应用程序在持久化对象被保存，更新，删除或是加载之前，检查并（或）修改其属性。其子类是EmptyInterceptor</p>
+<p>你可以直接实现Interceptor接口，也可以（最好）继承自EmptyInterceptor.</p>
+<p>拦截器有两种：</p>
+<p>-session范围内的</p>
+<p>-sessionFactory范围内的</p>
+<p>使用拦截器按如下步骤进行：</p>
+<ol>
+<li>定义实现Interceptor接口的拦截器</li>
+<li>通过session启用拦截器，或者通过configuration启用全局拦截器</li>
+</ol>
+<p>当使用某个重载的<code>SessionFactory.openSession()</code>使用Interceptor作为参数调用打开一个session的时候，就指定了Session范围内的拦截器。</p>
+<pre><code>Session session = <span class="literal">factory</span>.openSession(<span class="keyword">new</span> AuditInterceptor());
+</code></pre><p>SessionFactory范围内的拦截器要通过configuration中注册，而这必须在创建SessionFactory之前。在这种情况下，给出的拦截器会被这个SessionFactory所打开的所有session使用了，除非session打开时明确指明了使用的拦截器。SessionFactory范围内的拦截器，必须是线程安全的，因为多个session可能并发使用这个拦截器，要因此小心不要保存与session相关的状态</p>
+<p>事件系统（Event system）<br>如果需要响应持久层的某些特殊事件，你也可以使用Hibernate3的事件框架。该事件系统可以用来替代拦截器，也可以作为拦截器的补充来使用。<br>基本上，Session接口的每个方法都有相应的事件。如LoadEvent,FlushEvent等等（可以查询xml配置文件的dtd以及org.hibernate.event包来获得所有已定义的事件的列表）</p>
+<p>当某个方法被调用时，Hibernate Session会生成一个相应的事件并激活所有配置好的事件监听器（观察者模式）。被监听的方法所做的其实仅仅是激活监听器，实际的工作是由监听器完成的。你可以自由地选择实现一个自己定制的监听器:比如，实现并注册用来处理LoadEvent的LoadEventListener接口，来处理所有的调用Session的load()方法的请求。</p>
+<p>监听器在运行时被实例化为单例，也就是说，所有同类型的事件的处理共享同一个监听器实例，因此监听器不应该保存任何与请求相关的状态。<br>用户定制的监听器需要实现相关的事件监听器接口，或者从一个合适的基类继承（甚至是从Higbernate自带的默认事件监听器继承）。</p>
+<p>用户定制的监听器可以通过编程使用Configuration对象来注册，也可以在Hibernate的xml格式的配置文件中进行声明。</p>
+<p>你还需要修改一处配置，来告诉Hibernate，除了默认的监听器，还要附加选定的监听器。</p>
+<pre><code><span class="tag">&lt;<span class="title">hibernate-configuration</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">session-factory</span>&gt;</span>
+    ..
+    <span class="tag">&lt;<span class="title">event</span> <span class="attribute">type</span>=<span class="value">"load"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">listener</span> <span class="attribute">class</span>=<span class="value">"com.eg.MyLoadListener"</span>/&gt;</span>
+        <span class="tag">&lt;<span class="title">listener</span> <span class="attribute">class</span>=<span class="value">"org.hibernate.event.def.DefaultLoadEventListener"</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">event</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">session-factory</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hiberante-configuration</span>&gt;</span>
+</code></pre><p>通过编程的方式注册</p>
+<pre><code><span class="type">Configuration</span> cfg = <span class="keyword">new</span> <span class="type">Configuration</span><span class="literal">()</span>;
+<span class="type">LoadEventListener</span><span class="literal">[]</span> stack={<span class="keyword">new</span> <span class="type">MyLoadListener</span><span class="literal">()</span>,<span class="keyword">new</span> <span class="type">DefaultLoadEvnetListener</span><span class="literal">()</span>};
+cfg.getEventListeners<span class="literal">()</span>.setLoadEventListeners(stack);
+</code></pre><p>通过在xml配置文件声明而注册的监听器不能共享实例。如果在多个<listener>节点中使用了相同类的名字，则每一个引用都将会产生一个独立的实例。如果你需要在多个监听器类型之间共享监听器的实例，则你必须使用编程的方式来进行注册。</listener></p>
+<p>数据库连接池（connection pool）,c3p0，apache的dbcp，hibernate内置支持c3p0连接池<br>可以主文件中用<property name="hibernate.c3p0.属性"></property>来设置连接池</p>
+<p>hibernate tool与ant实现代码自动生成<br>在src目录下建build.xml与build.properties<br>build.properties内容<br>src=src<br>dbschema=dbschema//schema存储目录<br>libs=libs//ant所需要的架文件，hibernate.tool架包<br>bin=bin</p>
+<p>build.xml文件内容</p>
+<pre><code>&lt;project <span class="variable">name=</span><span class="string">"hibernate_tools"</span> <span class="variable">basedir=</span><span class="string">"."</span>&gt;(.表示当前目录)
+&lt;property <span class="variable">file=</span><span class="string">"build.properties"</span>&gt;&lt;/property&gt;(指定属性文件位置)
+&lt;target <span class="variable">name=</span><span class="string">"init"</span>&gt;
+    &lt;path <span class="variable">id =</span><span class="string">"lib.path"</span>&gt;
+        &lt;pathelement <span class="variable">path=</span><span class="string">"<span class="subst">${bin}</span>"</span>/&gt;
+        &lt;fileset <span class="variable">dir=</span><span class="string">"<span class="subst">${libs}</span>"</span>&gt;
+            &lt;include <span class="variable">name=</span><span class="string">"**/*.jar"</span>/&gt;(引用目录下所有文件)
+        &lt;/fileset&gt;
+    &lt;/path&gt;
+&lt;/target&gt;
+
+&lt;taskdef <span class="variable">name=</span><span class="string">"hibernatetools"</span> <span class="variable">classname=</span><span class="string">"org.hibernate.tool.ant.HibernateTooTask"</span> <span class="variable">classpathref=</span><span class="string">"lib.path"</span>&gt;(定义任务)
+&lt;/taskdef&gt;
+
+&lt;target <span class="variable">name=</span><span class="string">"dbschema"</span>&gt;
+    &lt;hibernatetools&gt;
+        &lt;configuration <span class="variable">configurationfile=</span><span class="string">"<span class="subst">${src}</span>/hibernate.cfg.xml"</span>/&gt;
+        &lt;hbm2ddl <span class="variable">destdir=</span><span class="string">"<span class="subst">${dbschema}</span>"</span> <span class="variable">export=</span><span class="string">"true"</span> <span class="variable">outputfilename=</span><span class="string">"dbschema.sql"</span>/&gt;
+        &lt;hbm2java <span class="variable">jdk5=</span><span class="string">"true"</span> <span class="variable">destdir=</span><span class="string">"<span class="subst">${src}</span>"</span>/&gt;
+    &lt;/hibernatetools&gt;
+&lt;/target&gt;
+
+
+&lt;/project&gt;
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/ssh2/">ssh2</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/技术/">技术</a><a href="/tags/ssh2/">ssh2</a><a href="/tags/hibernate/">hibernate</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://wn398.github.io/2013/08/14/hibernate曾旧的笔记/" data-title="hibernate曾旧的笔记 | 自由之翼" data-tsina="tim398" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/04/01/Java7中增加的新特性/" title="Java7中增加的新特性">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Java7中增加的新特性</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2013/03/25/JS浏览器编程/"  title="JS浏览器编程">
+ <strong>下一篇：</strong><br/> 
+ <span>JS浏览器编程
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2013/08/14/hibernate曾旧的笔记/" data-title="hibernate曾旧的笔记" data-url="http://wn398.github.io/2013/08/14/hibernate曾旧的笔记/"></div>
+</section>
+
+
+</div>
+<script src="/js/snowstorm-min.js"></script>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用hibernate步骤"><span class="toc-number">1.</span> <span class="toc-text">使用hibernate步骤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SessionFactory"><span class="toc-number">2.</span> <span class="toc-text">SessionFactory</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session接口"><span class="toc-number">3.</span> <span class="toc-text">Session接口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hibernate类型对应关系"><span class="toc-number">4.</span> <span class="toc-text">hibernate类型对应关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构建SessionFactory及Session支持类"><span class="toc-number">5.</span> <span class="toc-text">构建SessionFactory及Session支持类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hibernate的事务控制示例"><span class="toc-number">6.</span> <span class="toc-text">hibernate的事务控制示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用hql查询语句"><span class="toc-number">7.</span> <span class="toc-text">使用hql查询语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#query方法与list方法区别"><span class="toc-number">8.</span> <span class="toc-text">query方法与list方法区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#理解Session的缓存"><span class="toc-number">9.</span> <span class="toc-text">理解Session的缓存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在Hibernate应用中Java对象的状态"><span class="toc-number">10.</span> <span class="toc-text">在Hibernate应用中Java对象的状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hibernate的检索策略："><span class="toc-number">11.</span> <span class="toc-text">hibernate的检索策略：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#映射配置"><span class="toc-number">12.</span> <span class="toc-text">映射配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一对一映射："><span class="toc-number">12.1.</span> <span class="toc-text">一对一映射：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查询排序（内存排序及数据库排序）"><span class="toc-number">13.</span> <span class="toc-text">查询排序（内存排序及数据库排序）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库联合主键"><span class="toc-number">14.</span> <span class="toc-text">数据库联合主键</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hibernate的查询"><span class="toc-number">15.</span> <span class="toc-text">Hibernate的查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hql检索步骤："><span class="toc-number">15.1.</span> <span class="toc-text">hql检索步骤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#qbc检索方式"><span class="toc-number">15.2.</span> <span class="toc-text">qbc检索方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库的事务与并发处理"><span class="toc-number">16.</span> <span class="toc-text">数据库的事务与并发处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hibernate拦截器与事务"><span class="toc-number">17.</span> <span class="toc-text">hibernate拦截器与事务</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div>
+<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
+</div>
+
+
+  <div class="music">
+<!--<p class="asidetitle">Music</p>-->
+<div class="music_player clearfix">
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=45521081&sid=381307&mode=js"></script>
+</div>
+</div>
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期文章</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/14/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/01/VI的使用/">VI的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2015/05/02/CSS/">CSS</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="categorieslist">
+<p class="asidetitle">近期更新</p>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/09/14/git常用命令总结/">git常用命令总结</a>
+      </li>
+    
+      <li>
+        <a href="/2015/06/01/VI的使用/">VI的使用</a>
+      </li>
+    
+      <li>
+        <a href="/2015/05/02/CSS/">CSS</a>
+      </li>
+    
+      <li>
+        <a href="/2015/04/26/html5/">HTML5</a>
+      </li>
+    
+      <li>
+        <a href="/2015/04/13/Java7的一些新特性/">Java7的一些新特性</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>44</sup></a></li>
+		
+			<li><a href="/tags/android/" title="android">android<sup>17</sup></a></li>
+		
+			<li><a href="/tags/android-UI/" title="android_UI">android_UI<sup>6</sup></a></li>
+		
+			<li><a href="/tags/前端/" title="前端">前端<sup>5</sup></a></li>
+		
+			<li><a href="/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+			<li><a href="/tags/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>2</sup></a></li>
+		
+			<li><a href="/tags/字节码/" title="字节码">字节码<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hibernate/" title="hibernate">hibernate<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
+		
+			<li><a href="/tags/实例/" title="实例">实例<sup>1</sup></a></li>
+		
+			<li><a href="/tags/项目构建/" title="项目构建">项目构建<sup>1</sup></a></li>
+		
+			<li><a href="/tags/maven/" title="maven">maven<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/grails/" title="grails">grails<sup>1</sup></a></li>
+		
+			<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ssh2/" title="ssh2">ssh2<sup>1</sup></a></li>
+		
+			<li><a href="/tags/依赖注入/" title="依赖注入">依赖注入<sup>1</sup></a></li>
+		
+			<li><a href="/tags/spring/" title="spring">spring<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Java新特性/" title="Java新特性">Java新特性<sup>1</sup></a></li>
+		
+			<li><a href="/tags/JDK/" title="JDK">JDK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>1</sup></a></li>
+		
+			<li><a href="/tags/mysql/" title="mysql">mysql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/sql/" title="sql">sql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/groovy/" title="groovy">groovy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/UML/" title="UML">UML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/传感器/" title="传感器">传感器<sup>1</sup></a></li>
+		
+			<li><a href="/tags/蓝牙/" title="蓝牙">蓝牙<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NFC/" title="NFC">NFC<sup>1</sup></a></li>
+		
+			<li><a href="/tags/多媒体/" title="多媒体">多媒体<sup>1</sup></a></li>
+		
+			<li><a href="/tags/定位/" title="定位">定位<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据持久化/" title="数据持久化">数据持久化<sup>1</sup></a></li>
+		
+			<li><a href="/tags/语音识别/" title="语音识别">语音识别<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wifi网络/" title="wifi网络">wifi网络<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/JS/" title="JS">JS<sup>2</sup></a></li>
+		
+			<li><a href="/categories/JVM/" title="JVM">JVM<sup>2</sup></a></li>
+		
+			<li><a href="/categories/JavaSE/" title="JavaSE">JavaSE<sup>3</sup></a></li>
+		
+			<li><a href="/categories/android/" title="android">android<sup>23</sup></a></li>
+		
+			<li><a href="/categories/grails/" title="grails">grails<sup>1</sup></a></li>
+		
+			<li><a href="/categories/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/categories/ssh2/" title="ssh2">ssh2<sup>3</sup></a></li>
+		
+			<li><a href="/categories/前端/" title="前端">前端<sup>3</sup></a></li>
+		
+			<li><a href="/categories/技术辅助/" title="技术辅助">技术辅助<sup>3</sup></a></li>
+		
+			<li><a href="/categories/操作系统/" title="操作系统">操作系统<sup>1</sup></a></li>
+		
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/JDK/" style="font-size: 10px;">JDK</a> <a href="/tags/JS/" style="font-size: 11.67px;">JS</a> <a href="/tags/Java新特性/" style="font-size: 10px;">Java新特性</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/android/" style="font-size: 18.33px;">android</a> <a href="/tags/android-UI/" style="font-size: 16.67px;">android_UI</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/grails/" style="font-size: 10px;">grails</a> <a href="/tags/groovy/" style="font-size: 10px;">groovy</a> <a href="/tags/hibernate/" style="font-size: 10px;">hibernate</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/ssh2/" style="font-size: 10px;">ssh2</a> <a href="/tags/wifi网络/" style="font-size: 10px;">wifi网络</a> <a href="/tags/传感器/" style="font-size: 10px;">传感器</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/多媒体/" style="font-size: 10px;">多媒体</a> <a href="/tags/字节码/" style="font-size: 11.67px;">字节码</a> <a href="/tags/定位/" style="font-size: 10px;">定位</a> <a href="/tags/实例/" style="font-size: 10px;">实例</a> <a href="/tags/并发/" style="font-size: 10px;">并发</a> <a href="/tags/技术/" style="font-size: 20px;">技术</a> <a href="/tags/数据库/" style="font-size: 13.33px;">数据库</a> <a href="/tags/数据持久化/" style="font-size: 10px;">数据持久化</a> <a href="/tags/蓝牙/" style="font-size: 10px;">蓝牙</a> <a href="/tags/语音识别/" style="font-size: 10px;">语音识别</a> <a href="/tags/项目构建/" style="font-size: 10px;">项目构建</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a><span class="archive-list-count">2</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/wn398/" target="_blank" title="博客园">博客园</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="widget">
+    <p class="asidetitle">最近访客</p>
+    <div class="widget">
+	  <ul class="ds-recent-visitors" id="ds-recent-visitors" data-num-items="12"></ul>
+	</div>
+  </div>
+
+
+  
+<div class="widget">
+  <p class="asidetitle">最近评论</p>
+    
+<ul class="entry ds-recent-comments" data-num-items="8" data-show-avatars="0" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
+</div>
+
+
+  <div>
+<script type="text/javascript" src="//rj.revolvermaps.com/0/0/1.js?i=9cw5wlpmvk8&amp;m=7&amp;s=220&amp;c=e63100" async="async"></script>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" > <!--id="footer"-->
+	
+	<div class="line">
+		<span></span>
+		<div class="author" id="author"></div>
+	</div>
+	
+	<div>
+	
+	<section class="info">
+		<p> If you don&#39;t have never failed,you never try anything new <br/>
+			       ╰︶﹉⋛⋋⊱⋋๑理想๑⋌⊰⋌⋚﹉︶╯</p>
+	</section>
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tim398" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/wn398" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4404127/tim" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/wn1698" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100009152177427" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/292267941" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/wn398" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="https://www.zhihu.com/people/ding-ding-mu-mu" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108412565662276580000?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:164878858@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+	 
+	
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a>© 2016 
+		
+		<a href="http://wn398.github.io/about" target="_blank" title="Tim Wang">Tim Wang</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"wn398"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>
