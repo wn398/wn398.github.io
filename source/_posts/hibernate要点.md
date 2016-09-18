@@ -57,11 +57,13 @@ categories: 框架
 	6.	提供内置聚集函数，如sum(),min()和max()
 	7.	支持子查询，即嵌入式查询
 	8.	支持动态绑定参数  
-如下：
-`Query query = session.createQuery(“from Customer as c where “ + “c.name=:customerName” + “and c.age=:customeAge”);`
+	如下：
+	
+	Query query = session.createQuery(“from Customer as c where “ + “c.name=:customerName” + “and c.age=:customeAge”);
+
 //动态绑定参数
-`Query.setString(“customerName”,”Tom”);
-Query.setInteger(“customerAge”,21);`
+	`Query.setString(“customerName”,”Tom”);
+	Query.setInteger(“customerAge”,21);`
 //如果参数是对象类型要使用`setParameter(String name,Obejct value,Type type);`另一种更简单的方法是session.setEntity(String 参数名，Object 对象);
 //执行查询语句，返回查询结果
 `List result = query.list();`
@@ -85,11 +87,11 @@ Query和Critera接口都提供了用于分页显示查询结果的方法：
 
 20.	查询部分属性的使用方法：
 	1. `Query query = session.createQuery(“select s.name,s.age 	from student s”);
-	List list = query.list();
-	For(int i=0;i<list.size();i++){
-	Object[] obj = (Object[])list.get(i);
-	System.out.println(obj[0]+”,”+obj[1]);
-	}`
+		List list = query.list();
+		For(int i=0;i<list.size();i++){
+		Object[] obj = (Object[])list.get(i);
+		System.out.println(obj[0]+”,”+obj[1]);
+		}`
 返回的是一个object的数组列表
 	2.	查询部分属性放在对象里的方法：
 `Query query = session.createQuery(“select new Student(s.name,s.age) from Student s”) ;`//把name,age离散值当作一个student，这次查询出来的结果就是student.  需要提供这样的构造函数

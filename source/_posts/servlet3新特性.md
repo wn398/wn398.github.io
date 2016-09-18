@@ -1,4 +1,4 @@
-title: servlet3.0新特性
+title: servlet3新特性
 date: 2016/9/18 星期日 PM 5:46:51 
 updated: 2016/9/18 星期日 PM 5:46:58 
 tags: 
@@ -6,7 +6,8 @@ tags:
 - 技术
 - 新特性
 
-- categories: 后端
+categories: 后端
+---
 1.	基于注解（Annotation）的注解。 `WebServlet(name=””,urlPatterns={“”,””}) WebListener，WebFilter`
 2.	异步支持（AsyncContext）  服务器通知客户端
 	1.	整个页面刷新（meta）定时向服务器请求
